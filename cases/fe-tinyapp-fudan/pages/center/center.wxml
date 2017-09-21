@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="warp-outer" style="background-image: url({{icCenterBg}});">
+      <view class="warp" style="background-color:{{clrMain}};">
+        <image class="img" src="{{avatarUrl}}" mode="aspectFill"></image>
+      </view>
+      <text class="txt">{{nickName}}</text>
+    </view>
+    <navigator hover-class="none" url="../my-signup-list/my-signup-list" class="content-one">
+        <text class="title">我的报名</text>
+        <view class="pic pic-signup"></view>
+    </navigator>
+    <navigator hover-class="none" url="../my-follow-list/my-follow-list" class="content-two">
+        <text class="title">我的关注</text>
+        <view class="pic pic-follow"></view>
+    </navigator>
+</view>
+
+<import src="../../templates/actFooter/actFooter.wxml"/>
+  <template is="actFooter" data="{{...footerData}}"></template>

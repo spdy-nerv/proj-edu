@@ -1,0 +1,164 @@
+page {
+   background: #eeeff1;
+    width: 100%;
+    height: 100%;
+    font-family: Microsoft YaHei;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #eeeff1;
+    overflow: hidden;
+}
+
+.panel-back {
+    width: 80%;
+    height: 90%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 6%;
+    left: 10%;
+    box-shadow: 0rpx 5rpx 20rpx #999999;
+    border-radius: 10rpx;
+}
+
+.panel {
+    width: 90%;
+    height: 90%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    box-shadow: 0rpx 5rpx 20rpx #999999;
+    border-radius: 10rpx;
+}
+
+.panel-title {
+    height: 135rpx;
+    margin: 0 52rpx;
+    width: 571rpx;
+    box-sizing: border-box;
+    line-height: 135rpx;
+    font-size: 36rpx;
+    color: #004986;
+    text-align: center;
+    border-bottom: 1rpx solid #cccccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.panel-btn-area {
+    width: 100%;
+    height: 160rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.panel-main {
+    height: 100%;
+    overflow-y: hidden;
+    padding: 135rpx 52rpx 160rpx 52rpx;
+    box-sizing: border-box;
+}
+
+.panel-description {
+    margin-top: 40rpx;
+    font-size: 30rpx;
+    color: #2d2e33;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+.panel-btn {
+    width: 300rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: auto;
+    margin-top: 40rpx;
+    background: #00479d;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.panel-disabled {
+    margin-top: 40rpx;
+    font-size: 36rpx;
+    color: #cccccc;
+    text-align: center;
+}
+
+.panel-question-wrap {
+    padding-top: 40rpx;
+}
+
+.question-content {
+    font-size: 30rpx;
+    color: #2d2e33;
+    line-height: 1.2;
+}
+
+.panel-textarea-wrap {
+    padding-top: 20rpx;
+}
+
+.panel-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #2d2e33;
+    line-height: 1.2;
+    height: 100rpx;
+    background-color: #f2f3f5;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    padding: 15rpx 23rpx;
+}
+
+.panel-option-wrap {
+    padding-top: 20rpx;
+}
+
+.panel-option {
+    display: flex;
+    flex-direction: row;
+}
+
+.panel-option-checkbox {
+    width: 32rpx;
+    height: 32rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/checkbox.png);
+    background-size: 100%;
+    margin-right: 15rpx;
+}
+
+.option-checked {
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/checkbox_selected.png);
+}
+
+.panel-option-radio {
+    width: 32rpx;
+    height: 32rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/radio.png);
+    background-size: 100%;
+    margin-right: 15rpx;
+}
+
+.option-radio-checked {
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/radio_selected.png);  
+}
+
+.panel-option-text {
+    font-size: 30rpx;
+    color: #2d2e33;
+    line-height: 1.2;
+    flex: 1;
+}

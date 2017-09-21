@@ -26,7 +26,7 @@
 ### 克隆代码到本地
 1. 拉取项目代码至本地
 
-		git clone xxx
+		git clone git@github.com:spdy-nerv/proj-edu.git
 		
 2. 安装npm依赖包
 
