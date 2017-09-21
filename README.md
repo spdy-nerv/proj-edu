@@ -46,7 +46,7 @@
 		
 2. 根据提示输入全局配置信息：
 
-	![image](http://fudan-1253427581.cossh.myqcloud.com/edu-guide.png?sign=IJkVYNw0KyTTkoGGMtjnWF8QA+BhPTEyNTM0Mjc1ODEmaz1BS0lER1FQRHJLcmRhUDRZczFxbE9yOEVEMWVBVmdnV2NnMUMmZT0xNTA4NTkyMjU2JnQ9MTUwNjAwMDI1NiZyPTE3MzM4Mzk5ODMmZj0vZWR1LWd1aWRlLnBuZyZiPWZ1ZGFu =700x)
+	![image](http://fudan-1253427581.cossh.myqcloud.com/edu-guide.png?sign=IJkVYNw0KyTTkoGGMtjnWF8QA+BhPTEyNTM0Mjc1ODEmaz1BS0lER1FQRHJLcmRhUDRZczFxbE9yOEVEMWVBVmdnV2NnMUMmZT0xNTA4NTkyMjU2JnQ9MTUwNjAwMDI1NiZyPTE3MzM4Mzk5ODMmZj0vZWR1LWd1aWRlLnBuZyZiPWZ1ZGFu)
 
 3. 最终会在`cases`文件夹中生成`fe-tinyapp-fudan`的项目实例代码，代码由当前最新版本的base源码拉取。同时在`themes`文件夹中自动生成`fudan.js`素材配置文件，`config.js`文件中的配置项也已更新为手动输入的信息。
 
