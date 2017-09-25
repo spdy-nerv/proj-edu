@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="wrapper">
+
+<scroll-view class="time-line-container" scroll-y="true" style="padding-bottom:{{listPaddingBottom}}rpx">
+
+
+<view id="listWrapper">
+
+  <block wx:for="{{events}}" wx:key="unique">
+    <view wx:if="{{item.isFirstEventInDay}}" class="events-title-container">
+      <view class="events-list-title">{{item.month}}月{{item.date}}日 {{item.dayName}}</view>
+      <view class="anchor" id="anchor{{item.date}}"></view>
+    </view>
+    <navigator url="../act-detail/act-detail?actId={{item.id}}">
+    <view class="events-list-container">
+      <text wx:if="{{item.date == todayDate && item.isFirstEventInDay}}" class="tody">今天</text>
+      <view class="events-list-left">{{item.startTime}}</view>
+      <view class="events-list-right">
+        <view class="events-tit">{{item.name}}</view>
+        <view class="events-member">
+        <view wx:if="{{item.followInfo.avatars.length > 0}}" class="img-box">
+          <view wx:for="{{item.followInfo.avatars}}" wx:key="unique" wx:for-item="a" class="img" style="z-index:99;"><image src="{{a}}"></image></view>
+        </view>
+        <text class="events-member-num">{{item.followInfo.total}}人关注</text>
+        </view>
+        <view class="events-add"><text></text>{{item.address}}</view>
+        
+      </view> 
+    </view>
+    </navigator>
+  </block>
+
+</view>
+
+</scroll-view> 
+
+</view>

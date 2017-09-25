@@ -1,0 +1,56 @@
+<view class="con">
+  <image src="{{spot.image}}" mode="aspectFill" class="spot-pic"></image>
+  <view class="to-nav" style="background-image:url({{icSpotToNav}})" bindtap="gotoNav"></view>
+    <view class="title-wrap">
+      <view class="title">{{spot.name}}</view>
+      <view class="address">
+        <view class="address-icon"></view>
+        <view class="address-text">{{spot.address}}</view>
+      </view>
+      <view class="func">
+        
+        <!-- <view class="func-star-wrap">
+          <text>推荐指数</text>
+          <view class="star-outer">
+            <view class="star-inner star-inner-{{spot.star}}" style="background-image:url({{icSpotStar}});"></view>
+          </view>
+        </view> -->
+
+        <view class="func-voice-wrap" wx:if="{{spot.details.voice}}" bindtap="onToggleAudio">
+          <view class="voice-icon"></view>
+          <text>{{voiceTips}}</text>
+          <audio src="{{spot.details.voice}}" id="spotAudio"></audio>
+        </view>
+
+        <view class="func-video-wrap" wx:if="{{spot.details.video}}" bindtap="onPlayVideo" data-video="{{spot.details.video}}">
+          <view class="video-icon"></view>
+          <text>{{videoTips}}</text>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="main-wrap"  wx:if="{{spot.details.text}}">
+      <!--
+      <view class="main-title">交通路线</view>
+      <view class="trans-wrap">
+        <view class="trans-icon trans-bus-icon" style="background-image:url({{icSpotBus}});"></view>
+        <view class="trans-info">
+          <view class="trans-title">xxx公交车站</view>
+          <view class="trans-sub">32路、42路</view>
+        </view>
+      </view>
+      <view class="trans-wrap">
+        <view class="trans-icon trans-subway-icon" style="background-image:url({{icSpotSubway}});"></view>
+        <view class="trans-info">
+          <view class="trans-title">xxx地铁站</view>
+          <view class="trans-sub">地铁1号线</view>
+        </view>
+      </view>
+      -->
+      <view class="main-title" style="margin-top:13rpx;">地点介绍</view>
+      <view class="main-desc">
+        <rich-text nodes="{{spot.details.text}}"/>
+      </view>
+    </view>
+</view>

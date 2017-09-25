@@ -1,0 +1,45 @@
+<view class="wrap">
+    <view class="panel-back"></view>
+    <view class="panel">
+        <view class="panel-title">{{title}}</view>
+        <scroll-view scroll-y="true" class="panel-main">
+
+            <view class="panel-description">{{description}}</view>
+
+            <view wx:for="{{options}}" wx:key="unique" class="panel-option-wrap">
+                <view class="panel-option">
+                    <view class="panel-option-checkbox {{ item.isChecked ? 'option-checked' : '' }}" bindtap="{{checkFnName}}" data-optionid="{{item.id}}"></view>
+                    <view class="panel-option-text">{{item.content}}</view>
+                </view>
+                <view wx:if="{{hasVoted}}" class="panel-data"><text class="panel-data-count">{{item.count}}人</text>{{item.percent}}%</view>
+                <view wx:if="{{hasVoted}}" class="panel-progress">
+                    <view class="panel-progress-inner" style="background-color:{{item.progressColor}};width:{{item.percent}}%;"></view>
+                </view>
+            </view>
+
+        </scroll-view>
+        <view class="panel-btn-area">
+            <view wx:if="{{isActive  && !hasVoted}}" class="panel-btn" bindtap="onSubmitVote">投票</view>
+            <view wx:elif="{{!isActive}}" class="panel-disabled">当前不可投票</view>
+            <!--
+            <view wx:elif="{{!isAllowVote}}" class="panel-disabled">没有投票权限</view>
+            -->
+            <view wx:elif="{{hasVoted}}" class="panel-disabled">您已经投过票</view>
+        </view>
+    </view>
+</view>
+
+<!--<view>
+    <view class="box">
+        <view class="main_body">
+            <view class="topic">你是否对腾讯进入校园招聘感兴趣</view>
+            <view bindchange="radioChange">
+                <label class="radio reset_radio" wx:for="{{items}}">
+                    <view value="{{item.name}}" checked="{{item.checked}}">{{item.value}}</view>
+                </label>
+            </view>
+            <button>投票</button>
+        </view>
+    </view>
+    
+</view>-->

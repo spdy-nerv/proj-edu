@@ -1,0 +1,28 @@
+.img{
+  height: 414rpx;
+  width: 100%;
+  margin: 20rpx 0;
+}
+image{
+   height: 414rpx;
+  width: 100%;
+}
+.des{
+  margin-top:10rpx;
+  margin-left: 37rpx;
+  font-size: 30px;
+  line-height: 70rpx;
+  font-weight: bold;
+}
+.time{
+  margin:35rpx 37rpx 65rpx;
+  font-size: 14px;
+  color: rgba(224, 50, 50, 0.88)
+}
+.content{
+   margin:10rpx 37rpx;
+   font-size: 16px;
+   color: #585858;
+   line-height: 70rpx;
+   font-family: "Times New Roman"
+}
