@@ -172,6 +172,7 @@ page {
   margin-right: 70rpx;
   overflow: hidden;
   height: 194rpx;
+  vertical-align:text-top;
 }
 
 .campus-name {

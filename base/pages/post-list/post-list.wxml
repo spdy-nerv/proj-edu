@@ -21,7 +21,7 @@
         <view class="post-item-title">{{item.title}}</view>
         <view class="post-item-time">{{item.createAt}}</view>
       </view>
-      <view class="post-right">
+      <view class="post-right" wx:if="{{item.headlineImage}}">
         <image src="{{item.headlineImage}}" mode="aspectFill"></image>
       </view>
     </view>

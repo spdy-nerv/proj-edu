@@ -82,6 +82,11 @@ Page({
       this.getNavCampus()
     ])
     .then(function(arr) {
+      var list = arr[1];
+      list.map(function (e, i) {
+        e.name = e.name + '' + '';
+        return e;
+      })
       that.setData({
         types: arr[0],
         campus: arr[1]
