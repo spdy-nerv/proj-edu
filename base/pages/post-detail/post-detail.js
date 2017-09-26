@@ -22,7 +22,12 @@ Page({
     isPost: false,
     postDetail: {},
     hideNav: true,
-    marginTop: '0'
+    marginTop: '0',
+    imageUrls:[],
+    autoplay:true,
+    interval:4000,
+    duration:1100,
+    color:'white'
   },
 
   /**
