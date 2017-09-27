@@ -1,0 +1,10 @@
+<template name="actFooter">
+  <view class="act-footer-wrap">
+    <navigator url="../timeLine/timeLine" hover-class="none" open-type="redirect" class="act-list {{actListSelectedCls}}">
+      <text class="act-list-icon"></text>活动列表
+    </navigator>
+    <navigator url="../center/center" hover-class="none" open-type="redirect" class="personal-center {{personalCenterSelectedCls}}">
+      <text class="personal-center-icon"></text>个人中心
+    </navigator>
+  </view>
+</template>

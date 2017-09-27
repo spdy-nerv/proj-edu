@@ -1,0 +1,44 @@
+/* pages/demo/demo-detial/demo-detial.wxss */
+
+.box{
+  margin:58rpx 40rpx;
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  color: #000000;
+}
+.img{
+  height: 410rpx;
+  width: 668rpx;
+}
+image{
+ height: 410rpx;
+  width: 668rpx;  
+}
+.time{
+  border: 1px solid #fff;
+  background:#fff;
+  border-radius: 8px;
+  position: absolute;
+  left:11rpx;
+  top:345rpx;
+}
+.time text{
+  padding: 5rpx 5rpx;
+}
+.des{
+  padding-top:20rpx;
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.context{
+  padding-top:25rpx;
+  font-size: 15px;
+  margin:0 40rpx;
+ color: #686868;
+}
+.context text{
+  line-height: 50rpx
+}

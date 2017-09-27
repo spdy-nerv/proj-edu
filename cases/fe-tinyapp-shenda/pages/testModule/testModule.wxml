@@ -1,0 +1,34 @@
+<view class="wrap">
+    <view class="panel-back"></view>
+    <view class="panel">
+        <view class="panel-title">{{title}}</view>
+        <scroll-view scroll-y="true" class="panel-main">
+
+            <view class="panel-description">{{description}}</view>
+
+            <view wx:for="{{questions}}" wx:for-item="q" wx:for-index="qi" class="panel-question-wrap">
+                <view class="question-content">{{qi+1}}、{{q.questionCotent}}</view>
+                <view wx:for="{{q.options}}" wx:for-item="o" class="panel-option-wrap">
+                    <view class="panel-option">
+                        <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked ? 'option-radio-checked' : '' }}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}"></view>
+                        <view wx:elif="{{q.type == 2}}" class="panel-option-checkbox {{ o.isChecked ? 'option-checked' : '' }}" bindtap="{{tapCheckboxFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}"></view>
+                        <view class="panel-option-text">{{o.content}}</view>
+                    </view>                 
+                </view>
+                <view wx:if="{{q.type == 0}}" class="panel-textarea-wrap">
+                    <textarea placeholder="100字以内" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"/>
+                </view>
+            </view>
+
+        </scroll-view>
+
+        <view class="panel-btn-area">
+            <view wx:if="{{isActive  && !hasTested}}" class="panel-btn" bindtap="onSubmitTest">提交</view>
+            <view wx:elif="{{!isActive}}" class="panel-disabled">当前不可提交</view>
+            <!--
+            <view wx:elif="{{!isAllowTest}}" class="panel-disabled">没有投票提交问卷</view>
+            -->
+            <view wx:elif="{{hasTested}}" class="panel-disabled">您已经提交过问卷</view>
+        </view>
+    </view>
+</view>

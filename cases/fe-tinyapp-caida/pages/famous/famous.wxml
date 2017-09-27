@@ -1,0 +1,9 @@
+
+<import src="template/list.wxml"/>
+  <block wx:for='{{ famous }}'>
+     <template is="mylist" data="{{ item }}"/>
+  </block>
+
+  
+
+

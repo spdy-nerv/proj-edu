@@ -1,0 +1,30 @@
+<view class="con">
+
+  <block wx:if="{{!hideNav}}">
+    <import src="../../templates/topNav/topNav.wxml"/>
+    <template is="topNav" data="{{...tplData}}"></template>
+  </block>
+
+  <view class="top-wrap" wx:if="{{postList.length > 0}}" data-id="{{postList[0].id}}" bindtap="gotoPostDetail" style="margin-top:{{marginTop}}">
+    <image src="{{postList[0].headlineImage}}" mode="aspectFill"></image>
+    <view class="top-info">
+      <view class="top-title">{{postList[0].title}}</view>
+      <view class="top-sub">
+        <view class="top-time">{{postList[0].createAt}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="post-list">
+    <view wx:for="{{postList}}" wx:key="unique" class="post-item" wx:if="{{index > 0}}" data-id="{{item.id}}" bindtap="gotoPostDetail">
+      <view class="post-left">
+        <view class="post-item-title">{{item.title}}</view>
+        <view class="post-item-time">{{item.createAt}}</view>
+      </view>
+      <view class="post-right">
+        <image src="{{item.headlineImage}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+</view>
