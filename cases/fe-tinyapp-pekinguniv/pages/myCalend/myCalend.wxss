@@ -1,0 +1,88 @@
+page {  
+  display: block;  
+  min-height: 100%;  
+  background-color:#f6f6f6;
+  font-family: "微软雅黑";
+  font-size: 30rpx;
+  color:#353535;
+  position: relative;
+} 
+.section text{
+	padding-left:25rpx;
+}
+.info{
+	background-color: #fff;
+}
+.item{
+	height:90rpx;
+	align-items: center;
+	display:flex;
+	flex-direction: row;
+	border:1rpx solid #eee;
+}
+
+.item input{
+	padding-left:5rpx;
+	font-family: "微软雅黑";
+}
+.item-title{
+	height:60rpx;
+	line-height:80rpx;
+}
+.area{
+	width:20%;
+}
+.remind{
+	color:#e64340;
+	font-size:20rpx;
+}
+.submit{
+	background-color:#c82626;
+	color:#fff;
+	bottom: 0;
+	width:90%;
+	margin-top:70rpx;
+	margin-left:5%;
+}
+.cancel{
+	background-color:#fff;
+	color:#000;
+	bottom: 0;
+	width:90%;
+	margin-top:35rpx;
+	margin-left:5%;
+}
+.addre{
+	/*color:#939393;*/
+	width:400rpx;
+}
+.area{
+	width:150rpx;
+	border:1rpx solid #939393;
+}
+.text_box{
+	padding-left:100rpx;
+}
+.map{
+	width:550rpx;
+	color:#939393;
+}
+.more{
+	color:#939393;
+	padding-left:30rpx;
+	float:right;
+}
+.sex{
+	padding-left:120rpx;
+}
+.checkbox{
+	padding-left:25rpx;
+}
+
+.sign{
+	display: none;
+	float:left;
+}
+input{
+	width:75%;
+}

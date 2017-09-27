@@ -106,19 +106,19 @@ Page({
   	wx.navigateTo({
 			  url: '../myFollows/myFollows'
 		});
-	},
+  },
   //我的发布
   toMyPublic: function(e){
   		wx.navigateTo({
 			  url: '../myPublished/myPublished'
 			});
-	},
-	//我的日程
-	toMySchedule: function(e){
-		wx.navigateTo({
-			url: '../mySchedule/mySchedule'
-		});
-},
+  },
+    //我的日程
+  toMySchedule: function(e){
+  		wx.navigateTo({
+			  url: '../mySchedule/mySchedule'
+			});
+  },
   onShow:function(){
   	this.onLoadData();
   },

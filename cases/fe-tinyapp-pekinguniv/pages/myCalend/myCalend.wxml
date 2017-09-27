@@ -1,0 +1,67 @@
+<view class = "section">
+<form bindsubmit="formSubmit" report-submit="true">
+<view class = "item-title">
+</view>
+<!-- 地址部分 -->
+<view class = "item">
+<text>类型：</text>
+<picker name="addre" class = "addre" value="{{addreValue}}" range="{{addreRange}}" bindchange="addrePickerBindchange">
+ {{addreRange[addreValue]}}
+</picker>
+
+</view>
+<!-- 标题部分开始 -->
+<view class = "info">
+<!-- 标题部分 -->
+<view class = "item">
+<text>标题：</text>
+<input type="text" name = "title" placeholder="{{title}}" focus="{{focus}}" bindchange="titlechange"/>
+</view>
+
+
+<!-- 单位名称 -->
+<view class = "item">
+<text>单位名称：</text>
+<input name="company " type="text" placeholder="{{company }}" bindchange="companychange"  focus="{{focus}}"/>
+</view>
+<!-- 日期部分 -->
+<view class = "item">
+<text>时间：</text>
+<picker name="date" mode="date" value="{{dateValue}}" start="2017-05-19" end="2100-12-12" bindchange="datePickerBindchange">
+	{{dateValue}}
+</picker>
+　|　
+<picker name="time" mode="time" value="{{timeValue}}" start="08:00" end="18:00" bindchange="timePickerBindchange">
+  {{timeValue}}
+</picker>
+</view>
+
+
+</view>
+
+<view class = "info">
+<!-- 地点 -->
+<view class = "item">
+<text>地点：</text>
+<input name="location " type="text" placeholder="{{locatio }}" bindchange="locationchange"  focus="{{focus}}"/>
+</view>
+
+
+<!-- 内容 -->
+<view class = "item">
+
+<input name="content " type="text" placeholder="{{content }} "bindchange="contentchange"  focus="{{focus}}"/>
+</view>
+
+<!-- 备注 -->
+<view class = "item">
+
+<input name="remark " type="text" placeholder="{{remark }}" bindchange="remarkchange"  focus="{{focus}}"/>
+</view>
+</view>
+<view class = "sign"><input name = "sign" type = "text" value="{{sign}}"/></view>
+<!-- 详情部分结束 -->
+		<button class = "submit"  formType="submit">确认</button>
+		<button class = "cancel"  bindtap="cancel" >取消</button>
+  </form>
+</view>
