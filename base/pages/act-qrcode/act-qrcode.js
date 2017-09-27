@@ -43,7 +43,7 @@ Page({
           qrcode: data.qrCode
         });
       },
-      loginCallback: this.getEventPoster,
+      loginCallback: that.getEventQrCode,
       realFail: function (msg) {
         //wx.hideLoading();
         wx.showToast({
