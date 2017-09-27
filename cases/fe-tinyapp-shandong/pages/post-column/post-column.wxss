@@ -1,0 +1,106 @@
+/* pages/post-column/post-column.wxss */
+@import "../../templates/topNav/topNav.wxss";
+
+.warp{
+  margin-left:27rpx;
+}
+.warp-history{
+  padding: 60rpx 0 48rpx;
+}
+.title{
+  font-size: 36rpx;
+  color: #333333;
+}
+.all-history{
+  font-size: 24rpx;
+  color: #a8a8a8;
+  float: right;
+  margin-right: 27rpx;
+}
+.img{
+  height: 316rpx;
+  width: 315rpx;
+}
+image{
+  height: 316rpx;
+  width: 315rpx;
+  background-color: #e5e5e5;
+}
+.lun{
+ width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.box{
+  padding-right:30rpx;
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  color: #000000;
+  margin-bottom: 20rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.time{
+  border: 1px solid #fff;
+  background:#fff;
+  border-radius: 8px;
+  position: absolute;
+  left:11rpx;
+  top:264rpx;
+}
+.time text{
+  padding: 5rpx 5rpx;
+}
+.des{
+  padding-top:20rpx;
+  font-size: 26rpx;
+}
+
+.box .des {
+  width: 315rpx;
+  white-space: nowrap;  
+  text-overflow: ellipsis; 
+  overflow: hidden;
+}
+/*名人*/
+.list{
+  display: flex;
+  margin-top: 26rpx;
+  
+  
+}
+.list .img{
+  width:118rpx;
+  height: 118rpx;
+}
+.list image{
+  width:118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+}
+.txt{
+  flex: 1;
+  margin-left: 20rpx;
+  padding-bottom:25rpx;
+  padding-right: 50rpx;
+  border-bottom: 1px solid #eeeeee;
+}
+.list .title{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.list .title text{
+  color: #666;
+}
+.list .des{
+  font-size: 24rpx;
+  color: #c2c2c2;
+  line-height: 36rpx;
+  height: 72rpx;
+  overflow: hidden;
+}

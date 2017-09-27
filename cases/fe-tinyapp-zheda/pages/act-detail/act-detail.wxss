@@ -1,7 +1,6 @@
 page {
   background: #eeeff1;
   width: 100%;
-  height: 100%;
   font-family: Microsoft YaHei;
   padding-bottom: 0;
 }

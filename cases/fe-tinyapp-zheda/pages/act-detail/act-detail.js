@@ -133,6 +133,7 @@ Page({
       data: getEventBaseParams,
       method: 'POST',
       realSuccess: function (data) {
+        console.log(data);
         var datas = data;
         var en = parseInt(datas.startTime.substring(5, 7));
 

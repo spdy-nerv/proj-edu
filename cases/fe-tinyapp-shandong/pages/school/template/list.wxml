@@ -1,0 +1,11 @@
+<!--pages/demo/template/list.wxml-->
+<template name="mylist">
+  <view class="list" data-id="{{item.id}}" catchtap="onTap">
+    <view class="txt">
+      <view class="des"><text>{{ item.title }}</text></view>
+       <view><text class="text4">{{item.text4}}</text><text class="text5">{{item.text5}}</text></view>
+    </view>
+    <image src="/images/{{ item.src }}"></image>    
+  </view>
+</template>
+

@@ -1,0 +1,22 @@
+<view class="con">
+  <block wx:if="{{!hideNav}}">
+  <import src="../../templates/topNav/topNav.wxml"/>
+    <template is="topNav" data="{{...tplData}}"></template>
+  </block>
+<view style="margin-top:{{marginTop}}">
+  <!-- <view wx:if="{{postDetail.headlineImage}}" class="img"><image src="{{postDetail.headlineImage}}" mode="aspectFill"></image></view> -->
+  <swiper indicator-dots="{{true}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{color}}" class="img">
+  <block wx:for="{{postDetail.imageUrls}}">
+    <swiper-item class="swiper-item">
+      <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+    </swiper-item>
+  </block>
+</swiper>
+  <view class="des"><text>{{postDetail.title}}</text></view>
+  <!-- <view class="time">{{postDetail.createAt}}</view> -->
+  <view class="content">
+    <rich-text nodes="{{postDetail.content}}"/>
+  </view>
+</view>
+</view>

@@ -36,11 +36,12 @@ Page({
         eventId: this.data.eventId
       },
       realSuccess: function (data) {
+        console.log(data);
         that.setData({
           qrcode: data.qrCode
         });
       },
-      loginCallback: this.getEventPoster,
+      loginCallback:that.getEventQrCode,
       realFail: function (msg) {
         //wx.hideLoading();
         wx.showToast({
