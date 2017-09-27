@@ -1,0 +1,23 @@
+<view class="container">
+   <view class="tab-item">
+      <view class="filter-wrap">
+          <view class="filter-item "  bindtap="introduceTap">广贸简介</view>
+          <view class="filter-item filter-item-selected">校园公告</view>
+          <view class="filter-item" bindtap="historyTap">历史</view>
+          <view class="filter-item" bindtap="cultureTap">文化</view>
+          <view class="filter-item" bindtap="subjectTap">学科</view>
+      </view>
+    </view>
+    <swiper bindtap="noticeTap">
+      <swiper-item><image src="/images/simg.jpg"></image></swiper-item>
+    </swiper>
+    <view class="text">
+      <view  class="text1"><text>我校圆满完成本科教学工作评估</text></view>
+      <view><text class="text2">1小时前</text><text class="text3">1.5k阅读</text></view>
+    </view>
+</view>
+<import src="template/list.wxml"/>
+
+<block wx:for='{{ school }}'>
+    <template is="mylist" data="{{ item }}"/>
+</block>

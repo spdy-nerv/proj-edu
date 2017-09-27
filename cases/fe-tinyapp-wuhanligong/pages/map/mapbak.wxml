@@ -1,0 +1,31 @@
+<view class="container map-con">
+    <view class="filter-wrap">
+        <scroll-view class="filter" scroll-x="true" style="width: 100%" scroll-left="{{scrollLeft}}">
+            <view id="entry" class="filter-item {{selects[0] ? 'filter-item-selected' : ''}}" data-type="entry" data-index="0" data-w="36" data-l="0" bindtap="onFilterTap">入园</view>
+            <view id="check" class="filter-item {{selects[2] ? 'filter-item-selected' : ''}}" data-type="check" data-index="2" data-w="54" data-l="52" bindtap="onFilterTap">验票点</view>
+            <view id="yinghua" class="filter-item {{selects[1] ? 'filter-item-selected' : ''}}" data-type="yinghua" data-index="1" data-w="36" data-l="120" bindtap="onFilterTap">景点</view>
+            <view id="bike" class="filter-item {{selects[7] ? 'filter-item-selected' : ''}}" data-type="bike" data-index="7" data-w="72" data-l="172" bindtap="onFilterTap">共享单车</view>
+            <view id="food" class="filter-item {{selects[3] ? 'filter-item-selected' : ''}}" data-type="food" data-index="3" data-w="36" data-l="256" bindtap="onFilterTap">餐饮</view>
+            <view id="store" class="filter-item {{selects[4] ? 'filter-item-selected' : ''}}" data-type="store" data-index="4" data-w="54" data-l="308" bindtap="onFilterTap">小卖部</view>
+            <view id="toilet" class="filter-item {{selects[5] ? 'filter-item-selected' : ''}}" data-type="toilet" data-index="5" data-w="54" data-l="376" bindtap="onFilterTap">卫生间</view>
+            <view id="medical" class="filter-item {{selects[6] ? 'filter-item-selected' : ''}} filter-item-last" data-type="medical" data-index="6" data-w="54" data-l="444" bindtap="onFilterTap">医疗站</view>
+            <view class="bottom-line" animation="{{animationData}}"></view>
+        </scroll-view>
+    </view>
+    <view class="map-wrap">
+        <map 
+            class="map"
+            id="map" 
+            longitude="{{centerLongitude}}" 
+            latitude="{{centerLatitude}}" 
+            scale="15" 
+            controls="{{controls}}" 
+            bindcontroltap="onControlTap" 
+            markers="{{markers}}" 
+            bindmarkertap="onMarkerTap" 
+            polyline="{{polyline}}" 
+            bindregionchange="regionchange" 
+            show-location
+        ></map>
+    </view>
+</view>

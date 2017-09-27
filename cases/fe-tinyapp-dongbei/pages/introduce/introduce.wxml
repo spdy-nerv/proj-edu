@@ -1,0 +1,40 @@
+
+<view class="container">
+   <view class="tab-item">
+      <view class="filter-wrap">
+          <view class="filter-item filter-item-selected">广贸简介</view>
+          <view class="filter-item" bindtap="schoolTap">校园公告</view>
+          <view class="filter-item" bindtap="historyTap">历史</view>
+          <view class="filter-item" bindtap="cultureTap">文化</view>
+          <view class="filter-item" bindtap="subjectTap">学科</view>
+      </view>
+    </view>
+  <swiper indicator-dots autoplay interval="2000" bindtap="noticeTap">
+    <swiper-item><image src="/images/1.jpg"></image></swiper-item>
+    <swiper-item><image src="/images/simg.jpg"></image></swiper-item>
+    <swiper-item><image src="/images/simg.jpg"></image></swiper-item>
+  </swiper>
+  <view class="news-warp">
+    <view class="title">新闻中心</view>
+    <view class="text">
+      <view><text class="text1">我校圆满完成</text></view>
+      <view><text class="text2">本科教学工作评估</text></view>
+    </view>
+  </view>
+  <view class="context">广东外语外贸大学是一所具有鲜明国际化特色的广东省属重点大学，是华南地区国际化人才培养和外国语言文化、对外贸经济贸易、国际战略研究的重要基地。现有在校全日制本科生20067，博士、硕士研究生2867人，各类成人本专科生、进修及培训生、外国留学生11000多人。</view>
+  <view class="cont">
+    <view class="pro">历史沿革</view>
+    <view class="pro-txt" >
+      <text class="txt {{collected1 ? 'show' : ''}}" catchtap="txt1Tap" >学校的前身是广...................州外国语学院和广州对外贸易学院。广州外国语学院于1964年11月设立、1965年7月正式招生，是原国家教委（现教育部）直属的三所著名</text>
+    </view>
+  </view>
+  <view class="cont">
+    <view class="pro">校区情况</view>
+    <view class="pro-txt">
+      <text class="txt {{collected2 ? 'show' : ''}}" catchtap="txt2Tap">学校地处中国历史文化名城和华南地区经济/////////////////中心广州，辖3个校区，总面积2292庙，其中北校区位于白云山北麓，占地939庙；成荫，小桥流水，鸟语花香</text>
+    </view>
+  </view>
+</view>
+
+
+

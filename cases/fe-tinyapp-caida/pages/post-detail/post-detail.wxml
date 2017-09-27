@@ -1,0 +1,17 @@
+<view class="con">
+
+  <block wx:if="{{!hideNav}}">
+  <import src="../../templates/topNav/topNav.wxml"/>
+    <template is="topNav" data="{{...tplData}}"></template>
+  </block>
+
+<view style="margin-top:{{marginTop}}">
+  <view wx:if="{{postDetail.headlineImage}}" class="img"><image src="{{postDetail.headlineImage}}" mode="aspectFill"></image></view>
+  <view class="des"><text>{{postDetail.title}}</text></view>
+  <view class="time">{{postDetail.createAt}}</view>
+  <view class="content">
+    <rich-text nodes="{{postDetail.content}}"/>
+  </view>
+</view>
+
+</view>

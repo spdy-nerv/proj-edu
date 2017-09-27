@@ -1,0 +1,22 @@
+<!--pages/my/my.wxml-->
+<view class="map-wrap">
+<view class="flex-style">
+  <view class="flex-item {{tabsel==0?'active':''}}" bindtouchstart="goToCar">驾车</view>
+  <view class="flex-item {{tabsel==1?'active':''}}" bindtouchstart="goToWalk">步行</view>
+  <view class="flex-item {{tabsel==2?'active':''}}" bindtouchstart="goToBus">公交</view>
+  <view class="flex-item {{tabsel==3?'active':''}}" bindtouchstart="goToRide">骑行</view>
+</view>
+<view class="map_box" >
+  <map id="navi_map" style="height:100%; width:100%;" id="map" longitude="{{centerLongitude}}" latitude="{{centerLatitude}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="onControlTap" bindmarkertap="onMarkerTap" markers="{{markers}}" polyline="{{polyline}}"></map>
+</view>
+<view class="text_box2 {{tabsel==2?'':'displanone'}}" wx:for="{{transits}}" wx:key="obj" wx:for-item="i">
+  <text class="text_item" wx:for="{{i.transport}}" wx:for-item="j"  wx:key="itj">
+    {{j}}
+  </text>
+</view>
+<view class="text_box">
+  <view class="text">{{distance}}</view>
+  <view class="text">{{cost}}</view>
+  <view class="detail_button" bindtouchstart="goDetail" style="background-color:{{clrMain}};">导航</view>
+</view>
+</view>
