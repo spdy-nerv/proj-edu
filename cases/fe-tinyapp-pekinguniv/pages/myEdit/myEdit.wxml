@@ -61,7 +61,7 @@
 </view>
 <view class = "sign"><input name = "sign" type = "text" value="{{sign}}"/></view>
 <!-- 详情部分结束 -->
-		<button class = "submit" bindtap="cancel" formType="submit" >确认</button>
+		<button class = "submit" formType="submit" >确认</button>
 		<button class = "cancel"  bindtap="cancel" >取消</button>
   </form>
 </view>
