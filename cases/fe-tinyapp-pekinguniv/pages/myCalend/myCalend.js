@@ -1,5 +1,5 @@
 var app = getApp();
-
+var { APIS } = require('../../const');
 Page({
 	
 	data: {
@@ -100,7 +100,7 @@ onLoad: function(options) {
        flag=false;//若必要信息都填写，则不用弹框，且页面可以进行跳转
        console.log(wx.getStorageSync('openId'),category,that.data.title,that.data.company,startTime,that.data.content,that.data.remark,that.data.locatio)
      wx.request({
-      url: 'http://47.94.133.195/wechat-student-calendar!interest',
+      url: APIS.MY_CALEND,
             data: {
         wechatOpenId: wx.getStorageSync('openId'),
        'business.category':category,

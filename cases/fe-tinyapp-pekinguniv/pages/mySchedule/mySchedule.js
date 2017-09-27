@@ -217,7 +217,7 @@ Page({
     	 var yearMonth = this.data.year+'-'+this.data.month;
     };
     wx.request({
-      url: 'http://47.94.133.195/wechat-student-calendar!loadCaledarEvent',
+      url: APIS.MY_SCHEDULE,
       data: {
         yearMonth:yearMonth,
         wechatOpenId: wx.getStorageSync('openId'),
@@ -307,9 +307,11 @@ Page({
  
   wx.request({
  
-   url: 'http://47.94.133.195/wechat-student-calendar!deleteBusiness?id='+id,
+   url:  APIS.MY_DELSCHEDULE,
  
-   data: {},
+   data: {
+   	id:id,
+   },
  
    success: function(res){
    	wx.redirectTo({

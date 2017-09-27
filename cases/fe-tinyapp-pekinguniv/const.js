@@ -50,6 +50,11 @@ var APIS = {
 	
 	MY_CENTER: 						 		reqHost +'/myCenter', //个人中心
 	MY_CARD: 									reqHost +'/myCard', //我的名片
+	MY_SCHEDULE:              baseUrl+'/wechat-student-calendar!loadCaledarEvent',//求职日程
+	MY_DELSCHEDULE:           baseUrl+'/wechat-student-calendar!deleteBusiness',//删除日程
+	MY_EDIT:                  baseUrl+'/wechat-student-calendar!loadBusiness',//单条日程获取
+	MY_REMOVESCHEDULE:        baseUrl+'/wechat-student-calendar!interest',//修改日程
+	MY_CALEND:                baseUrl+'/wechat-student-calendar!interest',//添加日程
 	CERTIFICATION: 						reqHost +'/certification', //认证
 	SEND_SMS: 							 	reqHost +'/sendSms', //短信认证
 	EDIT_CARD: 							 	reqHost +'/editCard',// 编辑我的名片
