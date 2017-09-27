@@ -24,7 +24,7 @@ var dayFormatList = [
 ];
 
 var reqHost = 'https://www.leiy.club/peking';
-var baseUrl = 'http://47.94.133.195';
+var baseUrl = 'https://scc.pku.edu.cn';
 
 var APIS = {
   GET_CAREER_TALK:            baseUrl+'/wechat-student-jobs!interest', //参加宣讲会

@@ -18,7 +18,7 @@ Page({
   }, onLoad: function (options) {
     user.login(this.getUserInfo, this, true);
     wx.request({
-      url: 'http://47.94.133.195//wechat-student!myInfo',
+      url: 'https://scc.pku.edu.cn/wechat-student!myInfo',
       data: {
 
         wechatOpenId:wx.getStorageSync('openId')
