@@ -1,9 +1,0 @@
-<!--pages/entry/entry.wxml-->
-<view class="con" style="background-image:url({{icEntryBg}});">
-  <view class="navigator intro" bindtap="onOpenCms">
-    <view class="pic intro-pic" style="background-image:url({{icEntryIntro}});"></view>
-  </view>
-  <navigator url="../map/map" class="navigator nav">
-    <view class="pic nav-pic" style="background-image:url({{icEntryNav}});"></view>
-  </navigator>
-</view>

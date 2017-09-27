@@ -1,3 +1,0 @@
-<view class="video-wrap">
-  <video src="{{src}}" autoplay="true"></video>
-</view>
