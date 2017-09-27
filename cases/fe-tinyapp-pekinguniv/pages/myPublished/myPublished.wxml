@@ -1,0 +1,70 @@
+<!--myFollows.wxml-->
+<block  wx:for="{{list}}" wx:key="unique">
+
+<!-- //0提交未发布  1已提交待审核  2 已发布  3审核失败  4截止 \结束-->
+<block wx:if="{{item.status == '0'}}">
+<navigator url="../eventPublish/eventPublish?eventId={{item.eventId}}">
+<template is="event-item" data="{{...item, ...statusList}}"/>
+</navigator>
+</block>
+
+<block wx:elif="{{item.status == '1'}}">
+<template is="event-item" data="{{...item, ...statusList}}"/>
+</block>
+
+<block wx:elif="{{item.status == '2'}}">
+<!-- <navigator url="../detail/detail?eventId={{item.eventId}}"> -->
+<template is="event-item" data="{{...item, ...statusList}}"/>
+<!-- </navigator> -->
+</block>
+
+<block wx:if="{{item.status == '3'}}">
+<navigator url="../eventPublish/eventPublish?eventId={{item.eventId}}">
+<template is="event-item" data="{{...item, ...statusList}}"/>
+</navigator>
+</block>
+
+<block wx:elif="{{item.status == '4'}}">
+<template is="event-item" data="{{...item, ...statusList}}"/>
+</block>
+
+</block >
+<block wx:if="{{hasMore}}">
+<view class="no_event" hidden="{{isNoData}}">
+	<button type="" loading="{{loading}}" disabled="{{disabled}}" bindtap="showMore" >点击加载更多...</button> 
+</view>
+</block>
+<view class="no_event">{{isNoData}}</view>
+<!--
+class="publishing"
+class="no_publish" 
+<icon type="clear" size="20" color="#d7dcf5"/>
+-->
+
+<template name="event-item">
+<view class="follow_list">
+	<view class="f_img">
+		<view class="icon"></view>
+		<image class="img" src="{{pictureUrl}}" mode="aspectFill"/>
+	</view>
+	<view class="t1">
+	 	{{name}}
+	</view>
+	<view class="t2"><image src="../../images/d-icon1.png"></image> {{year}}年{{month}}月{{date}}号    {{startTime}}</view>
+	 <view class="t2 t3">
+	 <image src="../../images/d-icon2.png"></image> {{address}}
+	</view>
+	<view class="f_button fr">
+		<button formType="submit" class="status-tag-{{status}}">{{statusListData[status]}}</button>
+	 </view>
+	 <view class="f_button2" catchtap="toggleHidden" data-eventId="{{eventId}}">
+	 <block wx:if="{{toggle=='0' && status == '2'}}">
+		<button formType="submit" class="status-tag-hidden">隐藏</button>
+	 </block>
+	<block wx:if="{{toggle=='1' && status == '2'}}">
+		<button formType="submit" class="status-tag-show">已展示</button>
+	 </block>
+	 </view>
+</view>
+</template>
+

@@ -1,0 +1,27 @@
+<!--myFollows.wxml-->
+<block  wx:for="{{list}}" wx:key="unique">
+<navigator url="../detail/detail?eventId={{item.eventId}}">
+<view class="follow_list">
+	<view class="f_img">
+		<!--<view class="icon"></view>-->
+		<image class="img" src="{{item.pictureUrl}}" mode="aspectFill" />
+	</view>
+	<view class="t1">
+	 	{{item.name}}
+	</view>
+	<view class="t2"><image src="../../images/d-icon1.png"></image> {{item.year}}年{{item.month}}月{{item.date}}号    {{item.startTime}}</view>
+	 <view class="t2 t3">
+	 <image src="../../images/d-icon2.png"></image>{{item.address}}
+	</view>
+</view>
+</navigator>
+</block >
+<view class="no_event" hidden="{{isNoData}}">
+	<button type="" loading="{{loading}}" disabled="{{disabled}}" bindtap="showMore" >{{loadText}}</button> 
+</view>
+<view class="no_event">{{isNoData}}</view>
+<!--
+class="publishing"
+class="no_publish" 
+-->
+

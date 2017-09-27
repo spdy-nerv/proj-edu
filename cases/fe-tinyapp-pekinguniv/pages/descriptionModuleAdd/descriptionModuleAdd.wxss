@@ -1,0 +1,87 @@
+page {
+    background-color: #ffffff;
+}
+
+.paragraph-wrap {
+    padding: 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.p-text {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #2d2e33;
+    line-height: 1.5;
+    height: 200rpx;
+    background-color: #f2f3f5;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    padding: 15rpx 23rpx;
+}
+
+.p-img-wrap {
+    background-color: #666666;
+}
+
+.p-img {
+    width: 100%;
+    height: 350rpx;
+}
+
+.btn-wrap {
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.btn-pic {
+    flex: 1;
+    background-color: #eeeff1;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/pic_upload.png);
+    background-repeat: no-repeat;
+    background-size: 45rpx 41rpx;
+    background-position: center;
+}
+
+.btn-publish {
+    flex: 1;
+    background-color: #c52424;
+    font-size: 36rpx;
+    color: #ffffff;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+}
+
+.add-p-btn-wrap {
+    padding: 30rpx;
+    background-color: #ffffff;
+}
+
+.add-p-btn {
+    background-color: #c52424;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 8rpx;   
+}
+
+.preview-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: 15rpx;
+    right: 15rpx;
+}

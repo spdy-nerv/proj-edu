@@ -1,0 +1,38 @@
+<!--personCenter.wxml-->
+<view class="center_top">
+	<view class="center_info" >
+		<image src="{{headerImg}}" class="icon"></image>
+		<view>{{nick}}</view>
+		<block wx:if="{{!isCertification}}">
+			<view class="verify"> 
+				<image src="../../images/no-verify.png" />
+			</view>
+		</block>
+		<block wx:else>
+			<view class="verified"> 
+				<image src="../../images/verified.png"/>
+				<text>{{roleName}}</text>
+			</view>
+			<view class="verified"> 
+				<text class="unBind" bindtap="unBind">解除绑定</text>
+			</view>
+		</block>
+		
+	</view>
+	<view class="center_bg">
+		<image src="../../images/center_bg.png" />
+	</view>
+</view>
+<view class="personCenter_list mg_top30" bindtap="toMyCard">
+	<image src="../../images/center-icon1.png"/>
+	<text>我的名片</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list mg_top30 border_bottom" bindtap="toMyPublic">
+	<image src="../../images/center-icon2.png"/>
+	<text>我的发布</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<!--底部导航-->
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>

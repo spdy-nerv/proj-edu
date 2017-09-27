@@ -1,0 +1,28 @@
+<!--companylist.wxml-->
+<view class="list">
+	双选单位
+</view>
+
+<view class="company">
+<block  wx:for="{{list}}" wx:key="unique">
+<navigator url="../companyDetail/companyDetail?Id={{item.id}}">
+	<view class="model">
+	  <view class="model-right">
+	    <text>{{item.companyName}}</text>
+	   </view>
+	   <view class="arr">
+	  	 	<button type="" bindtap="showMore" >详情</button> 
+	   </view>
+	</view>
+</navigator>
+</block>
+</view>
+<block wx:if="{{hasMore}}">
+<view class="no_event" hidden="{{isNoData}}">
+	<button type="" loading="{{loading}}" disabled="{{disabled}}" bindtap="showMore" >点击加载更多...</button> 
+</view>
+</block>
+<view class="no_event">{{isNoData}}</view>
+
+
+

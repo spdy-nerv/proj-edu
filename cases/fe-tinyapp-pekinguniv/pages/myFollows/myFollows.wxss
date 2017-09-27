@@ -1,0 +1,98 @@
+.follow_list{
+    margin: 20rpx 30rpx;
+    min-height: 300rpx;
+    background: #ffffff;
+    border-radius: 10rpx;
+    line-height: 50rpx;
+    position: relative;
+    padding-bottom: 20rpx;
+}
+.follow_list .icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 188rpx;
+    height: 50rpx;
+    display: inline-block;
+    background-image: url(../../images/tencent.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.follow_list .icon image{
+
+}
+.follow_list .f_img .img{
+    width: 100%;
+    max-height: 300rpx;
+    background-color: #666666;
+}
+.follow_list .t1{
+    margin-top: 20rpx;
+    font-size: 36rpx;
+    padding: 0 20rpx;
+}
+.follow_list .t2{
+    padding: 0 20rpx;
+    color: #878a99;
+    font-size: 28rpx;
+}
+
+.follow_list .t2 image{
+	width:30rpx;
+	height:30rpx;
+    vertical-align: middle;
+    margin-right: 10rpx;
+}
+.follow_list .t3 image{
+width:30rpx;
+height:36rpx;
+}
+.f_button button{
+  width:180rpx;
+  font-size: 36rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top:-20rpx;
+  background: -webkit-linear-gradient(right, #44d3d2, #2acc7b);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #44d3d2, #2acc7b);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #44d3d2, #2acc7b);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #44d3d2, #2acc7b);
+}
+.f_button button.publishing{
+     background: -webkit-linear-gradient(right, #efd636, #ef8e36);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #efd636, #ef8e36);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #efd636, #ef8e36);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #efd636, #ef8e36);
+}
+.f_button button.no_publish{
+     background: -webkit-linear-gradient(right, #44d3d2, #c52424);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #fd4748, #c52424);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #fd4748, #c52424);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #fd4748, #c52424);
+}
+
+.no_event{
+    text-align: center;
+    margin: 30rpx auto;
+    
+}
+button{
+font-size:30rpx;
+background-color:#eeeff1;
+color:#666666;
+}
+button::after {
+border:none;
+}
+button[disabled] {
+color:#999999;
+}

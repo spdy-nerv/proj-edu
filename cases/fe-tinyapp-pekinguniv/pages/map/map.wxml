@@ -1,0 +1,9 @@
+<!--map.wxml-->
+ <map id="myMap" longitude="{{point.longitude}}" 
+   latitude="{{point.latitude}}" markers="{{markers}}"
+   scale="{{mapScale}}" show-location 
+   bindregionchange="regionchange" 
+   bindmarkertap="markertap" controls="{{controls}}"
+   bindcontroltap="controltap" 
+   style="width: 100%; height: 100vh;top: {{mapTop}}"> 
+ </map>

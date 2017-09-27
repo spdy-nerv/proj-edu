@@ -1,0 +1,17 @@
+/* pages/start/start.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}

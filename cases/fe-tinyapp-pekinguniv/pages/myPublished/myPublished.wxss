@@ -1,0 +1,116 @@
+.follow_list{
+    margin: 20rpx 30rpx;
+    min-height: 300rpx;
+    background: #ffffff;
+    border-radius: 10rpx;
+    line-height: 50rpx;
+    position: relative;
+    padding-bottom: 20rpx;
+}
+.follow_list .icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 188rpx;
+    height: 50rpx;
+    display: inline-block;
+    background-image: url(../../images/tencent.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.follow_list .icon image{
+
+}
+.follow_list .f_img .img{
+    width: 100%;
+    max-height: 300rpx;
+    background-color: #666666;
+}
+.follow_list .t1{
+    margin-top: 20rpx;
+    font-size: 36rpx;
+    padding: 0 20rpx;
+}
+.follow_list .t2{
+    padding: 0 20rpx;
+    color: #878a99;
+    font-size: 28rpx;
+}
+.follow_list .t2 image{
+	width:30rpx;
+	height:30rpx;
+    vertical-align: middle;
+    margin-right: 10rpx;
+}
+.follow_list .t3 image{
+width:30rpx;
+height:36rpx;
+}
+
+.f_button {
+    position: absolute;
+    top: 15rpx;
+    right: 20rpx;
+}
+
+.f_button2 {
+    position: absolute;
+    top: 15rpx;
+    right: 180rpx;
+}
+
+.f_button button,.f_button2 button{
+  width:100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top:-20rpx;
+}
+
+.no_event{
+    text-align: center;
+    margin: 30rpx auto;
+    
+}
+button{
+border-radius:10rpx 10rpx 0 0;
+font-size:30rpx;
+background-color:#eeeff1;
+color:#666666;
+}
+button::after {
+border:none;
+}
+button[disabled] {
+color:#999999;
+}
+
+.status-tag-0 {
+    background-color: #f8b551;
+    color: #ffffff;
+}
+.status-tag-1 {
+    background-color: #00b7ee;
+    color: #ffffff;
+}
+.status-tag-2 {
+    background-color: #2acc7b;
+    color: #ffffff;
+}
+.status-tag-3 {
+    background-color: #898989;
+    color: #ffffff;
+}
+.status-tag-4 {
+    background-color: #898989;
+    color: #ffffff;
+}
+
+.status-tag-hidden {
+    background-color: #bdb7b7;
+    color: #ffffff;
+}
+
+.status-tag-show {
+    background-color: #c52424;
+    color: #ffffff;
+}

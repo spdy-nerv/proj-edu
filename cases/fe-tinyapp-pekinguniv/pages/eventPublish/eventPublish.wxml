@@ -1,0 +1,211 @@
+<view class="banner-container">
+    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" style="height:{{swiperHeight}}rpx;" current="{{swiperCurr}}">
+      <block wx:for="{{picPaths}}">  
+        <swiper-item>  
+            <image src="{{item}}" class="slide-image" mode="aspectFill"/> 
+            <view class="preview-delete" bindtap="onDeletePreview" data-index="{{index}}" data-path="{{item}}"></view>
+        </swiper-item>  
+      </block>  
+    </swiper>
+    <view class="add-pic-btn-wrap">
+        <view class="add-pic-btn" bindtap="onChooseEventPics">+ 添加事件图片</view>
+    </view>
+</view>
+<view class="base-info-wrap">
+    <view class="bi-marker-wrap">
+        <view class="bi-marker-text">事件基本信息</view>
+        <view class="bi-marker-border"></view>
+    </view>
+    <view class="bi-field bi-title">
+        <input type="text" placeholder="请在此输入你的标题" placeholder-style="color:#b4b8cc;" value="{{eventName}}" class="bi-title-input" bindinput="onInputName"/>
+    </view>
+    <view class="bi-field bi-address">
+        <view class="bi-field-left">
+            <view class="bi-address-icon"></view>
+        </view>
+        <view class="bi-field-mid bi-address-mid" bindtap="onTapAddressSelector">
+            <text>{{addressTitle}}</text>
+            <view wx:if="{{latitude}}" class="address-item-detail">
+                <input type="text" class="detail-input" placeholder="可输入更详细地址" placeholder-style="color:#b4b8cc;" value="{{addressDetail}}" bindinput="onAddressDetailInput" auto-focus="{{isAddressDetailFocus}}"/>
+                <view class="address-item-detail-icon"></view>
+            </view>
+        </view>
+        <view class="bi-field-right" bindtap="onTapAddressSelector">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+
+    <view class="bi-field bi-poster">
+        <text class="bi-field-left bi-poster-left">事件海报</text>
+        <view class="bi-field-mid bi-poster-mid" >
+            <text wx:if="{{poster == ''}}" bindtap="onTapSelectPoster">事件的首页显示（375px*500px）</text>
+            <image wx:if="{{poster != ''}}" src="{{poster}}" mode="aspectFill" bindtap="onTapSelectPoster"></image>
+            <view wx:if="{{poster != ''}}" class="delete-poster" bindtap="onDeletePoster"></view>
+        </view>
+        <view class="bi-field-right" bindtap="onTapSelectPoster">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+
+    <view class="bi-field bi-createtime">
+        <text class="bi-field-left">发布时间</text>
+        <view class="bi-field-mid bi-createtime-mid">
+            <picker mode="date" value="{{createTime}}" start="2017-01-01" end="2099-12-31" bindchange="bindCreateTimeChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{createTime}}</text><view class="cal-icon"></view>
+                </view>
+            </picker>
+            <picker mode="time" value="{{createClock}}" start="00:00" end="23:59" bindchange="bindCreateClockChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{createClock}}</text><view class="cal-icon clock-icon"></view>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="bi-field bi-starttime">
+        <text class="bi-field-left">开始时间</text>
+        <view class="bi-field-mid bi-starttime-mid">
+            <picker mode="date" value="{{startTime}}" start="2017-01-01" end="2099-12-31" bindchange="bindStartTimeChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{startTime}}</text><view class="cal-icon"></view>
+                </view>
+            </picker>
+            <picker mode="time" value="{{startClock}}" start="00:00" end="23:59" bindchange="bindStartClockChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{startClock}}</text><view class="cal-icon clock-icon"></view>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="bi-field bi-endtime">
+        <text class="bi-field-left">结束时间</text>
+        <view class="bi-field-mid bi-endtime-mid">
+            <picker mode="date" value="{{endTime}}" start="2017-01-01" end="2099-12-31" bindchange="bindEndTimeChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{endTime}}</text><view class="cal-icon"></view>
+                </view>
+            </picker>
+            <picker mode="time" value="{{endClock}}" start="00:00" end="23:59" bindchange="bindEndClockChange" class="filter-date">
+                <view class="picker">
+                    <text class="picker-text">{{endClock}}</text><view class="cal-icon clock-icon"></view>
+                </view>
+            </picker>
+        </view>
+    </view>
+</view>
+
+<view class="base-info-wrap role-info">
+    <view class="bi-field bi-type">
+        <text class="bi-field-left">事件类型</text>
+        <view class="bi-field-mid bi-type-mid">
+            <picker range="{{eventTypeList}}" value="{{eventTypeIndex}}" range-key="typeName" bindchange="onChangeEventType"  class="event-type-picker-wrap">
+                <view class="event-type-picker">
+                    {{eventTypeList[eventTypeIndex].typeName}}
+                </view>
+            </picker>
+        </view>
+        <view class="bi-field-right">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+    <view class="bi-field bi-role">
+        <text class="bi-field-left">操作权限</text>
+        <view class="bi-field-mid bi-role-mid">
+            <view wx:for="{{roleList}}" wx:key="unique" class="role-item">
+                <view class="role-check {{item.isChecked? 'role-check-selected' : ''}}" bindtap="onRoleToggle" data-index="{{index}}" data-roleid="{{item.roleId}}"></view>
+                <text class="role-text">{{item.roleName}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if="{{!eventId}}" class="new-event-tips">* 新创建的事件点击“保存”后，可继续添加事件详情、评论、报名等附加模块。</view>
+
+<view wx:if="{{eventId}}" class="base-info-wrap ext-info">
+    <view class="bi-marker-wrap">
+        <view class="bi-marker-text">事件附加模块</view>
+        <view class="bi-marker-border"></view>
+    </view>
+    <view class="bi-field bi-module-type">
+        <view class="bi-field-mid bi-role-mid">
+            <view wx:for="{{moduleTypeList}}" wx:key="unique" class="role-item">
+                <view class="role-check {{item.isChecked? 'role-check-selected' : ''}}" bindtap="onModuleTypeToggle" data-index="{{index}}" data-typeid="{{item.moduleTypeId}}"></view>
+                <text class="role-text">{{item.moduleTypeName}}</text>
+            </view>
+        </view>
+    </view>
+    <navigator wx:if="{{needDescriptionModule}}" url="../descriptionModuleAdd/descriptionModuleAdd?eventId={{eventId}}&moduleId={{descriptionModuleId}}">
+    <view class="bi-field">
+        <text class="bi-field-left">详情模块配置</text>
+        <text class="bi-field-mid bi-description-mid">用图文详细描述你的事件</text>
+        <view class="bi-field-right">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+    </navigator>
+    <navigator wx:if="{{needEnrollModule}}" url="../enrollModuleAdd/enrollModuleAdd?eventId={{eventId}}&moduleId={{enrollModuleId}}">
+    <view wx:if="{{needEnrollModule}}" class="bi-field">
+        <text class="bi-field-left">报名模块配置</text>
+        <text class="bi-field-mid bi-description-mid">让你的事件可以报名</text>
+        <view class="bi-field-right">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+    </navigator>
+    <navigator wx:if="{{needVoteModule}}" url="../voteModuleAdd/voteModuleAdd?eventId={{eventId}}&moduleId={{voteModuleId}}">
+    <view class="bi-field">
+        <text class="bi-field-left">投票模块配置</text>
+        <text class="bi-field-mid bi-description-mid">为你的事件提供投票模块</text>
+        <view class="bi-field-right">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+    </navigator>
+    <navigator wx:if="{{needTestModule}}" url="../testModuleAdd/testModuleAdd?eventId={{eventId}}&moduleId={{testModuleId}}">
+    <view wx:if="{{needTestModule}}" class="bi-field">
+        <text class="bi-field-left">问卷模块配置</text>
+        <text class="bi-field-mid bi-description-mid">为你的事件提供问卷模块</text>
+        <view class="bi-field-right">
+            <text class="wb_arrow_right"></text>
+        </view>
+    </view>
+    </navigator>
+</view>
+
+<view class="publish-btn-wrap">
+        <view class="btn-save" bindtap="onTapSave">保存</view>
+        <view class="btn-publish" bindtap="onTapPublish">发布</view>
+</view>
+
+<!--
+<view class="address-mask" bindtap="onCloseAddressPanel" animation="{{addressMaskAnim}}" style="display:{{addressMaskDisplay}};"></view>
+<view class="address-edit-panel" animation="{{addressPanelAnim}}">
+
+    <view class="panel-wrap">
+        <view class="search-wrap">
+            <view class="search-input-wrap">
+                <input type="text" class="search-input" placeholder="请输入地点" placeholder-style="color:#878a99;" bindinput="onSearchAddress"/>
+                <view class="search-icon"></view>
+            </view>
+        </view>
+        <view class="map-wrap">
+            <map show-location="true" id="J_map" latitude="{{latitude}}" longitude="{{longitude}}" />
+        </view>
+        <scroll-view class="address-list" scroll-y="true">
+
+            <view wx:for="{{addressList}}" wx:key="unique" class="address-item">
+                <view class="address-item-title" bindtap="onAddressSelect" data-index="{{index}}">{{item.title}}</view>
+                <block wx:if="{{item.isSelected}}">
+                <view class="address-item-detail">
+                    <input type="text" class="detail-input" placeholder="可输入更详细地址" placeholder-style="color:#878a99;"/>
+                    <view class="address-item-detail-icon"></view>
+                </view>
+                <view class="address-item-save">保存</view>
+                </block>
+            </view>
+
+        </scroll-view>
+    </view> 
+
+</view>
+-->

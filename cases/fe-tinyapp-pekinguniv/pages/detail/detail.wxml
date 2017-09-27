@@ -1,0 +1,312 @@
+<!--detail.wxml-->
+
+<scroll-view class="content-wrap" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+<view class="banner-container"> 
+<swiper indicator-dots="{{indicatorDots}}"  
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
+      <block wx:for="{{imgUrls}}" wx:key="unique">  
+        <swiper-item>  
+            <image mode="aspectFill" src="{{item}}" class="slide-image" width="100%" height="100%" bindtap="onPreviewSlider" data-url="{{item}}"/>  
+        </swiper-item>  
+      </block>  
+</swiper>
+</view>
+
+
+<!--事件投票模块 moduleType :1-->
+
+<view class="title-box">
+  <view class="title-box-left">
+     <view class="eng">{{formatedMonth}}月</view>
+     <view class="chiness">{{startTimeDay}}</view>
+  </view>
+  <view class="title-box-right">
+    <view class="right1">{{eventName}}</view>
+    <view class="right2" bindtap="openLocation">
+    <!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}" redirect>-->
+    	<text>{{address}}</text><image src="../../images/location1.png" />
+     <!--</navigator>-->
+      <text class='viewCount'>浏览人数：{{viewCount}}</text>
+    </view>
+   </view>
+   <view wx:if="{{fromShare == 1}}" class="go-to-home-wrap">
+    <navigator url="../timeLine/timeLine" open-type="redirect">
+      <view class="go-to-home"></view>
+    </navigator>
+  </view>
+</view>
+<!-- 新增模块 -->
+<!-- <view class="share-box">
+   <view class="share-item" bindtap="clickShareBtn">
+     	<image src="../../images/icon5.png"></image>     
+     <view>分享</view>
+   </view>
+   <view class="share-item" bindtap="clickEnrollBtn" hidden="{{isShowEnroll}}"> 
+   <block wx:if="{{hasEnrolled}}">
+     	<image src="../../images/icon6.png"></image>
+     	<view>已参加</view>
+     </block>
+     <block wx:else>
+      	<image src="../../images/icon6_before.png"></image>
+      	<view>未参加</view>
+     </block>
+   
+   </view>
+   <view class="share-item" bindtap="clickFollowEventBtn"> 
+   <block wx:if="{{isFollow}}">
+     	<image src="../../images/icon3.png"></image>
+     	<view>已关注</view>
+     </block>
+     <block wx:else>
+      	<image src="../../images/icon3_before.png"></image>
+      	<view>未关注</view>
+     </block>
+   
+   </view>
+   <view class="share-item" bindtap="clickAddStarBtn">
+	  <block wx:if="{{isStar}}">
+	    <image src="../../images/icon4.png"></image>
+     </block>
+      <block wx:else>
+	    <image src="../../images/icon4_before.png"></image>
+     </block>
+     <view>{{starCount}}</view>
+   </view>
+</view> -->
+<!--投票、地址等模块-->
+<view class="model mg20">
+  <view class="model-left ">
+     <image src="../../images/d-icon1.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">开始时间：{{startTime.year}}年{{startTime.month}}月{{startTime.day}}日 {{startTime.startHours}}</view>
+    <view class="right1">结束时间：{{endTime.year}}年{{endTime.month}}月{{endTime.day}}日  {{endTime.endHours}}
+    </view>
+   </view>
+</view>
+
+
+<!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}">-->
+ <view class=" model" bindtap="openLocation">
+  <view class="model-left ">
+     <image src="../../images/d-icon2.png" class="m-img2"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">{{address}}</view>
+   </view>
+</view>
+<view class=" model" wx:if="{{contactTelephone}}">
+    <view class="model-left ">
+       <image src="../../images/foot-event-icon3.png" class="m-img2"></image>
+    </view>
+    <view class="model-right">
+      <view class="right1">联系人：{{contactPerson}}          <text style="padding-left:30rpx">电话：{{contactTelephone}}</text></view>
+     </view>
+  </view>
+
+  <view class=" model" wx:if="{{email}}">
+      <view class="model-left ">
+         <image src="../../images/d-icon3.png" class="m-img2"></image>
+      </view>
+      <view class="model-right">
+        <view class="right1">email：{{email}}</view>
+       </view>
+    </view>
+<!--</navigator>-->
+<!--详情默认模块 end-->
+
+
+<!-- 循环modules -->
+<block  wx:for="{{modules}}" wx:key="unique">
+<template is="{{item.moduleType}}" data="{{...des,...item}}"/>
+</block >
+
+</scroll-view>
+
+<template name="1">
+<!-- 上拉查看图文详情 -->
+<view class="pull-up-show-detail mg20" bindtap="clickShowInfo" id="J_detail">
+  <view class="classname">
+  <text class="{{isShowBottom?'wb_arrow_up':'wb_arrow_down'}}"></text>
+  点击查看图文详情</view>
+</view>
+<!--此处为自定义图文详情内容区-->
+<view class="detail_box" hidden="{{isShowBottom}}">
+<block  wx:for="{{description.paragraphs}}">
+	<view wx:if="{{item.type==1}}" class="detail_box_p"><text>{{item.value}}</text></view>
+  <view wx:if="{{item.type==2}}" class="detail_box_p">
+    <image src="{{item.value}}" mode="widthFix" bindtap="onPreviewDetail" data-url="{{item.value}}" data-index="{{index}}"/> 
+  </view>
+</block>
+</view>
+</template>
+
+<!--事件投票模块 moduleType :4-->
+<template name="4">
+<navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
+<view class="model">
+  <view class="model-left ">
+     <image src="../../images/d-icon3.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">事件投票模块</view>
+   
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</navigator>
+</template>
+
+<!--问卷调查模块 moduleType:5-->
+<template name="5">
+<navigator url="../testModule/testModule?moduleId={{moduleId}}">
+<view class="model">
+  <view class="model-left">
+     <image src="../../images/d-icon4.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">问卷调查</view>
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</navigator>
+</template>
+
+<!--事件评价模块 moduleType:6-->
+<template name="6">
+<view class="model">
+  <view class="model-left ">
+     <image src="../../images/d-icon5.png" class="m-img5"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">事件评价模块</view>
+   
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</template>
+
+
+<!--评论模块 ：moduleType:2-->
+<template name="2">
+<!--评论-->
+<view class="comment-container" id="J_comment">
+ <view class="comment_title">评论<text>({{commentData.data.totalCount}})</text></view>
+
+<block  wx:for="{{commentData.data.commentList}}" wx:for-item="item1">
+ <view class="comment-box">
+  <view class="comment-left">
+    <image src="{{item1.avatar}}"></image>
+    <text>{{item1.nick}}</text>
+    <time class="fr">{{item1.createAt}}</time>
+  </view>
+  <view class="comment_cont">
+  <!--<block  wx:for="{{item1.content}}" wx:for-item="itemC">-->
+    <view class="comment-text">​​{{item1.content[0].value}}</view>
+
+    <view wx:if="{{item1.picNum == 1}}" class="comment-img-wrap">
+      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item1" mode="aspectFill" bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+    </view>
+
+    <view wx:if="{{item1.picNum == 2}}" class="comment-img-wrap">
+      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+      <image src="{{item1.content[2].value}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
+    </view>
+
+    <view wx:if="{{item1.picNum == 3}}" class="comment-img-wrap">
+      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item3" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+      <view class="comment-img-right">
+        <image src="{{item1.content[2].value}}" width="100%" height="100%" class="comment-img-item4" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
+        <image src="{{item1.content[3].value}}" width="100%" height="100%" class="comment-img-item4 img-clear" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[3].value}}" data-index="{{index}}"/>
+      </view>
+    </view>
+
+  <!--</block>-->
+  </view>
+  </view>
+</block>
+ 
+</view>
+
+<!-- 查看更多评论 -->
+<view class="pull-up-show-detail">
+  <block wx:if="{{hasMore}}">
+	  <view class="classname"  bindtap="showMoreComment">
+	  查看更多评论<text class="wb_arrow_right"></text>
+	  </view>
+   </block>
+  <block wx:else>
+	  <view class="classname">
+	   没有更多评论了
+	  </view>
+  </block>
+</view>
+</template>
+
+<!--底部浮动评论输入框-->
+
+
+
+<view class="footer_container mg20">
+    <view class="foot-item comment1">
+        <view class="input_box" bindtap="onToComment">
+        <!--<navigator url="../commentSubmit/commentSubmit?moduleId={{moduleId}}">-->
+         <image src="../../images/c_icon2.png"></image>
+           <view class="input">我要参加</view>
+        
+         <!--</navigator>-->
+          </view>
+      </view>
+
+      <view class="foot-item comment2 comment3" bindtap="clickEnrollBtn"> 
+        <block wx:if="{{attend}}">
+        <image  src="../../images/icon6.png"></image>
+      </block>
+      <block wx:else>
+        <!-- 选中状态 -->
+         <image src="../../images/icon6_before.png"></image>   
+      </block>
+       </view>
+       
+      <view class="foot-item comment2" bindtap="scrollToComment" style="margin-right:30rpx">
+        <!-- <text class="comment_num">{{des.commentData.data.totalCount}}</text> -->
+        <!-- <image src="../../images/c_icon1.png"></image> -->
+        <block wx:if='{{!attend}}'> <view class='join'>参加</view></block>
+        <block wx:else> <view class='join'>已参加</view></block>
+      </view>
+        <!-- <view class="foot-item comment2 comment3" bindtap="clickFollowEventBtn"> 
+        <block wx:if="{{isFollow}}">
+       	 	<image src="../../images/c_icon2_after.png"></image>
+       	</block>
+       	<block wx:else>
+       	 	<image src="../../images/c_icon2.png"></image>
+       	</block>
+        </view> -->
+        
+</view>
+<!--双选单位详情 moduleType:5-->
+<template name="7">
+<navigator url="../companyList/companyList?eventId={{eventId}}">
+<view class="model"  style="padding-left:8rpx;">
+  <view class="model-left">
+     <image src="../../images/icon7.png" class="m-img7"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">双选单位详情</view>
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</navigator>
+</template>
+<!--分享-->
+<view class="modal-window" hidden="{{isShowShare}}" bindtap="hiddenShare">
+		<image src="../../images/share.png" />
+</view>

@@ -1,0 +1,58 @@
+/* publicDetail.wxss */
+page{
+  background: #eeeff1;
+  padding-bottom: 0;
+}
+.title{background: #fff;line-height: 80rpx;text-align: center;font-size: 36rpx;font-weight: bold;margin-bottom: 19rpx;}
+.title-box{
+   min-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+  border-top: solid 1rpx #e5e6e8;
+  border-bottom: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+   font-size: 30rpx;
+}
+.title-box-left{
+  width: 16%;
+  text-align: center;
+ font-size: 32rpx;
+  border-right: solid 1rpx #dedede;
+  font-weight: bolder;
+  height: 50rpx;
+  align-items: center;
+  vertical-align: top;
+}
+.title-box-left .eng{
+  color: #c52424;
+  margin-top: -10rpx;
+}
+.title-box-right{
+  line-height: 50rpx;
+  padding-left: 20rpx;
+  flex: 1;
+  margin-right: 30rpx;
+}
+ .right1 image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left:43rpx;
+  margin-right: 38rpx;
+  
+}
+.title-box-right .right2{
+  color:#2d2e33;
+  font-size: 32rpx;
+  font-weight: bold;
+  
+}
+.detail_box{
+  background: #fff;
+  font-size: 32rpx;
+  padding: 20rpx;
+}

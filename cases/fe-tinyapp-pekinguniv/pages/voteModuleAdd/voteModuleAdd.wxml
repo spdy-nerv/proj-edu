@@ -1,0 +1,13 @@
+<view class="vote-wrap">
+    <view class="vote-tips">当前模版最多支持20个选项</view>
+    <input type="text" class="vote-input vote-title" placeholder="请描述投票内容" placeholder-style="color:#b4b8cc;" value="{{title}}" bindinput="onInputTitle"/>
+    <view wx:for="{{options}}" wx:key="unique" class="vote-option-wrap">
+        <input type="text" class="vote-input vote-option" placeholder="选项{{index+1}}" placeholder-style="color:#b4b8cc;" value="{{item}}" bindinput="onInputOption" data-index="{{index}}" />
+        <view class="preview-delete" bindtap="onDeleteOption" data-index="{{index}}"></view>
+    </view>
+    <view class="option-add-btn" bindtap="onAddOption">+ 添加选项</view>
+</view>
+
+<view class="publish-btn-wrap">
+    <view class="publish-btn" bindtap="onTapPublish">确认</view>
+</view>

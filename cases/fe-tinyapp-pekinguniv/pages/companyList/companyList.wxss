@@ -1,0 +1,44 @@
+.list{
+ color:#878a99;
+ font-size:36rpx;
+ height:80rpx;
+ line-height:80rpx;
+ padding:0 22rpx;
+ font-weight:bold;
+}
+.company{
+	border-bottom: solid 1rpx #e5e6e8;
+}
+.model{
+   min-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-top: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+   font-size: 34rpx;
+   padding:10rpx 0 10rpx 18rpx;
+}
+.model-right{
+  line-height: 50rpx;
+  color:#5d5f6a;
+  width: 76%;
+}
+.model-right .right1{
+  font-size: 34rpx;
+  color: #000000;
+}
+.arr button{
+	padding:4rpx 20rpx 2rpx 20rpx;
+	color:#ffffff;
+	font-size:34rpx;
+	text-align:center;
+	background:red;
+	line-height:50rpx;
+}
+.arr{
+  margin-right: 20rpx;
+}

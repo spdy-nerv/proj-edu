@@ -1,0 +1,28 @@
+<!--declaration.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class="top_banner">
+	<view class="left">
+	</view>
+	<view class="center">
+		我的兴趣爱好
+	</view>
+	<view class="right">
+		<button formType="submit" >确定</button>
+	</view>
+</view>
+<view class="section">
+<block  wx:for="{{hobbies}}" wx:for-index="idx" >
+	<view class="l_box">
+		<text>{{item}}</text><icon type="clear" size="20" color="#d7dcf5" bindtap="clickClose" data-id="{{idx}}"/>
+	</view>
+</block>
+</view>
+<view class="input">
+	<input type="text" placeholder="你是哪一类?" bindinput="bindInput"  /><text bindtap="clickAdd">+</text>
+</view>
+<view class="lables">
+<block  wx:for="{{lables}}" wx:for-index="idx" >
+	<text class="l_box" bindtap="clickLable" data-value="{{item}}">{{item}}</text>
+</block>
+</view>	
+</form>

@@ -1,0 +1,16 @@
+<!--declaration.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class="top_banner">
+	<view class="left">
+	</view>
+	<view class="center">
+		加友宣言
+	</view>
+	<view class="right">
+	<button formType="submit" > 保存 </button>
+	</view>
+</view>
+<view class="declaration">
+  <textarea name="declaration" value="{{declaration}}"  auto-height placeholder="{{declaration?declaration:'说点啥！'}}" />
+</view>
+</form>

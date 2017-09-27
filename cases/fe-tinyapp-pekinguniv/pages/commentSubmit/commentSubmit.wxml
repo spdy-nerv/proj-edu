@@ -1,0 +1,16 @@
+<view class="userinfo-wrap">
+    <image class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{nickName}}</text>
+    <view class="submit-date">{{submitDate}}</view>
+</view>
+<textarea placeholder="说点什么吧，优质评论将会优先展示" class="comment-textarea" bindinput="onInput" />
+<view class="preview-wrap">
+    <view wx:for="{{picPaths}}" class="preview">
+        <image src="{{item}}" mode="aspectFit"></image>
+        <view class="preview-delete" bindtap="onDeletePreview" data-index="{{index}}" data-path="{{item}}"></view>
+    </view>
+</view>
+<view class="btn-wrap">
+    <view class="btn-pic" bindtap="onSelectPic"></view>
+    <view class="btn-publish" bindtap="onPublish">发布</view>
+</view>

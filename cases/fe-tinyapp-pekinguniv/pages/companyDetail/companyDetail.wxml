@@ -1,0 +1,7 @@
+<!--publicDetail.wxml-->
+<scroll-view class="content-wrap" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+<view class="title">{{companyName}}</view>
+<view class="detail_box">
+	<view class="detail_box_p"><text>{{details}}</text></view>
+</view>
+</scroll-view>
