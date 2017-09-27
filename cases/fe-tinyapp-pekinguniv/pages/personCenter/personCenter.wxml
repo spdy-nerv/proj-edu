@@ -1,7 +1,7 @@
 <!--personCenter.wxml-->
 <view class="center_top">
-	<view class="center_info" >
-		<image src="{{headerImg}}" class="icon"></image>
+	<view class="center_info">
+		<image  wx:if="{{headerImg}}" src="{{headerImg}}" class="icon"></image>
 		<view>{{nick}}</view>
 		<block wx:if="{{!isCertification}}">
 			<view class="verify"> 
@@ -10,7 +10,7 @@
 		</block>
 		<block wx:else>
 			<view class="verified"> 
-				<image src="../../images/verified.png"/>
+				<image src="../../images/verified.png" />
 				<text>{{roleName}}</text>
 			</view>
 			<view class="verified"> 
@@ -23,14 +23,24 @@
 		<image src="../../images/center_bg.png" />
 	</view>
 </view>
-<view class="personCenter_list mg_top30" bindtap="toMyCard">
+<view class="personCenter_list mg_top30  border_bottom" bindtap="toMyCard">
 	<image src="../../images/center-icon1.png"/>
 	<text>我的名片</text>
 	<text class="wb_arrow_right fr"></text>
 </view>
-<view class="personCenter_list mg_top30 border_bottom" bindtap="toMyPublic">
+<view class="personCenter_list border_bottom" bindtap="toMyPublic">
 	<image src="../../images/center-icon2.png"/>
 	<text>我的发布</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list border_bottom " bindtap="toMyFollows">
+	<image src="../../images/center-icon3.png"/>
+	<text>我的关注</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list border_bottom " bindtap="toMySchedule">
+	<image src="../../images/ric.png"/>
+	<text>求职日程</text>
 	<text class="wb_arrow_right fr"></text>
 </view>
 <!--底部导航-->
