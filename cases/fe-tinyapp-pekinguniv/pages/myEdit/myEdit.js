@@ -155,6 +155,9 @@ getinfo:function(){
 	    header: {'content-type': 'application/x-www-form-urlencoded'},  
 	       method: "POST",
       success: function(res) {  
+      	 wx.navigateTo({
+			  url: '../mySchedule/mySchedule'
+			});
         console.log(res.data)   
       }  
     })  
