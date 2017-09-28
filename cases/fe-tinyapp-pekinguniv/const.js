@@ -24,7 +24,11 @@ var dayFormatList = [
 ];
 
 var reqHost = 'https://www.leiy.club/peking';
+<<<<<<< HEAD
 var baseUrl = 'https://scc.pku.edu.cn';  //http://47.94.133.195   https://scc.pku.edu.cn
+=======
+var baseUrl = 'https://scc.pku.edu.cn';
+>>>>>>> 1448435f2460cbff7c946fec1dfccc3c125f81a4
 
 var APIS = {
   GET_IS_BLINDING:            baseUrl+'/wechat!isBinding',
