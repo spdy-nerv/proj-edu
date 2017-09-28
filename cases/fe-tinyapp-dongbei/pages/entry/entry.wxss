@@ -1,0 +1,29 @@
+/* pages/entry/entry.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.con {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding-top: 220rpx;
+  box-sizing: border-box;
+}
+
+.navigator {
+  width: 554rpx;
+  height: 209rpx;
+  margin: auto;
+  margin-bottom: 28rpx;
+}
+
+.pic {
+  width: 554rpx;
+  height: 209rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

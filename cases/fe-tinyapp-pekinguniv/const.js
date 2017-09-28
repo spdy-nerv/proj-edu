@@ -24,9 +24,11 @@ var dayFormatList = [
 ];
 
 var reqHost = 'https://www.leiy.club/peking';
-var baseUrl = 'http://47.94.133.195';
+var baseUrl = 'https://scc.pku.edu.cn';  //http://47.94.133.195   https://scc.pku.edu.cn
 
 var APIS = {
+  GET_IS_BLINDING:            baseUrl+'/wechat!isBinding',
+  GET_TAKE_PART_IN:           baseUrl+'/wechat-student-jobs!cancelInterest',
   GET_CAREER_TALK:            baseUrl+'/wechat-student-jobs!interest', //参加宣讲会
   GET_NEW_GONGGAOLISTDETAIL:  baseUrl+'/wechat-home!detail',//获取公告列表详情
   GET_NEW_GONGGAOLIST:        baseUrl +'/wechat-home!loadStudentNews',
@@ -50,10 +52,15 @@ var APIS = {
 	
 	MY_CENTER: 						 		reqHost +'/myCenter', //个人中心
 	MY_CARD: 									reqHost +'/myCard', //我的名片
+	MY_SCHEDULE:              baseUrl+'/wechat-student-calendar!loadCaledarEvent',//求职日程
+	MY_DELSCHEDULE:           baseUrl+'/wechat-student-calendar!deleteBusiness',//删除日程
+	MY_EDIT:                  baseUrl+'/wechat-student-calendar!loadBusiness',//单条日程获取
+	MY_REMOVESCHEDULE:        baseUrl+'/wechat-student-calendar!interest',//修改日程
+	MY_CALEND:                baseUrl+'/wechat-student-calendar!interest',//添加日程
 	CERTIFICATION: 						reqHost +'/certification', //认证
 	SEND_SMS: 							 	reqHost +'/sendSms', //短信认证
 	EDIT_CARD: 							 	reqHost +'/editCard',// 编辑我的名片
-	MY_FOLLOWS:								reqHost +'/myFollows',//我的关注
+	MY_FOLLOWS:								baseUrl +'/wechat-student-calendar!findTimeline',//我的关注
 	MY_PUBLISHED:							reqHost +'/myPublished',//我的发布
 	TOGGLEEVENT:      reqHost +'/toggleEvent',
 	UNBIND: reqHost +'/unBind', //解绑

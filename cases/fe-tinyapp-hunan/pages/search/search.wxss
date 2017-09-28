@@ -1,0 +1,79 @@
+/* search.wxss */
+.search {
+  height: 77rpx;
+  margin: 30rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAABUCAYAAADd07LwAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAACfUlEQVR42u3cQW6jMACF4UfLei6R+98oHKXxLBo6hDKzmAX0Sd8nWcYYRSx/WQpTvpsCAABcbWwXc76HunAHAIAfZkrytrne7wEAAOcaR+v1xH0dK9EOAADXGbvrMefzxH0b7vsZAAA4zziYx3S/38d//iAAAHCSOUlut9vV7wEAAPzFsixff0wFAAB+MOEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABQQ7gAAUEC4AwBAAeEOAAAFhDsAABSYk2RZlqvfAwAA+Icpya8k78/x9ry3DgAA4FxjMx5JPpJ8zM/F+oBwBwCAa+3D/ZHkMeez4Lcb22gX7wAAcJ6xmV/ifT1xX2/ug124AwDAecbB/Egy1nCfNpuiHQAArnMU7y/hvg110Q4AANcZu+sx5c+33PexLt4BAOB842h99PUYwQ4AANd7Cfj3q98GAAA49BLuvwH70kHZ8kmjogAAAABJRU5ErkJggg==);
+  background-size: 100%;
+  background-repeat: repeat-y;
+  vertical-align: middle;
+}
+
+.search-item {
+  display: inline-block;
+}
+
+.logo {
+  padding: 20rpx; 
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.input {
+  width: 600rpx;
+  display: inline-block;
+  height: 60rpx;
+  padding-top: 10rpx;
+}
+
+.photo-list {
+  width: 100%;
+}
+
+.item {
+  border-bottom: 2rpx solid #e6e6e6;
+  margin: 0 32rpx 0 32rpx;
+}
+
+.photo {
+  padding: 30rpx 0rpx 30rpx 0rpx;
+  display: inline-block;
+  height: 100rpx;
+  width: 150rpx;
+}
+
+.right {
+  padding: 30rpx 0rpx 0rpx 22rpx;
+  vertical-align: top;
+  display: inline-block;
+  width:60vw;
+
+}
+
+.name {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.address {
+  font-size: 24rpx;
+  line-height: 1.2;
+  color: #999;
+  width:60vw;
+}
+
+.icon1 {
+  padding: 10rpx 5rpx 0rpx 0rpx;
+  width: 20rpx;
+  height: 24rpx;
+}
+
+.icon2 {
+  padding: 10rpx 15rpx 0rpx 0rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.item-image {
+  height: 100rpx;
+  width: 150rpx;
+}

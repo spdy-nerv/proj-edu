@@ -1,0 +1,38 @@
+/* pages/demo/demo.wxss */
+
+.list{
+  display: flex;
+  margin: 0 20rpx;
+  margin-top: 26rpx;
+  
+  
+}
+.list .img{
+ width:118rpx;
+  height: 118rpx;
+ 
+  
+}
+.list image{
+  width:118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+}
+.txt{
+  width:530rpx;
+  padding-left: 20rpx;
+  padding-bottom:25rpx;
+  border-bottom: 1px solid #eeeeee;
+}
+.list .title{
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10rpx;
+}
+.list .title text{
+  color:#656565;
+}
+.list .des{
+  font-size: 14px;
+  color: #c2c2c2;
+}

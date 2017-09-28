@@ -333,7 +333,7 @@ Page({
 		}else{
 			
 			  wx.request({
-				  url: 'http://47.94.133.195//wechat-student-jobs!cancelInterest',
+				  url: APIS.GET_TAKE_PART_IN,
 				  data: {
 					id: that.data.eventId,
 					wechatOpenId: wx.getStorageSync('openId')

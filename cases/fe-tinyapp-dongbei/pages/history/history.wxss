@@ -1,0 +1,116 @@
+/* pages/demo/demo.wxss */
+/*导航栏*/
+.tab-item{
+  background:#014886;
+   width: 100%;
+   font-size: 14px;
+   padding-left:42rpx;
+
+}
+.filter-wrap {
+  height: 90rpx;
+  width: 630rpx;
+}
+.filter-item {
+  margin: 12rpx 40rpx 24rpx 0rpx;
+  padding-bottom:38rpx;
+  display: inline-block;
+  color: #a2b8f2;
+}
+.filter-item-selected {
+  color: white;
+  border-bottom: 3px solid #fffFFF;z-index:100;
+}
+/*历史*/
+.warp{
+  margin-left:27rpx;
+}
+.warp-history{
+  margin: 43rpx 0 48rpx;
+}
+.title{
+  font-size: 18px;
+  color: #333333;
+}
+.all-history{
+  font-size: 12px;
+  color: #a8a8a8;
+  margin-left:437rpx;
+}
+.img{
+  height: 316rpx;
+  width: 315rpx;
+}
+image{
+  height: 316rpx;
+  width: 315rpx;
+}
+.lun{
+ width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.box{
+  padding-right:10rpx;
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  color: #000000;
+  margin-bottom: 20rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.time{
+  border: 1px solid #fff;
+  background:#fff;
+  border-radius: 8px;
+  position: absolute;
+  left:11rpx;
+  top:264rpx;
+}
+.time text{
+  padding: 5rpx 5rpx;
+}
+.des{
+  padding-top:20rpx;
+}
+/*名人*/
+.list{
+  display: flex;
+  margin-right: 50rpx;
+  margin-top: 26rpx;
+  
+  
+}
+.list .img{
+ width:118rpx;
+  height: 118rpx;
+ 
+  
+}
+.list image{
+  width:118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+}
+.txt{
+  width:530rpx;
+  padding-left: 20rpx;
+  padding-bottom:25rpx;
+  border-bottom: 1px solid #eeeeee;
+}
+.list .title{
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10rpx;
+}
+.list .title text{
+  color:#656565;
+}
+.list .des{
+  font-size: 14px;
+  color: #c2c2c2;
+}

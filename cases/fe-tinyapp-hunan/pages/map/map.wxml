@@ -1,0 +1,77 @@
+<view class="con map-con">
+  <view class="filter-wrap" style="background-color:{{clrMain}};">
+    <view class="filter-campus-wrap {{campusFilterOpenCls}}" bindtap="onToggleCampusPanel">
+      <text class="filter-campus-text">校区</text><text class="filter-campus-icon" style="background-image: url({{icMapDownArrow}})"></text>
+    </view>
+    <view class="filter-type-wrap">
+      <scroll-view class="filter-type-scroll" scroll-x="true">
+
+        <block wx:for="{{types}}" wx:key="unique">
+          <view wx:if="{{index == selectedTypeIndex}}" class="filter-type-item type-item-selected" data-id="{{item.id}}" data-index="{{index}}" bindtap="onSelectType">{{item.name}}</view>
+          <view wx:else class="filter-type-item"data-id="{{item.id}}" data-index="{{index}}" bindtap="onSelectType">{{item.name}}</view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="campus-wrap" animation="{{campusPanelAnim}}">
+    <view class="campus-title">校区选择</view>
+    <scroll-view class="campus-list" scroll-x="true">
+
+      <block wx:for="{{campus}}" wx:key="unique">
+        <view class="campus-item" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="onSelectCampus">
+          <image src="{{item.bgImage}}" class="campus-image"></image>
+          <view wx:if="{{index == selectedCampusIndex}}" class="campus-name" style="font-weight:bold;color: {{clrMain}}">{{item.name}}</view>
+          <view wx:else class="campus-name">{{item.name}}</view>
+        </view>
+      </block>
+      
+    </scroll-view>
+  </view>
+  <view class="map-wrap" style="height:{{mapHeight}}px;">
+    <map 
+            class="map"
+            id="map" 
+            longitude="{{centerLongitude}}" 
+            latitude="{{centerLatitude}}" 
+            scale="15" 
+            controls="{{controls}}" 
+            bindcontroltap="onControlTap" 
+            markers="{{markers}}" 
+            bindmarkertap="onMarkerTap" 
+            polyline="{{polyline}}" 
+            bindregionchange="regionchange" 
+            show-location
+    style="height:{{mapHeight}}px;"></map>
+  </view>
+  <view class="list-tab" bindtap="showList">
+    <text style="color:{{clrMain}};">{{types.length>0?'共有'+markers.length+'个'+types[selectedTypeIndex].name:''}}</text>
+    <image class="up" src="{{upImage}}"></image>
+  </view>
+  <scroll-view class="photo-list" scroll-y="true" style="height:{{showList}}px;" scroll-top="{{listTop}}" scroll-into-view="m_{{selectedItemId}}">
+    <block wx:for="{{markers}}" wx:for-item="marker" wx:for-index="i" wx:key="id">
+      <view class="list-item-wrap {{marker.id == selectedItemId ? 'item-selected' : ''}}" id="m_{{marker.id}}">
+        <view class="item {{ i>=typeCount?'hidden':'' }}">
+          <view class="item-left" bindtap="onGotoDetail" data-id="{{marker.id}}" data-desc="{{marker.description.length+marker.traffic.length}}" data-url="../detail/detail?id={{marker.id}}&type={{ currentType }}&area={{area}}">
+            <view class="photo">
+              <image class="item-image" src="{{ marker.image }}"></image>
+            </view>
+            <view class="right">
+              <view class="name-outer">
+                <text class="name">{{marker.name}}</text>
+              </view>
+              <view wx:if="{{marker.address.length > 0}}" class="item-add-wrap">
+                <view class="center-loc"><image class="icon1" src="http://edu-1253427581.coscd.myqcloud.com/%E6%99%AF%E7%82%B9%E8%AF%A6%E6%83%85%E5%9D%90%E6%A0%87.png"></image></view>
+                <view class="center-address"><text class="address">{{marker.address}}</text></view>
+              </view>
+            </view>
+          </view>
+          <view class="right float-right">
+            <navigator url="../navigate/navigate?lati={{marker.latitude}}&long={{marker.longitude}}&type={{currentType}}&name={{marker.slogan}}&id={{marker.id}}">
+              <image class="goto" src="{{icSpotToNav}}"></image>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

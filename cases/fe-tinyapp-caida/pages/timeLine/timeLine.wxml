@@ -1,0 +1,103 @@
+<!--index.wxml-->
+<view class="wrapper">
+  <view class="filter-container">
+    <picker mode="date" value="{{year + '-' + month + '-' + date}}" start="1970-01-01" end="2099-12-31" bindchange="bindDateChange" class="filter-date">
+        <view class="picker">
+          <text class="picker-text">{{year}}年{{month}}月</text><view class="picker-icon"></view>
+        </view>
+    </picker>
+    <view class="filter-more">
+      <view class="filter-more-btn" bindtap="{{filterMoreToggle}}"></view>
+    </view>
+  </view>
+<scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="width: 100%" class="horizontal-cal clearfix">
+    <view wx:for="{{calendar}}" wx:key="unique" class="item" data-offset-left="{{item.offsetLeft}}">
+      <view class="item-title">{{item.daySimpleName}}</view>
+      <view class="item-value">
+        <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
+        <text wx:elif="{{item.date == date && item.mode == 'current'}}" class="current-month current" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+        <text wx:else class="current-month" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+        <view wx:if="{{item.hasEvents}}" class="has-events"></view>
+      </view>
+    </view>
+</scroll-view>
+
+<view class="time-line-outer">
+
+<scroll-view class="time-line-container" scroll-y="true" scroll-into-view="{{scrollIntoViewId}}" scroll-with-animation="{{verticalScrollAnim}}" bindscroll="{{onBindScroll}}" bindscrolltoupper="onHitTop" style="padding-bottom:{{listPaddingBottom}}rpx">
+
+
+<view id="listWrapper">
+
+  <block wx:for="{{events}}" wx:key="unique">
+    <view wx:if="{{item.isFirstEventInDay}}" class="events-title-container">
+      <view class="events-list-title">{{item.month}}月{{item.date}}日 {{item.dayName}}</view>
+      <view class="anchor" id="anchor{{item.date}}"></view>
+    </view>
+    <navigator url="../act-detail/act-detail?actId={{item.id}}">
+    <view class="events-list-container">
+      <text wx:if="{{item.date == todayDate && item.isFirstEventInDay}}" class="tody">今天</text>
+      <view class="events-list-left">{{item.startTime}}</view>
+      <view class="events-list-right">
+        <view class="events-tit">{{item.name}}</view>
+        <view class="events-member">
+        <view wx:if="{{item.followInfo.avatars.length > 0}}" class="img-box">
+          <view wx:for="{{item.followInfo.avatars}}" wx:key="unique" wx:for-item="a" class="img" style="z-index:99;"><image src="{{a}}"></image></view>
+        </view>
+        <text class="events-member-num">{{item.followInfo.total}}人关注</text>
+        </view>
+        <view class="events-add"><text></text>{{item.address}}</view>
+        
+      </view> 
+    </view>
+    </navigator>
+  </block>
+
+</view>
+
+</scroll-view> 
+
+</view>
+
+</view>
+
+<import src="../../templates/actFooter/actFooter.wxml"/>
+  <template is="actFooter" data="{{...footerData}}"></template>
+
+<!--底部导航-->
+<!--
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
+-->
+<!--
+<view class="footer_container">
+        <view class="foot-item foot1">
+          <image src="../../images/foot-event-icon1-red.png" />
+          <view  class="font-gradient">学校事件</view>
+        </view>
+        <view class="foot-item foot2">
+         <image src="../../images/foot-event-icon2.png" />
+         <view class="font-gradient" style="margin-top:-5rpx;">发布</view>
+        </view>
+        
+          <view class="foot-item foot3">
+          <navigator url="../personCenter/personCenter">
+            <image src="../../images/foot-event-icon3.png" />
+            <view>我的</view>
+            </navigator>
+          </view>
+        
+</view>
+-->
+
+<view class="filter-mask" bindtap="onCloseFilterPanel" animation="{{filterMaskAnim}}" style="display:{{filterMaskDisplay}};"></view>
+<view class="filter-panel {{filterOpenCls}}" animation="{{filterPanelAnim}}">
+  <view class="act-type-title">活动类型</view>
+  <scroll-view scroll-x="true" class="type-list">
+
+    <block wx:for="{{eventTypeList}}" wx:key="unique">
+      <view wx:if="{{index == eventTypeIndex}}" class="type-list-item" style="color: {{clrMain}};border: 2rpx solid {{clrMain}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="onSelectedType">{{item.typeName}}</view>
+      <view wx:else class="type-list-item" data-id="{{item.id}}" data-index="{{index}}" bindtap="onSelectedType">{{item.typeName}}</view>
+    </block>
+  </scroll-view>
+</view>

@@ -1,0 +1,23 @@
+/* pages/demo/demo-detial/demo-detial.wxss */
+
+.contianer{
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  padding-top:30px;
+  text-align: center;
+  font-size: 25px;
+  margin:0 20px;
+}
+.title text{
+  color:#323232; 
+}
+
+.context{
+  padding-top:30rpx;
+  font-size: 15px;
+  margin:0 20px;
+ color: #8c8c8c;
+}

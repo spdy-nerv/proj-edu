@@ -1,0 +1,13 @@
+<template name="topNav">
+  <view class="filter-wrap" style="background-color:{{clrMain}};">
+    <view class="filter-type-wrap">
+      <scroll-view class="filter-type-scroll" scroll-x="true" scroll-into-view="{{viewId}}">
+
+        <block wx:for="{{topColumns}}" wx:key="unique">
+          <view wx:if="{{item.id == columnId}}" class="filter-type-item type-item-selected" id="J_type" data-id="{{item.id}}" data-index="{{index}}">{{item.viewName}}</view>
+          <view wx:else class="filter-type-item" data-id="{{item.id}}" data-index="{{index}}" data-type="{{item.valueType}}" bindtap="onClickTopNav">{{item.viewName}}</view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</template>

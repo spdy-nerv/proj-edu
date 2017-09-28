@@ -1,0 +1,30 @@
+/* pages/history-all/history-all.wxss */
+.box{
+  margin: 20rpx 25rpx;
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  color: #000000;
+}
+.img{
+  height: 316rpx;
+  width: 315rpx;
+}
+image{
+  height: 316rpx;
+  width: 315rpx;
+}
+.time{
+  border: 1px solid #fff;
+  background:#fff;
+  border-radius: 8px;
+  position: absolute;
+  left:11rpx;
+  top:264rpx;
+}
+.time text{
+  padding: 5rpx 5rpx;
+}
+.des{
+  padding-top:20rpx;
+}

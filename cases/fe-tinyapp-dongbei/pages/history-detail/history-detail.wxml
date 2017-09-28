@@ -1,0 +1,9 @@
+<!--pages/demo/demo-detial/demo-detial.wxml-->
+<view class="box">
+ <view class="img"><image src="{{list.headlineImage}}">"></image></view>
+  <view class="time"><text>{{list.time}}</text></view>
+ <view class="des">{{list.title}}</view>
+</view>
+<view class="context">
+    <text>{{ list.content }}</text>
+</view> 

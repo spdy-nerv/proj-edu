@@ -1,0 +1,88 @@
+@import "../../templates/actFooter/actFooter.wxss";
+
+page{
+  background-color: #f5f5f5;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .warp-outer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 535rpx;
+  width: 100%;
+   background-size: 100%;
+}
+.container .warp{
+  margin-top: 58rpx;
+  width:220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+  background:#237ac1;
+
+}
+
+.container .warp .img{
+  width:200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin:10rpx 10rpx
+}
+.txt{
+  font-weight: bold;
+  margin-top:36rpx;
+  color: #fff;
+  font-size: 30rpx;
+}
+.btn{
+  margin-top:20rpx;
+  width:124rpx;
+  height:47rpx;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  line-height: 45rpx;
+  text-align: center;
+  font-size: 14px;
+  color:#fff;
+}
+.content-one{
+  height: 144rpx;
+  width: 100%;
+  border-bottom:1px solid #eeeeee;
+  padding-top:36rpx;
+  line-height: 144rpx;
+  position: relative;
+  background-color: #fff;
+}
+.pic{
+  float: right;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: 54rpx;
+  margin-right: 45rpx;
+}
+.pic-signup {
+  width: 45rpx;
+  height: 35rpx;
+  background-image: url(http://edu-1253427581.coscd.myqcloud.com/%E6%88%91%E7%9A%84%E6%8A%A5%E5%90%8D.png);
+}
+.pic-follow {
+  width: 42rpx;
+  height: 36rpx;
+  background-image: url(http://edu-1253427581.coscd.myqcloud.com/%E6%88%91%E7%9A%84%E5%85%B3%E6%B3%A8.png);
+}
+.title{
+  margin-left: 45rpx;
+  font-size: 36rpx;
+  color: #424242;
+}
+.content-two{
+  height: 144rpx;
+  width: 100%;
+ line-height: 144rpx;
+  position: relative;
+  background-color:#fff;
+}

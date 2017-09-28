@@ -114,7 +114,7 @@ Page({
 			category:3
 		};
 		wx.request({
-			url: 'http://47.94.133.195/wechat-student-calendar!loadBusiness',
+			url:  APIS.MY_EDIT,
 			data:{
 				id: that.data.eventId,
 		

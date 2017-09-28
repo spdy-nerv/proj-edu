@@ -46,7 +46,7 @@ Page({
     events: [],
     events1: [],
     eventDays: [],
-    	getlist:[1,2],
+    	getlist:[],
     isShowSimpleCal: 'none',
     time:'',
     section:[true,false],
@@ -98,29 +98,10 @@ Page({
         listPaddingBottom: 250
       });
     };
-    this.changeL();
+ 
     var that=this;
-    var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
-  	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
-      realSuccess: function(data){
-      	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	for (var i=0;i<resList.length;i++) {     		
-      		that.setData({
-	      		list:that.data.getlist.concat(resList[i].eventId),
-	      	});
-      	}
-      	console.log(that.data.getlist.indexOf(1))
-      	
-      }
-     })
+   this.attention();
+  	 
   },
   
 
@@ -151,60 +132,60 @@ Page({
       screenWidth: wx.getSystemInfoSync().screenWidth
     });
     this.getCurrentDate();
-    this.getEventList1();
+//  this.getEventList1();
     this.getEventList();
     this.getFilterTypes();
     this.createAnim();
   },
-  getEventList1: function () {
-    var that = this;
-    var et = this.data.eventTypeList;
-    var ei = this.data.eventTypeIndex;
-    var pt = this.data.publisherTypeList;
-    var pi = this.data.publisherTypeIndex;
-     request({
-       url: APIS.GET_EVENT_NOU,
-      data: {
-         offset: 0,
-        size: 9999,
-        year: this.data.year,
-        month: this.data.month,
-        eventType: et[ei].typeId,
-        publisherType: pt[pi].roleId,
-         sid: wx.getStorageSync('sid')
-      },
-      method: 'POST',
-      realSuccess: function (data) {
-        var list1= data.list;
-        console.log(list1)
-        
-        list1 = list1.map(function (e, i) {
-          e.createTime = e.createTime.split(' ')[0];
-          return e;
-        });
-
-         that.setData({
-          events1: list1,
-         });
-       
-        wx.hideLoading();
-        if (list1.length == 0) {
-          wx.showToast({
-            title: '当前月份没有公告！'
-          });
-        }
-        
-      },
-      loginCallback: this.getEventList1,
-      realFail: function (msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, true, this);
-   
-  },
+//getEventList1: function () {
+//  var that = this;
+//  var et = this.data.eventTypeList;
+//  var ei = this.data.eventTypeIndex;
+//  var pt = this.data.publisherTypeList;
+//  var pi = this.data.publisherTypeIndex;
+//   request({
+//     url: APIS.GET_EVENT_NOU,
+//    data: {
+//       offset: 0,
+//      size: 9999,
+//      year: this.data.year,
+//      month: this.data.month,
+//      eventType: et[ei].typeId,
+//      publisherType: pt[pi].roleId,
+//       sid: wx.getStorageSync('sid')
+//    },
+//    method: 'POST',
+//    realSuccess: function (data) {
+//      var list1= data.list;
+//      console.log(list1)
+//      
+//      list1 = list1.map(function (e, i) {
+//        e.createTime = e.createTime.split(' ')[0];
+//        return e;
+//      });
+//
+//       that.setData({
+//        events1: list1,
+//       });
+//     
+//      wx.hideLoading();
+//      if (list1.length == 0) {
+//        wx.showToast({
+//          title: '当前月份没有公告！'
+//        });
+//      }
+//      
+//    },
+//    loginCallback: this.getEventList1,
+//    realFail: function (msg) {
+//      wx.hideLoading();
+//      wx.showToast({
+//        title: msg
+//      });
+//    }
+//  }, true, this);
+// 
+//},
   getEventList: function () {
     var that = this;
     var et = this.data.eventTypeList;
@@ -217,17 +198,15 @@ Page({
     	 var yearMonth = this.data.year+'-'+this.data.month;
     };
     wx.request({
-      url: 'http://47.94.133.195/wechat-student-calendar!loadCaledarEvent',
+      url: APIS.MY_SCHEDULE,
       data: {
         yearMonth:yearMonth,
         wechatOpenId: wx.getStorageSync('openId'),
       },
-      header: {
-        'content-type': 'application/json'
-      },
+      header: {'content-type': 'application/x-www-form-urlencoded'},  
       success: function (res) {
         console.log(res);
-        
+           that.changeL();
         var list = res.data.data.results;
         for(var i=0;i<list.length;i++){
         	console.log(that.data.getlist.indexOf(list[i].id))
@@ -262,41 +241,31 @@ Page({
 	        });
         }
       
-//         wx.request({ 
-//         	
-// url: 'http://47.94.133.195/wechat-student-calendar!loadCaledarEvent',
-//    data: {
-//      yearMonth:yearMonth,
-//      wechatOpenId: wx.getStorageSync('openId'),
-//    },
-// header: { 
-//  "Content-Type": "application/x-www-form-urlencoded"
-// }, 
-// method: "POST", 
-// complete: function( res ) { 
-//console.log(res)
-// } 
-//}) ;
          that.renderCalendar();
 
       }
    })
   },
-  attention:function(e){
-  	console.log(e)
-  	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
-  	var id=e.dataset.all.id;
+  //获取我的关注
+  attention:function(){
+  	var that=this;
 	 wx.request({
      url: APIS.MY_FOLLOWS,
-      data: params,
+      data: {
+        wechatOpenId: wx.getStorageSync('openId'),
+      },
 	    header: {'content-type': 'application/x-www-form-urlencoded'},  
 	       method: "POST",
       success: function(res) {  
-        console.log(res.data)   
+       console.log(res.data.data.results);
+      	var resList=res.data.data.results;
+      	for (var i=0;i<resList.length;i++) {     		
+      		that.setData({
+	      		getlist:that.data.getlist.concat(resList[i].id),
+	      	});
+      	}
+      	console.log(that.data.getlist)
+      	  
       }  
     })  
 },
@@ -307,9 +276,11 @@ Page({
  
   wx.request({
  
-   url: 'http://47.94.133.195/wechat-student-calendar!deleteBusiness?id='+id,
+   url:  APIS.MY_DELSCHEDULE,
  
-   data: {},
+   data: {
+   	id:id,
+   },
  
    success: function(res){
    	wx.redirectTo({
@@ -319,34 +290,6 @@ Page({
 	    }  
    	})
  console.log(res)
-//  if(res.data.status == 0){
-// 
-//   wx.showToast({
-// 
-//    title: res.data.info,
-// 
-//    icon: 'loading',
-// 
-//    duration: 1500
-// 
-//   })
-// 
-//  }else{
-// 
-//   wx.showToast({
-// 
-//    title: res.data.info,
-// 
-//    icon: 'success',
-// 
-//    duration: 1000
-// 
-//   })
-// 
-//   //删除之后应该有一个刷新页面的效果，等和其他页面刷新跳转一起做
-// 
-//  }
-// 
    },
  
    fail:function(){
@@ -505,7 +448,7 @@ Page({
     });
 
     this.getEventList(); 
-    this.getEventList1();
+//  this.getEventList1();
     //this.renderCalendar();
   },
 
@@ -615,11 +558,7 @@ Page({
    this.setData({
      section: newSelects,
     });
-   if (index == 0 && this.data.events1.length==0){
-     wx.showToast({
-       title: '当前月份没有公告！'
-     });
-   } else if (index == 1 && this.data.events.length == 0){
+   if (this.data.events.length == 0){
      wx.showToast({
        title: '当前月份没有活动事件！'
      });

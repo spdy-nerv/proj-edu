@@ -1,0 +1,7 @@
+<view class="wrap" >
+    <view class="event-title" style="color:{{clrMain}};">{{title}}</view>
+    <image src="{{qrcode}}" mode="aspectFit"></image>
+    <view class="btn-wrap">
+        <view class="enter-btn" style="color:{{clrMain}};border:2rpx solid {{clrMain}};" bindtap="saveQrcode">保存二维码</view>
+    </view>
+</view>
