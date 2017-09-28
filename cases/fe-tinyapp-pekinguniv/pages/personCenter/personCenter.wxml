@@ -33,11 +33,6 @@
 	<text>我的发布</text>
 	<text class="wb_arrow_right fr"></text>
 </view>
-<view class="personCenter_list border_bottom " bindtap="toMyFollows">
-	<image src="../../images/center-icon3.png"/>
-	<text>我的关注</text>
-	<text class="wb_arrow_right fr"></text>
-</view>
 <view class="personCenter_list border_bottom " bindtap="toMySchedule">
 	<image src="../../images/ric.png"/>
 	<text>求职日程</text>
