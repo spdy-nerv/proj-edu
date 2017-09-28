@@ -20,7 +20,7 @@ Page({
   onLoad: function (options) {
     user.login();
     wx.request({
-      url:'http://47.94.133.195/wechat!isBinding', //链接不是https
+      url:APIS.GET_IS_BLINDING , //链接不是https
       data: {
       wechatOpenId:wx.getStorageSync('openId')
       },

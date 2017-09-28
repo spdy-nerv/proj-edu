@@ -17,6 +17,7 @@ Page({
       bj2:'https://iaaa.pku.edu.cn/iaaa/resources/images/pku_view_2.jpg'
   }, onLoad: function (options) {
     user.login(this.getUserInfo, this, true);
+    //获取认证的学生信息
     wx.request({
       url: 'https://scc.pku.edu.cn/wechat-student!myInfo',
       data: {
@@ -37,13 +38,6 @@ Page({
       }
     })   
 
-  },
- 
-  // 跳转到注册页面
-  toRegist: function () {
-    wx.navigateTo({
-      url: '../regist/regist'
-    })
   },
 
 //输入用户名

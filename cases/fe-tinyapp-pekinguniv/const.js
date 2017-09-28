@@ -27,6 +27,8 @@ var reqHost = 'https://www.leiy.club/peking';
 var baseUrl = 'https://scc.pku.edu.cn';
 
 var APIS = {
+  GET_IS_BLINDING:            baseUrl+'/wechat!isBinding',
+  GET_TAKE_PART_IN:           baseUrl+'/wechat-student-jobs!cancelInterest',
   GET_CAREER_TALK:            baseUrl+'/wechat-student-jobs!interest', //参加宣讲会
   GET_NEW_GONGGAOLISTDETAIL:  baseUrl+'/wechat-home!detail',//获取公告列表详情
   GET_NEW_GONGGAOLIST:        baseUrl +'/wechat-home!loadStudentNews',
