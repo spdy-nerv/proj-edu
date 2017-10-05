@@ -29,12 +29,6 @@ Page({
       },
       success: function(res){
         console.log(res.data)
-        if(res.data.success==true){
-          wx.redirectTo({
-            url: "../timeLine/timeLine"
-          })
-        }
-        // success
       }
     })   
 
@@ -59,7 +53,7 @@ Page({
     if(that.data.user_name&&that.data.user_password){
       wx.showLoading({title:'登陆中'})
       wx.request({
-        url: 'http://wechat.scc.pku.edu.cn/ssologin/xcxLogin',
+        url: APIS.GET_XCX_LOGIN,
         data: {
          userName:that.data.user_name,
          password:that.data.user_password,
@@ -69,22 +63,23 @@ Page({
           'content-type':'application/json'
         },
         success: function(res){
+          console.log('请求执行了')
           wx.hideLoading();
           console.log(res.data)
           if(res.data.success==true){
             wx.redirectTo({
               url: "../timeLine/timeLine"
             })
-          }else{
+          }else if(res.data.success==false){
             wx.showToast({
-              title: '输入的用户名或密码不正确',
+              title:res.data.msg,
               duration: 2000
             })
           }
           // success
         },
-        fail: function() {
-          
+        fail: function(res) {
+          console.log(res);
           wx.showToast({
             title: '输入的用户名或密码不正确',
             duration: 2000

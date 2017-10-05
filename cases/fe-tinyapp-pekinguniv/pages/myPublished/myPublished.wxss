@@ -14,7 +14,7 @@
     width: 188rpx;
     height: 50rpx;
     display: inline-block;
-    background-image: url(../../images/tencent.png);
+    /* background-image: url(../../images/tencent.png); */
     background-repeat: no-repeat;
     background-size: 100%;
 }

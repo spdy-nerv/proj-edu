@@ -18,7 +18,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    user.login();
+    user.login(this.login,this,true);
+  }
+  ,
+  login:function(){
     wx.request({
       url:APIS.GET_IS_BLINDING , //链接不是https
       data: {

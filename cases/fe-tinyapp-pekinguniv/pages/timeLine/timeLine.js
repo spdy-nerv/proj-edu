@@ -16,7 +16,7 @@ Page({
     year: 0,
     month: 0,
     start:0,
-    limit:25,
+    limit:30,
     formatedMonth: '',
     fromShare: 0,
     date: 0,
@@ -152,36 +152,11 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data);
         var eventsItem = that.data.events;
+        console.log(res.data);
         var list = res.data.results;
-  //       if(list.length<that.data.limit){
-  //         that.setData({
-  //           events:eventsItem.concat(list),
-  //           hasMore:false
-  //         })
-  //       }else{
-  //         that.setData({
-
-  //           hasMore:true,
-  //           start:that.data.start+15,
-  //           limit:that.data.limit+15
-  // ,          events:eventsItem.concat(list),
-  //         })
-  //       }
-
-       
-        // var eventsItem = that.data.events; //获得以前的数据
-        // var list = res.data.results;
-        //that.setData({events:list});
-        var time =null;
-          list = list.map(function(e,i){
-          e.time=e.startTime.substring(11);
-          e.year = e.startTime.substring(0,10);
-          e.day = e.startTime.substring(8,10)
-          return e
-        });
-        console.log(list)
+        var events = list;
+        console.log(list);
         that.setData({
           events:list,
           time:time,
@@ -191,6 +166,32 @@ Page({
           totalResults:res.data.totalResults,//总共多少条
           pageSize:res.data.pageSize
         });
+        
+        console.log(eventsItem)
+        // if(list.length<that.data.limit){
+        //   that.setData({
+        //     events:eventsItem.concat(events),
+        //     hasMore:false
+        //   })
+        //   return;
+        // }else{
+        //   that.setData({
+        //     hasMore:true,
+        //     start:that.data.start+that.data.limit+1,
+        //     events:eventsItem.concat(events),
+        //     //limit:that.data.limit+15,
+            
+        //   })
+        // }
+        var time =null;
+          list = list.map(function(e,i){
+          e.time=e.startTime.substring(11);
+          e.year = e.startTime.substring(0,10);
+          e.day = e.startTime.substring(8,10)
+          return e
+        });
+        console.log(list)
+       
         // console.log(res.data.currentPageLength)
         // console.log(res.data.currentPage);
         // console.log(res.data.totalPages);
@@ -344,7 +345,14 @@ Page({
     });
   },
   onHitDown:function(){
+    var that =this;
     console.log('已经到底了，没有数据了');
+      // if(that.data.hasMore){
+      //   wx.showLoading({title:'数据加载中'});
+      //   that.getEventList();
+      // }else{
+      //   wx.showToast({title:'没有更多数据了'})
+      // }
     //this.setData({start:16,limit:15})
   },
 

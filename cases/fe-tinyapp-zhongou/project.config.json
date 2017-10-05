@@ -7,9 +7,9 @@
 		"minified": true
 	},
 	"compileType": "weapp",
-	"libVersion": "1.5.2",
+	"libVersion": "1.5.4",
 	"appid": "wxf849c5b31f32ea2d",
-	"projectname": "%E5%8C%97%E5%A4%A75",
+	"projectname": "fe-tinyapp-zhongou",
 	"condition": {
 		"weapp": {
 			"current": -1,

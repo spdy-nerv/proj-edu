@@ -24,7 +24,7 @@
       </view>
      
       <view class="weui-btn-area" >
-        <button class="weui-btn" type="warn" bindtap="show">确定</button>
+        <button class="weui-btn" type="warn" catchtap="show">确定</button>
       </view>
     </view>
     <view style='margin-top:40rpx'><image class='bj2' src='{{bj2}}' mode='spectFit'></image></view>
