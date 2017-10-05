@@ -1,0 +1,58 @@
+<view class="test-wrap">
+    <input type="text" class="test-input test-title" placeholder="问卷标题（限20字内）" maxlength="20" placeholder-style="color:#b4b8cc;z-index:1;" value="{{title}}" bindinput="onInputTitle"/>
+
+    <textarea hidden="{{isHideTextarea}}" class="test-textarea" placeholder="请输入内容描述（限200字内）" maxlength="200" placeholder-style="color:#b4b8cc;z-index:1;" value="{{description}}" bindinput="onInputDescription"/>
+
+    <view wx:for="{{questions}}" wx:key="unique" wx:for-item="q" wx:for-index="qi" class="question-wrap clearfix">
+        <view class="question-title">{{q.content}}</view>
+        <view class="question-option-wrap">
+            <view wx:for="{{q.options}}" wx:key="unique" wx:for-item="o" wx:for-index="oi" class="question-option">
+                <view class="qo-icon {{q.questionType == 1 ? 'radio-icon' : (q.questionType == 2 ? 'checkbox-icon' : '') }}"></view>
+                <text class="qo-text">{{o}}</text>
+            </view>
+        </view>
+
+        <view wx:if="{{q.questionType == 3}}" class="question-option-wrap">
+            <input type="text"  class="qo-textarea" placeholder="请填写答案" disabled placeholder-style="color:#b4b8cc;z-index:1;"/>
+        </view>
+        
+        <view class="question-option-index">{{qi+1}}</view>
+        <view class="question-option-delete" data-index="{{qi}}" bindtap="onDeleteQuestion"></view>
+        <view class="question-option-edit" data-index="{{qi}}" bindtap="onEditQuestion"></view>
+    </view>
+
+    <view class="option-add-btn" bindtap="onAddQuestion">+ 添加新题</view>
+</view>
+
+<view class="publish-btn-wrap">
+    <view class="publish-btn" bindtap="onTapPublish">确认</view>
+</view>
+
+<view class="question-edit-panel" animation="{{questionPanelAnim}}">
+
+    <view class="qp-content-wrap">
+        <view class="qp-type-picker">
+            <text class="qp-type-text">答题类型：</text>
+            <picker range="{{questionTypeList}}" value="{{questionTypeIndex}}" range-key="typeName" bindchange="onChangeQuestionType"  class="qp-type-picker-wrap">
+                <view class="qp-type-value">
+                    {{questionTypeList[questionTypeIndex].typeName}}
+                </view>
+            </picker>
+        </view>
+        <input type="text" class="qp-input qp-title" placeholder="请输入题目标题" placeholder-style="color:#b4b8cc;" value="{{editContent}}" bindinput="onQpInputContent"/>
+        <block wx:if="{{questionTypeIndex == 0 || questionTypeIndex == 1}}">
+        <view class="qp-tips">一个题目最多支持5个选项</view>
+        <view wx:for="{{editOptions}}" wx:key="unique" class="qp-option-wrap">
+            <input type="text" class="qp-input qp-option" placeholder="选项{{index+1}}" placeholder-style="color:#b4b8cc;" value="{{item}}" bindinput="onQpInputOption" data-index="{{index}}" />
+            <view class="qp-option-delete" bindtap="onQpDeleteOption" data-index="{{index}}"></view>
+        </view>
+        <view class="qp-option-add-btn" bindtap="onQpAddOption">+ 添加选项</view>
+        </block>
+    </view>
+
+    <view class="qp-btn-wrap">
+        <view class="qp-btn-cancel" bindtap="onCancelQuestion">取消</view>
+        <view class="qp-btn-confirm" bindtap="onConfirmQuestion">保存</view>
+    </view>
+
+</view>

@@ -1,0 +1,322 @@
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+.test-wrap {
+    padding: 30rpx 30rpx;
+    padding-bottom: 160rpx;
+}
+
+.test-tips {
+    height: 98rpx;
+    line-height: 98rpx;
+    color: #979aa6;
+    font-size: 26rpx;
+}
+
+.publish-btn-wrap {
+    padding: 26rpx 30rpx;
+    background-color: #ffffff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+    box-shadow: 0rpx 5rpx 20rpx #999999;
+}
+
+.publish-btn {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #c52424;
+    font-size: 36rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.test-input {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #454649;
+    background-color: #ffffff;
+    padding: 0 35rpx;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.test-textarea {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 250rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #454649;
+    background-color: #ffffff;
+    padding: 28rpx 35rpx;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx; 
+    z-index: 0;
+    position: static;
+}
+
+.option-add-btn {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #00b371;
+    background-color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.test-option-wrap {
+    position: relative;
+}
+
+.preview-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -10rpx;
+    right: -10rpx;
+}
+
+.question-wrap {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    font-size: 30rpx;
+    color: #454649;
+    background-color: #ffffff;
+    padding: 28rpx 76rpx;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx; 
+    position: relative;
+}
+
+.question-title {
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    color: #2d2e33;
+}
+
+.question-option {
+    float: left;
+    margin-right: 50rpx;
+}
+
+.qo-icon {
+    width: 32rpx;
+    height: 60rpx;
+    background-size: 32rpx 32rpx;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 15rpx;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -6rpx;
+}
+
+.checkbox-icon {
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/checkbox.png);    
+}
+
+.radio-icon {
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/radio.png);
+}
+
+.qo-text {
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    display: inline-block;
+}
+
+.question-option-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -15rpx;
+    right: -15rpx;
+}
+
+.question-option-edit {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/edit_icon.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: 50%;
+    margin-top: -18rpx;
+    right: 20rpx;
+}
+
+.question-option-index {
+    width: 74rpx;
+    height: 60rpx;
+    position: absolute;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/tag_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding-top: 5rpx;
+    padding-left: 15rpx;
+    color: #ffffff;
+    font-size: 24rpx;
+}
+
+.qo-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #2d2e33;
+    height: 86rpx;
+    line-height: 86rpx;
+    background-color: #f2f3f5;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    padding: 0 23rpx; 
+    z-index: 0;
+}
+
+.question-edit-panel {
+  width: 100%;
+  height: 100%;
+  background-color: #eeeff1;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 999999;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+}
+
+.qp-btn-wrap {
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.qp-btn-cancel {
+    flex: 1;
+    background-color: #ffffff;
+    font-size: 36rpx;
+    color: #878a99;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+}
+
+.qp-btn-confirm {
+    flex: 1;
+    background-color: #c52424;
+    font-size: 36rpx;
+    color: #ffffff;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+}
+
+.qp-content-wrap {
+    padding: 0 36rpx;
+}
+
+.qp-tips {
+    height: 98rpx;
+    line-height: 98rpx;
+    color: #979aa6;
+    font-size: 26rpx;
+    border-top: 1rpx solid #dddde4;
+}
+
+.qp-input {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #454649;
+    background-color: #ffffff;
+    padding: 0 35rpx;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.qp-option-add-btn {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #00b371;
+    background-color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.qp-option-wrap {
+    position: relative;
+}
+
+.qp-option-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -10rpx;
+    right: -10rpx;
+}
+
+.qp-type-picker {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+    padding: 0 35rpx;
+}
+
+.qp-type-text {
+    color: #2d2e33;
+    display: inline-block;
+}
+
+.qp-type-picker-wrap {
+    display: inline-block;
+}
+
+.qp-type-value {
+    color: #00b371;
+}

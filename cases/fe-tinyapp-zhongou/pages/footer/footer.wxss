@@ -1,0 +1,309 @@
+/**index.wxss**/
+.banner-container{
+  width: 100%;
+  min-height: 380rpx;
+  background: #638395;
+}
+.banner-container image{
+  width: 100%;
+  max-height: 380rpx;
+}
+
+.title-box{
+   min-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+  border-bottom: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+   font-size: 30rpx;
+}
+.title-box-left{
+  width: 16%;
+  text-align: center;
+ font-size: 32rpx;
+  border-right: solid 1rpx #dedede;
+  font-weight: bolder;
+  height: 50rpx;
+  align-items: center;
+  vertical-align: top;
+}
+.title-box-left .eng{
+  color: #c52424;
+  margin-top: -10rpx;
+}
+.title-box-right{
+  line-height: 50rpx;
+  padding-left: 20rpx;
+  width: 80%;
+}
+.title-box-right .right1{
+  font-weight: bolder;
+  font-size: 36rpx;
+  
+}
+.title-box-right .right2{
+  color:#878a99;
+  font-size: 30rpx;
+  
+}
+.title-box-right .right2 image{
+  width: 30rpx;
+  height: 36rpx;
+  vertical-align: middle;
+  margin-left: 8rpx;
+}
+
+/**分享点赞部分**/
+.share-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+  border-bottom: solid 1rpx #e5e6e8;
+  border-top: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+  margin-top: 20rpx;
+}
+
+.share-item{
+ 
+  width: 100%;  
+   -webkit-align-items: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color:#5d5f6a;
+ 
+}
+.share-item image{
+  margin-bottom: 10rpx;
+  width: 44rpx;
+  height: 44rpx;
+
+}
+.mg20{
+  margin-top: 20rpx;
+
+}
+/**模块等**/
+.model{
+   min-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+ 
+  border-bottom: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+   font-size: 30rpx;
+}
+.model-top{
+   align-items: top;
+   min-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+  border-bottom: solid 1rpx #e5e6e8;
+  border-top: solid 1rpx #e5e6e8;
+  background: #ffffff;
+  color: #2d2e33;
+   font-size: 30rpx;
+}
+ .model-left{
+  width: 13%;
+  text-align: center;
+ font-size: 32rpx;
+  
+  font-weight: bolder;
+}
+.model-left image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.model-right{
+  line-height: 50rpx;
+  color:#5d5f6a;
+  width: 87%;
+  padding-right: 10rpx;
+}
+.model-right .right1{
+  font-size: 36rpx;
+  color: #000000;
+
+}
+.model-left .m-img2{
+  width: 36rpx;
+  height: 43rpx;
+}
+ .model-left .m-img5{
+  width: 36rpx;
+  height: 28rpx;
+}
+
+.arr{
+  margin-right: 30rpx;
+}
+
+/**上拉查看详情**/
+.pull-up-show-detail{
+  background: #ffffff;
+  padding: 20rpx 0;
+  text-align: center;
+  color: #878a99;
+
+}
+
+
+/**箭头**/
+.wb_arrow_right {
+ 
+	display: inline-block;
+	border-right: 1px solid #adadad;
+	border-top: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	border-left: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+ 
+}
+.wb_arrow_up {
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+ vertical-align: middle;
+	display: inline-block;
+	border-left: 1px solid #adadad;
+	border-top: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	border-right: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+ 
+}
+/**下拉自定义的区域**/
+.detail_box{
+  padding: 10rpx;
+  text-align: center;
+}
+
+
+/**评论**/
+.comment-container{
+  margin-top: 20rpx;
+  background: #ffffff;
+  padding: 20rpx 0 0 0;
+  color: #2d2e33;
+}
+.comment_title{
+  line-height: 70rpx;
+  font-size: 36rpx;
+  border-bottom: solid 1rpx #d9d9d9;
+  margin: 0 0 20rpx 0;
+  padding:  0 30rpx;
+}
+.comment-box{
+  
+  padding-bottom: 30rpx;
+   border-bottom: solid 1rpx #d9d9d9;
+}
+.comment-left{
+   padding:  0 30rpx;
+   margin: 20rpx 0;
+}
+.comment_title text{
+  color: #878a99;
+}
+.comment-left image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.comment-left text{
+  font-size: 30rpx;
+}
+
+.comment_cont{
+  padding: 0 30rpx;
+ 
+}
+
+.comment-left .fr{
+  float: right;
+  color:#878a99;
+  margin-top: 15rpx;
+}
+/** 评论输入框 **/
+.comment1{
+  width: 70%;
+  height: 98rpx;
+  padding-left: 15rpx;
+}
+.comment1 .input_box{
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #f2f3f5;
+  border-radius: 30rpx;
+  position: relative;
+  width: 100%;
+  border:solid 1px #cac9c9;
+}
+.comment1 .input_box image{
+  width:40rpx;
+  height: 35rpx;
+ 
+position: absolute;
+left: 20rpx;
+top:10rpx;
+}
+.comment1 .input_box input{
+  height: 60rpx;
+  line-height: 60rpx;
+  border:none;
+  margin-left: 80rpx;
+  
+}
+.comment2{
+  width: 80rpx;
+  margin: 30rpx 0;
+  padding: 0 18rpx;
+  border-right: solid 1px  #cac9c9;
+  position: relative;
+  }
+  .comment2 .comment_num{
+    color:#ffffff;
+    position: absolute;
+    top: -2rpx;
+    left:50%;
+    background: #c52424;
+    border-radius:15rpx;
+    padding: 4rpx 8rpx;
+    font-size: 20rpx;
+  }
+.comment2 image,.comment3 image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.comment3{
+   width: 80rpx;}

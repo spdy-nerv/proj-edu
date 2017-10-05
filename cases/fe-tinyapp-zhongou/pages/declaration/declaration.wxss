@@ -1,0 +1,49 @@
+page{
+ background:#ffffff;
+ color: #16171a;
+}
+.section{
+		border-top:solid 1px #c8c8cd;
+}
+.top_banner{
+		display: flex;
+	height: 100rpx;
+	line-height: 100rpx;
+	border-top:solid 1px #c8c8cd;
+	font-size: 34rpx;
+}
+.top_banner .left{
+	width: 20%;
+	text-align: left;
+	margin-left: 30rpx;
+}
+.top_banner .center{
+	width: 60%;
+	text-align: center;
+}
+.top_banner .right{
+	width: 20%;
+	text-align: right;
+	margin-right: 30rpx;
+	color: #c52424;
+	
+	font-size: 36rpx;
+}
+textarea {
+	width:80%;
+	background: #f2f3f5;
+	border:solid 1px #c8c8cd;
+	margin: 30rpx auto;
+	border-radius: 10rpx;
+	padding: 20rpx;
+	min-height: 300rpx;
+}
+button{
+	font-size: 34rpx;
+	color: #444444;
+	background: #ffffff;
+		line-height: 100rpx;
+}
+button::after {
+	border:none;
+}

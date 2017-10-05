@@ -1,0 +1,21 @@
+<view wx:for="{{paragraphs}}" wx:key="unique" class="paragraph-wrap" >
+    <block wx:if="{{item.type == 1}}">
+        <textarea class="p-text" placeholder="请输入你的事件描述" value="{{item.value}}" bindinput="onInput" data-index="{{index}}"/>
+        <view class="preview-delete" bindtap="onDeletePreview" data-index="{{index}}"></view>
+    </block>
+    <block wx:elif="{{item.type == 2}}">
+        <view class="p-img-wrap">
+            <image src="{{item.value}}" class="p-img" mode="aspectFit"></image>
+        </view>
+        <view class="preview-delete" bindtap="onDeletePreview" data-index="{{index}}"></view>
+    </block>
+</view>
+
+<view class="add-p-btn-wrap">
+    <view class="add-p-btn" bindtap="onAddTextParagraph">+ 添加文字段落</view>
+</view>
+
+<view class="btn-wrap">
+    <view class="btn-pic" bindtap="onSelectPic"></view>
+    <view class="btn-publish" bindtap="onPublish">提交</view>
+</view>

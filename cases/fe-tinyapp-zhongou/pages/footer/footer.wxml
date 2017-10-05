@@ -1,0 +1,28 @@
+<!--footer.wxml-->
+
+<template name="footer">
+<!--底部导航-->
+<view class="footer_container">
+        <view class="foot-item foot1">
+        <navigator url="{{pageEvent ? '' : '../timeLine/timeLine'}}" hover-class="none" open-type="redirect">
+          <image src="../../images/foot-event-icon1{{pageEvent ? '-red' : ''}}.png" />
+          <view class="{{pageEvent ? 'font-gradient' : ''}}">学校事件</view>
+        </navigator>
+        </view>
+        
+        <view class="foot-item foot2">
+        <navigator url="../eventPublish/eventPublish" hover-class="none">
+         <image src="../../images/foot-event-icon2.png" />
+         <view class="font-gradient" style="margin-top:-5rpx;">发布</view>
+        </navigator>
+        </view>
+        
+        <view class="foot-item foot3">
+        <navigator url="{{pagePersonal ? '' : '../personCenter/personCenter'}}" hover-class="none" open-type="redirect">
+        	<image src="../../images/foot-event-icon3{{pagePersonal ? '-red' : ''}}.png" />
+       		<view class="{{pagePersonal ? 'font-gradient' : ''}}">我的</view>
+        </navigator>
+        </view>
+
+</view>
+</template>

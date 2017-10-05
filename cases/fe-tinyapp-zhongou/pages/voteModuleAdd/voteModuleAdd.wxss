@@ -1,0 +1,77 @@
+.vote-wrap {
+    padding: 0 30rpx;
+    padding-bottom: 160rpx;
+}
+
+.vote-tips {
+    height: 98rpx;
+    line-height: 98rpx;
+    color: #979aa6;
+    font-size: 26rpx;
+}
+
+.publish-btn-wrap {
+    padding: 26rpx 30rpx;
+    background-color: #ffffff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+    box-shadow: 0rpx 5rpx 20rpx #999999;
+}
+
+.publish-btn {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #c52424;
+    font-size: 36rpx;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.vote-input {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #454649;
+    background-color: #ffffff;
+    padding: 0 35rpx;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.option-add-btn {
+    width: 100%;
+    border: 1rpx solid #c8c8cd;
+    height: 86rpx;
+    line-height: 86rpx;
+    font-size: 30rpx;
+    color: #00b371;
+    background-color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 8rpx;
+    margin-bottom: 30rpx;
+}
+
+.vote-option-wrap {
+    position: relative;
+}
+
+.preview-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -10rpx;
+    right: -10rpx;
+}

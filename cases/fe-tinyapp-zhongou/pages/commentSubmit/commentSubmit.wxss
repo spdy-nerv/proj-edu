@@ -1,0 +1,97 @@
+/* pages/commentSubmit/commentSubmit.wxss */
+page {
+    background-color: #ffffff;
+}
+
+.userinfo-wrap {
+    padding: 30rpx 32rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.userinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-right: 32rpx;
+}
+
+.userinfo-nickname {
+    font-size: 30rpx;
+    color: #2d2e33;
+    line-height: 80rpx;
+    height: 80rpx;
+}
+
+.submit-date {
+    flex: 1;
+    font-size: 30rpx;
+    color: #878a99;
+    line-height: 80rpx;
+    height: 80rpx;
+    text-align: right;
+}
+
+.btn-wrap {
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.btn-pic {
+    flex: 1;
+    background-color: #eeeff1;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/pic_upload.png);
+    background-repeat: no-repeat;
+    background-size: 45rpx 41rpx;
+    background-position: center;
+}
+
+.btn-publish {
+    flex: 1;
+    background-color: #c52424;
+    font-size: 36rpx;
+    color: #ffffff;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+}
+
+.comment-textarea {
+    padding: 10rpx 32rpx;
+    font-size: 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+    height: 200rpx;
+}
+
+.preview-wrap {
+    padding: 24rpx 32rpx
+}
+
+.preview {
+    margin-bottom: 24rpx;
+    width: 100%;
+    height: 350rpx;
+    background-color: #666666;
+    position: relative;
+}
+
+.preview image {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-delete {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/delete_pic.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    top: -15rpx;
+    right: -15rpx;
+}

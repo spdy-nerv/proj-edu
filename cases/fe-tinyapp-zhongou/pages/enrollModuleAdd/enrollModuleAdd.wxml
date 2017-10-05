@@ -1,0 +1,11 @@
+<view class="enroll-wrap">
+    <input type="text" class="enroll-input" placeholder="请输入允许报名人数上限" placeholder-style="color:#b4b8cc;" value="{{totalCount}}" bindinput="onInputCount"/>
+    <view class="enroll-check">
+        <view class="enroll-checkbox {{model == '2' ? 'enroll-checkbox-checked' : ''}}" bindtap="onToggleCheck"></view>
+        <text class="enroll-text">是否需要实名认证</text>
+    </view>
+</view>
+
+<view class="publish-btn-wrap">
+    <view class="publish-btn" bindtap="onTapPublish">确认</view>
+</view>

@@ -1,0 +1,132 @@
+<!--index.wxml-->
+<view class="wrapper">
+  <view class="filter-container">
+    <picker mode="date" value="{{year + '-' + month + '-' + date}}" start="1970-01-01" end="2099-12-31" bindchange="bindDateChange" class="filter-date">
+        <view class="picker">
+          <text class="picker-text">{{year}}年{{month}}月</text><view class="picker-icon"></view>
+        </view>
+    </picker>
+    <view class="filter-title">{{formatedMonth}}</view>
+    <view class="filter-more">
+      <view class="filter-more-btn" bindtap="onTapFilterMore"></view>
+    </view>
+  </view>
+<scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="width: 100%" class="horizontal-cal clearfix" style="display:{{isShowSimpleCal}}">
+    <view wx:for="{{calendar}}" wx:key="unique" class="item" data-offset-left="{{item.offsetLeft}}">
+      <view class="item-title">{{item.daySimpleName}}</view>
+      <view class="item-value">
+        <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
+        <text wx:elif="{{item.date == date && item.mode == 'current'}}" class="current-month current" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+        <text wx:else class="current-month" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+        <view wx:if="{{item.hasEvents}}" class="has-events"></view>
+      </view>
+    </view>
+</scroll-view>
+
+<scroll-view class="time-line-container" scroll-y="true" scroll-into-view="{{scrollIntoViewId}}" scroll-with-animation="{{verticalScrollAnim}}" bindscroll="{{onBindScroll}}" bindscrolltoupper="onHitTop" style="padding-bottom:{{listPaddingBottom}}rpx">
+
+<view class="time-container">
+    <view class="item"><text>日</text></view>
+    <view class="item"><text>一</text></view>
+    <view class="item"><text>二</text></view>
+    <view class="item"><text>三</text></view>
+    <view class="item"><text>四</text></view>
+    <view class="item"><text>五</text></view>
+    <view class="item"><text>六</text></view>
+</view>
+
+<view class="time-container time-number clearfix">
+  <block wx:for="{{calendar}}" wx:key="unique">
+  <view class="item" id="{{item.initPos}}">
+    <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
+    <text wx:elif="{{item.date == date && item.mode == 'current'}}" class="current-month current" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+    <text wx:else class="current-month" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
+    <view wx:if="{{item.hasEvents}}" class="has-events"></view>
+  </view>
+  </block>
+</view>
+
+<view id="listWrapper">
+
+  <block wx:for="{{events}}" wx:key="unique">
+    <view wx:if="{{item.isFirstEventInDay}}" class="events-title-container">
+      <view class="events-list-title">{{item.month}}月{{item.date}}日，{{item.dayName}}</view>
+      <view class="anchor" id="anchor{{item.date}}"></view>
+    </view>
+    <navigator url="../eventPoster/eventPoster?eventId={{item.eventId}}">
+    <view class="events-list-container">
+      <text wx:if="{{item.date == todayDate && item.isFirstEventInDay}}" class="tody">今天</text>
+      <view class="events-list-left">{{item.startTime}}</view>
+      <view class="events-list-right">
+        <view class="events-tit">{{item.name}}</view>
+        <view class="events-add">{{item.address}}</view>
+        <view class="events-member">
+        <view class="img-box">
+          <view wx:for="{{item.followInfo.avatars}}" wx:key="unique" wx:for-item="a" class="img" style="z-index:99;"><image src="{{a}}"></image></view>
+         </view>
+          <text class="events-member-num">{{item.followInfo.total}}人关注</text>
+        </view>
+      </view> 
+    </view>
+    </navigator>
+  </block>
+
+</view>
+
+</scroll-view> 
+
+</view>
+
+<!--底部导航-->
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
+<!--
+<view class="footer_container">
+        <view class="foot-item foot1">
+          <image src="../../images/foot-event-icon1-red.png" />
+          <view  class="font-gradient">学校事件</view>
+        </view>
+        <view class="foot-item foot2">
+         <image src="../../images/foot-event-icon2.png" />
+         <view class="font-gradient" style="margin-top:-5rpx;">发布</view>
+        </view>
+        
+          <view class="foot-item foot3">
+          <navigator url="../personCenter/personCenter">
+            <image src="../../images/foot-event-icon3.png" />
+            <view>我的</view>
+            </navigator>
+          </view>
+        
+</view>
+-->
+
+<view class="filter-mask" bindtap="onCloseFilterPanel" animation="{{filterMaskAnim}}" style="display:{{filterMaskDisplay}};"></view>
+<view class="filter-panel" animation="{{filterPanelAnim}}">
+  <view class="panel-title-wrap">
+    <view class="panel-title-icon"></view>
+    <view class="panel-title-text">事件筛选</view>
+  </view>
+  <view class="event-type-wrap">
+    <view class="event-type-icon"></view>
+    <view class="event-type-label">事件类型：</view>
+    <picker range="{{eventTypeList}}" value="{{eventTypeIndex}}" range-key="typeName" bindchange="onChangeEventType"  class="event-type-picker-wrap">
+      <view class="event-type-picker">
+        {{eventTypeList[eventTypeIndex].typeName}}
+      </view>
+    </picker>
+  </view>
+  <view class="publisher-type-wrap">
+    <view class="publisher-type-icon"></view>
+    <view class="publisher-type-label">发布主体：</view>
+    <picker range="{{publisherTypeList}}" value="{{publisherTypeIndex}}" range-key="roleName" bindchange="onChangePublisherType" class="publisher-type-picker-wrap">
+      <view class="publisher-type-picker">
+        {{publisherTypeList[publisherTypeIndex].roleName}}
+      </view>
+    </picker>
+  </view>
+  <view class="filter-btn-wrap clearfix">
+    <view class="btn-submit" bindtap="onSubmitFilterMore"></view>
+    <view class="btn-reset" bindtap="onResetFilterMore"></view>
+  </view>
+</view>

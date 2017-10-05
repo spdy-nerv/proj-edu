@@ -1,0 +1,105 @@
+page{
+ color: #16171a;
+ font-size: 32rpx;
+}
+.section{
+		padding: 20rpx;
+		width: 90%;
+		margin: 0 auto;
+}
+.top_banner{
+	display: flex;
+	height: 100rpx;
+	line-height: 100rpx;
+	border-top:solid 1px #c8c8cd;
+	border-bottom:solid 1px #c8c8cd;
+	font-size: 34rpx;
+	background: #ffffff;
+}
+.top_banner .left{
+	width: 20%;
+	text-align: left;
+	margin-left: 30rpx;
+}
+.top_banner .center{
+	width: 60%;
+	text-align: center;
+}
+.top_banner .right{
+	width: 20%;
+	text-align: right;
+	margin-right: 30rpx;
+	color: #c52424;
+	
+	font-size: 36rpx;
+}
+
+button{
+	font-size: 34rpx;
+	color: #444444;
+	background: #ffffff;
+		line-height: 100rpx;
+}
+button::after {
+	border:none;
+}
+
+.l_box{
+	padding: 10rpx 20rpx;
+	background: #ffffff;
+	border:1px #0099cc dashed;
+	margin: 0  20rpx 20rpx 0;
+	min-width: 70rpx;
+	border-radius: 10rpx;
+	display: inline-block;
+}
+.l_box text{
+	display: inline-block;
+	vertical-align: middle;
+}
+.l_box icon{
+	vertical-align: middle;
+	margin: 0 0 0 10rpx
+}
+.input{
+	height: 80rpx;
+	line-height: 80rpx;
+	border: solid 1px #dedede;
+	width: 90%;
+	background: #ffffff;
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+}
+.input input{
+	height: 80rpx;
+	line-height: 80rpx;
+	width: 90%;
+	background: #ffffff;
+	padding-left: 10rpx;
+	
+}
+.input text{
+	display: inline-block;
+	
+	height: 82rpx;
+	line-height: 82rpx;
+	width: 82rpx;
+	background: #fd4748;
+	color: #ffffff;
+	text-align: center;
+	font-size: 60rpx;
+	font-weight: bolder;
+}
+.lables{
+	width: 90%;
+	margin: 0 auto;
+	background: #ffffff;
+	min-height: 300rpx;	
+	padding-top: 20rpx;
+}
+.lables .l_box{
+	margin:0 0 10rpx 20rpx;
+	background: #d2edf6;
+
+}

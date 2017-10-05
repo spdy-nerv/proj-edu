@@ -1,0 +1,8 @@
+<view class="wrap" >
+    <image src="{{poster}}" mode="aspectFill" style="height:{{winHeight*0.85}}px"></image>
+    <view class="btn-wrap">
+        <navigator url="../detail/detail?eventId={{eventId}}&fromShare={{fromShare}}">
+        <view class="enter-btn">进入事件</view>
+        </navigator>
+    </view>
+</view>

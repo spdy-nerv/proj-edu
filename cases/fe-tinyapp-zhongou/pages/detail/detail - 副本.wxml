@@ -1,0 +1,225 @@
+<!--detail.wxml-->
+
+<view class="banner-container"> 
+<swiper indicator-dots="{{indicatorDots}}"  
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
+      <block wx:for="{{pictureUrls}}" wx:key="unique">  
+        <swiper-item>  
+            <image mode="aspectFit" src="{{item}}" class="slide-image" width="100%" height="100%"/>  
+        </swiper-item>  
+      </block>  
+</swiper>
+</view>
+
+<!-- 循环modules -->
+<block  wx:for="{{modules}}" wx:key="unique">
+<template is="{{item.moduleType}}" data="{{...detail, ...item}}"/>
+</block >
+
+<!--事件投票模块 moduleType :1-->
+<template name="1">
+<view class="title-box">
+  <view class="title-box-left">
+     <view class="eng">{{formatedMonth}}</view>
+     <view class="chiness">{{startTime.month}}</view>
+  </view>
+  <view class="title-box-right">
+    <view class="right1">{{eventName}}</view>
+    <view class="right2">
+    <text>{{address}}</text>
+     <image src="../../images/location1.png"></image>
+    </view>
+   </view>
+</view>
+
+<!--分享、点赞部分-->
+<view class="share-box">
+   <view class="share-item" bindtap="clickShareBtn">
+     	<image src="../../images/icon5.png"></image>     
+     <view>分享</view>
+   </view>
+   <view class="share-item" bindtap="clickEnrollBtn"> 
+   <block wx:if="{{enrollData.resultData.data.hasEnrolled}}">
+     	<image src="../../images/icon6.png"></image>
+     	<view>已参加</view>
+     </block>
+     <block wx:else>
+      	<image src="../../images/icon6_before.png"></image>
+      	<view>未参加</view>
+     </block>
+   
+   </view>
+   <view class="share-item" bindtap="clickFollowEventBtn"> 
+   <block wx:if="{{isFollow}}">
+     	<image src="../../images/icon3.png"></image>
+     	<view>已关注</view>
+     </block>
+     <block wx:else>
+      	<image src="../../images/icon3_before.png"></image>
+      	<view>未关注</view>
+     </block>
+   
+   </view>
+   <view class="share-item" bindtap="clickAddStarBtn">
+	  <block wx:if="{{isStar}}">
+	    <image src="../../images/icon4.png"></image>
+     </block>
+      <block wx:else>
+	    <image src="../../images/icon4_before.png"></image>
+     </block>
+     <view>{{starCount}}</view>
+   </view>
+</view>
+
+<!--投票、地址等模块-->
+<view class=" model-top mg20">
+  <view class="model-left ">
+     <image src="../../images/d-icon1.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">开始时间：{{startTime.year}}年{{startTime.month}}月{{startTime.day}}日 {{startTime.hours}}</view>
+    <view class="right2">
+  结束时间： {{endTime.year}}年{{endTime.month}}月{{endTime.day}}日  {{endTime.hours}}
+    </view>
+   </view>
+</view>
+
+<view class=" model">
+  <view class="model-left ">
+     <image src="../../images/d-icon2.png" class="m-img2"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">{{address}}</view>
+    
+   </view>
+</view>
+</template>
+<!--详情默认模块 end-->
+
+
+
+<!--事件投票模块 moduleType :4-->
+<template name="4">
+<navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
+<view class="model">
+  <view class="model-left ">
+     <image src="../../images/d-icon3.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">事件投票模块</view>
+   
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</navigator>
+</template>
+
+<!--问卷调查模块 moduleType:5-->
+<template name="5">
+<navigator url="../testModule/testModule?moduleId={{moduleId}}">
+<view class="model">
+  <view class="model-left">
+     <image src="../../images/d-icon4.png"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">问卷调查</view>
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</navigator>
+</template>
+
+<!--事件评价模块 moduleType:6-->
+<template name="6">
+<view class="model">
+  <view class="model-left ">
+     <image src="../../images/d-icon5.png" class="m-img5"></image>
+  </view>
+  <view class="model-right">
+    <view class="right1">事件评价模块</view>
+   
+   </view>
+   <view class="arr">
+   <text class="wb_arrow_right"></text>
+   </view>
+</view>
+</template>
+
+<!-- 上拉查看图文详情 -->
+<view class="pull-up-show-detail mg20">
+  <view class="classname">
+  <text class="wb_arrow_up"></text>
+  上拉查看图文详情</view>
+</view>
+<!--此处为自定义图文详情内容区-->
+<view class="detail_box" hidden="{{isShowBottom ? true : false}}">
+<block  wx:for="{{description.data.paragraphs}}" wx:key="unique">
+	<view wx:if="{{item.type==1}}" class="detail_box_p"><text>{{item.value}}</text></view>
+	<view wx:if="{{item.type==2}}" class="detail_box_p">
+		 <image src="{{item.value}}" mode="aspectFill"/> 
+	</view>
+</block>
+</view>
+
+<!--评论模块 ：moduleType:2-->
+<template name="2">
+<!--评论-->
+<view class="comment-container">
+ <view class="comment_title">评论<text>（{{commentData.totalCount}}）</text></view>
+
+<block  wx:for="{{commentData.commentList}}" wx:key="unique">
+ <view class="comment-box">
+  <view class="comment-left">
+    <image src="{{item.avatar}}"></image>
+    <text>{{item.nick}}</text>
+    <time class="fr">{{item.createAt}}</time>
+  </view>
+  <view class="comment_cont">
+    <text>​​{{item.content}}</text>
+  </view>
+  </view>
+</block>
+ 
+</view>
+
+<!-- 查看更多评论 -->
+<view class="pull-up-show-detail">
+  <view class="classname">
+  <block wx:if="{{hasMore}}">
+  查看更多评论<text class="wb_arrow_right"></text>
+  </block>
+  <block wx:else>
+   没有更多评论了
+  </block>
+  </view>
+</view>
+
+<!--底部浮动评论输入框-->
+
+<view class="footer_container mg20">
+        <navigator url="../commentSubmit/commentSubmit?moduleId={{moduleId}}">
+        <view class="foot-item comment1">
+          <view class="input_box">
+           <image src="../../images/c_icon3.png"></image>
+             <input placeholder="写评论…"  placeholder-class="String"/>
+           </view>
+        </view>
+        </navigator>
+        <view class="foot-item comment2">
+          <text class="comment_num">132</text>
+          <image src="../../images/c_icon1.png"></image>
+        </view>
+        <view class="foot-item comment3" bindtap="clickFollowEventBtn"> 
+        <block wx:if="{{isFollow}}">
+       	 	<image src="../../images/c_icon2_after.png"></image>
+       	</block>
+       	<block wx:else>
+       	 	<image src="../../images/c_icon2.png"></image>
+       	</block>
+        </view>
+</view>
+</template>

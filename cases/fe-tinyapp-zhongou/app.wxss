@@ -1,4 +1,5 @@
-/**app.wxss**/
+/**app.wxss
+@import 'weui.wxss';**/
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +9,236 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+page{
+  background-color:#eeeff1; 
+  width: 100%;
+  color: #2d2e33;
+   font-family: 'Arial','Microsoft Yahei', "Helvetica Neue", Helvetica, Tahoma, sans-serif; 
+   font-size: 30rpx;
+   padding-bottom:120rpx;
+}
+
+.mg_top30{
+  margin-top: 30rpx;
+}
+.border_bottom{
+  border-bottom: solid 1px #d9d9d9;
+}
+.fr{
+  float: right;
+}
+/**箭头**/
+.wb_arrow_right {
+	display: inline-block;
+	border-right: 1px solid #adadad;
+	border-top: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	border-left: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+ 
+}
+.wb_arrow_left {
+	display: inline-block;
+	border-left: 1px solid #adadad;
+	border-bottom: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	 border-right: 2px solid transparent;
+	border-top: 2px solid transparent;
+ 
+}
+.wb_arrow_up {
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+ vertical-align: middle;
+	display: inline-block;
+	border-left: 1px solid #adadad;
+	border-top: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	border-right: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+}
+.wb_arrow_down {
+  margin-top: -10rpx;
+  margin-right: 10rpx;
+ vertical-align: middle;
+	display: inline-block;
+	border-right: 1px solid #adadad;
+	border-bottom: 1px solid #adadad;
+	height: 10px;
+	width: 10px;
+	transform: rotate(deg);
+	-webkit-transform: rotate(45deg);
+	/*不加这两个属性三角会比上一个略丑*/
+	border-left: 2px solid transparent;
+	border-top: 2px solid transparent;
+}
+/**底部导航**/
+.footer_container{
+	display: flex;
+  justify-content: space-between;
+	position: fixed;
+	height: 100rpx;
+	width: 100%;
+	background: #ffffff;
+  border-top:solid 1rpx #e3e3e3;
+  color: #5a595f;
+	bottom: 0;
+	left:0;
+   z-index: 999;
+}
+
+.foot-item{
+   width: 100%;  
+   -webkit-align-items: center;
+   -webkit-justify-content: center;
+   align-items: center;
+   justify-content: center;
+   text-align:center;
+   font-size:24rpx;
+   font-weight:bolder;
+   color:#5d5f6a;
+   margin-top:18rpx;
+}
+
+.foot1 image{
+  width: 46rpx;
+  height: 46rpx;
+}
+.foot2{margin-top: -50rpx;
+
+}
+.foot2 image{
+  width: 120rpx;
+  height: 114rpx;
+  
+}
+.foot3 image{
+  width: 42rpx;
+  height:46rpx;
+}
+.font-gradient{
+    color: #c52424;
+    font-family: '微软雅黑';
+     background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#c52424), to(#fd4848));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+    
+    
+    /**个人中心部分**/
+    .center_top{
+    
+	    background: -webkit-linear-gradient(to bottom, #c82626, #f34142);
+		/* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(to bottom, #c82626, #f34142);
+		/* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(to bottom, #f34142, #f34142);
+		/* Firefox 3.6 - 15 */
+		background: linear-gradient(to bottom, #c82626, #f34142);
+		position: relative;
+	}
+
+.center_bg{
+   /*background-image: url(../../images/center_bg.png);
+   background-size: 100%;
+   background-position: center;
+   background-repeat: no-repeat;*/
+   height: 141rpx;
+   width: 100%;
+   background-size: 100%;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+}
+.center_bg image{
+ height: 141rpx;
+   width: 100%;
+}
+.center_info{
+    padding-bottom:20rpx;
+    text-align: center;
+    color: #ffffff;
+    line-height: 45rpx;
+}
+.center_info .icon{
+    width: 148rpx;
+    height:148rpx;
+    border-radius: 100%;
+    border:solid 5rpx #ffffff;
+    margin: 30rpx 0 10rpx 0;
+}
+.center_info .verify image{
+    width: 103rpx;
+    height: 40rpx;
+    margin-top: 10rpx;
+}
+.center_info .verified image{
+    width: 34rpx;
+    height: 38rpx;
+    
+    vertical-align: middle;
+    margin-right: 10rpx;
+}
+
+.personCenter_list{
+    padding: 30rpx 56rpx 30rpx 30rpx;
+    background: #ffffff;
+   font-size:32rpx;
+    color: #000000;
+    position: relative;
+}
+.personCenter_list image{
+    width: 44rpx;
+    height: 39rpx;
+    vertical-align: middle;
+    margin-right: 30rpx;
+}
+
+.personCenter_list .fr input{
+  text-align: right;
+  display: inline-block;
+  vertical-align: middle;
+  height: 40rpx;
+}
+.personCenter_list .wb_arrow_right{
+  position: absolute;
+  right: 30rpx;
+  top:50%;
+  margin-top:-10rpx;
+
+}
+.personCenter_list .fr icon{
+  vertical-align: middle;
+  margin:0 10rpx;
+}
+
+.save_button{
+  margin: 50rpx auto 160rpx auto;
+  width: 80%;
+  
+}
+.save_button button{
+  font-size: 36rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: -webkit-linear-gradient(left, #fd4748, #c52424);
+	/* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #fd4748, #c52424);
+	/* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #fd4748, #c52424);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #fd4748, #c52424);
+}
