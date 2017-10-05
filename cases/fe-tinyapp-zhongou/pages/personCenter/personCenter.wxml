@@ -38,6 +38,26 @@
 	<text>我的关注</text>
 	<text class="wb_arrow_right fr"></text>
 </view>
+<view class="personCenter_list " bindtap="toReported">
+	<image src="../../images/center-icon3.png"/>
+	<text>向班主任报道</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list " bindtap="tomyPhoto">
+	<image src="../../images/center-icon3.png"/>
+	<text>拍摄证件照</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list " bindtap="toMyuniform">
+	<image src="../../images/center-icon3.png"/>
+	<text>领取校服</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
+<view class="personCenter_list " bindtap="toBaggage">
+	<image src="../../images/center-icon3.png"/>
+	<text>寄存行李</text>
+	<text class="wb_arrow_right fr"></text>
+</view>
 <!--底部导航-->
 <import src="../footer/footer.wxml" />
 <template is="footer" data="{{...footerConfig}}"/>

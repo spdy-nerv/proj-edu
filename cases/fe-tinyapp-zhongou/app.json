@@ -2,6 +2,7 @@
   "pages":[
     "pages/timeLine/timeLine",
     "pages/eventPoster/eventPoster",     
+    
     "pages/eventPublish/eventPublish",  
     "pages/modifyCode/modifyCode",
     "pages/descriptionModuleAdd/descriptionModuleAdd",
@@ -12,9 +13,13 @@
     "pages/map/map",
     "pages/personCenter/personCenter",
     "pages/myCard/myCard",
+    "pages/myPhoto/myPhoto",
+    "pages/myUniform/myUniform",
+    "pages/Baggage/Baggage",
+    "pages/Reported/Reported",
     "pages/declaration/declaration",
     "pages/verify/verify",
-    "pages/detail/detail",
+	  "pages/detail/detail",
     "pages/logs/logs",
     "pages/commentSubmit/commentSubmit",
     "pages/voteModule/voteModule",

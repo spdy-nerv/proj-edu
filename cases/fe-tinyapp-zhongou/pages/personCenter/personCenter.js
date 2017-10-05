@@ -106,6 +106,27 @@ Page({
 			  url: '../myFollows/myFollows'
 		});
   },
+  
+  toReported: function(e){
+  	wx.navigateTo({
+			  url: '../Reported/Reported'
+		});
+  },
+    tomyPhoto: function(e){
+  	wx.navigateTo({
+			  url: '../myPhoto/myPhoto'
+		});
+  },
+      toMyuniform: function(e){
+  	wx.navigateTo({
+			  url: '../myUniform/myUniform'
+		});
+  },
+        toBaggage: function(e){
+  	wx.navigateTo({
+			  url: '../Baggage/Baggage'
+		});
+  },
   //我的发布
   toMyPublic: function(e){
   		wx.navigateTo({

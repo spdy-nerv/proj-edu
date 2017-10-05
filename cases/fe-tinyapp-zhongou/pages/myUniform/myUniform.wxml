@@ -1,0 +1,18 @@
+
+<view class="con">
+<view style="margin-top:{{marginTop}}">
+  <view class="img"><image src="https://microcloudtech.com/images/campus_dongbei/lunbotu/lunbotu1.jpg" mode="aspectFill"></image></view>
+  <view class="content">
+    <rich-text nodes="请在前台VIP室试穿并领取校服，并在下方选择最终领取校服的尺码信息（校服包括一件短袖T恤及一件长袖外套，须在开学模块拓展环节时统一穿着），选择完成请点击确定完成键"/>
+  </view>
+</view>
+<view class="person_box">
+   <view class="phone_select" hidden="{{selectPerson}}">
+    <view class="select_one" bindtap="mySelect" data-me="你好">你好</view>
+    <view class="select_one" bindtap="mySelect" data-me="他好">他好</view>
+    <view class="select_one" bindtap="mySelect" data-me="大家好">大家好</view>
+  </view>
+ </view>
+<button bindtap="cancel" >确认</button>
+</view>
+
