@@ -10,7 +10,9 @@ var { request } = require('../../libs/request');
 
 Page({
 	data: {
-		pictureUrls: [],  //事情图片
+		pictureUrls: [
+			'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2749325973,1459603075&fm=27&gp=0.jpg'
+		],  //事情图片
 	    indicatorDots: true,  
 	    autoplay: true,  
 	    interval: 5000,  

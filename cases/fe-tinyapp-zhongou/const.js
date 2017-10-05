@@ -23,7 +23,7 @@ var dayFormatList = [
   { chi: '星期六', eng: 'Saturday', simpleEng: 'Sat' }
 ];
 
-var reqHost = 'https://www.leiy.club';
+var reqHost = 'https://microcloudtech.com/gateway/zhongou/activity';
 
 var APIS = {
   GET_ROLE_LIST: 						reqHost + '/getRoleList',

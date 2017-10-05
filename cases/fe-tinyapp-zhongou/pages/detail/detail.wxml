@@ -10,94 +10,64 @@
       </block>  
 </swiper>
 </view>
-
-
-<!--事件投票模块 moduleType :1-->
-
-<view class="title-box">
-  <view class="title-box-left">
-     <view class="eng">{{formatedMonth}}</view>
-     <view class="chiness">{{startTime.day}}</view>
-  </view>
-  <view class="title-box-right">
-    <view class="right1">{{eventName}}</view>
-    <view class="right2" bindtap="openLocation">
-    <!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}" redirect>-->
-    	<text>{{address}}</text><image src="../../images/location1.png" />
-     <!--</navigator>-->
-    </view>
-   </view>
-   <view wx:if="{{fromShare == 1}}" class="go-to-home-wrap">
-    <navigator url="../timeLine/timeLine" open-type="redirect">
-      <view class="go-to-home"></view>
-    </navigator>
-  </view>
-</view>
-
-<!--分享、点赞部分-->
-<view class="share-box">
-   <view class="share-item" bindtap="clickShareBtn">
-     	<image src="../../images/icon5.png"></image>     
-     <view>分享</view>
-   </view>
-   <view class="share-item" bindtap="clickEnrollBtn" hidden="{{isShowEnroll}}"> 
-   <block wx:if="{{hasEnrolled}}">
-     	<image src="../../images/icon6.png"></image>
-     	<view>已参加</view>
-     </block>
-     <block wx:else>
-      	<image src="../../images/icon6_before.png"></image>
-      	<view>未参加</view>
-     </block>
-   
-   </view>
-   <view class="share-item" bindtap="clickFollowEventBtn"> 
-   <block wx:if="{{isFollow}}">
-     	<image src="../../images/icon3.png"></image>
-     	<view>已关注</view>
-     </block>
-     <block wx:else>
-      	<image src="../../images/icon3_before.png"></image>
-      	<view>未关注</view>
-     </block>
-   
-   </view>
-   <view class="share-item" bindtap="clickAddStarBtn">
-	  <block wx:if="{{isStar}}">
-	    <image src="../../images/icon4.png"></image>
-     </block>
-      <block wx:else>
-	    <image src="../../images/icon4_before.png"></image>
-     </block>
-     <view>{{starCount}}</view>
-   </view>
-</view>
-
-<!--投票、地址等模块-->
-<view class="model mg20">
-  <view class="model-left ">
-     <image src="../../images/d-icon1.png"></image>
-  </view>
-  <view class="model-right">
-    <view class="right1">开始时间：{{startTime.year}}年{{startTime.month}}月{{startTime.day}}日 {{startTime.hours}}</view>
-    <view class="right1">结束时间：{{endTime.year}}年{{endTime.month}}月{{endTime.day}}日  {{endTime.hours}}
-    </view>
-   </view>
-</view>
-
-
-<!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}">-->
- <view class=" model" bindtap="openLocation">
-  <view class="model-left ">
-     <image src="../../images/d-icon2.png" class="m-img2"></image>
-  </view>
-  <view class="model-right">
-    <view class="right1">{{address}}</view>
-   </view>
-</view>
-<!--</navigator>-->
 <!--详情默认模块 end-->
-
+<!-- 活动开始 -->
+<view class='activity'>
+    <navigator url=''>
+  <view class="activity-item">
+      <view>
+      <image src="../../images/d-icon3.png"></image>
+      <text class='activity-title'>向班主任报到</text>
+    </view>
+      <image src="../../images/d-icon3.png" class='right-img'></image>
+  </view>
+    </navigator>
+    <navigator url=''>
+        <view class="activity-item">
+            <view>
+                <image src="../../images/d-icon3.png"></image>
+                <text class='activity-title'>领取校服</text>
+              </view>
+            <image src="../../images/gou.png" class='right-img' ></image>
+        </view>
+      </navigator>
+      <navigator url=''>
+          <view class="activity-item">
+              <view>
+                  <image src="../../images/d-icon3.png"></image>
+                  <text class='activity-title'>拍摄证件照</text>
+                </view>
+              <image src="../../images/gou.png" class='right-img'></image>
+          </view>
+      </navigator>
+      <navigator  url=''>
+          <view class="activity-item">
+              <view>
+                  <image src="../../images/d-icon3.png"></image>
+                  <text class='activity-title'>提交ipad</text>
+                </view>
+              <image src="../../images/gou.png" class='right-img'></image>
+          </view>
+      </navigator>
+  <navigator  url=''>
+      <view class="activity-item">
+          <view>
+              <image src="../../images/d-icon3.png"></image>
+              <text class='activity-title'>寄存行李</text>
+            </view>
+          <image src="../../images/gou.png" class='right-img'></image>
+      </view>
+  </navigator>
+  <navigator  url=''>
+      <view class="activity-item last-item">
+          <view>
+              <image src="../../images/d-icon3.png"></image>
+              <text class='activity-title'>信息检查和提交</text>
+            </view>
+          <image src="../../images/gou.png" class='right-img'></image>
+      </view>
+  </navigator>
+</view>
 
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
