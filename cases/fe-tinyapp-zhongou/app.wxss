@@ -90,7 +90,7 @@ page{
 	display: flex;
   justify-content: space-between;
 	position: fixed;
-	height: 100rpx;
+	height: 80rpx;
 	width: 100%;
 	background: #ffffff;
   border-top:solid 1rpx #e3e3e3;
@@ -98,44 +98,47 @@ page{
 	bottom: 0;
 	left:0;
    z-index: 999;
+   align-items: center;
 }
 
 .foot-item{
+
    width: 100%;  
    -webkit-align-items: center;
    -webkit-justify-content: center;
-   align-items: center;
    justify-content: center;
    text-align:center;
    font-size:24rpx;
    font-weight:bolder;
    color:#5d5f6a;
-   margin-top:18rpx;
+   border-left:solid 1rpx #e3e3e3;
+   height: 80rpx;
+   line-height: 80rpx;
 }
-
 .foot1 image{
-  width: 46rpx;
-  height: 46rpx;
-}
-.foot2{margin-top: -50rpx;
+  width: 24rpx;
+  height: 24rpx;
+  padding-right: 15rpx;
 
 }
 .foot2 image{
-  width: 120rpx;
-  height: 114rpx;
+  width: 24rpx;
+  height: 24rpx;
+  padding-right: 15rpx;
   
 }
 .foot3 image{
-  width: 42rpx;
-  height:46rpx;
+  width: 24rpx;
+  height:24rpx;
+  padding-right: 15rpx;
 }
-.font-gradient{
+/* .font-gradient{
     color: #c52424;
     font-family: '微软雅黑';
      background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#c52424), to(#fd4848));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    }
+    } */
     
     
     /**个人中心部分**/

@@ -2,7 +2,6 @@
   "pages":[
     "pages/timeLine/timeLine",
     "pages/eventPoster/eventPoster",     
-    
     "pages/eventPublish/eventPublish",  
     "pages/modifyCode/modifyCode",
     "pages/descriptionModuleAdd/descriptionModuleAdd",
@@ -15,7 +14,7 @@
     "pages/myCard/myCard",
     "pages/declaration/declaration",
     "pages/verify/verify",
-	"pages/detail/detail",
+    "pages/detail/detail",
     "pages/logs/logs",
     "pages/commentSubmit/commentSubmit",
     "pages/voteModule/voteModule",

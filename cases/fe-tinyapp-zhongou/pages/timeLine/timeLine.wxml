@@ -1,80 +1,34 @@
 <!--index.wxml-->
 <view class="wrapper">
-  <view class="filter-container">
-    <picker mode="date" value="{{year + '-' + month + '-' + date}}" start="1970-01-01" end="2099-12-31" bindchange="bindDateChange" class="filter-date">
-        <view class="picker">
-          <text class="picker-text">{{year}}年{{month}}月</text><view class="picker-icon"></view>
+    <image src="../../images/first.png" class='homePage'/>
+<view id="listWrapper">
+  <navigator url='../detail/detail'>
+      <view class='list-item'>
+          <view class='list-left'>
+              <image src="../../images/list-left.png"  class="listWrapper-img"/>
+          </view>
+          <view class='list-right'>
+            <view class='register'>入学报到</view>
+            <view class="name">中欧国际工商学院北京校园</view>
+            <view class="adress">地址：北京海淀区东北旺西路9号中关村软件园20号楼</view>
+            <view class="tel">电话：010-8296630</view>
+          </view>
         </view>
-    </picker>
-    <view class="filter-title">{{formatedMonth}}</view>
-    <view class="filter-more">
-      <view class="filter-more-btn" bindtap="onTapFilterMore"></view>
-    </view>
-  </view>
-<scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="width: 100%" class="horizontal-cal clearfix" style="display:{{isShowSimpleCal}}">
-    <view wx:for="{{calendar}}" wx:key="unique" class="item" data-offset-left="{{item.offsetLeft}}">
-      <view class="item-title">{{item.daySimpleName}}</view>
-      <view class="item-value">
-        <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
-        <text wx:elif="{{item.date == date && item.mode == 'current'}}" class="current-month current" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
-        <text wx:else class="current-month" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
-        <view wx:if="{{item.hasEvents}}" class="has-events"></view>
+  </navigator>
+  
+  <!-- item -->
+  <view class='list-item list-item2'>
+      <view class='list-left'>
+          <image src="../../images/list-left.png"  class="listWrapper-img"/>
+      </view>
+      <view class='list-right'>
+        <view class='register'>酒店入住</view>
+        <view class="name">北京龙城丽宫温德姆酒店</view>
+        <view class="adress">地址：北京昌平路昌平区315号</view>
+        <view class="tel">电话：010-8296630</view>
       </view>
     </view>
-</scroll-view>
-
-<scroll-view class="time-line-container" scroll-y="true" scroll-into-view="{{scrollIntoViewId}}" scroll-with-animation="{{verticalScrollAnim}}" bindscroll="{{onBindScroll}}" bindscrolltoupper="onHitTop" style="padding-bottom:{{listPaddingBottom}}rpx">
-
-<view class="time-container">
-    <view class="item"><text>日</text></view>
-    <view class="item"><text>一</text></view>
-    <view class="item"><text>二</text></view>
-    <view class="item"><text>三</text></view>
-    <view class="item"><text>四</text></view>
-    <view class="item"><text>五</text></view>
-    <view class="item"><text>六</text></view>
 </view>
-
-<view class="time-container time-number clearfix">
-  <block wx:for="{{calendar}}" wx:key="unique">
-  <view class="item" id="{{item.initPos}}">
-    <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
-    <text wx:elif="{{item.date == date && item.mode == 'current'}}" class="current-month current" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
-    <text wx:else class="current-month" data-date="{{item.date}}" bindtap="onSelectDate">{{item.date}}</text>
-    <view wx:if="{{item.hasEvents}}" class="has-events"></view>
-  </view>
-  </block>
-</view>
-
-<view id="listWrapper">
-
-  <block wx:for="{{events}}" wx:key="unique">
-    <view wx:if="{{item.isFirstEventInDay}}" class="events-title-container">
-      <view class="events-list-title">{{item.month}}月{{item.date}}日，{{item.dayName}}</view>
-      <view class="anchor" id="anchor{{item.date}}"></view>
-    </view>
-    <navigator url="../eventPoster/eventPoster?eventId={{item.eventId}}">
-    <view class="events-list-container">
-      <text wx:if="{{item.date == todayDate && item.isFirstEventInDay}}" class="tody">今天</text>
-      <view class="events-list-left">{{item.startTime}}</view>
-      <view class="events-list-right">
-        <view class="events-tit">{{item.name}}</view>
-        <view class="events-add">{{item.address}}</view>
-        <view class="events-member">
-        <view class="img-box">
-          <view wx:for="{{item.followInfo.avatars}}" wx:key="unique" wx:for-item="a" class="img" style="z-index:99;"><image src="{{a}}"></image></view>
-         </view>
-          <text class="events-member-num">{{item.followInfo.total}}人关注</text>
-        </view>
-      </view> 
-    </view>
-    </navigator>
-  </block>
-
-</view>
-
-</scroll-view> 
-
 </view>
 
 <!--底部导航-->

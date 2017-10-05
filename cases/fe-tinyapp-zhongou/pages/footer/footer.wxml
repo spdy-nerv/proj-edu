@@ -5,22 +5,21 @@
 <view class="footer_container">
         <view class="foot-item foot1">
         <navigator url="{{pageEvent ? '' : '../timeLine/timeLine'}}" hover-class="none" open-type="redirect">
-          <image src="../../images/foot-event-icon1{{pageEvent ? '-red' : ''}}.png" />
-          <view class="{{pageEvent ? 'font-gradient' : ''}}">学校事件</view>
+         
+          <view class="{{pageEvent ? 'font-gradient' : ''}}"> <image src='../../images/d-icon4.png'/><text>近期活动</text></view>
         </navigator>
         </view>
         
         <view class="foot-item foot2">
         <navigator url="../eventPublish/eventPublish" hover-class="none">
-         <image src="../../images/foot-event-icon2.png" />
-         <view class="font-gradient" style="margin-top:-5rpx;">发布</view>
+         <view class="font-gradient"><image src='../../images/d-icon4.png'/>中欧课程</view>
         </navigator>
         </view>
         
         <view class="foot-item foot3">
         <navigator url="{{pagePersonal ? '' : '../personCenter/personCenter'}}" hover-class="none" open-type="redirect">
-        	<image src="../../images/foot-event-icon3{{pagePersonal ? '-red' : ''}}.png" />
-       		<view class="{{pagePersonal ? 'font-gradient' : ''}}">我的</view>
+        	<!-- <image src="../../images/foot-event-icon3{{pagePersonal ? '-red' : ''}}.png" /> -->
+       		<view class="{{pagePersonal ? 'font-gradient' : ''}}"><image src='../../images/d-icon4.png'/>我的</view>
         </navigator>
         </view>
 

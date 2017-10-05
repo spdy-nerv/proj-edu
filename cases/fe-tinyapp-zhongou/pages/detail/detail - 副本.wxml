@@ -1,5 +1,4 @@
 <!--detail.wxml-->
-
 <view class="banner-container"> 
 <swiper indicator-dots="{{indicatorDots}}"  
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  

@@ -40,7 +40,7 @@ Page({
       {roleId: '', roleName: '全部'}
     ],
     publisherTypeIndex: 0,
-    listPaddingBottom: 100
+    listPaddingBottom: 100,
   },
   //事件处理函数
   bindViewTap: function() {
