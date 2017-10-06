@@ -6,11 +6,19 @@
     <rich-text nodes="请在前台VIP室试穿并领取校服，并在下方选择最终领取校服的尺码信息（校服包括一件短袖T恤及一件长袖外套，须在开学模块拓展环节时统一穿着），选择完成请点击确定完成键"/>
   </view>
 </view>
+
+
+  <view class="phone_one" bindtap="clickPerson">
+  <view class="phone_personal">{{firstPerson}}</view>
+  </view>
+
 <view class="person_box">
    <view class="phone_select" hidden="{{selectPerson}}">
-    <view class="select_one" bindtap="mySelect" data-me="你好">你好</view>
-    <view class="select_one" bindtap="mySelect" data-me="他好">他好</view>
-    <view class="select_one" bindtap="mySelect" data-me="大家好">大家好</view>
+    <view class="select_one" bindtap="mySelect" data-me="M">M</view>
+    <view class="select_one" bindtap="mySelect" data-me="L">L</view>
+    <view class="select_one" bindtap="mySelect" data-me="XL">XL</view>
+     <view class="select_one" bindtap="mySelect" data-me="XXL">XXL</view>
+    <view class="select_one" bindtap="mySelect" data-me="XXXL">XXXL</view>
   </view>
  </view>
 <button bindtap="cancel" >确认</button>

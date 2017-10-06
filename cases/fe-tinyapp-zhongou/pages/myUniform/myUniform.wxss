@@ -30,7 +30,7 @@ image{
 }
 .content{
    padding:40rpx 37rpx;
-   font-size: 32rpx;
+   font-size: 20rpx;
    color: #333;
    line-height: 1.8;
    width: 100%;
@@ -41,15 +41,16 @@ image{
 img {
   width: 100%;
 }
-.item{
-	height:90rpx;
-	align-items: center;
-	display:flex;
-	flex-direction: row;
-	border:1rpx solid #eee;
+.phone_one{
+	 text-align: center;
+    width:40%; 
+    height:38rpx;
+    line-height:38rpx;
+    margin-left:30%;
+    background-color:#fff;
 }
 
-.item input{
+phone_personal{
 	margin-left:30%;
 	margin-top:200rpx;
 	font-family: "微软雅黑";
@@ -65,33 +66,27 @@ position:absolute;
 line-height:1.5555555600000004;
 	margin-buttom:5%;
 }
-.phone_one{
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    background-color:rgb(239, 239, 239);
-    width:90%;
-    height:100rpx;
-    margin:0 auto;
-    border-radius: 10rpx;
-    border-bottom:2rpx solid rgb(255, 255, 255);
-}
+
 .person_box{
     position: relative;
+    
+    width:100%; 
 }
 .phone_select{
+ width:100%; 
     margin-top:0;
     z-index: 100;
     position: absolute;
+     width:40%; 
+      margin-left:30%;
+    border:2rpx solid #ccc;
 }
 .select_one{
     text-align: center;
-    background-color:rgb(239, 239, 239);
-    width:676rpx;  
-    height:100rpx;
-    line-height:100rpx;
-    margin:0 5%;
-    border-bottom:2rpx solid rgb(255, 255, 255);
+    height:38rpx;
+    line-height:38rpx;
+    background-color:#fff;
+    
 }
 .personal_image{
     z-index: 100;

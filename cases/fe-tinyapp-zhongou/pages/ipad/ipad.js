@@ -15,30 +15,8 @@ Page({
     hasMore:'',
   	isNoData:"",
   	loadText:'点击加载更多...',
-  	list:[],
-  	 selectPerson:true,
-    firstPerson:'M',
+  	list:[]
   	
-  },
-  //点击选择类型
-  clickPerson:function(){
-    var selectPerson = this.data.selectPerson;
-    if(selectPerson == true){
-     this.setData({
-     selectPerson:false,
-  })
-    }else{
-     this.setData({
-     selectPerson:true,
-  })
-    }
-  } ,
-   //点击切换
-  mySelect:function(e){
-   this.setData({
-     firstPerson:e.target.dataset.me,
-     selectPerson:true,
-   })
   },
   onLoad: function () {
   	wx.showLoading({

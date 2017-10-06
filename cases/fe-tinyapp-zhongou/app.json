@@ -17,6 +17,7 @@
     "pages/myUniform/myUniform",
     "pages/Baggage/Baggage",
     "pages/Reported/Reported",
+    "pages/ipad/ipad",
     "pages/declaration/declaration",
     "pages/verify/verify",
 	  "pages/detail/detail",
