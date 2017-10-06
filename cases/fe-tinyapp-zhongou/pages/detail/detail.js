@@ -90,6 +90,7 @@ Page({
 	//页面加载的函数
 	onLoadData: function() {
 		const that = this;
+		console.log( wx.getStorageSync('sid'))
 		const getEventBaseParams = {
 			sid: wx.getStorageSync('sid') || '',
 			eventId: that.data.eventId

@@ -68,7 +68,7 @@
       </view>
   </navigator>
 </view>
-
+<template is='1'></template>
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
 <template is="{{item.moduleType}}" data="{{...des,...item}}"/>
@@ -129,11 +129,15 @@
 
 <template name="1">
 <!-- 上拉查看图文详情 -->
-<view class="pull-up-show-detail mg20" bindtap="clickShowInfo" id="J_detail">
+<view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
   <view class="classname">
-  <text class="{{isShowBottom?'wb_arrow_up':'wb_arrow_down'}}"></text>
-  点击查看图文详情</view>
+    <text class="enterText">活动详情</text>
+  <image src='../../images/jiantou.png' class="enterDetail"/>
 </view>
+</view>
+<!-- 底部导航区域 -->
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
 <!--此处为自定义图文详情内容区-->
 <view class="detail_box" hidden="{{isShowBottom}}">
 <block  wx:for="{{description.paragraphs}}">

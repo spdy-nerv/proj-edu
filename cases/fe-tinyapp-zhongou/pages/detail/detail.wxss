@@ -48,15 +48,18 @@ swiper {
 }
 /**上拉查看详情**/
 .pull-up-show-detail{
-  background: #ffffff;
-  padding: 20rpx 0;
+  padding: 40rpx 0 0 0;
   text-align: center;
   color: #878a99;
-  margin-bottom: 20rpx;
-
+  font-size: 36rpx;
 }
 
-
+.pull-up-show-detail .classname{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /**箭头**/
 .wb_arrow_right {
  
@@ -87,6 +90,14 @@ swiper {
 	border-right: 2px solid transparent;
 	border-bottom: 2px solid transparent;
  
+}
+/* 点击图文详情 */
+.enterText{
+  color: #82A9DB;
+}
+.enterDetail{
+  width: 36rpx;
+  height: 36rpx;
 }
 /**下拉自定义的区域**/
 .detail_box{

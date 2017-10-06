@@ -1,0 +1,27 @@
+<view>
+    <view>
+        <image src='../../images/hotelStay.png' class="img"/>
+    </view>
+    <view class='hotelItem'>
+        <view class="itemLeft">
+            <image src='../../images/list-left.png' class="img"/>
+        </view>
+        <view class="itemRight">
+            <view class="title">北京龙城丽宫温德姆酒店</view>
+            <view class="adress">
+                地址：北京市昌平区昌平路315号
+            </view>
+            <view class="tel">
+                电话：010-899999999
+            </view>
+        </view>
+    </view>
+    <view class="input">
+        <input type='text' placeholder='入住日期'/>
+        <input type='text' placeholder='退房日期'/>
+        <input type='text' placeholder='房间号码'/>
+    </view>
+    <view class='button'>
+        <button from-type='submit' class="button">提交</button>
+    </view>
+</view>

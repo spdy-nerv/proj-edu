@@ -17,6 +17,7 @@
   </navigator>
   
   <!-- item -->
+  <navigator url='../hotelStay/hotelStay'>
   <view class='list-item list-item2'>
       <view class='list-left'>
           <image src="../../images/list-left.png"  class="listWrapper-img"/>
@@ -28,6 +29,7 @@
         <view class="tel">电话：010-8296630</view>
       </view>
     </view>
+  </navigator>
 </view>
 </view>
 

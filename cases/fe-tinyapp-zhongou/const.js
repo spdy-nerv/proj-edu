@@ -28,8 +28,8 @@ var reqHost = 'https://microcloudtech.com/gateway/zhongou/activity';
 var APIS = {
   GET_ROLE_LIST: 						reqHost + '/getRoleList',
   GET_EVENT_TYPE_LIST: 			reqHost + '/getEventTypeList',
-  LOGIN: 										reqHost + '/wx/login',
-  CHECK_SESSION: 						reqHost + '/wx/checkSession',
+  LOGIN: 										reqHost + '/login',
+  CHECK_SESSION: 						reqHost + '/checkSession',
   GET_EVENTS_LIST_BY_MONTH: reqHost + '/getEventsListByMonth',
   
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
