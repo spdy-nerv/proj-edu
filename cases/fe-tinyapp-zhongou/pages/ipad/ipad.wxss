@@ -29,7 +29,7 @@ image{
   color: #333;
 }
 .content{
-   padding:40rpx 37rpx;
+   padding:10rpx 37rpx;
    font-size: 20rpx;
    color: #333;
    line-height: 1.8;
@@ -58,7 +58,7 @@ img {
 button{
 position:absolute;
   left:5%;
-  top:1150rpx;
+  top:1000rpx;
 	background-color:blue;
 	color:#fff;
 	width:90%;

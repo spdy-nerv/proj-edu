@@ -13,7 +13,7 @@
 <!--详情默认模块 end-->
 <!-- 活动开始 -->
 <view class='activity'>
-    <navigator url=''>
+    <navigator url='../Reported/Reported'>
   <view class="activity-item">
       <view>
       <image src="../../images/d-icon3.png"></image>
@@ -22,7 +22,7 @@
       <image src="../../images/d-icon3.png" class='right-img'></image>
   </view>
     </navigator>
-    <navigator url=''>
+    <navigator url='../myUniform/myUniform'>
         <view class="activity-item">
             <view>
                 <image src="../../images/d-icon3.png"></image>
@@ -31,7 +31,7 @@
             <image src="../../images/gou.png" class='right-img' ></image>
         </view>
       </navigator>
-      <navigator url=''>
+      <navigator url='../myPhoto/myPhoto'>
           <view class="activity-item">
               <view>
                   <image src="../../images/d-icon3.png"></image>
@@ -40,7 +40,7 @@
               <image src="../../images/gou.png" class='right-img'></image>
           </view>
       </navigator>
-      <navigator  url=''>
+      <navigator  url='../ipad/ipad'>
           <view class="activity-item">
               <view>
                   <image src="../../images/d-icon3.png"></image>
@@ -49,7 +49,7 @@
               <image src="../../images/gou.png" class='right-img'></image>
           </view>
       </navigator>
-  <navigator  url=''>
+  <navigator  url='../Baggage/Baggage'>
       <view class="activity-item">
           <view>
               <image src="../../images/d-icon3.png"></image>

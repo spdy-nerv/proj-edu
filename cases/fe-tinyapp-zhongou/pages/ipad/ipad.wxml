@@ -1,0 +1,21 @@
+
+<view class="con">
+<view style="margin-top:{{marginTop}}">
+  <view class="img"><image src="https://microcloudtech.com/images/campus_dongbei/lunbotu/lunbotu1.jpg" mode="aspectFill"></image></view>
+  <view class="content">
+    <rich-text nodes=" 请将准备好的IPAD交到吕志和演讲厅门口IT服务处，根据IT老师提示操作，提交完成请点击确定完成键。"/>
+  </view>
+   <view class="content">
+    <rich-text nodes=" 另："/>
+  </view>
+  <view class="content">
+    <rich-text nodes="1、请在下午课后、班会之前返回IT服务处领取装好使用软件之后的IPAD；"/>
+  </view>
+  <view class="content">
+    <rich-text nodes="2、使用过程中有任何问题可在午餐及晚餐时段前往IT服务处咨询。"/>
+  </view>
+</view>
+
+<button bindtap="cancel" >确认</button>
+</view>
+
