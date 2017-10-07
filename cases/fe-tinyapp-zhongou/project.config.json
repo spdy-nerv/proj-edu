@@ -1,24 +1,15 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-<<<<<<< HEAD
-		"urlCheck": false,
-=======
 		"urlCheck": true,
->>>>>>> 2a437f0208c9b54ca6d98a884708ec72e18b0efa
 		"es6": true,
 		"postcss": true,
 		"minified": true
 	},
 	"compileType": "weapp",
 	"libVersion": "1.5.4",
-<<<<<<< HEAD
 	"appid": "wxf849c5b31f32ea2d",
-	"projectname": "fe-tinyapp-zhongou",
-=======
-	"appid": "touristappid",
-	"projectname": "DWQ",
->>>>>>> 2a437f0208c9b54ca6d98a884708ec72e18b0efa
+	"projectname": "%E4%B8%AD%E6%AC%A72",
 	"condition": {
 		"weapp": {
 			"current": -1,

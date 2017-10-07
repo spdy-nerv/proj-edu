@@ -58,7 +58,7 @@
           <image src="../../images/gou.png" class='right-img'></image>
       </view>
   </navigator>
-  <navigator  url=''>
+  <navigator  url='../myInfo/myInfo'>
       <view class="activity-item last-item">
           <view>
               <image src="../../images/d-icon3.png"></image>
