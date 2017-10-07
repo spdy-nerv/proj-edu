@@ -60,6 +60,20 @@ swiper {
   justify-content: center;
   align-items: center;
 }
+/* 事件投票模块 */
+.model{
+  border-top:4rpx solid #ccc;
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+}
+.model-img{
+  width: 36rpx;
+  height: 36rpx;
+}
+.model .model-right{
+  margin-left:30rpx;
+}
 /**箭头**/
 .wb_arrow_right {
  

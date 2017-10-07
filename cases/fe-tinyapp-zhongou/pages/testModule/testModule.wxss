@@ -5,11 +5,8 @@ page {
 .wrap {
     width: 100%;
     height: 100%;
-    position: relative;
-    background-color: #eeeff1;
-    overflow: hidden;
 }
-
+/* 
 .panel-back {
     width: 80%;
     height: 90%;
@@ -19,8 +16,8 @@ page {
     left: 10%;
     box-shadow: 0rpx 5rpx 20rpx #999999;
     border-radius: 10rpx;
-}
-
+} */
+/* 
 .panel {
     width: 90%;
     height: 90%;
@@ -30,37 +27,24 @@ page {
     left: 5%;
     box-shadow: 0rpx 5rpx 20rpx #999999;
     border-radius: 10rpx;
-}
+} */
 
-.panel-title {
-    height: 135rpx;
-    margin: 0 52rpx;
-    width: 571rpx;
-    box-sizing: border-box;
-    line-height: 135rpx;
-    font-size: 36rpx;
-    color: #365593;
-    text-align: center;
-    border-bottom: 1rpx solid #cccccc;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
+.reportTitle{
+    padding: 30rpx;
+    color: #9B9999    ;
 }
-
+.panel-main image{
+    width: 100%;
+    height: 414rpx;
+}
 .panel-btn-area {
     width: 100%;
     height: 160rpx;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 10;
 }
 
 .panel-main {
     height: 100%;
-    overflow-y: hidden;
-    padding: 135rpx 52rpx 160rpx 52rpx;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -72,13 +56,19 @@ page {
 }
 
 .panel-btn {
-    width: 300rpx;
-    height: 80rpx;
+    width: 700rpx;
+    height: 70rpx;
     margin: auto;
     margin-top: 40rpx;
-    background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/test_submit_btn.png);
+    /* background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/test_submit_btn.png); */
     background-repeat: no-repeat;
     background-size: 100%;
+    background-color:#82A9DB;
+    text-align: center;
+    line-height: 80rpx;
+    color: #fff;
+    font-size: 30rpx;
+    
 }
 
 .panel-disabled {
@@ -89,7 +79,10 @@ page {
 }
 
 .panel-question-wrap {
-    padding-top: 40rpx;
+    padding: 40rpx 30rpx;
+    background-color: #fff;
+    margin:30rpx;
+    box-sizing: border-box;
 }
 
 .question-content {
@@ -122,8 +115,14 @@ page {
 .panel-option {
     display: flex;
     flex-direction: row;
+    margin:0 15rpx;
+    box-sizing: border-box;
+    flex: 1;
 }
-
+.checkboxRow{
+    display: flex;
+    flex-direction: row;
+}
 .panel-option-checkbox {
     width: 32rpx;
     height: 32rpx;

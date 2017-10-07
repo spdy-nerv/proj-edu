@@ -12,15 +12,15 @@ Page({
     hasTested: false,
     title: '问卷标题',
     description: '问卷描述',
-    questions: [/*
+    questions: [
         {
             questionId: '1',
-            content: '问题一问题一问题一问题一问题一问题一问题一问题一问题一问题一问题一问题一',
-            type: 1,
+            content: '问题一问题一',
+            type: 2,
             options: [
                 {
                     optionId: '11',
-                    optionName: '选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1'
+                    optionName: '选项1'
                 }, {
                     optionId: '12',
                     optionName: '选项2'
@@ -53,9 +53,9 @@ Page({
             ]
         }, {
             questionId: '3',
-            content: '问题三，填空',
+            content: '评论',
             type: 3
-        }*/
+        }
     ],
     tapRadioFnName: 'onRadioCheck',
     tapCheckboxFnName: 'onCheckboxCheck',

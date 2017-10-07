@@ -1,9 +1,12 @@
 <view class="wrap">
-    <view class="panel-back"></view>
+    <!-- <view class="panel-back"></view> -->
     <view class="panel">
-        <view class="panel-title">{{title}}</view>
+        <!-- <view class="panel-title">{{title}}</view> -->
         <scroll-view scroll-y="true" class="panel-main">
-
+                <view>
+                        <image src='../../images/questionnaire.png'  class="image"/>
+                </view>
+                <view class="reportTitle"><text>您对本次开学报到的体验如何？</text></view>
             <view class="panel-description">{{description}}</view>
 
             <view wx:for="{{options}}" class="panel-option-wrap">
@@ -19,7 +22,7 @@
 
         </scroll-view>
         <view class="panel-btn-area">
-            <view wx:if="{{isActive  && !hasVoted}}" class="panel-btn" bindtap="onSubmitVote"></view>
+            <button wx:if="{{isActive  && !hasVoted}}" class="panel-btn" bindtap="onSubmitVote">提交</button>
             <view wx:elif="{{!isActive}}" class="panel-disabled">当前不可投票</view>
             <!--
             <view wx:elif="{{!isAllowVote}}" class="panel-disabled">没有投票权限</view>

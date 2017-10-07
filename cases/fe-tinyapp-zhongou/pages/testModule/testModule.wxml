@@ -1,13 +1,17 @@
 <view class="wrap">
-    <view class="panel-back"></view>
+   
+    <!-- <view class="panel-back"></view> -->
     <view class="panel">
-        <view class="panel-title">{{title}}</view>
-        <scroll-view scroll-y="true" class="panel-main">
-
-            <view class="panel-description">{{description}}</view>
-
+        <!-- <view class="panel-title">{{title}}</view> -->
+        <view scroll-y="true" class="panel-main">
+                <view>
+                        <image src='../../images/questionnaire.png'  class="image"/>
+                </view>
+                <view class="reportTitle"><text>感谢您配合完成2017级EMBA报到流程。</text></view>
+                <view class="question">
             <view wx:for="{{questions}}" wx:for-item="q" wx:for-index="qi" class="panel-question-wrap">
                 <view class="question-content">{{qi+1}}、{{q.content}}</view>
+                <view class='checkboxRow'>
                 <view wx:for="{{q.options}}" wx:for-item="o" class="panel-option-wrap">
                     <view class="panel-option">
                         <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked ? 'option-radio-checked' : '' }}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.optionId}}" data-questionindex="{{qi}}"></view>
@@ -15,15 +19,17 @@
                         <view class="panel-option-text">{{o.optionName}}</view>
                     </view>                 
                 </view>
+           
+        </view>
                 <view wx:if="{{q.type == 3}}" class="panel-textarea-wrap">
-                    <textarea placeholder="100字以内" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"/>
+                    <textarea placeholder="评论" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"/>
                 </view>
             </view>
-
-        </scroll-view>
+        </view>
+        </view>
 
         <view class="panel-btn-area">
-            <view wx:if="{{isActive  && !hasTested}}" class="panel-btn" bindtap="onSubmitTest"></view>
+            <button wx:if="{{isActive  && !hasTested}}" class="panel-btn" bindtap="onSubmitTest">发送</button>
             <view wx:elif="{{!isActive}}" class="panel-disabled">当前不可提交</view>
             <!--
             <view wx:elif="{{!isAllowTest}}" class="panel-disabled">没有投票提交问卷</view>

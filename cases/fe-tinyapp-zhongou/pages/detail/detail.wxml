@@ -69,6 +69,9 @@
   </navigator>
 </view>
 <template is='1'></template>
+<template is='2'></template>
+<template is='5'></template>
+<template is='4'></template>
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
 <template is="{{item.moduleType}}" data="{{...des,...item}}"/>
@@ -81,15 +84,15 @@
 <navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left ">
-     <image src="../../images/d-icon3.png"></image>
+     <image src="../../images/d-icon3.png" class="model-img"></image>
   </view>
   <view class="model-right">
     <view class="right1">事件投票模块</view>
    
    </view>
-   <view class="arr">
+   <!-- <view class="arr">
    <text class="wb_arrow_right"></text>
-   </view>
+   </view> -->
 </view>
 </navigator>
 </template>
@@ -99,14 +102,14 @@
 <navigator url="../testModule/testModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left">
-     <image src="../../images/d-icon4.png"></image>
+     <image src="../../images/d-icon3.png" class="model-img"></image>
   </view>
   <view class="model-right">
-    <view class="right1">问卷调查</view>
+    <view class="right1">事件问卷调查</view>
    </view>
-   <view class="arr">
+   <!-- <view class="arr">
    <text class="wb_arrow_right"></text>
-   </view>
+   </view> -->
 </view>
 </navigator>
 </template>
@@ -115,15 +118,15 @@
 <template name="6">
 <view class="model">
   <view class="model-left ">
-     <image src="../../images/d-icon5.png" class="m-img5"></image>
+     <image src="../../images/d-icon5.png" class="model-img"></image>
   </view>
   <view class="model-right">
     <view class="right1">事件评价模块</view>
    
    </view>
-   <view class="arr">
+   <!-- <view class="arr">
    <text class="wb_arrow_right"></text>
-   </view>
+   </view> -->
 </view>
 </template>
 
@@ -136,17 +139,16 @@
 </view>
 </view>
 <!-- 底部导航区域 -->
-<import src="../footer/footer.wxml" />
-<template is="footer" data="{{...footerConfig}}"/>
+
 <!--此处为自定义图文详情内容区-->
-<view class="detail_box" hidden="{{isShowBottom}}">
+<!-- <view class="detail_box" hidden="{{isShowBottom}}">
 <block  wx:for="{{description.paragraphs}}">
 	<view wx:if="{{item.type==1}}" class="detail_box_p"><text>{{item.value}}</text></view>
   <view wx:if="{{item.type==2}}" class="detail_box_p">
     <image src="{{item.value}}" mode="widthFix" bindtap="onPreviewDetail" data-url="{{item.value}}" data-index="{{index}}"/> 
   </view>
 </block>
-</view>
+</view> -->
 </template>
 <!--评论模块 ：moduleType:2-->
 <template name="2">
@@ -221,14 +223,16 @@
         </view>
         <view class="foot-item comment2" bindtap="scrollToComment">
           <text class="comment_num">{{commentData.data.totalCount}}</text>
-          <image src="../../images/c_icon1.png"></image>
+          <!-- <image src="../../images/c_icon1.png"></image> -->
+          <text>近期活动</text>
         </view>
         <view class="foot-item comment2 comment3" bindtap="clickFollowEventBtn"> 
         <block wx:if="{{isFollow}}">
-       	 	<image src="../../images/c_icon2_after.png"></image>
+            <image src="../../images/c_icon2_after.png"></image>
+            
        	</block>
        	<block wx:else>
-       	 	<image src="../../images/c_icon2.png"></image>
+       	 <text>我的</text>
        	</block>
         </view>
         
