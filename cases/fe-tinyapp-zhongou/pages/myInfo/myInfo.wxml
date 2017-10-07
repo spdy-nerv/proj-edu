@@ -1,0 +1,78 @@
+ <view class="title"><em>|</em>基本信息 </view>
+ <view class="content">
+ 	<view class = "item-l">
+		<input type="text" name = "name" placeholder="{{name}}" focus="{{focus}}" bindchange="namechange"/>
+    </view>
+    <view class = "item-r"  bindtap="clickclass">
+        <input class="input-r" type="text" name = "class" placeholder="{{class}}" value="{{firstclass}}" focus="{{focus}}" bindchange="classchange"/>
+    </view>
+    <view class="person_box">
+	   <view class="phone_select" hidden="{{selectclass}}">
+	     <view class="select_one" bindtap="mySelect" data-me="北京三班">北京三班</view>
+	     <view class="select_one" bindtap="mySelect" data-me="北京四班">北京四班</view>
+	     <view class="select_one" bindtap="mySelect" data-me="上海三班">上海三班</view>
+	     <view class="select_one" bindtap="mySelect" data-me="上海五班">XXL</view>
+	     <view class="select_one" bindtap="mySelect" data-me="X深圳二班">X深圳二班</view>
+       </view>
+    </view>
+    <view class = "item-l">
+		<input type="text" name = "phone" placeholder="{{phone}}" focus="{{focus}}" bindchange="phonechange"/>
+    </view>
+    <view class = "item-r">
+        <input class="input-r" type="text" name = "photo" value="{{photo}}" focus="{{focus}}" bindchange="photochange"/>
+    </view>
+     <view class = "item-l">
+		<input type="text" name = "writecode" placeholder="{{writecode}}" focus="{{focus}}" bindchange="writecodechange"/>
+    </view>
+    <view class = "item-r" >
+        <input class="input-r" type="text" name = "sendcode" value="{{sendcode}}" focus="{{focus}}" bindchange="sendcodechange"/>
+    </view>
+ </view>
+ <view class="title"><em>|</em>车辆信息 </view>
+  <view class="content">
+     <view class = "item-l">
+		<input type="text" name = "license" placeholder="{{license}}" focus="{{focus}}" bindchange="licensechange"/>
+    </view>
+    <view class = "item-r" >
+        <input class="input-r" type="text" name = "photograph" value="{{photograph}}" focus="{{focus}}" bindchange="photograph"/>
+    </view>
+ </view>
+ <view class="title"><em>|</em>收据开票</view>
+  <view class="content">
+     <view class = "item-l">
+		是否换开收据
+    </view>
+    <view class = "item-a" >
+         <checkbox class="receipt" style="transform:scale(.4)" value="{{ischecked}}" checked="{{ischecked}}" />换开收据
+     </view>
+     <textarea name="content " style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{content }} "bindchange="contentchange"  focus="{{focus}}"/>
+     <textarea name="money " style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{money }} "bindchange="moneychange"  focus="{{focus}}"/>
+ </view>
+ <view class="title"><em>|</em>其他资料</view>
+  <view class="content">
+    <view class = "item-l">
+		<input type="text" name = "myUniform" placeholder="{{myUniform}}" focus="{{focus}}" bindchange="myUniformchange"/>
+    </view>
+    <view class = "item-r">
+        <input class="input-r" type="text" name = "myphoto" placeholder="{{myphoto}}" focus="{{focus}}" bindchange="myphotochange"/>
+    </view>
+     <view class = "item-l">
+		<input type="text" name = "hotel" placeholder="{{hotel}}" focus="{{focus}}" bindchange="hotelchange"/>
+    </view>
+    <view class = "item-r" >
+        <input class="input-r" type="text" name = "Baggage" placeholder="{{Baggage}}" focus="{{focus}}" bindchange="Baggagechange"/>
+    </view>
+ </view>
+  <view class="title"><em>|</em>交通安排</view>
+   <view class="content">
+     <view class = "item-l">
+		是否搭乘中欧大巴
+    </view>
+   <checkbox-group bindchange="checkboxChange">
+  <label class="checkbox" style="float:left;" wx:for="{{items}}">
+    <checkbox style="transform:scale(.4) " value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</checkbox-group>
+ </view>
+ <button class="button-l" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >保存</button>
+ <button class="button-r" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >确认提交</button>

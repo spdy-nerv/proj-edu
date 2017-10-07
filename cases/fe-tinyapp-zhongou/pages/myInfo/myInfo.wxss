@@ -1,0 +1,98 @@
+
+page{
+width:100%;
+height:100%;
+background:#F0F0F0;
+}
+.title{
+height:50rpx;
+border-bottom:2rpx solid #7b7b7b;
+margin-top:20rpx;
+margin-left:50rpx;
+float:left;
+width:100%;
+
+}
+
+em{color:#2894ff;}
+.text{
+margin-left:50rpx;
+}
+.item-l{
+float:left;
+	width:42%;
+	padding-left:7%;
+	padding-top:20rpx;	
+}
+.item-r{
+    float:left;
+	width:42%;
+	padding-left:3%;
+	padding-top:20rpx;
+		
+}
+.item-a{
+    float:left;
+	width:42%;
+	margin-left:6%;
+	padding-left:3%;
+	padding-top:20rpx;
+		
+}
+.receipt{
+	padding-left:40%;
+	padding-right:2%;
+	
+}
+.input-r{
+	text-aline:center;	
+}
+textarea{ float:left;background:#fff;}
+input{
+background:#fff;
+}
+.person_box{
+    position: relative;
+    
+    width:100%; 
+}
+.phone_select{
+ width:100%; 
+ padding-top:50rpx;
+    z-index: 100;
+    position: absolute;
+     width:42%; 
+     
+      margin-left:52%;
+      magin-top:50rpx;
+    border:2rpx solid #eee;
+}
+.select_one{
+    text-align: center;
+    height:38rpx;
+    line-height:38rpx;
+    background-color:#fff;
+    
+}
+.button-l{
+    float:left;
+    width:40%;
+	background-color:blue;
+	color:#fff;	
+	margin-left:7%;
+	height:56rpx;
+    line-height:56rpx;
+    font-size:30rpx;
+	margin-buttom:5%;
+}
+.button-r{
+    float:left;
+    width:40%;
+	background-color:blue;
+	color:#fff;
+	margin-left:3%;
+	height:56rpx;
+    line-height:56rpx;
+    font-size:30rpx
+	margin-buttom:5%;
+}
