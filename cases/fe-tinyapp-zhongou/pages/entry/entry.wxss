@@ -1,0 +1,20 @@
+/* pages/entry/entry.wxss */
+page{
+    height: 100%;
+    padding-bottom: 0;
+    position: relative;
+  }
+
+image{
+    width:100%;
+    height: 100%;
+    
+}
+.jump{
+    width: 250rpx;
+    height: 70rpx;
+    position: absolute;
+    top:859rpx;
+    left: 261rpx;
+    
+}

@@ -22,23 +22,31 @@ swiper {
 .activity{
   display: flex;
   flex-direction: column;
-  padding-top:90rpx; 
+  padding-top:40rpx; 
 }
 .activity-item{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 30rpx 40rpx;
-  font-size: 33rpx;
-  font-weight: 600;
-  border-top: 5rpx solid #ccc;
+  font-size: 36rpx;
+  border-top: 1rpx solid #ccc;
+  box-sizing: border-box;
+  font-weight: 100;
+}
+
+.activity-item .number{
+  font-size: 36rpx;
+  margin-right:30rpx; 
+  color: #5A5657;
 }
 .last-item{
-  border-bottom: 5rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
 }
 .activity-item image{
-  width: 36rpx;
-  height: 36rpx;
+  width: 42rpx;
+  height: 42rpx;
 }
 .activity-title{
   padding-left: 25rpx;
@@ -62,7 +70,7 @@ swiper {
 }
 /* 事件投票模块 */
 .model{
-  border-top:4rpx solid #ccc;
+  border-top:1rpx solid #ccc;
   display: flex;
   flex-direction: row;
   padding: 30rpx;
@@ -107,11 +115,11 @@ swiper {
 }
 /* 点击图文详情 */
 .enterText{
-  color: #82A9DB;
+  color: #B29553;
 }
 .enterDetail{
-  width: 36rpx;
-  height: 36rpx;
+  width: 35rpx;
+  height: 42rpx;
 }
 /**下拉自定义的区域**/
 .detail_box{

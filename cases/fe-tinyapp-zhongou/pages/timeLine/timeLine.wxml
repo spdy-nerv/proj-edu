@@ -8,7 +8,10 @@
               <image src="../../images/list-left.png"  class="listWrapper-img"/>
           </view>
           <view class='list-right'>
-            <view class='register'>入学报到</view>
+            <view class='register'>
+              <text>入学报到</text>
+              <image src='../../images/ui_07.jpg' class='ui_07'/>
+            </view>
             <view class="name">中欧国际工商学院北京校园</view>
             <view class="adress">地址：北京海淀区东北旺西路9号中关村软件园20号楼</view>
             <view class="tel">电话：010-8296630</view>
@@ -23,7 +26,10 @@
           <image src="../../images/list-left.png"  class="listWrapper-img"/>
       </view>
       <view class='list-right'>
-        <view class='register'>酒店入住</view>
+        <view class='register'>
+            <text>酒店入住</text>
+            <image src='../../images/ui_07.jpg' class='ui_07'/>
+        </view>
         <view class="name">北京龙城丽宫温德姆酒店</view>
         <view class="adress">地址：北京昌平路昌平区315号</view>
         <view class="tel">电话：010-8296630</view>

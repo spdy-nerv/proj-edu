@@ -16,12 +16,14 @@
             </view>
         </view>
     </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="input">
-        <input type='text' placeholder='入住日期'/>
-        <input type='text' placeholder='退房日期'/>
-        <input type='text' placeholder='房间号码'/>
+        <input type='text' placeholder='入住日期' name='input' />
+        <input type='text' placeholder='退房日期' name='input' />
+        <input type='text' placeholder='房间号码' name='input' />
     </view>
     <view class='button'>
         <button from-type='submit' class="button">提交</button>
     </view>
+   </form>
 </view>

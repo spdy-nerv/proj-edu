@@ -16,7 +16,7 @@
     height: 150rpx;
 }
 .hotelItem .itemRight{
-    border-left:7rpx solid #82A9DB;
+    border-left:7rpx solid #B29754;
     padding: 0 20rpx;
     margin-left: 35rpx;
     box-sizing: border-box;
@@ -24,13 +24,12 @@
 }
 .hotelItem .title{
     font-size: 30rpx;
-    font-weight: bold;
 }
 .hotelItem .adress{
     margin: 10rpx 0;
 }
 .hotelItem .tel,.adress{
-    color: #c0c0c0;
+
 }
 .input{
     display: flex;
@@ -53,7 +52,7 @@
 
 }
 .button button{
-    background-color: #82A9DB;
+    background-color: #B29754;
     font-size: 26rpx;
     color: #fff;
    

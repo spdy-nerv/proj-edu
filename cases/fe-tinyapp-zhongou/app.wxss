@@ -116,21 +116,16 @@ page{
    line-height: 80rpx;
 }
 .foot1 image{
-  width: 24rpx;
-  height: 24rpx;
-  padding-right: 15rpx;
-
+  width: 249rpx;
+  height: 73rpx;
 }
 .foot2 image{
-  width: 24rpx;
-  height: 24rpx;
-  padding-right: 15rpx;
-  
+  width: 249rpx;
+  height: 73rpx;
 }
 .foot3 image{
-  width: 24rpx;
-  height:24rpx;
-  padding-right: 15rpx;
+  width: 249rpx;
+  height: 73rpx;
 }
 /* .font-gradient{
     color: #c52424;

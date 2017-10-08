@@ -46,7 +46,14 @@ page{
 .list-right .register{
   font-size: 35rpx;
   font-weight: bold;
-  border-left:8rpx solid #82A9DB;
+  border-left:8rpx solid #B29754;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.list-right .register .ui_07{
+  width: 35rpx;
+  height: 34rpx;
 }
 .list-right .name{
   font-size: 25rpx;

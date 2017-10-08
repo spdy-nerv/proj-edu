@@ -6,20 +6,20 @@
         <view class="foot-item foot1">
         <navigator url="{{pageEvent ? '' : '../timeLine/timeLine'}}" hover-class="none" open-type="redirect">
          
-          <view class="{{pageEvent ? 'font-gradient' : ''}}"> <image src='../../images/d-icon4.png'/><text>近期活动</text></view>
+          <view class="{{pageEvent ? 'font-gradient' : ''}}"> <image src='../../images/ui_02.jpg'/></view>
         </navigator>
         </view>
         
         <view class="foot-item foot2">
         <navigator url="../eventPublish/eventPublish" hover-class="none">
-         <view class="font-gradient"><image src='../../images/d-icon4.png'/>中欧课程</view>
+         <view class="font-gradient"><image src='../../images/ui_03.jpg'/></view>
         </navigator>
         </view>
         
         <view class="foot-item foot3">
         <navigator url="{{pagePersonal ? '' : '../personCenter/personCenter'}}" hover-class="none" open-type="redirect">
         	<!-- <image src="../../images/foot-event-icon3{{pagePersonal ? '-red' : ''}}.png" /> -->
-       		<view class="{{pagePersonal ? 'font-gradient' : ''}}"><image src='../../images/d-icon4.png'/>我的</view>
+       		<view class="{{pagePersonal ? 'font-gradient' : ''}}"><image src='../../images/ui_04.jpg'/></view>
         </navigator>
         </view>
 

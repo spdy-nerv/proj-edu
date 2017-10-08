@@ -1,0 +1,3 @@
+   
+       <image src='../../images/entry.png'/>
+       <view class="jump" bindtap='onclick'></view> 

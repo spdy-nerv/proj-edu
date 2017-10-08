@@ -16,16 +16,18 @@
     <navigator url='../Reported/Reported'>
   <view class="activity-item">
       <view>
-      <image src="../../images/d-icon3.png"></image>
-      <text class='activity-title'>向班主任报到</text>
+        <text class="number">1</text>
+      <image src="../../images/detail01.jpg"></image>
+      <text class='activity-title'>入学报到</text>
     </view>
-      <image src="../../images/d-icon3.png" class='right-img'></image>
+      <image src="../../images/gou.png" class='right-img'></image>
   </view>
     </navigator>
     <navigator url='../myUniform/myUniform'>
         <view class="activity-item">
             <view>
-                <image src="../../images/d-icon3.png"></image>
+                <text class="number">2</text>
+                <image src="../../images/detail02.jpg" mode='aspectFit'style='width:45rpx;height:39rpx'></image>
                 <text class='activity-title'>领取校服</text>
               </view>
             <image src="../../images/gou.png" class='right-img' ></image>
@@ -34,7 +36,8 @@
       <navigator url='../myPhoto/myPhoto'>
           <view class="activity-item">
               <view>
-                  <image src="../../images/d-icon3.png"></image>
+                  <text class="number">3</text>
+                  <image src="../../images/detail03.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>拍摄证件照</text>
                 </view>
               <image src="../../images/gou.png" class='right-img'></image>
@@ -43,7 +46,8 @@
       <navigator  url='../ipad/ipad'>
           <view class="activity-item">
               <view>
-                  <image src="../../images/d-icon3.png"></image>
+                  <text class="number">4</text>
+                  <image src="../../images/detail04.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>提交ipad</text>
                 </view>
               <image src="../../images/gou.png" class='right-img'></image>
@@ -52,7 +56,8 @@
   <navigator  url='../Baggage/Baggage'>
       <view class="activity-item">
           <view>
-              <image src="../../images/d-icon3.png"></image>
+              <text class="number">5</text>
+              <image src="../../images/detail05.jpg" mode='aspectFit'></image>
               <text class='activity-title'>寄存行李</text>
             </view>
           <image src="../../images/gou.png" class='right-img'></image>
@@ -61,7 +66,8 @@
   <navigator  url='../myInfo/myInfo'>
       <view class="activity-item last-item">
           <view>
-              <image src="../../images/d-icon3.png"></image>
+              <text class="number">6</text>
+              <image src="../../images/detail06.jpg" mode='aspectFit'></image>
               <text class='activity-title'>信息检查和提交</text>
             </view>
           <image src="../../images/gou.png" class='right-img'></image>
@@ -135,7 +141,7 @@
 <view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
   <view class="classname">
     <text class="enterText">活动详情</text>
-  <image src='../../images/jiantou.png' class="enterDetail"/>
+  <image src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
 </view>
 </view>
 <!-- 底部导航区域 -->

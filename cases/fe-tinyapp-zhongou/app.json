@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/entry/entry",
     "pages/timeLine/timeLine",
     "pages/eventPoster/eventPoster",
     "pages/eventPublish/eventPublish",
@@ -17,7 +18,6 @@
     "pages/Baggage/Baggage",
     "pages/Reported/Reported",
     "pages/ipad/ipad",
-    "pages/myInfo/myInfo",
     "pages/declaration/declaration",
     "pages/verify/verify",
     "pages/detail/detail",
@@ -27,7 +27,8 @@
     "pages/testModule/testModule",
     "pages/myFollows/myFollows",
     "pages/myPublished/myPublished",
-    "pages/hotelStay/hotelStay"
+    "pages/hotelStay/hotelStay",
+    "pages/myInfo/myInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
