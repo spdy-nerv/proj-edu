@@ -43,24 +43,27 @@ img {
 }
 .phone_one{
 	 text-align: center;
-    width:40%; 
+    width:90%; 
     height:38rpx;
     line-height:38rpx;
-    margin-left:30%;
+    margin-left:6%;
     background-color:#fff;
 }
-
-phone_personal{
-	margin-left:30%;
-	margin-top:200rpx;
+.phone_one .imgages{
+height:38rpx;
+width:20%;
+	float:left;
+}
+.phone_personal{
+	float:left;
+	width:80%;
 	font-family: "微软雅黑";
-	background-color:#fff;
 }
 button{
 position:absolute;
   left:5%;
   top:1000rpx;
-	background-color:blue;
+	background-color:#B39652;
 	color:#fff;
 	width:90%;
 line-height:1.5555555600000004;
@@ -77,8 +80,8 @@ line-height:1.5555555600000004;
     margin-top:0;
     z-index: 100;
     position: absolute;
-     width:40%; 
-      margin-left:30%;
+     width:72%; 
+      margin-left:6%;
     border:2rpx solid #ccc;
 }
 .select_one{

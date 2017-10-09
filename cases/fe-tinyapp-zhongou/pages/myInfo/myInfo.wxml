@@ -68,11 +68,11 @@
      <view class = "item-l">
 		是否搭乘中欧大巴
     </view>
-   <checkbox-group bindchange="checkboxChange">
+   <radio-group bindchange="checkboxChange">
   <label class="checkbox" style="float:left;" wx:for="{{items}}">
     <checkbox style="transform:scale(.4) " value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
   </label>
-</checkbox-group>
+</radio-group>
  </view>
  <button class="button-l" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >保存</button>
  <button class="button-r" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >确认提交</button>
