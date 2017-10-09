@@ -40,45 +40,27 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
-  	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
-      realSuccess: function(data){
-      	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
-      		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
-      	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
-      },
-      realFail: function(msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, false);
   },
-  
+  cancel:function(e){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_COMPLETE,
+	      data: {
+	      	moduleId: wx.getStorageSync('moduleId'),
+	      },
+	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		         wx.navigateTo({
+						  url: '../detail/detail'
+						});
+	      }  
+	   })  
+  },   
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){

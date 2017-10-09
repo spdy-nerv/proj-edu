@@ -220,9 +220,7 @@ Page({
   onLoadData: function(load){
   	var that = this;
   	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
+  		moduleId: wx.getStorageSync('moduleId'),
   	};
   	if(load){
   		that.setData({
@@ -232,34 +230,22 @@ Page({
   		})
   	}
   	 request({
-      url: APIS.MY_FOLLOWS,
+      url: APIS.GET_TASK,
       data: params,
       method: 'POST',
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
-      		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
-      	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
+     		this.setData({
+		      isPhoneVarified:data.isPhoneVarified,
+		      isReported:data.isReported,
+		      isSubmitIpad:data.isSubmitIpad,
+		      isTakeBus:data.isTakeBus,
+		      phone:data.phone,
+		      photoNo:data.photoNo,
+		      plateNumber:data.plateNumber,
+		      realName:data.realName,
+		      uniformSize:data.uniformSize,
+		    })
       },
       realFail: function(msg) {
         wx.hideLoading();

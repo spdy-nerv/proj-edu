@@ -53,6 +53,12 @@ Page({
 	      method: "POST", 
 	      success: function(res) {  
 	        console.log(res)
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		         wx.navigateTo({
+						  url: '../detail/detail'
+						});
 	      }  
 	   })  
   }, 

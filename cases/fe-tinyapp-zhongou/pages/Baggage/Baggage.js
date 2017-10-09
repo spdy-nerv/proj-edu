@@ -29,11 +29,6 @@ Page({
   
   onLoadData: function(load){
   	var that = this;
-  	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -47,7 +42,7 @@ Page({
       baggageNo:e.detail.value
     })
   }, 
-  sendphotoNo:function(e){
+  cancel:function(e){
   	var that=this;
   	var photoNo=that.data.photoNo;
   	wx.request({
@@ -59,7 +54,12 @@ Page({
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  
 	      method: "POST", 
 	      success: function(res) {  
-	        console.log(res)
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		         wx.navigateTo({
+						  url: '../detail/detail'
+						});
 	      }  
 	   })  
   },  
