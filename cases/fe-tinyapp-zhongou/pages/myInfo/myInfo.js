@@ -14,23 +14,28 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	name:'请输入您的名字',
+  	realName:'请输入您的名字',
   	phone:'请输入您的手机号码',
-  	photo:'上传图片',
     class :'请选择班级',
     firstclass:'',
     selectclass:true,
-    writecode:'请输入验证码',
+    verifyCode:'请输入验证码',
     sendcode:'发送验证码',
-    license:'请输入车牌号码',
+    plateNumber:'请输入车牌号码',
     ischecked:false,
     photograph:'拍照识别',
-    content:'请在此输入公司发票信息',
+    company:'请在此输入公司发票信息',
     money:'请输入拆分金额',
-    myUniform:'请输入您的小幅尺寸',
-    myphoto:'请输入您的照片编号',
-    hotel:'请输入您的酒店房号',
-    Baggage:'请输入您的行李编号',
+    uniformSize:'请输入您的小幅尺寸',
+    photoNo:'请输入您的照片编号',
+    hotelRoomNo:'请输入您的酒店房号',
+    baggageNo:'请输入您的行李编号',
+    isInvoice:false,
+    isTakeBus:false,
+    isSubmitIpad:false,
+    isReported:false,
+    isPhoneVarified:false,
+    code:'',
     items: [
       {name: '不需要', value: '不需要'},
       {name: 'T2', value: 'T2',},
@@ -40,6 +45,67 @@ Page({
   	list:[]
   	
   },
+ //获取验证码
+  getcode:function(e){
+  	var that=this;
+   var mobile=that.data.phone;
+    if (mobile.length == 0) {
+       wx.showToast({
+     title: '请输入手机号！',
+     icon: 'success',
+     duration: 1500
+    })
+		  return false;
+		 }
+		 if (mobile.length != 11) {
+		       wx.showToast({
+		     title: '手机号长度有误！',
+		     icon: 'success',
+		     duration: 1500
+		    })
+		  return false;
+		 }
+		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+		 if (!myreg.test(mobile)) {
+		       wx.showToast({
+		     title: '手机号有误！',
+		     icon: 'success',
+		     duration: 1500
+		    })
+		  return false;
+		 }
+		 else{
+		 	 wx.request({
+	      url: APIS.GET_VERIFYCODE,
+	       data: {
+	        phone:mobile
+	      },
+	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+	        that.setData({
+				     code:res.code,
+				  })
+	      }  
+	    })  
+		 }
+  },
+  //发送验证码
+  sendcode:function(){
+    var that=this;
+    var verifyCode=that.data.verifyCode;
+    var code=that.data.code;
+    if(verifyCode==code){
+    	this.setData({
+		     isPhoneVarified :true,
+		  })
+    }else{
+    	this.setData({
+		     isPhoneVarified :false,
+		  })
+    }
+  } ,
  //点击选择类型
   clickclass:function(){
     var selectclass = this.data.selectclass;
@@ -49,8 +115,8 @@ Page({
   })
     }else{
      this.setData({
-     selectclass:true,
-  })
+		     selectclass:true,
+		  })
     }
   } ,
    //点击切换
@@ -60,9 +126,9 @@ Page({
      selectclass:true,
    })
   },
-  namechange:function(e){
+  realNamechange:function(e){
     this.setData({
-      name:e.detail.value
+      realName:e.detail.value
     })
   },
   phonechange:function(e){
@@ -70,14 +136,14 @@ Page({
       phone:e.detail.value
     })
   },
-  photochange:function(e){
+  photoNochange:function(e){
     this.setData({
       photo:e.detail.value
     })
   },
-    writecodechange:function(e){
+    verifyCodechange:function(e){
     this.setData({
-      writecode:e.detail.value
+      verifyCode:e.detail.value
     })
   },
     sendcodechange:function(e){
@@ -85,9 +151,9 @@ Page({
       sendcode:e.detail.value
     })
   },
-    licensechange:function(e){
+    plateNumberchange:function(e){
     this.setData({
-      license:e.detail.value
+      plateNumber:e.detail.value
     })
   },
     photograph:function(e){
@@ -95,9 +161,9 @@ Page({
       photograph:e.detail.value
     })
   },
-  contentchange:function(e){
+  companychange:function(e){
     this.setData({
-      content:e.detail.value
+      company:e.detail.value
     })
   },
   moneychange:function(e){
@@ -105,9 +171,9 @@ Page({
       money:e.detail.value
     })
   },
-  myUniformchange:function(e){
+  uniformSizechange:function(e){
     this.setData({
-      myUniform:e.detail.value
+      uniformSize:e.detail.value
     })
   },
   myphotochange:function(e){
@@ -141,6 +207,15 @@ Page({
   },
   checkboxChange: function(e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    if(e.detail.value=='不需要'){ 	
+	    this.setData({
+	      isTakeBus:false
+	    })
+    }else{
+    	 this.setData({
+	      isTakeBus:true
+	    })
+    }
   },
   onLoadData: function(load){
   	var that = this;

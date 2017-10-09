@@ -42,12 +42,20 @@ float:left;
 		
 }
 .receipt{
-	padding-left:40%;
+	padding-left:22%;
 	padding-right:2%;
 	
 }
 .input-r{
-	text-aline:center;	
+	text-aline:center;
+}
+.sendcode{
+  text-aline:center;
+  background:#B39652;
+  font-size:30rpx;
+  color:#fff;
+  height:54rpx;
+   line-height:54rpx;
 }
 textarea{ float:left;background:#fff;}
 input{

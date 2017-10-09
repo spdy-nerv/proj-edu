@@ -31,6 +31,7 @@ var APIS = {
   LOGIN: 										reqHost + '/login',
   CHECK_SESSION: 						reqHost + '/checkSession',
   GET_EVENTS_LIST_BY_MONTH: reqHost + '/getEventsListByMonth',
+  GET_TASK:                 baseUrl+'/task',//获取任务数据
   ADD_BAGGAGE:              baseUrl+'/task/confirmCheckedBaggage',//确认寄存行李
   ADD_COMPLETE:             baseUrl+'/task/confirmPhotoComplete',//确认拍摄证件照完成
   ADD_TEACH:                baseUrl+'/task/confirmRegisterToTeacher',//确认向班主任报到
