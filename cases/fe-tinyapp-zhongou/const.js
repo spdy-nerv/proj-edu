@@ -39,6 +39,7 @@ var APIS = {
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
   GET_TASK:                 baseUrl+'/task',//获取任务数据 
   GET_IDENTITY:             baseUrl+'/task/bindingIdentity',//身份认证 
+  ADD_DRAFT:                baseUrl+'/task/draft',//暂存数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块

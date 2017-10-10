@@ -224,7 +224,7 @@ bindingIdentity:function(){
   },
   hotelchange:function(e){
     this.setData({
-      hotel:e.detail.value
+      hotelRoomNo:e.detail.value
     })
   },
   Baggagechange:function(e){
@@ -238,8 +238,20 @@ bindingIdentity:function(){
    });
 	    user.login(this.onLoadData(false), this, false);
   },
+  checkChange:function(e) {
+  	console.log(e.detail.value)
+    if(e.detail.value){ 	
+	    this.setData({
+	      isInvoice :true
+	    })
+    }else{
+    	 this.setData({
+	      isInvoice :false
+	    })
+    }
+  },
   checkboxChange: function(e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    console.log('checkbox发生change事件，携带value值为：', e)
     if(e.detail.value=='不需要'){ 	
 	    this.setData({
 	      isTakeBus:false
@@ -310,22 +322,17 @@ bindingIdentity:function(){
   	wx.request({
 	      url: APIS.ADD_DRAFT,
 	      data: {
-  				baggageNo: that.data.baggageNo,
-  				classes: that.data.classes,
+  					baggageNo: that.data.baggageNo,
   				company: that.data.company,
   				hotelRoomNo: that.data.hotelRoomNo,
   				isInvoice: that.data.isInvoice,
-  				isPhoneVarified: that.data.isPhoneVarified,
   				isReported: that.data.isReported,
   				isSubmitIpad: that.data.isSubmitIpad,
   				isTakeBus: that.data.isTakeBus,
   				moduleId: that.data.moduleId,
-  				phone: that.data.phone,
   				photoNo: that.data.photoNo,
   				plateNumber: that.data.plateNumber,
-  				realName: that.data.realName,
   				uniformSize: that.data.uniformSize,
-  				verifyCode: that.data.verifyCode,
 	      },
 	      header: {
             auth: wx.getStorageSync('token')
@@ -341,25 +348,21 @@ bindingIdentity:function(){
   },
   sendmsg:function(){
   	var that=this;
+  	console.log(that.data.company,that.data.hotelRoomNo)
   	wx.request({
 	      url: APIS.ADD_SUBMIT,
 	      data: {
   				baggageNo: that.data.baggageNo,
-  				classes: that.data.classes,
   				company: that.data.company,
   				hotelRoomNo: that.data.hotelRoomNo,
   				isInvoice: that.data.isInvoice,
-  				isPhoneVarified: that.data.isPhoneVarified,
   				isReported: that.data.isReported,
   				isSubmitIpad: that.data.isSubmitIpad,
   				isTakeBus: that.data.isTakeBus,
   				moduleId: that.data.moduleId,
-  				phone: that.data.phone,
   				photoNo: that.data.photoNo,
   				plateNumber: that.data.plateNumber,
-  				realName: that.data.realName,
   				uniformSize: that.data.uniformSize,
-  				verifyCode: that.data.verifyCode,
 	      },
 	     header: {
             auth: wx.getStorageSync('token')

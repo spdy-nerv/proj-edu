@@ -38,10 +38,12 @@
 		是否换开收据
     </view>
     <view class = "item-a" >
-         <checkbox class="receipt" style="transform:scale(.4)" value="{{isInvoice}}" checked="{{isInvoice}}" />换开收据
+    	<checkbox-group bindchange="checkChange">
+        	 <checkbox class="receipt" style="transform:scale(.4)" value="{{isInvoice}}" checked="{{isInvoice}}" />换开收据
+         </checkbox-group>
      </view>
-     <textarea name="content " style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{company }} "bindchange="companychange"  focus="{{focus}}"/>
-     <textarea name="money " style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{money }} "bindchange="moneychange"  focus="{{focus}}"/>
+     <textarea name="content " style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{company }} "bindinput="companychange"  focus="{{focus}}"/>
+     <textarea name="money " style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{money }} "bindinput="moneychange"  focus="{{focus}}"/>
  </view>
  <view class="title"><em>|</em>其他资料</view>
   <view class="content">
@@ -65,7 +67,7 @@
     </view>
    <radio-group bindchange="checkboxChange">
   <label class="checkbox" style="float:left;" wx:for="{{buses}}" wx:key="unique">
-    <checkbox style="transform:scale(.4) " value="{{buses.name}}" checked="{{buses.checked}}"/>{{item.value}}
+    <checkbox style="transform:scale(.4) " value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
   </label>
 </radio-group>
  </view>
