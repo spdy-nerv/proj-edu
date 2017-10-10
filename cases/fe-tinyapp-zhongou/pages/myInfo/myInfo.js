@@ -296,6 +296,7 @@ bindingIdentity:function(){
   },
   onLoadData: function(load){
   	var that = this;
+  	console.log(wx.getStorageSync('token'))
   	var params = {
   		moduleId: that.data.moduleId,
   	};
@@ -306,7 +307,7 @@ bindingIdentity:function(){
 		  	loadText:'加载中...',
   		})
   	}
-  	console.log(that.data.moduleId)
+  	
   	 request({
       url: APIS.GET_TASK,
        data:{
@@ -339,7 +340,7 @@ bindingIdentity:function(){
 		      plateNumber:data.data.plateNumber,
 		      realName:data.data.realName,
 		      uniformSize:data.data.uniformSize,
-		      	busLine: that.data.busLine,
+		      busLine: data.data.busLine,
 		    })
       },
       realFail: function(msg) {
