@@ -16,7 +16,9 @@ Page({
   	isNoData:"",
   	loadText:'点击加载更多...',
   	list:[],
-  	
+  	pictureUrls: [
+			'../../images/hello.jpg'
+		],  //事情图片
   	
   },
   onLoad: function () {
@@ -79,7 +81,12 @@ Page({
       }
     }, false);
   },
-  
+ onPreviewSlider: function(e) {
+		wx.previewImage({
+		  current: e.target.dataset.url, // 当前显示图片的链接，不填则默认为 urls 的第一张
+		  urls: this.data.pictureUrls
+		});
+	}, 
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){

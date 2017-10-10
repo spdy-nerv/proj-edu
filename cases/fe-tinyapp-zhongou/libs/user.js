@@ -79,9 +79,9 @@ function doAppLogin(data, cb, ctx) {
       method: 'POST',
       success: function(res){
         var d = res.data;
-        if (d.errCode == '0000' && d.resultData) {
-            var sid = d.resultData.sid;
-            wx.setStorageSync('sid', sid);
+        if (d.code == 'success' && d.data) {
+          var token = d.data.token;
+          wx.setStorageSync('token', token);
             typeof cb == "function" && cb.call(ctx);
         } else {
             wx.showToast({

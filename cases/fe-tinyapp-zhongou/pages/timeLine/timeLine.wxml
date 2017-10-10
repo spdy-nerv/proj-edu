@@ -1,26 +1,29 @@
 <!--index.wxml-->
 <view class="wrapper">
-    <image src="../../images/first.png" class='homePage'/>
+    <image src="{{img}}" class='homePage'/>
 <view id="listWrapper">
-  <navigator url='../detail/detail'>
+    <block wx:for='{{events}}'>
+  <navigator url='../detail/detail?eventId={{item.eventId}}'>
       <view class='list-item'>
           <view class='list-left'>
-              <image src="../../images/list-left.png"  class="listWrapper-img"/>
+              <image src="{{item.pics}}"  class="listWrapper-img"/>
           </view>
           <view class='list-right'>
             <view class='register'>
-              <text>入学报到</text>
-              <image src='../../images/ui_07.jpg' class='ui_07'/>
+              <text>{{item.eventName}}</text>
+              <!-- <navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&name={{item.placeName}}"> -->
+              <image src='../../images/ui_07.jpg' class='ui_07' catchtap='openLocation'/>
+            <!-- </navigator> -->
             </view>
-            <view class="name">中欧国际工商学院北京校园</view>
-            <view class="adress">地址：北京海淀区东北旺西路9号中关村软件园20号楼</view>
-            <view class="tel">电话：010-8296630</view>
+            <view class="name">{{item.placeName}}</view>
+            <view class="adress">地址：{{item.address}}</view>
+            <view class="tel">电话：{{item.telephone}}</view>
           </view>
         </view>
   </navigator>
-  
+   </block>
   <!-- item -->
-  <navigator url='../hotelStay/hotelStay'>
+  <!-- <navigator url='../hotelStay/hotelStay'>
   <view class='list-item list-item2'>
       <view class='list-left'>
           <image src="../../images/list-left.png"  class="listWrapper-img"/>
@@ -35,7 +38,7 @@
         <view class="tel">电话：010-8296630</view>
       </view>
     </view>
-  </navigator>
+  </navigator> -->
 </view>
 </view>
 

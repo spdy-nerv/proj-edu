@@ -41,6 +41,10 @@ Page({
     ],
     publisherTypeIndex: 0,
     listPaddingBottom: 100,
+    img:'https://microcloudtech.com/images/campus_zhongou/activity/image/2017-10-09/entry.jpg',
+    latitude:'',
+    longitude:'',
+    name:''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -49,12 +53,11 @@ Page({
     })
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     wx.showLoading({
       mask: true,
       title: '数据加载中'
     });
-
     // 处理兼容性
     var sysInfo = wx.getSystemInfoSync();
     if (sysInfo.system.toUpperCase().indexOf('IOS') != -1) {
@@ -74,51 +77,40 @@ Page({
     });
     this.getCurrentDate();
     this.getEventList();
-    this.getFilterTypes();
-    this.createAnim();
   },
 
   getEventList: function() {
+    console.log(11)
     var that = this;
     var et = this.data.eventTypeList;
     var ei = this.data.eventTypeIndex;
     var pt = this.data.publisherTypeList;
     var pi = this.data.publisherTypeIndex;
-    request({
-      url: APIS.GET_EVENTS_LIST_BY_MONTH,
-      data: {
-        year: this.data.year,
-        month: this.data.month,
-        offset: 0,
-        size: 9999,
-        eventType: et[ei].typeId,
-        publisherType: pt[pi].roleId,
-        sid: wx.getStorageSync('sid')
+    wx.request({
+      url: APIS.GET_EVENTS_LIST,
+      header: {
+        auth: wx.getStorageSync('token')
       },
-      method: 'POST',
-      realSuccess: function(data){
-        var list = data.list;
-        list = list.map(function(e, i) {
-          e.dayName = dayFormatList[e.day].chi;
-          if (i == 0 || e.date != list[i-1].date) {
-            e.isFirstEventInDay = true;
-          }
-          return e;
-        });
-        that.setData({
-          events: list,
-          eventDays: data.eventDays
-        });
+      data: {
+        pageNo: 1,
+        pageSize: 999,
+      },
+      method: 'GET',
+      success:function(res){
+        console.log(res.data.data.events);
+        var d = res.data.data;
         wx.hideLoading();
-        if (list.length == 0) {
-          wx.showToast({
-            title: '当前月份没有事件！'
-          });
-        }
-        that.renderCalendar();
+        that.setData({
+          events:d.events,
+          latitude:d.latitude,
+          longitude:d.longitude,
+          name:d.placeName
+          
+        })
+        
       },
       loginCallback: this.getEventList,
-      realFail: function(msg) {
+      fail: function(msg) {
         wx.hideLoading();
         wx.showToast({
           title: msg
@@ -374,5 +366,6 @@ Page({
 			desc: '分享给大家看看吧', // 分享描述
 			path: '/pages/timeLine/timeLine'
 		}
-	},
+  },
+  
 })

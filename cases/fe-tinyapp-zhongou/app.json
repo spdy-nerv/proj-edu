@@ -28,7 +28,8 @@
     "pages/myFollows/myFollows",
     "pages/myPublished/myPublished",
     "pages/hotelStay/hotelStay",
-    "pages/myInfo/myInfo"
+    "pages/myInfo/myInfo",
+    "pages/navigate/navigate"
   ],
   "window": {
     "backgroundTextStyle": "light",

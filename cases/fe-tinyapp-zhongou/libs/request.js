@@ -14,19 +14,17 @@ var user = require('./user');
  */
 function request(obj, needLogin = true, ctx) {
     obj.success = function(res) {
-        var d = res.data;
-        if (d.errCode == '0000') {
-            typeof obj.realSuccess == "function" && obj.realSuccess(d.resultData);
+        var d = res;
+        if (d.data || d.code == 'success') {
+            typeof obj.realSuccess == "function" && obj.realSuccess(d.data);
         } else {
-            if (needLogin &&
-            (d.errCode == '0011' || 
-            d.errCode == '0012' || 
-            d.errCode == '2000') ) {
+          if (needLogin && d.code == 'ACT_TOKEN_FAILURE') {
                 wx.showLoading({
                     mask: true,
                     title: '用户登录失效，重新登录中！'
                 });
                 user.login(obj.loginCallback, ctx);
+              /*
             // 未认证或未绑定
             } else if (d.errCode == '0013') {
                 wx.showToast({
@@ -47,13 +45,14 @@ function request(obj, needLogin = true, ctx) {
                 wx.showToast({
                     title: '身份认证审核中，无法操作！',
                 });
+                */
             } else {
-                typeof obj.realFail == "function" && obj.realFail('数据获取失败！' + d.resultMsg || '', d.errCode);
+                typeof obj.realFail == "function" && obj.realFail('数据获取失败！' + d.message || '', d.code);
             }
         }
     };
     obj.fail = function(res) {
-        typeof obj.realFail == "function" && obj.realFail('数据获取失败！');
+        typeof obj.realFail == "function" && obj.realFail(res.errMsg);
     };
     wx.request(obj);
 }

@@ -64,7 +64,6 @@ Page({
 	onLoad: function (options) {
   		console.log('onLoad')
 	    var that = this
-	    
 	    that.setData({
 	    	markers: [{
 		    	latitude: options.latitude,

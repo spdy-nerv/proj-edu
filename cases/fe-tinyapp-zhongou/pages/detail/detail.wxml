@@ -11,6 +11,7 @@
 </swiper>
 </view>
 <!--详情默认模块 end-->
+<template name='113278546880892928'>
 <!-- 活动开始 -->
 <view class='activity'>
     <navigator url='../Reported/Reported'>
@@ -74,19 +75,16 @@
       </view>
   </navigator>
 </view>
-<template is='1'></template>
-<template is='2'></template>
-<template is='5'></template>
-<template is='4'></template>
+</template>
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
-<template is="{{item.moduleType}}" data="{{...des,...item}}"/>
+<template is="{{item.moduleId}}" data="{{...des,...item}}"/>
 </block >
 
 </scroll-view>
 
 <!--事件投票模块 moduleType :4-->
-<template name="4">
+<template name="113650830053347328">
 <navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left ">
@@ -104,7 +102,7 @@
 </template>
 
 <!--问卷调查模块 moduleType:5-->
-<template name="5">
+<template name="113650962744348672">
 <navigator url="../testModule/testModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left">
@@ -157,7 +155,7 @@
 </view> -->
 </template>
 <!--评论模块 ：moduleType:2-->
-<template name="2">
+<template name="113663288662953984">
 <!--评论-->
 <view class="comment-container" id="J_comment">
  <view class="comment_title">评论<text>({{commentData.data.totalCount}})</text></view>
@@ -216,34 +214,43 @@
 
 
 <view class="footer_container mg20" hidden="{{isAllowComment}}">
-        
-
-        <view class="foot-item comment1">
-          <view class="input_box" bindtap="onToComment">
-          <!--<navigator url="../commentSubmit/commentSubmit?moduleId={{moduleId}}">-->
-           <image src="../../images/c_icon3.png"></image>
-             <view class="input">写评论...</view>
-          
-           <!--</navigator>-->
-            </view>
-        </view>
-        <view class="foot-item comment2" bindtap="scrollToComment">
-          <text class="comment_num">{{commentData.data.totalCount}}</text>
-          <!-- <image src="../../images/c_icon1.png"></image> -->
-          <text>近期活动</text>
-        </view>
-        <view class="foot-item comment2 comment3" bindtap="clickFollowEventBtn"> 
-        <block wx:if="{{isFollow}}">
-            <image src="../../images/c_icon2_after.png"></image>
-            
-       	</block>
-       	<block wx:else>
-       	 <text>我的</text>
-       	</block>
-        </view>
-        
+  <import src="../footer/footer.wxml" />
+  <template is="footer" data="{{...footerConfig}}"/>
 </view>
 </template>
+<!-- 酒店入住模块 -->
+<template name='8'>
+  <view>
+      <view>
+          <image src='../../images/hotelStay.png' class="img"/>
+      </view>
+      <view class='hotelItem'>
+          <view class="itemLeft">
+              <image src='../../images/list-left.png' class="img"/>
+          </view>
+          <view class="itemRight">
+              <view class="title">北京龙城丽宫温德姆酒店</view>
+              <view class="adress">
+                  地址：北京市昌平区昌平路315号
+              </view>
+              <view class="tel">
+                  电话：010-899999999
+              </view>
+          </view>
+      </view>
+      <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="input">
+          <input type='text' placeholder='入住日期' name='input' />
+          <input type='text' placeholder='退房日期' name='input' />
+          <input type='text' placeholder='房间号码' name='input' />
+      </view>
+      <view class='button'>
+          <button from-type='submit' class="button">提交</button>
+      </view>
+     </form>
+  </view>
+</template>
+
 <!--分享-->
 <view class="modal-window" hidden="{{isShowShare}}" bindtap="hiddenShare">
 		<image src="../../images/share.png" />

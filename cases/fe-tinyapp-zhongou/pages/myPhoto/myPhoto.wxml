@@ -1,14 +1,14 @@
 
 <view class="con">
 <view style="margin-top:{{marginTop}}">
-  <view class="img"><image src="https://microcloudtech.com/images/campus_dongbei/lunbotu/lunbotu1.jpg" mode="aspectFill"></image></view>
+  <view class="img"><image src="https://microcloudtech.com/images/zhongou/myphoto.jpg" mode="aspectFill"></image></view>
   <view class="content">
     <rich-text nodes="请在前台VIP室拍摄区领取佩戴校徽并拍摄个人学生证件照（着正装，男生正装为西服套装含领带），请在下方填写摄影师提供的照片编号，填写完成请点击确定完成键。"/>
   </view>
 </view>
 <view class = "item">
 
-<input placeholder="请输入您的照片号码"bindchange="contentchange"/>
+<input placeholder="请输入您的照片号码" bindchange="contentchange"/>
 </view>
 <button bindtap="cancel" >确认</button>
 </view>

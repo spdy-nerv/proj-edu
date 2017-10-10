@@ -30,7 +30,7 @@ image{
 }
 .content{
    padding:10rpx 37rpx;
-   font-size: 20rpx;
+   font-size: 22rpx;
    color: #333;
    line-height: 1.8;
    width: 100%;
@@ -59,7 +59,7 @@ button{
 position:absolute;
   left:5%;
   top:1000rpx;
-	background-color:blue;
+	background-color:#B39652;
 	color:#fff;
 	width:90%;
 line-height:1.5555555600000004;

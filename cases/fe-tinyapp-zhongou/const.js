@@ -24,16 +24,22 @@ var dayFormatList = [
 ];
 
 var reqHost = 'https://microcloudtech.com/gateway/zhongou/activity';
-
+var baseUrl = 'https://microcloudtech.com/gateway/zhongou/campustask';
 var APIS = {
   GET_ROLE_LIST: 						reqHost + '/getRoleList',
   GET_EVENT_TYPE_LIST: 			reqHost + '/getEventTypeList',
   LOGIN: 										reqHost + '/login',
   CHECK_SESSION: 						reqHost + '/checkSession',
-  GET_EVENTS_LIST_BY_MONTH: reqHost + '/getEventsListByMonth',
-  
+  GET_EVENTS_LIST:          reqHost + '/getEventList',
+  ADD_BAGGAGE:              baseUrl+'/task/confirmCheckedBaggage',//确认寄存行李
+  ADD_COMPLETE:             baseUrl+'/task/confirmPhotoComplete',//确认拍摄证件照完成
+  ADD_TEACH:                baseUrl+'/task/confirmRegisterToTeacher',//确认向班主任报到
+  ADD_IPAD:                 baseUrl+'/task/confirmSubmitIPAD',//确认提交ipad
+  ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
+  GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
+  ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
-	GET_COMMENT_MODULE: 			reqHost + '/getCommentModule',//获取评论模块
+	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口
 	FOLLOW_EVENT: 						reqHost + '/followEvent',//关注事件
 	UN_FOLLOW_EVENT:					reqHost + '/unfollowEvent',//取消关注
@@ -96,6 +102,9 @@ var APIS = {
 };
 
 var QQ_MAP_KEY = 'PLWBZ-AGPWS-LWBOA-6BJYO-ZUYYZ-O7FKK';
+var config = {
+  mapkey: '52d76099cd5124c5e891ec8df55cc2d3'
+};
 
 module.exports = {
     monthFormatList: monthFormatList,

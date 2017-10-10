@@ -12,7 +12,6 @@ Page({
 	data: {
 		pictureUrls: [
 			'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2749325973,1459603075&fm=27&gp=0.jpg',
-				'../../images/UI1_02.jpg'
 		],  //事情图片
 	    indicatorDots: true,  
 	    autoplay: true,  
@@ -75,7 +74,7 @@ Page({
 	},
 
 	onLoad: function(options){
-		
+		console.log(options.eventId)
 		this.setData({
 			eventId:options.eventId,
 			fromShare: options.fromShare || 0
@@ -91,43 +90,47 @@ Page({
 	//页面加载的函数
 	onLoadData: function() {
 		const that = this;
-		console.log( wx.getStorageSync('sid'))
 		const getEventBaseParams = {
-			sid: wx.getStorageSync('sid') || '',
+			pageNo:1,
+			pageSize:999,
 			eventId: that.data.eventId
 		};
 		
 		request({
 	      url: APIS.GET_EVENT_BASE,
-	      data: getEventBaseParams,
+		  data: getEventBaseParams,
+		  header: {
+			auth: wx.getStorageSync('token')
+		  },
 	      method: 'POST',
 	      realSuccess: function(data){
-	      		console.log("base",data);
-	        	var datas=data;
-				var en = parseInt(datas.startTime.substring(5, 7));
+			    var datas=data.data;
+	      		console.log("base",datas.modules);
+				// var en = parseInt(datas.startTime.substring(5, 7));
 
 				// edit by 梁冬
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
+				if(datas.modules)
 
 				that.setData({
-						"modules": modules,
+						"modules": datas.modules,
 						"eventName": datas.name,
 						"address": datas.address,
 						"poster": datas.poster,
-						"formatedMonth": monthFormatList[en-1].arabic + '月',
-						"startTime": { //开始时间
-							"year": datas.startTime.substring(0, 4), //年份
-							"month": datas.startTime.substring(5, 7),
-							"day": datas.startTime.substring(8, 10),
-							"hours": datas.startTime.substring(11, 16)
-						},
-						"endTime": { //结束时间
-							"year": datas.endTime.substring(0, 4), //年份
-							"month": datas.endTime.substring(5, 7),
-							"day": datas.endTime.substring(8, 10),
-							"hours": datas.endTime.substring(11, 16)
-						},
+						// "formatedMonth": monthFormatList[en-1].arabic + '月',
+						// "startTime": { //开始时间
+						// 	"year": datas.startTime.substring(0, 4), //年份
+						// 	"month": datas.startTime.substring(5, 7),
+						// 	"day": datas.startTime.substring(8, 10),
+						// 	"hours": datas.startTime.substring(11, 16)
+						// },
+						// "endTime": { //结束时间
+						// 	"year": datas.endTime.substring(0, 4), //年份
+						// 	"month": datas.endTime.substring(5, 7),
+						// 	"day": datas.endTime.substring(8, 10),
+						// 	"hours": datas.endTime.substring(11, 16)
+						// },
 						"pictureUrls" :datas.pictureUrls,
 						"isFollow": datas.isFollow, //是否关注了事件，默认false
 						"des.isFollow": datas.isFollow, 
@@ -328,12 +331,11 @@ Page({
 		let that = this;
 		let mL = that.data.modules.length;
 		for(let i=0;i<mL;i++){
-			if(that.data.modules[i].moduleType=="2"){
+			if(that.data.modules[i].moduleType=="COMMENT"){
 				console.log(that.data.modules[i].moduleId);
 				const getCommentModuleParams = {
-					sid: wx.getStorageSync('sid') || '',
-					size: 10,   
-				    offset: that.data.offset,
+					pageNo:1,
+					pageSize:999,
 					moduleId: that.data.modules[i].moduleId
 				};
 				wx.request({
@@ -343,13 +345,14 @@ Page({
 					// header: {}, // 设置请求的 header
 					success: function(res) {
 						console.log("获取评论数据！",res);
-						var moreData=res.data.resultData.data.commentList;
+						var moreData=res.data.data.list;
+					
 						for (var i in moreData) {
 							moreData[i].picNum = moreData[i].content.length - 1;
 						}
 						var data=that.data.des.commentData.data.commentList.concat(moreData);
 						that.setData({
-							"des.hasMore":res.data.resultData.data.hasMore,
+							"des.hasMore":res.data.hasMore,
 							//"des.commentData.commentList":data,
 							"des.commentData": res.data.resultData,
 							"des.commentData.data.commentList": data,
@@ -443,7 +446,7 @@ Page({
 		})
 	},
 
-	// 重新排序modules
+	//重新排序modules
 	sortModulesByPriority: function(modules) {
 		// 详情1，投票4，问卷5，评价6，评论2
 		var priority = {
@@ -454,9 +457,9 @@ Page({
 			"1": 4,
 			"2": 5
 		};
-		modules.sort(function(mA, mB) {
-			return priority[mA.moduleType] - priority[mB.moduleType];
-		});
+		// modules.sort(function(mA, mB) {
+		// 	return priority[mA.moduleType] - priority[mB.moduleType];
+		// });
 
 		return modules;
 	},

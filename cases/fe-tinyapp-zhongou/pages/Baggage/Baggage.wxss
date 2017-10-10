@@ -50,7 +50,9 @@ img {
 }
 
 .item input{
-	margin-left:30%;
+    width:90%;
+	margin-left:6%;
+	text-align:center;
 	margin-top:200rpx;
 	font-family: "微软雅黑";
 	background-color:#fff;
@@ -59,7 +61,7 @@ button{
 position:absolute;
   left:5%;
   top:1000rpx;
-	background-color:blue;
+	background-color:#B39652;
 	color:#fff;
 	width:90%;
 line-height:1.5555555600000004;
