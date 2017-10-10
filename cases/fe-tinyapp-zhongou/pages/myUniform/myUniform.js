@@ -16,6 +16,7 @@ Page({
   	isNoData:"",
   	loadText:'点击加载更多...',
   	list:[],
+  	moduleId:'',
   	 selectPerson:true,
     firstPerson:'M',
   	
@@ -40,7 +41,10 @@ Page({
      selectPerson:true,
    })
   },
-  onLoad: function () {
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+    });
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -69,7 +73,7 @@ Page({
   	wx.request({
 	      url: APIS.ADD_UNIFORM,
 	      data: {
-	      	moduleId: wx.getStorageSync('moduleId'),
+	      	moduleId: that.data.moduleId,
   				uniformSize: uniformSize  
 	      },
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  

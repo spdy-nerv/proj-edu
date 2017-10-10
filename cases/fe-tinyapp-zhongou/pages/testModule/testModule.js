@@ -82,6 +82,7 @@ Page({
 
   getTestModule: function() {
       var that = this;
+      console.log(this.data.moduleId)
       request({
         url: APIS.GET_TEST_MODULE,
         data: {
@@ -212,6 +213,7 @@ Page({
       mask: true,
       title: '数据提交中'
     });
+    console.log(this.data.moduleId)
     request({
       url: APIS.SUBMIT_QUESTION,
       data: {

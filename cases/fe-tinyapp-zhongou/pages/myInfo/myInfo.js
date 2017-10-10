@@ -9,6 +9,7 @@ Page({
 		footerConfig: { 
       pagePersonal: true
     },
+    moduleId: '',
     offset: 1,
     loading:false,
     disabled:false,
@@ -17,6 +18,7 @@ Page({
   	realName:'请输入您的名字',
   	phone:'请输入您的手机号码',
     class :'请选择班级',
+    classes :'',
     firstclass:'',
     selectclass:true,
     verifyCode:'请输入验证码',
@@ -46,39 +48,81 @@ Page({
   	
   },
  //获取验证码
-  getcode:function(e){
-  	var that=this;
-   var mobile=that.data.phone;
-    if (mobile.length == 0) {
-       wx.showToast({
-     title: '请输入手机号！',
-     icon: 'success',
-     duration: 1500
-    })
-		  return false;
-		 }
-		 if (mobile.length != 11) {
-		       wx.showToast({
-		     title: '手机号长度有误！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }
-		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-		 if (!myreg.test(mobile)) {
-		       wx.showToast({
-		     title: '手机号有误！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }
-		 else{
-		 	 wx.request({
-	      url: APIS.GET_VERIFYCODE,
+//getcode:function(e){
+//	var that=this;
+// var mobile=that.data.phone;
+//  if (mobile.length == 0) {
+//     wx.showToast({
+//   title: '请输入手机号！',
+//   icon: 'success',
+//   duration: 1500
+//  })
+//		  return false;
+//		 }
+//		 if (mobile.length != 11) {
+//		       wx.showToast({
+//		     title: '手机号长度有误！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+//		 if (!myreg.test(mobile)) {
+//		       wx.showToast({
+//		     title: '手机号有误！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		 else{
+//		 	 wx.request({
+//	      url: APIS.GET_VERIFYCODE,
+//	       data: {
+//	        phone:mobile
+//	      },
+//	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+//	      method: "POST", 
+//	      success: function(res) {  
+//	        console.log(res)
+//	        that.setData({
+//				     code:res.code,
+//				  })
+//	      }  
+//	    })  
+//		 }
+//},
+  //发送验证码
+//sendcode:function(){
+//  var that=this;
+//  var verifyCode=that.data.verifyCode;
+//  var code=that.data.code;
+//  if(verifyCode==code){
+//  	this.setData({
+//		     isPhoneVarified :true,
+//		  })
+//  }else{
+//  	this.setData({
+//		     isPhoneVarified :false,
+//		  })
+//  }
+//} ,
+    //匹配个人信息
+sendmsg:function(){
+    var that=this;
+    var realName=that.data.realName;
+    var phone=that.data.phone;
+    var classes=that.data.classes;
+    var moduleId=that.data.moduleId;
+    var code=that.data.code;
+     	wx.request({
+	      url: APIS.GET_IDENTITY,
 	       data: {
-	        phone:mobile
+	        realName:realName,
+	        classes:classes,
+	        phone:phone,
+	        moduleId:moduleId
 	      },
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  
 	      method: "POST", 
@@ -88,24 +132,8 @@ Page({
 				     code:res.code,
 				  })
 	      }  
-	    })  
-		 }
-  },
-  //发送验证码
-  sendcode:function(){
-    var that=this;
-    var verifyCode=that.data.verifyCode;
-    var code=that.data.code;
-    if(verifyCode==code){
-    	this.setData({
-		     isPhoneVarified :true,
-		  })
-    }else{
-    	this.setData({
-		     isPhoneVarified :false,
-		  })
-    }
-  } ,
+	    }) 
+} ,
  //点击选择类型
   clickclass:function(){
     var selectclass = this.data.selectclass;
@@ -122,7 +150,7 @@ Page({
    //点击切换
   mySelect:function(e){
    this.setData({
-     firstclass:e.target.dataset.me,
+     classes:e.target.dataset.me,
      selectclass:true,
    })
   },
@@ -191,14 +219,10 @@ Page({
       Baggage:e.detail.value
     })
   },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
-	    user.login(this.onLoadData(false), this, false);
-  },
-  onLoad: function () {
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+    });
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -220,7 +244,7 @@ Page({
   onLoadData: function(load){
   	var that = this;
   	var params = {
-  		moduleId: wx.getStorageSync('moduleId'),
+  		moduleId: this.data.moduleId,
   	};
   	if(load){
   		that.setData({
@@ -236,6 +260,12 @@ Page({
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
      		this.setData({
+     			baggageNo:data.baggageNo,
+     			classes:data.classes,
+     			company:data.company,
+     			dataStatus:data.dataStatus,
+     			hotelRoomNo:data.hotelRoomNo,
+     			isInvoice:data.isInvoice,
 		      isPhoneVarified:data.isPhoneVarified,
 		      isReported:data.isReported,
 		      isSubmitIpad:data.isSubmitIpad,
@@ -255,7 +285,74 @@ Page({
       }
     }, false);
   },
-  
+  addmsg:function(){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_DRAFT,
+	      data: {
+  				baggageNo: that.data.baggageNo,
+  				classes: that.data.classes,
+  				company: that.data.company,
+  				hotelRoomNo: that.data.hotelRoomNo,
+  				isInvoice: that.data.isInvoice,
+  				isPhoneVarified: that.data.isPhoneVarified,
+  				isReported: that.data.isReported,
+  				isSubmitIpad: that.data.isSubmitIpad,
+  				isTakeBus: that.data.isTakeBus,
+  				moduleId: that.data.moduleId,
+  				phone: that.data.phone,
+  				photoNo: that.data.photoNo,
+  				plateNumber: that.data.plateNumber,
+  				realName: that.data.realName,
+  				uniformSize: that.data.uniformSize,
+  				verifyCode: that.data.verifyCode,
+	      },
+	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+	      method: "POST", 
+	      success: function(res) {  
+	         wx.showToast({
+		          title: '保存成功'
+		        });
+		         wx.navigateTo({
+						  url: '../detail/detail'
+						});
+	      }  
+	   })  
+  },
+  sendmsg:function(){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_SUBMIT,
+	      data: {
+  				baggageNo: that.data.baggageNo,
+  				classes: that.data.classes,
+  				company: that.data.company,
+  				hotelRoomNo: that.data.hotelRoomNo,
+  				isInvoice: that.data.isInvoice,
+  				isPhoneVarified: that.data.isPhoneVarified,
+  				isReported: that.data.isReported,
+  				isSubmitIpad: that.data.isSubmitIpad,
+  				isTakeBus: that.data.isTakeBus,
+  				moduleId: that.data.moduleId,
+  				phone: that.data.phone,
+  				photoNo: that.data.photoNo,
+  				plateNumber: that.data.plateNumber,
+  				realName: that.data.realName,
+  				uniformSize: that.data.uniformSize,
+  				verifyCode: that.data.verifyCode,
+	      },
+	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+	      method: "POST", 
+	      success: function(res) {  
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		         wx.navigateTo({
+						  url: '../detail/detail'
+						});
+	      }  
+	   })  
+  },
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){

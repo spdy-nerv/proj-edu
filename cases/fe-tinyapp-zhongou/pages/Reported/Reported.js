@@ -16,12 +16,16 @@ Page({
   	isNoData:"",
   	loadText:'点击加载更多...',
   	list:[],
+  	moduleId:'',
   	pictureUrls: [
 			'https://microcloudtech.com/images/zhongou/reported.jpg'
 		],  //事情图片
   	
   },
-  onLoad: function () {
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+    });
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -55,15 +59,12 @@ Page({
   	wx.request({
 	      url: APIS.ADD_TEACH,
 	      data: {
-	      	moduleId: wx.getStorageSync('moduleId'), 
+	      	moduleId: that.data.moduleId,
 	      },
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  
 	      method: "POST", 
 	      success: function(res) {  
 	        console.log(res)
-	         wx.showToast({
-		          title: '提交成功'
-		        });
 		         wx.navigateTo({
 						  url: '../detail/detail'
 						});

@@ -4,28 +4,22 @@
 		<input type="text" name = "realName" placeholder="{{realName}}" focus="{{focus}}" bindchange="realNamechange"/>
     </view>
     <view class = "item-r"  bindtap="clickclass">
-        <input class="input-r" type="text" name = "class" placeholder="{{class}}" value="{{firstclass}}" focus="{{focus}}" bindchange="classchange"/>
+        <input class="input-r" type="text" name = "class" placeholder="{{class}}" value="{{classes}}" focus="{{focus}}" bindchange="classchange"/>
     </view>
     <view class="person_box">
 	   <view class="phone_select" hidden="{{selectclass}}">
 	     <view class="select_one" bindtap="mySelect" data-me="北京三班">北京三班</view>
 	     <view class="select_one" bindtap="mySelect" data-me="北京四班">北京四班</view>
 	     <view class="select_one" bindtap="mySelect" data-me="上海三班">上海三班</view>
-	     <view class="select_one" bindtap="mySelect" data-me="上海五班">XXL</view>
-	     <view class="select_one" bindtap="mySelect" data-me="X深圳二班">X深圳二班</view>
+	     <view class="select_one" bindtap="mySelect" data-me="上海五班">上海五班</view>
+	     <view class="select_one" bindtap="mySelect" data-me="深圳二班">深圳二班</view>
        </view>
     </view>
     <view class = "item-l">
 		<input type="text" name = "phone" placeholder="{{phone}}" focus="{{focus}}" bindchange="phonechange"/>
     </view>
     <view class = "item-r">
-        <button class="sendcode"  bindtap="getcode">获取验证码</button>
-    </view>
-     <view class = "item-l">
-		<input type="text" name = "verifyCode" placeholder="{{verifyCode}}" focus="{{focus}}" bindchange="verifyCodechange"/>
-    </view>
-    <view class = "item-r" >
-        <button class="sendcode"  bindtap="sendcode">发送验证码</button>
+        <button class="sendcode"  bindtap="sendmsg">匹配个人信息</button>
     </view>
  </view>
  <view class="title"><em>|</em>车辆信息 </view>
@@ -74,5 +68,5 @@
   </label>
 </radio-group>
  </view>
- <button class="button-l" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >保存</button>
- <button class="button-r" style="font-size:30rpx;margin-top:5%; " bindtap="cancel" >确认提交</button>
+ <button class="button-l" style="font-size:30rpx;margin-top:5%; " bindtap="addmsg" >保存</button>
+ <button class="button-r" style="font-size:30rpx;margin-top:5%; " bindtap="sendmsg" >确认提交</button>

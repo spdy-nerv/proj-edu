@@ -14,11 +14,15 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
+  	moduleId:'',
   	loadText:'点击加载更多...',
   	list:[]
   	
   },
-  onLoad: function () {
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+    });
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -28,11 +32,6 @@ Page({
   
   onLoadData: function(load){
   	var that = this;
-  	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -46,7 +45,7 @@ Page({
   	wx.request({
 	      url: APIS.ADD_COMPLETE,
 	      data: {
-	      	moduleId: wx.getStorageSync('moduleId'),
+	      	moduleId: that.data.moduleId
 	      },
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  
 	      method: "POST", 

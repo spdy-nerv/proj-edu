@@ -54,7 +54,10 @@ Page({
       mask: true,
       title: '数据加载中'
     });
-
+this.getCurrentDate();
+    this.getEventList();
+    this.getFilterTypes();
+    this.createAnim();
     // 处理兼容性
     var sysInfo = wx.getSystemInfoSync();
     if (sysInfo.system.toUpperCase().indexOf('IOS') != -1) {
@@ -152,6 +155,7 @@ Page({
       url: APIS.GET_EVENT_TYPE_LIST,
       method: 'GET', 
       realSuccess: function(data){
+      	console.log(data)
         var list = data.list;
         that.setData({
           eventTypeList: [{typeId: '', typeName: '全部'}].concat(list)
@@ -162,6 +166,7 @@ Page({
       url: APIS.GET_ROLE_LIST,
       method: 'GET', 
       realSuccess: function(data){
+      	console.log(data)
         var list = data.list;
         that.setData({
           publisherTypeList: [{roleId: '', roleName: '全部'}].concat(list)

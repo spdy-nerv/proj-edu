@@ -13,7 +13,7 @@
 <!--详情默认模块 end-->
 <!-- 活动开始 -->
 <view class='activity'>
-    <navigator url='../Reported/Reported'>
+    <navigator url='../Reported/Reported?moduleId={{moduleId}}'>
   <view class="activity-item">
       <view>
         <text class="number">1</text>
@@ -23,7 +23,7 @@
       <image src="../../images/gou.png" class='right-img'></image>
   </view>
     </navigator>
-    <navigator url='../myUniform/myUniform'>
+    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}'>
         <view class="activity-item">
             <view>
                 <text class="number">2</text>
@@ -33,7 +33,7 @@
             <image src="../../images/gou.png" class='right-img' ></image>
         </view>
       </navigator>
-      <navigator url='../myPhoto/myPhoto'>
+      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">3</text>
@@ -53,7 +53,7 @@
               <image src="../../images/gou.png" class='right-img'></image>
           </view>
       </navigator>
-  <navigator  url='../Baggage/Baggage'>
+  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}'>
       <view class="activity-item">
           <view>
               <text class="number">5</text>
@@ -63,7 +63,7 @@
           <image src="../../images/gou.png" class='right-img'></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo'>
+  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>

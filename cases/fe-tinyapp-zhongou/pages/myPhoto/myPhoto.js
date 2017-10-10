@@ -16,9 +16,14 @@ Page({
   	isNoData:"",
   	photoNo:'请输入您的照片号码',
   	loadText:'点击加载更多...',
+  	moduleId:'',
   	
   },
-  onLoad: function () {
+  onLoad: function (options) {
+  	console.log(options)
+  	this.setData({
+      moduleId: options.moduleId
+    });
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -46,7 +51,7 @@ Page({
   	wx.request({
 	      url: APIS.ADD_COMPLETE,
 	      data: {
-	      	moduleId: wx.getStorageSync('moduleId'),
+	      	moduleId: that.data.moduleId,
   				photoNo: photoNo  
 	      },
 	     header: {'content-type': 'application/x-www-form-urlencoded'},  

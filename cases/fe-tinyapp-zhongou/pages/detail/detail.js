@@ -75,7 +75,7 @@ Page({
 	},
 
 	onLoad: function(options){
-		
+		console.log(options)
 		this.setData({
 			eventId:options.eventId,
 			fromShare: options.fromShare || 0
@@ -110,7 +110,7 @@ Page({
 				// edit by 梁冬
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
-
+				console.log(modules)
 				that.setData({
 						"modules": modules,
 						"eventName": datas.name,

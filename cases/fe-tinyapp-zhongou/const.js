@@ -32,12 +32,14 @@ var APIS = {
   CHECK_SESSION: 						reqHost + '/checkSession',
   GET_EVENTS_LIST_BY_MONTH: reqHost + '/getEventsListByMonth',
   GET_TASK:                 baseUrl+'/task',//获取任务数据
+  GET_IDENTITY:             baseUrl+'/task/bindingIdentity',//身份认证
   ADD_BAGGAGE:              baseUrl+'/task/confirmCheckedBaggage',//确认寄存行李
   ADD_COMPLETE:             baseUrl+'/task/confirmPhotoComplete',//确认拍摄证件照完成
   ADD_TEACH:                baseUrl+'/task/confirmRegisterToTeacher',//确认向班主任报到
   ADD_IPAD:                 baseUrl+'/task/confirmSubmitIPAD',//确认提交ipad
   ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
+  ADD_DRAFT:                baseUrl+'/task/draft',//暂存任务数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentModule',//获取评论模块
