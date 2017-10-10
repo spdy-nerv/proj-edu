@@ -20,7 +20,7 @@ Page({
     class :'请选择班级',
     classes :'',
     firstclass:'',
-    selectclass:true,
+    selectclass:false,
     verifyCode:'请输入验证码',
     sendcode:'发送验证码',
     plateNumber:'请输入车牌号码',
@@ -36,6 +36,8 @@ Page({
     isTakeBus:false,
     isSubmitIpad:false,
     isReported:false,
+    busLine:'',
+    selectbus:false,
     isPhoneVarified:false,
     disabled:false,
     code:'',
@@ -43,6 +45,7 @@ Page({
       {name: '不需要', value: '不需要'},
       {name: 'T2', value: 'T2',},
       {name: 'T3', value: 'T3'},
+      {name: '北京南站', value: '北京南站'},
     ],
   	loadText:'点击加载更多...',
   	list:[]
@@ -147,7 +150,7 @@ bindingIdentity:function(){
         }  
 	    }) 
 } ,
- //点击选择类型
+ //点击选择班级类型
   clickclass:function(){
     var selectclass = this.data.selectclass;
     if(selectclass == true){
@@ -165,6 +168,35 @@ bindingIdentity:function(){
    this.setData({
      classes:e.target.dataset.me,
      selectclass:true,
+   })
+  },
+ //点击选择公交类型
+  clickbus:function(){
+    var selectbus = this.data.selectbus;
+    if(selectbus == true){
+     this.setData({
+     selectbus:false,
+  })
+    }else{
+     this.setData({
+		     selectbus:true,
+		  })
+    }
+  } ,
+   //点击切换
+  busSelect:function(e){
+  	if(e.target.dataset.me=='不需要'){ 	
+	    this.setData({
+	      isTakeBus:false
+	    })
+    }else{
+    	 this.setData({
+	      isTakeBus:true
+	    })
+    }
+   this.setData({
+     busLine:e.target.dataset.me,
+     selectbus:true,
    })
   },
   realNamechange:function(e){
@@ -307,6 +339,7 @@ bindingIdentity:function(){
 		      plateNumber:data.data.plateNumber,
 		      realName:data.data.realName,
 		      uniformSize:data.data.uniformSize,
+		      	busLine: that.data.busLine,
 		    })
       },
       realFail: function(msg) {
@@ -333,6 +366,7 @@ bindingIdentity:function(){
   				photoNo: that.data.photoNo,
   				plateNumber: that.data.plateNumber,
   				uniformSize: that.data.uniformSize,
+  				busLine: that.data.busLine,
 	      },
 	      header: {
             auth: wx.getStorageSync('token')
@@ -363,6 +397,7 @@ bindingIdentity:function(){
   				photoNo: that.data.photoNo,
   				plateNumber: that.data.plateNumber,
   				uniformSize: that.data.uniformSize,
+  				busLine: that.data.busLine,
 	      },
 	     header: {
             auth: wx.getStorageSync('token')

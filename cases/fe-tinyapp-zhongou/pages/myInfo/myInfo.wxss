@@ -78,13 +78,9 @@ background:#fff;
 }
 .phone_select{
  width:100%; 
- padding-top:120rpx;
     z-index: 100;
     position: absolute;
-     width:42%; 
-     
-      margin-left:52%;
-      magin-top:50rpx;
+    padding-top:10rpx;
     border:2rpx solid #eee;
 }
 .select_one{
@@ -93,6 +89,16 @@ background:#fff;
     line-height:38rpx;
     background-color:#fff;
     
+}
+.bus_box{
+    position: relative;  
+    width:100%; 
+}
+.bus_select{
+ width:100%; 
+    z-index: 100;
+    position: absolute;
+    border:2rpx solid #eee;
 }
 .button-l{
     float:left;
@@ -117,4 +123,10 @@ background:#fff;
 }
 .disable{
 	background-color:#ccc;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
 }
