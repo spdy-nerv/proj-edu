@@ -47,7 +47,25 @@ float:left;
 	
 }
 .input-r{
-	text-aline:center;	
+	text-aline:center;
+}
+.input-b{
+magin-left:20%;
+	text-aline:center;
+	width:80%;
+	float:left;
+}
+.imgages{
+    width:20%;
+	height:1.4rem;
+}
+.sendcode{
+  text-aline:center;
+  background:#B39652;
+  font-size:30rpx;
+  color:#fff;
+  height:54rpx;
+   line-height:54rpx;
 }
 textarea{ float:left;background:#fff;}
 input{
@@ -60,7 +78,7 @@ background:#fff;
 }
 .phone_select{
  width:100%; 
- padding-top:50rpx;
+ padding-top:120rpx;
     z-index: 100;
     position: absolute;
      width:42%; 
@@ -96,4 +114,7 @@ background:#fff;
 	height:56rpx;
     line-height:56rpx;
     font-size:30rpx
+}
+.disable{
+	background-color:#ccc;
 }

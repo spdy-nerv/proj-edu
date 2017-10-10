@@ -105,7 +105,7 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
-	      		console.log("base",datas.modules);
+	      		console.log("base",datas.modules[0].moduleId);
 				// var en = parseInt(datas.startTime.substring(5, 7));
 
 				// edit by 梁冬
@@ -114,7 +114,7 @@ Page({
 				if(datas.modules)
 
 				that.setData({
-						"modules": datas.modules,
+						modules: datas.modules,
 						"eventName": datas.name,
 						"address": datas.address,
 						"poster": datas.poster,

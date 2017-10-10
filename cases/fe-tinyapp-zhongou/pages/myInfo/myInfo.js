@@ -9,6 +9,7 @@ Page({
 		footerConfig: { 
       pagePersonal: true
     },
+    moduleId: '',
     offset: 1,
     loading:false,
     disabled:false,
@@ -16,8 +17,8 @@ Page({
   	isNoData:"",
   	realName:'请输入您的名字',
   	phone:'请输入您的手机号码',
-  	photo:'上传图片',
     class :'请选择班级',
+    classes :'',
     firstclass:'',
     selectclass:true,
     verifyCode:'请输入验证码',
@@ -25,10 +26,10 @@ Page({
     plateNumber:'请输入车牌号码',
     ischecked:false,
     photograph:'拍照识别',
-    content:'请在此输入公司发票信息',
+    company:'请在此输入公司发票信息',
     money:'请输入拆分金额',
-    uniformSize:'请输入您的小幅尺寸',
-    myphoto:'请输入您的照片编号',
+    uniformSize:'请输入您的校服尺寸',
+    photoNo:'请输入您的照片编号',
     hotelRoomNo:'请输入您的酒店房号',
     baggageNo:'请输入您的行李编号',
     isInvoice:false,
@@ -36,7 +37,9 @@ Page({
     isSubmitIpad:false,
     isReported:false,
     isPhoneVarified:false,
-    items: [
+    disabled:false,
+    code:'',
+    buses: [
       {name: '不需要', value: '不需要'},
       {name: 'T2', value: 'T2',},
       {name: 'T3', value: 'T3'},
@@ -45,6 +48,105 @@ Page({
   	list:[]
   	
   },
+ //获取验证码
+//getcode:function(e){
+//	var that=this;
+// var mobile=that.data.phone;
+//  if (mobile.length == 0) {
+//     wx.showToast({
+//   title: '请输入手机号！',
+//   icon: 'success',
+//   duration: 1500
+//  })
+//		  return false;
+//		 }
+//		 if (mobile.length != 11) {
+//		       wx.showToast({
+//		     title: '手机号长度有误！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+//		 if (!myreg.test(mobile)) {
+//		       wx.showToast({
+//		     title: '手机号有误！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		 else{
+//		 	 wx.request({
+//	      url: APIS.GET_VERIFYCODE,
+//	       data: {
+//	        phone:mobile
+//	      },
+//	     header: {'content-type': 'application/x-www-form-urlencoded'},  
+//	      method: "POST", 
+//	      success: function(res) {  
+//	        console.log(res)
+//	        that.setData({
+//				     code:res.code,
+//				  })
+//	      }  
+//	    })  
+//		 }
+//},
+  //发送验证码
+//sendcode:function(){
+//  var that=this;
+//  var verifyCode=that.data.verifyCode;
+//  var code=that.data.code;
+//  if(verifyCode==code){
+//  	this.setData({
+//		     isPhoneVarified :true,
+//		  })
+//  }else{
+//  	this.setData({
+//		     isPhoneVarified :false,
+//		  })
+//  }
+//} ,
+    //匹配个人信息
+bindingIdentity:function(){
+    var that=this;
+    var realName=that.data.realName;
+    var phone=that.data.phone;
+    var classes=that.data.classes;
+    var moduleId=that.data.moduleId;
+    var code=that.data.code;
+    console.log(realName,phone,classes,moduleId)
+     	wx.request({
+	      url: APIS.GET_IDENTITY,
+	       data: {
+	        realName:realName,
+	        classes:classes,
+	        phone:phone,
+	        moduleId:moduleId
+	      },
+	     header: {
+            auth: wx.getStorageSync('token')
+         }, 
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+	        wx.showToast({
+					 title: '认证成功',
+					})
+	        that.setData({
+				     isPhoneVarified:true,
+				     disabled:true
+				  })
+	      },
+	      fail: function(){  
+          wx.showToast({
+					 title: '认证失败',
+					})
+        }  
+	    }) 
+} ,
  //点击选择类型
   clickclass:function(){
     var selectclass = this.data.selectclass;
@@ -54,14 +156,14 @@ Page({
   })
     }else{
      this.setData({
-     selectclass:true,
-  })
+		     selectclass:true,
+		  })
     }
   } ,
    //点击切换
   mySelect:function(e){
    this.setData({
-     firstclass:e.target.dataset.me,
+     classes:e.target.dataset.me,
      selectclass:true,
    })
   },
@@ -75,7 +177,7 @@ Page({
       phone:e.detail.value
     })
   },
-  photochange:function(e){
+  photoNochange:function(e){
     this.setData({
       photo:e.detail.value
     })
@@ -100,9 +202,9 @@ Page({
       photograph:e.detail.value
     })
   },
-  contentchange:function(e){
+  companychange:function(e){
     this.setData({
-      content:e.detail.value
+      company:e.detail.value
     })
   },
   moneychange:function(e){
@@ -130,18 +232,10 @@ Page({
       Baggage:e.detail.value
     })
   },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
-	    user.login(this.onLoadData(false), this, false);
-  },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+   });
 	    user.login(this.onLoadData(false), this, false);
   },
   checkboxChange: function(e) {
@@ -159,9 +253,7 @@ Page({
   onLoadData: function(load){
   	var that = this;
   	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
+  		moduleId: that.data.moduleId,
   	};
   	if(load){
   		that.setData({
@@ -170,35 +262,40 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
+  	console.log(that.data.moduleId)
   	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
+      url: APIS.GET_TASK,
+       data:{
+		  		moduleId: that.data.moduleId,
+		  	},
+	      header: {
+            auth: wx.getStorageSync('token')
+         },
+      method: 'GET',
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
+      	if(data.data.isPhoneVarified&&data.data.isPhoneVarified==true){
       		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
+			      disabled:true,
+			    })
       	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
+     		that.setData({
+     			baggageNo:data.data.baggageNo,
+     			classes:data.data.classes,
+     			company:data.data.company,
+     			dataStatus:data.data.dataStatus,
+     			hotelRoomNo:data.data.hotelRoomNo,
+     			isInvoice:data.data.isInvoice,
+		      isPhoneVarified:data.data.isPhoneVarified,
+		      isReported:data.data.isReported,
+		      isSubmitIpad:data.data.isSubmitIpad,
+		      isTakeBus:data.data.isTakeBus,
+		      phone:data.data.phone,
+		      photoNo:data.data.photoNo,
+		      plateNumber:data.data.plateNumber,
+		      realName:data.data.realName,
+		      uniformSize:data.data.uniformSize,
+		    })
       },
       realFail: function(msg) {
         wx.hideLoading();
@@ -208,7 +305,74 @@ Page({
       }
     }, false);
   },
-  
+  addmsg:function(){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_DRAFT,
+	      data: {
+  				baggageNo: that.data.baggageNo,
+  				classes: that.data.classes,
+  				company: that.data.company,
+  				hotelRoomNo: that.data.hotelRoomNo,
+  				isInvoice: that.data.isInvoice,
+  				isPhoneVarified: that.data.isPhoneVarified,
+  				isReported: that.data.isReported,
+  				isSubmitIpad: that.data.isSubmitIpad,
+  				isTakeBus: that.data.isTakeBus,
+  				moduleId: that.data.moduleId,
+  				phone: that.data.phone,
+  				photoNo: that.data.photoNo,
+  				plateNumber: that.data.plateNumber,
+  				realName: that.data.realName,
+  				uniformSize: that.data.uniformSize,
+  				verifyCode: that.data.verifyCode,
+	      },
+	      header: {
+            auth: wx.getStorageSync('token')
+         }, 
+	      method: "POST", 
+	      success: function(res) {  
+	         wx.showToast({
+		          title: '保存成功'
+		        });
+		        
+	      }  
+	   })  
+  },
+  sendmsg:function(){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_SUBMIT,
+	      data: {
+  				baggageNo: that.data.baggageNo,
+  				classes: that.data.classes,
+  				company: that.data.company,
+  				hotelRoomNo: that.data.hotelRoomNo,
+  				isInvoice: that.data.isInvoice,
+  				isPhoneVarified: that.data.isPhoneVarified,
+  				isReported: that.data.isReported,
+  				isSubmitIpad: that.data.isSubmitIpad,
+  				isTakeBus: that.data.isTakeBus,
+  				moduleId: that.data.moduleId,
+  				phone: that.data.phone,
+  				photoNo: that.data.photoNo,
+  				plateNumber: that.data.plateNumber,
+  				realName: that.data.realName,
+  				uniformSize: that.data.uniformSize,
+  				verifyCode: that.data.verifyCode,
+	      },
+	     header: {
+            auth: wx.getStorageSync('token')
+         }, 
+	      method: "POST", 
+	      success: function(res) {  
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		       
+	      }  
+	   })  
+  },
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){
