@@ -74,13 +74,13 @@ Page({
       realSuccess: function(data){
       	console.log(data);
         that.setData({
-        	realName	:data.realName,
-        	birthday  :data.birthday ,
-        	grade 		:data.grade ,
-        	phone 	  :data.phone ,
-        	professional :data.professional  ,
-        	declaration 		:data.declaration ,
-        	location :	data.location 
+        	realName	:data.data.realName,
+        	birthday  :data.data.birthday ,
+        	grade 		:data.data.grade ,
+        	phone 	  :data.data.phone ,
+        	professional :data.data.professional  ,
+        	declaration 		:data.data.declaration ,
+        	location :	data.data.location 
         });
         wx.hideLoading();
         
@@ -117,7 +117,10 @@ Page({
 		          title: '保存成功'
 		        });
 		        
-	      }  
+	      },
+	       fail: function(res){  
+        console.log(res)
+      }  
 	   })  
   },
    //取消

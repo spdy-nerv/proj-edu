@@ -42,7 +42,7 @@ var APIS = {
   ADD_DRAFT:                baseUrl+'/task/draft',//暂存数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
   GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
-  ADD_PERSONALBASEINFO:      baseUrl+'/task/updataPersonalBaseInfo',//修改个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口
