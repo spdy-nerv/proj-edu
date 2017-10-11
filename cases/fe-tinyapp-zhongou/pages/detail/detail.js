@@ -108,14 +108,18 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
+<<<<<<< HEAD
 				  console.log("base",datas.modules);
+=======
+	      		console.log("base",datas.modules[0].moduleId);
+>>>>>>> 61e1c2f15875a7303b03bcd02ec133524701ea09
 				// var en = parseInt(datas.startTime.substring(5, 7));
 
 				// edit by 梁冬
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
 				that.setData({
-						"modules": datas.modules,
+						modules: datas.modules,
 						"eventName": datas.name,
 						"address": datas.address,
 						"poster": datas.poster,

@@ -37,8 +37,16 @@ var APIS = {
   ADD_IPAD:                 baseUrl+'/task/confirmSubmitIPAD',//确认提交ipad
   ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
+  GET_TASK:                 baseUrl+'/task',//获取任务数据 
+  GET_IDENTITY:             baseUrl+'/task/bindingIdentity',//身份认证 
+  ADD_DRAFT:                baseUrl+'/task/draft',//暂存数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
+<<<<<<< HEAD
   ADD_HOTELROOM:            baseUrl+'/task/confirmHotelRoom',//提交酒店入住数据
+=======
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
+>>>>>>> 61e1c2f15875a7303b03bcd02ec133524701ea09
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口

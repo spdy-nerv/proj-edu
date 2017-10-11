@@ -32,6 +32,7 @@ Page({
     checkFnName: 'onCheck'
   },
   onLoad:function(options){
+  	console.log(options)
     // 生命周期函数--监听页面加载
     this.setData({
       moduleId: options.moduleId

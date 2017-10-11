@@ -8,7 +8,7 @@
 </view>
 <view class = "item">
 
-<input placeholder="请输入您的行李号码"bindchange="contentchange"/>
+<input placeholder="{{baggageNo}}"bindchange="contentchange"/>
 </view>
 <button bindtap="cancel" >确认</button>
 </view>

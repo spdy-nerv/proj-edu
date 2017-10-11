@@ -14,8 +14,8 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	loadText:'点击加载更多...',
   	list:[],
+  	moduleId:'',
   	 selectPerson:true,
     firstPerson:'M',
   	
@@ -40,11 +40,10 @@ Page({
      selectPerson:true,
    })
   },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+   });
 	    user.login(this.onLoadData(false), this, false);
   },
   
@@ -62,45 +61,28 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
-  	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
-      realSuccess: function(data){
-      	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
-      		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
-      	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
-      },
-      realFail: function(msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, false);
   },
-  
+  cancel:function(e){
+  	var that=this;
+  	var uniformSize=that.data.firstPerson;
+  	console.log(wx.getStorageSync('token'))
+  	wx.request({
+	      url: APIS.ADD_UNIFORM,
+	      data: {
+	      	moduleId: that.data.moduleId,
+  				uniformSize: uniformSize  
+	      },
+	     header: { auth: wx.getStorageSync('token')},  
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+	         wx.showToast({
+		          title: '提交成功'
+		        });
+		      
+	      }  
+	   })  
+  },  
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){
