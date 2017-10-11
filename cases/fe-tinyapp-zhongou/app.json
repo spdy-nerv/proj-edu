@@ -12,6 +12,7 @@
     "pages/hobbiesLable/hobbiesLable",
     "pages/map/map",
     "pages/personCenter/personCenter",
+    "pages/Editperson/Editperson",
     "pages/myCard/myCard",
     "pages/myPhoto/myPhoto",
     "pages/myUniform/myUniform",

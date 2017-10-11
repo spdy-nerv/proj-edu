@@ -6,6 +6,12 @@ Page({
   data: {
   	
   },
+   //我的关注
+  toEditperson: function(e){
+  	wx.navigateTo({
+			  url: '../Editperson/Editperson'
+		});
+  },
   onLoad: function () {
   	wx.showLoading({
 	      mask: true,

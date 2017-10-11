@@ -8,7 +8,7 @@
          <image style="width:100%;height:100%" src="../../images/tx.jpg"/>
     </view>
     
-	<button class='edit-button' style="padding-left:10rpx;padding-right:10rpx;width:200rpx;height:40rpx;font-size:26rpx;line-height:40rpx;color:#8A8A8A">
+	<button bindtap="toEditperson" class='edit-button' style="padding-left:10rpx;padding-right:10rpx;width:200rpx;height:40rpx;font-size:26rpx;line-height:40rpx;color:#8A8A8A">
          	编辑个人资料
     </button>
      <view class='zhongou'>
@@ -69,4 +69,7 @@
 			    </view>
         	</view>
         </view>
+   		<!--底部导航-->
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
 </view>
