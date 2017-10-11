@@ -11,9 +11,9 @@
         </view>
         
         <view class="foot-item foot2">
-        <navigator url="../eventPublish/eventPublish" hover-class="none">
+        <!-- <navigator url="../eventPublish/eventPublish" hover-class="none"> -->
          <view class="font-gradient"><image src='../../images/ui_03.jpg'/></view>
-        </navigator>
+        <!-- </navigator> -->
         </view>
         
         <view class="foot-item foot3">

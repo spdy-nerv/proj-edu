@@ -63,7 +63,7 @@ page {
     /* background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/test_submit_btn.png); */
     background-repeat: no-repeat;
     background-size: 100%;
-    background-color:#82A9DB;
+    background-color:#B29754;
     text-align: center;
     line-height: 80rpx;
     color: #fff;
@@ -79,7 +79,7 @@ page {
 }
 
 .panel-question-wrap {
-    padding: 40rpx 30rpx;
+    padding: 40rpx 0;
     background-color: #fff;
     margin:30rpx;
     box-sizing: border-box;
@@ -148,7 +148,7 @@ page {
 }
 
 .panel-option-text {
-    font-size: 30rpx;
+    font-size: 24rpx;
     color: #2d2e33;
     line-height: 1.2;
     flex: 1;

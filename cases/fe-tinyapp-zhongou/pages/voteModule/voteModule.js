@@ -1,8 +1,8 @@
-var { APIS } = require('../../const');
-var util = require('../../utils/util');
-var user = require('../../libs/user');
+var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
+var user = require('../../libs/user');
 
+var app = getApp();
 Page({
   data:{
     // TMP
@@ -11,9 +11,24 @@ Page({
     isAllowVote: true,
     hasVoted: false,
     votedId: '',
-    title: '',
+    /*
+    title: '你是否对腾讯进入校园招聘感兴趣',
     description: '',
-    options: [],
+    options: [
+          {
+            optionId: '11',
+            optionName: '我觉得不错'
+          },
+          {
+            optionId: '12',
+            optionName: '挺感兴趣'
+          },
+          {
+            optionId: '13',
+            optionName: '很好，使得企业和校园更紧密'
+          },
+        ],
+        */
     checkFnName: 'onCheck'
   },
   onLoad:function(options){
@@ -38,24 +53,34 @@ Page({
       var that = this;
       request({
         url: APIS.GET_VOTE_MODULE,
+        header: {
+          auth: wx.getStorageSync('token')
+        },
         data: {
-            moduleId: this.data.moduleId,
-            sid: wx.getStorageSync('sid')
+            moduleId:that.data.moduleId,
+            pageNo:1,
+            pageSize:99
         },
         method: 'POST',
         realSuccess: function(data) {
-            var cfg = data.config;
-            var d = data.data;
+          console.log(data);
+            var cfg = data.data.config;
+            var d = data.data.data;
+            console.log(d);
+            var q = d[0];
+            console.log(q);
             that.setData({
-              isActive: cfg.active,
-              isAllowVote: cfg.allowVote,
-              hasVoted: d.hasVoted,
-              votedId: d.hasVoted ? d.votedOptionId : '',
-              title: d.title,
-              description: d.description,
-              checkFnName: cfg.active  && !d.hasVoted ? 'onCheck' : ''
+              //isActive: cfg.active,
+              isAllowVote: cfg.isAllow,
+              hasVoted: data.isTest,
+              question: q,
+              options: q.options,
+              votedId: data.isTest ? q.selectValue : '',
+              title: data.title,
+              description: q.questionCotent,
+              checkFnName: !data.isTest ? 'onCheck' : ''
             });
-            that.renderVote(d.options);
+            that.renderVote(q.options);
             wx.hideLoading();
         },
         loginCallback: this.getVoteModule,
@@ -72,7 +97,7 @@ Page({
     var that = this;
     this.totalVote = this.getTotalVote(options);
     options = options.map(function(o, i) {
-      if (o.optionId == that.data.votedId) {
+      if (o.id == that.data.votedId) {
         o.isChecked = true;
       }
       o.percent = +o.count / that.totalVote * 100;
@@ -111,7 +136,7 @@ Page({
     var checkedId = e.target.dataset.optionid;
     var options = this.data.options;
     options = options.map(function(o) {
-      if (o.optionId == checkedId) {
+      if (o.id == checkedId) {
         o.isChecked = true;
       } else {
         o.isChecked = false;
@@ -139,10 +164,17 @@ Page({
     });
     request({
       url: APIS.ADD_VOTE,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
       data: {
         moduleId: this.data.moduleId,
-        optionId: this.data.votedId,
-        sid: wx.getStorageSync('sid')
+        answers: [
+          {
+            questionId: this.data.question.questioId,
+            optionValue: this.data.votedId
+          }
+        ]
       },
       method: 'POST',
       realSuccess: function(data) {
@@ -153,7 +185,7 @@ Page({
 
         that.totalVote++;
         var options = that.data.options.map(function(o) {
-          if (o.optionId == that.data.votedId) {
+          if (o.id == that.data.votedId) {
             o.count += 1;
           }
           o.percent = +o.count / that.totalVote * 100;

@@ -6,7 +6,7 @@
   <navigator url='../detail/detail?eventId={{item.eventId}}'>
       <view class='list-item'>
           <view class='list-left'>
-              <image src="{{item.pics}}"  class="listWrapper-img"/>
+              <image src="{{item.poster}}"  class="listWrapper-img"/>
           </view>
           <view class='list-right'>
             <view class='register'>

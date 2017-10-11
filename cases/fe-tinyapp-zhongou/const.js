@@ -38,6 +38,7 @@ var APIS = {
   ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
+  ADD_HOTELROOM:            baseUrl+'/task/confirmHotelRoom',//提交酒店入住数据
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口
@@ -57,7 +58,7 @@ var APIS = {
 	TOGGLEEVENT:      reqHost +'/toggleEvent',
 	UNBIND: reqHost +'/unBind', //解绑
   // 获取投票模块
-  GET_VOTE_MODULE: reqHost +'/getVoteModule',
+  GET_VOTE_MODULE: reqHost +'/getVoteConfig',
   // 提交投票结果 
   ADD_VOTE: reqHost +'/addVote',
 

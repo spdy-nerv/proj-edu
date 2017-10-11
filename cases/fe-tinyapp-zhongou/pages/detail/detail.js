@@ -11,7 +11,6 @@ var { request } = require('../../libs/request');
 Page({
 	data: {
 		pictureUrls: [
-			'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2749325973,1459603075&fm=27&gp=0.jpg',
 		],  //事情图片
 	    indicatorDots: true,  
 	    autoplay: true,  
@@ -70,7 +69,11 @@ Page({
 		//模块Id, moduleType 1:详情事件，2:评论，3：报名，4：投票，5:问卷，6：评价
 		modules: [],
 		scrollToId: '',
-		fromShare: 0
+		fromShare: 0,
+		toDAte:'',
+		goDat:'',
+		roomNum:'',
+		hotelId:''
 	},
 
 	onLoad: function(options){
@@ -105,14 +108,12 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
-	      		console.log("base",datas.modules);
+				  console.log("base",datas.modules);
 				// var en = parseInt(datas.startTime.substring(5, 7));
 
 				// edit by 梁冬
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
-				if(datas.modules)
-
 				that.setData({
 						"modules": datas.modules,
 						"eventName": datas.name,
@@ -344,19 +345,20 @@ Page({
 					method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
 					// header: {}, // 设置请求的 header
 					success: function(res) {
+						var num = 0;
 						console.log("获取评论数据！",res);
 						var moreData=res.data.data.list;
-					
+						var num = 0;
 						for (var i in moreData) {
 							moreData[i].picNum = moreData[i].content.length - 1;
 						}
 						var data=that.data.des.commentData.data.commentList.concat(moreData);
 						that.setData({
-							"des.hasMore":res.data.hasMore,
+							"des.hasMore":res.data.data.hasMore,
 							//"des.commentData.commentList":data,
-							"des.commentData": res.data.resultData,
+							"des.commentData": res.data,
 							"des.commentData.data.commentList": data,
-							"des.isAllowComment":!res.data.resultData.config.isAllowComment
+							"des.isAllowComment":!res.data.data.config.isAllowComment
 						});
 						
 						console.log(that.data.des.commentData);
@@ -406,6 +408,77 @@ Page({
 		}
 		
 	},
+	// 提交酒店入住模块的数据
+	toDAte:function(e){
+		this.setData({
+			toDAte:e.detail.value
+		})
+	},
+	goDate:function(e){
+		this.setData({
+			goDate:e.detail.value
+		})
+	},
+	roomNum:function(e){
+		this.setData({
+			roomNum:e.detail.value
+		})
+	},
+	formSubmit: function(e) {
+		var that =this;
+		var hotel = that.data.modules;
+		for(var i in hotel){
+			if(hotel.moduleType='HOTELSTAY'){
+				that.setData({
+					hotelId:hotel[i].moduleId+''
+				})
+				
+			}
+		}
+		console.log(that.data.hotelId)
+		if(that.data.toDAte&&that.data.goDate&&that.data.roomNum){
+			request({
+				url: APIS.ADD_HOTELROOM,
+				header: {
+				  auth: wx.getStorageSync('token')
+				},
+				data: {
+				 
+					"hotelCheckInDate": that.data.toDAte,
+					"hotelCheckOutDate": that.data.goDate,
+					"hotelRoomNo":that.data.roomNum,
+					"moduleId": that.data.hotelId				
+				},
+				method: 'POST',
+				realSuccess:function(res){
+					
+				  console.log(res.code);
+				  if(res.code=='SUCCESS'){
+					wx.showToast({
+						title: '提交成功',
+						duration: 2000
+					  })
+				  }else if(res.code=='UNKNOWN'){
+					wx.showToast({
+						title: '输入信息有误！',
+						duration: 2000
+					  })
+				}
+				},
+				realFail: function(msg) {
+					console.log(msg)
+				  wx.showToast({
+					title: msg.message
+				  });
+				}
+			  }, true, this);
+		}else{
+			wx.showToast({
+				title: '请输入入住信息',
+				duration: 2000
+			  })
+		
+	}},
 	//点击分享
 	clickShareBtn:function(e){
 		console.log("分享",e);
@@ -495,7 +568,7 @@ Page({
 		var rtPics = [];
 		for (var i in pics) {
 			if (pics[i].type == 2) {
-				rtPics.push(pics[i].value);
+				rtPics.push(pics[i].content);
 			}
 		}
 		wx.previewImage({
@@ -511,7 +584,7 @@ Page({
 		
 		for (var i in pics) {
 			if (pics[i].type == 2) {
-				rtPics.push(pics[i].value);
+				rtPics.push(pics[i].content);
 			}
 		}
 		console.log(rtPics);

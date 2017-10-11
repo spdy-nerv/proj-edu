@@ -7,22 +7,23 @@
                 <view>
                         <image src='../../images/questionnaire.png'  class="image"/>
                 </view>
-                <view class="reportTitle"><text>感谢您配合完成2017级EMBA报到流程。</text></view>
+                <view class="reportTitle"><text>{{title}}</text></view>
                 <view class="question">
             <view wx:for="{{questions}}" wx:for-item="q" wx:for-index="qi" class="panel-question-wrap">
-                <view class="question-content">{{qi+1}}、{{q.content}}</view>
+                <view class="question-content">{{qi+1}}、{{q.questionCotent}}</view>
                 <view class='checkboxRow'>
                 <view wx:for="{{q.options}}" wx:for-item="o" class="panel-option-wrap">
                     <view class="panel-option">
-                        <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked ? 'option-radio-checked' : '' }}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.optionId}}" data-questionindex="{{qi}}"></view>
-                        <view wx:elif="{{q.type == 2}}" class="panel-option-checkbox {{ o.isChecked ? 'option-checked' : '' }}" bindtap="{{tapCheckboxFnName}}" data-optionid="{{o.optionId}}" data-questionindex="{{qi}}"></view>
-                        <view class="panel-option-text">{{o.optionName}}</view>
+                        <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked ? 'option-radio-checked' : '' }}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}" checked='{{q.selectValue==o.id?true:false}}'></view>
+                        <view wx:elif="{{q.type == 2}}" class="panel-option-checkbox {{ o.isChecked ? 'option-checked' : '' }}" bindtap="{{tapCheckboxFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}"></view>
+                        <view class="panel-option-text">{{o.content}}</view>
+                       
                     </view>                 
                 </view>
            
         </view>
-                <view wx:if="{{q.type == 3}}" class="panel-textarea-wrap">
-                    <textarea placeholder="评论" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"/>
+                <view wx:if="{{q.type == 0}}" class="panel-textarea-wrap">
+                    <textarea placeholder="评论" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"value='{{q.selectValue}}'/>
                 </view>
             </view>
         </view>

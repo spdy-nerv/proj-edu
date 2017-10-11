@@ -1,4 +1,4 @@
-//index.js
+    //index.js
 
 var { monthFormatList, dayFormatList, APIS } = require('../../const');
 
@@ -86,7 +86,7 @@ Page({
     var ei = this.data.eventTypeIndex;
     var pt = this.data.publisherTypeList;
     var pi = this.data.publisherTypeIndex;
-    wx.request({
+    request({
       url: APIS.GET_EVENTS_LIST,
       header: {
         auth: wx.getStorageSync('token')
@@ -96,9 +96,10 @@ Page({
         pageSize: 999,
       },
       method: 'GET',
-      success:function(res){
-        console.log(res.data.data.events);
-        var d = res.data.data;
+      realSuccess:function(res){
+        console.log(res);
+        console.log(res.data.events);
+        var d = res.data;
         wx.hideLoading();
         that.setData({
           events:d.events,
@@ -110,7 +111,7 @@ Page({
         
       },
       loginCallback: this.getEventList,
-      fail: function(msg) {
+      realFail: function(msg) {
         wx.hideLoading();
         wx.showToast({
           title: msg
@@ -359,7 +360,22 @@ Page({
       publisherTypeIndex: 0
     });
   },
+// 打开地图
+openLocation:function(){
 
+  var spot = this.data.spot;
+  /*
+  wx.openLocation({
+    longitude: spot.longitude,
+    latitude: spot.latitude,
+    name: spot.name,
+    address: spot.address
+  });
+  */
+  wx.navigateTo({
+    url: '../navigate/navigate'
+  })
+},
   onShareAppMessage: function() {
 		// 用户点击右上角分享
 		return {

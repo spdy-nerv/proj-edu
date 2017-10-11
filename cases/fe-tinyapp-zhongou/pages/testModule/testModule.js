@@ -1,7 +1,8 @@
-var { APIS } = require('../../const');
-var util = require('../../utils/util');
-var user = require('../../libs/user');
+var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
+var user = require('../../libs/user');
+
+var app = getApp();
 
 Page({
   data:{
@@ -10,23 +11,24 @@ Page({
     isActive: true,
     isAllowTest: true,
     hasTested: false,
-    title: '问卷标题',
-    description: '问卷描述',
+    /*
+    title: '2017广东外语外贸大学招聘问卷',
+    description: '很感谢各位同学抽出宝贵时间填写本次的问卷，希望通过您真实的回答，让我们找到共同的兴趣和爱好，彼此更加了解！非常感谢您的回答！',
     questions: [
         {
             questionId: '1',
-            content: '问题一问题一',
-            type: 2,
+            content: '您对本次的招聘会感觉怎么样？',
+            type: 1,
             options: [
                 {
                     optionId: '11',
-                    optionName: '选项1'
+                    optionName: '很好，使用了小程序，很方便了解招聘信息'
                 }, {
                     optionId: '12',
-                    optionName: '选项2'
+                    optionName: '感觉比往年新颖'
                 }, {
                     optionId: '13',
-                    optionName: '选项3'
+                    optionName: '小程序很好的一个切入场景，方便，快捷捕捉有用信息'
                 }, {
                     optionId: '14',
                     optionName: '选项4'
@@ -34,18 +36,18 @@ Page({
             ]
         }, {
             questionId: '2',
-            content: '问题二',
+            content: '您对本次招聘会期待的岗位？',
             type: 2,
             options: [
                 {
                     optionId: '21',
-                    optionName: '选项1'
+                    optionName: 'T工程师'
                 }, {
                     optionId: '22',
-                    optionName: '选项2'
+                    optionName: '电商运营'
                 }, {
                     optionId: '23',
-                    optionName: '选项3'
+                    optionName: '人力资源'
                 }, {
                     optionId: '24',
                     optionName: '选项4'
@@ -53,10 +55,11 @@ Page({
             ]
         }, {
             questionId: '3',
-            content: '评论',
+            content: '问题三，填空',
             type: 3
         }
     ],
+    */
     tapRadioFnName: 'onRadioCheck',
     tapCheckboxFnName: 'onCheckboxCheck',
     onInputFnName: 'onInput',
@@ -84,26 +87,34 @@ Page({
       var that = this;
       request({
         url: APIS.GET_TEST_MODULE,
+        header: {
+          auth: wx.getStorageSync('token')
+        },
         data: {
             moduleId: this.data.moduleId,
-            sid: wx.getStorageSync('sid')
+            pageNo:'1',
+            pageSize:'999'
         },
         method: 'POST',
         realSuccess: function(data) {
-            var cfg = data.config;
-            var d = data.data;
+            console.log(data);
+            var cfg = data.data.config;
+            var d = data.data.data;
+            var data = data.data;
+            //console.log(data.isTest)
             that.setData({
-              isActive: cfg.active,
-              isAllowTest: cfg.allowTest,
-              hasTested: d.hasTested,
-              title: d.title,
+              //isActive: cfg.active,
+              isAllowTest: cfg.isAllow,
+              hasTested: data.isTest,
+              title: data.title,
               description: d.description,
-              tapRadioFnName: cfg.active && !d.hasTested ? 'onRadioCheck' : '',
-              tapCheckboxFnName: cfg.active && !d.hasTested ? 'onCheckboxCheck' : '',
-              onInputFnName: cfg.active && !d.hasTested ? 'onInput' : '',
-              isInputDisabled: cfg.active && !d.hasTested ? false : true
+              tapRadioFnName: !data.isTest ? 'onRadioCheck' : '',
+              tapCheckboxFnName: !data.isTest ? 'onCheckboxCheck' : '',
+              onInputFnName: !data.isTest ? 'onInput' : '',
+              isInputDisabled: !data.isTest ? false : true
             });
-            that.renderTest(d.questions);
+            console.log(d);
+            that.renderTest(d);
             wx.hideLoading();
         },
         loginCallback: this.getTestModule,
@@ -123,12 +134,13 @@ Page({
   },
 
   onRadioCheck: function(e) {
+      console.log('我是单选框');
     var qi = e.target.dataset.questionindex;
     var optionId = e.target.dataset.optionid;
     var question = this.data.questions[qi];
     var options = question.options;
     options = options.map(function(o) {
-        if (o.optionId == optionId) {
+        if (o.id == optionId) {
             o.isChecked = true;
         } else {
             o.isChecked = false;
@@ -145,17 +157,18 @@ Page({
   },
 
   onCheckboxCheck: function(e) {
+      console.log('我是复选框')
     var qi = e.target.dataset.questionindex;
     var optionId = e.target.dataset.optionid;
     var question = this.data.questions[qi];
     var options = question.options;
     var answer = '';
     options = options.map(function(o) {
-        if (o.optionId == optionId) {
+        if (o.id == optionId) {
             o.isChecked = !o.isChecked;
         }
         if (o.isChecked) {
-            answer += o.optionId + ',';
+            answer += o.id + ',';
         }
         return o;
     });
@@ -201,7 +214,7 @@ Page({
     var answers = [];
     for(var i in this.data.questions) {
         var q = this.data.questions[i];
-        var qId = q.questionId;
+        var qId = q.questioId;
         var answer = q.answer || '';
         answers.push({
             questionId: qId,
@@ -214,10 +227,12 @@ Page({
     });
     request({
       url: APIS.SUBMIT_QUESTION,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
       data: {
         moduleId: this.data.moduleId,
-        answers: answers,
-        sid: wx.getStorageSync('sid')
+        answers: answers
       },
       method: 'POST',
       realSuccess: function(data) {

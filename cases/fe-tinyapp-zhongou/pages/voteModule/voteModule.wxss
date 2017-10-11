@@ -46,7 +46,7 @@ page {
 
 .reportTitle{
     padding: 30rpx;
-    color: #82A9DB;
+    color: #B29754;
     font-size: 32rpx;
 }
 .panel-btn-area {
@@ -69,19 +69,19 @@ page {
 .panel-description {
     margin-top: 40rpx;
     font-size: 30rpx;
-    color: #2d2e33;
+    color: #B29754;
     line-height: 1.2;
+    margin-left: 40rpx;
 }
 
 .panel-btn {
     width: 700rpx;
     height: 70rpx;
     margin: auto;
-    margin-top: 40rpx;
     /* background-image: url(http://eventsocial-1253427581.cossh.myqcloud.com/v1.0/vote_btn.png); */
     background-repeat: no-repeat;
     background-size: 100%;
-    background-color:#82A9DB;
+    background-color:#B29754;
     text-align: center;
     line-height: 80rpx;
     color: #fff;
@@ -96,7 +96,7 @@ page {
 }
 
 .panel-option-wrap {
-    padding-top: 40rpx;
+    padding: 40rpx;
 }
 
 .panel-option {

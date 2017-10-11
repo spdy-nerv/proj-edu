@@ -1,18 +1,19 @@
 <!--detail.wxml-->
 <scroll-view class="content-wrap" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
-<view class="banner-container"> 
-<swiper indicator-dots="{{indicatorDots}}"  
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
-      <block wx:for="{{pictureUrls}}" wx:key="unique">  
-        <swiper-item>  
-            <image mode="aspectFill" src="{{item}}" class="slide-image" width="100%" height="100%" bindtap="onPreviewSlider" data-url="{{item}}"/>  
-        </swiper-item>  
-      </block>  
-</swiper>
-</view>
-<!--详情默认模块 end-->
-<template name='113278546880892928'>
+    <view class="banner-container"> 
+        <swiper indicator-dots="{{indicatorDots}}"  
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
+              <block wx:for="{{pictureUrls}}" wx:key="unique">  
+                <swiper-item>  
+                    <image mode="aspectFill" src="{{item}}" class="slide-image" width="100%" height="100%" bindtap="onPreviewSlider" data-url="{{item}}"/>  
+                </swiper-item>  
+              </block>  
+        </swiper>
+        </view>
+  <!--详情默认模块 end-->
+<template name='TASK'>
 <!-- 活动开始 -->
+
 <view class='activity'>
     <navigator url='../Reported/Reported'>
   <view class="activity-item">
@@ -75,16 +76,22 @@
       </view>
   </navigator>
 </view>
+<!-- 图文详情下拉开始 -->
+<view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
+  <view class="classname">
+    <text class="enterText">活动详情</text>
+  <image src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
+</view>
+</view>
 </template>
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
-<template is="{{item.moduleId}}" data="{{...des,...item}}"/>
+<template is="{{item.moduleType}}" data="{{...des,...item}}"/>
 </block >
-
 </scroll-view>
 
 <!--事件投票模块 moduleType :4-->
-<template name="113650830053347328">
+<template name="VOTE">
 <navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left ">
@@ -102,7 +109,7 @@
 </template>
 
 <!--问卷调查模块 moduleType:5-->
-<template name="113650962744348672">
+<template name="QUESTIONNAIRE">
 <navigator url="../testModule/testModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left">
@@ -116,6 +123,8 @@
    </view> -->
 </view>
 </navigator>
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
 </template>
 
 <!--事件评价模块 moduleType:6-->
@@ -155,7 +164,7 @@
 </view> -->
 </template>
 <!--评论模块 ：moduleType:2-->
-<template name="113663288662953984">
+<template name="COMMENT">
 <!--评论-->
 <view class="comment-container" id="J_comment">
  <view class="comment_title">评论<text>({{commentData.data.totalCount}})</text></view>
@@ -169,22 +178,22 @@
   </view>
   <view class="comment_cont">
   <!--<block  wx:for="{{item1.content}}" wx:for-item="itemC">-->
-    <view class="comment-text">​​{{item1.content[0].value}}</view>
+    <view class="comment-text">​​{{item1.content[0].content}}</view>
 
     <view wx:if="{{item1.picNum == 1}}" class="comment-img-wrap">
-      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item1" mode="aspectFill" bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+      <image src="{{item1.content[1].content}}" width="100%" height="100%" class="comment-img-item1" mode="aspectFill" bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
     </view>
 
     <view wx:if="{{item1.picNum == 2}}" class="comment-img-wrap">
-      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
-      <image src="{{item1.content[2].value}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
+      <image src="{{item1.content[1].content}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+      <image src="{{item1.content[2].content}}" width="100%" height="100%" class="comment-img-item2" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
     </view>
 
     <view wx:if="{{item1.picNum == 3}}" class="comment-img-wrap">
-      <image src="{{item1.content[1].value}}" width="100%" height="100%" class="comment-img-item3" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
+      <image src="{{item1.content[1].content}}" width="100%" height="100%" class="comment-img-item3" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[1].value}}" data-index="{{index}}"/>
       <view class="comment-img-right">
-        <image src="{{item1.content[2].value}}" width="100%" height="100%" class="comment-img-item4" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
-        <image src="{{item1.content[3].value}}" width="100%" height="100%" class="comment-img-item4 img-clear" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[3].value}}" data-index="{{index}}"/>
+        <image src="{{item1.content[2].content}}" width="100%" height="100%" class="comment-img-item4" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[2].value}}" data-index="{{index}}"/>
+        <image src="{{item1.content[3].content}}" width="100%" height="100%" class="comment-img-item4 img-clear" mode="aspectFill"  bindtap="onPreviewComment" data-url="{{item1.content[3].value}}" data-index="{{index}}"/>
       </view>
     </view>
 
@@ -210,20 +219,15 @@
 </view>
 
 <!--底部浮动评论输入框-->
-
-
-
 <view class="footer_container mg20" hidden="{{isAllowComment}}">
-  <import src="../footer/footer.wxml" />
-  <template is="footer" data="{{...footerConfig}}"/>
 </view>
 </template>
 <!-- 酒店入住模块 -->
-<template name='8'>
+<template name="HOTELSTAY">
   <view>
-      <view>
+      <!-- <view>
           <image src='../../images/hotelStay.png' class="img"/>
-      </view>
+      </view> -->
       <view class='hotelItem'>
           <view class="itemLeft">
               <image src='../../images/list-left.png' class="img"/>
@@ -240,16 +244,18 @@
       </view>
       <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="input">
-          <input type='text' placeholder='入住日期' name='input' />
-          <input type='text' placeholder='退房日期' name='input' />
-          <input type='text' placeholder='房间号码' name='input' />
+          <input type='text' placeholder='入住日期,例如2017-10-01' name='toDate' bindchange='toDAte' />
+          <input type='text' placeholder='退房日期,例如2017-10-01' name='goDate' bindchange='goDate'  />
+          <input type='text' placeholder='房间号码' name='roomNum' bindchange='roomNum' />
       </view>
       <view class='button'>
-          <button from-type='submit' class="button">提交</button>
+          <button from-type='submit' class="button" bindtap='formSubmit'>提交</button>
       </view>
      </form>
   </view>
 </template>
+<!-- 通用foot -->
+
 
 <!--分享-->
 <view class="modal-window" hidden="{{isShowShare}}" bindtap="hiddenShare">
