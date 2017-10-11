@@ -1,11 +1,98 @@
- .center_top{
-     min-height: 500rpx;
- }
- .unBind{
-     background: #ffffff;
-     padding: 10rpx 15rpx;
-     color: orangered;
-     margin: 20rpx 0;
-     border-radius: 10rpx;
-     display: inline-block;
- }
+
+.wrapper {
+  display: flex;
+  position:relative;
+  flex-direction: column;/*column;/*row*/
+  height: 100%;
+  width:100%;
+}
+.header{
+position:relative;
+	width:100%;
+	height:170rpx;
+	background:#E32000;
+}
+.Wrapper-img{
+	position: absolute;
+    height:30%;
+    width:10%;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+     margin:auto;
+}
+.tx-img{
+	position: absolute;
+	top:120rpx;
+	left:40rpx;
+	height:170rpx;
+	width:170rpx;
+}
+.edit-button{
+	position: absolute;
+	top:190rpx;
+	right:40rpx;
+
+}
+.zhongou{
+	padding-top:120rpx;
+	padding-left:50rpx;
+}
+.ceibs{
+	padding-left:50rpx;
+	color:#8A8A8A;
+}
+.list{
+	margin-left:5%;
+	width:90%;
+	margin-top:50rpx;
+	border:2rpx solid #8A8A8A;
+	border-radius: 10rpx
+}
+.list-button{
+	border-left:2rpx solid #8A8A8A;
+	margin:0 auto;
+	text-align:center;
+	color:#8A8A8A;
+}
+.select{
+	background:#997A3D;
+	color:#fff;
+}
+.list-item{
+	margin-left:5%;
+	height:200rpx;
+	width:90%;
+	border-bottom:2rpx solid #8A8A8A;
+	position:relative;
+}
+.list-box{
+	width:90rpx;
+	height:90rpx;
+	border:2rpx solid #8A8A8A;
+	position: absolute;
+	bottom:20rpx;
+	left:0;	
+}
+.comment-img{
+	width:30rpx;
+	height:30rpx;
+	position: absolute;
+	bottom:20rpx;
+	left:67%;	
+}
+.transmit-img{
+	width:30rpx;
+	height:30rpx;
+	position: absolute;
+	bottom:20rpx;
+	left:81%;	
+}
+.like-img{
+	width:30rpx;
+	height:30rpx;
+	position: absolute;
+	bottom:20rpx;
+	left:93%;
+}
