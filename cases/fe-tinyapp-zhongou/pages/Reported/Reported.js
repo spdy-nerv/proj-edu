@@ -62,7 +62,7 @@ Page({
 	      method: "POST", 
 	      success: function(res) {  
 	        console.log(res)
-		         wx.navigateTo({
+		         wx.redirectTo({
 						  url: '../myUniform/myUniform?moduleId=that.data.moduleId'
 						});
 	      }  
