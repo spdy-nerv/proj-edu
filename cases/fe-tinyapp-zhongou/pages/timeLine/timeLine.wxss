@@ -16,7 +16,7 @@ page{
   height: 100%;
 }
 #listWrapper{
-  padding-top: 60rpx;
+  padding-top: 80rpx;
 }
 .homePage{
   width: 100%;
@@ -34,40 +34,36 @@ page{
   display: flex;
   justify-content: space-between;
   padding:8rpx 30rpx;
-  border-bottom: 3rpx solid #c0c0c0;
-  margin-bottom: 20rpx;
+  border-bottom: 5rpx solid #c0c0c0;
 }
 .list-item .list-right{
   padding:0 15rpx;
   margin-left: 33rpx;
   display: flex;
   flex-direction: column;
-  width: 600rpx;
+  width: 500rpx;
 }
 .list-right .register{
   font-size: 35rpx;
-  font-weight: 500;
+  font-weight: bold;
   border-left:8rpx solid #B29754;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.ui_07{
+.list-right .register .ui_07{
   width: 35rpx;
   height: 34rpx;
 }
 .list-right .name{
-  font-size: 28rpx;
+  font-size: 25rpx;
   margin:10rpx 0;
 }
 .list-right .adress{
-  color: #666;
-  font-size: 28rpx;
-  margin:5rpx 0;
+  color: #c0c0c0;
 }
 .list-right .tel{
-  color: #666;
-  font-size: 28rpx;
+  color: #c0c0c0;
 }
 .list-right .register,.name,.adress,.tel{
   padding-left: 15rpx;

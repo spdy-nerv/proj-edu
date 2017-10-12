@@ -35,7 +35,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this;
-    var key =config.mapkey;
+    var key = config.mapkey;
     console.log(key)
     var myAmapFun = new amapFile.AMapWX({ key: key });
     var mapheigh = wx.getSystemInfoSync().windowHeight - 120;

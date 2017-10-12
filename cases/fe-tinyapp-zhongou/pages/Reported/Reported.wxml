@@ -1,13 +1,13 @@
 
 <view class="con">
 <view style="margin-top:{{marginTop}}">
-  <view class="img"><image src="https://microcloudtech.com/images/zhongou/reported.jpg" mode="aspectFill" ></image></view>
+  <view class="img"><image src="{{pictureUrls}}" mode="aspectFill" ></image></view>
   <view class="content">
     <rich-text nodes="您将在签到过程中从班主任处领取到如下物品:胸牌(正面为班级姓名等个人信息及开学模块星球分组安排,背面为开学模块日程)、书包（书包里装有如下材料《管理实战模拟》预读及课程材料，《企业家社会责任》预读材料、参考书、IT资源手册、文具、学费收据；"/>
   </view>
 </view>
-<span style="font-family:Comic Sans MS;font-size:18px;color:#333333;"><image mode="aspectFill" src="{{pictureUrls}}" bindtap="onPreviewSlider"  
-style="width:100%; height:340rpx;" data-url="{{pictureUrls}}"></image></span> 
+<span style="font-family:Comic Sans MS;font-size:18px;color:#333333;"><image mode="aspectFill" src="{{helloUrls}}" bindtap="onPreviewSlider"  
+style="width:100%; height:340rpx;" wx:if="{{helloUrls}}" data-url="{{helloUrls}}"></image></span> 
 
 <button bindtap="cancel" >下一步</button>
 </view>

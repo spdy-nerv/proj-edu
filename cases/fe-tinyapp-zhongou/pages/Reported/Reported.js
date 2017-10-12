@@ -14,18 +14,18 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	loadText:'点击加载更多...',
   	list:[],
+  	moduleId:'',
   	pictureUrls: [
-			'../../images/hello.jpg'
+			'https://microcloudtech.com/images/campus_zhongou/reported.jpg'
+
 		],  //事情图片
-  	
+  	helloUrls:['https://microcloudtech.com/images/campus_zhongou/banzhuren.jpg'],
   },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+   });
 	    user.login(this.onLoadData(false), this, false);
   },
   
@@ -43,50 +43,32 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
-  	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
-      realSuccess: function(data){
-      	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
-      		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
-      	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
-      },
-      realFail: function(msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, false);
   },
  onPreviewSlider: function(e) {
 		wx.previewImage({
 		  current: e.target.dataset.url, // 当前显示图片的链接，不填则默认为 urls 的第一张
-		  urls: this.data.pictureUrls
+		  urls: this.data.helloUrls
 		});
-	}, 
+	},
+ cancel:function(e){
+  	var that=this;
+  	wx.request({
+	      url: APIS.ADD_TEACH,
+	      data: {
+	      	moduleId: that.data.moduleId,
+	      },
+	     header: {
+            auth: wx.getStorageSync('token')
+         }, 
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+		         wx.redirectTo({
+						  url: '../myUniform/myUniform?moduleId=that.data.moduleId'
+						});
+	      }  
+	   })  
+  },  
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){
