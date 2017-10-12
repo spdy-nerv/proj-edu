@@ -11,6 +11,7 @@ Page({
     isAllowVote: true,
     hasVoted: false,
     votedId: '',
+    scroll:false,
     /*
     title: '你是否对腾讯进入校园招聘感兴趣',
     description: '',
@@ -32,7 +33,6 @@ Page({
     checkFnName: 'onCheck'
   },
   onLoad:function(options){
-  	console.log(options)
     // 生命周期函数--监听页面加载
     this.setData({
       moduleId: options.moduleId

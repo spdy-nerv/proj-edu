@@ -70,9 +70,22 @@ Page({
 		modules: [],
 		scrollToId: '',
 		fromShare: 0,
-		toDAte:'',
-		goDat:'',
-		roomNum:'',
+		date:{
+			toDAte:'',
+			goDat:'',
+			roomNum:'',
+		}
+		,
+		eventInfo:{
+			hotelCheckInDate:'',
+			hotelCheckOutDate:'',
+			hotelRoomNo:'',
+			address:'',
+			placeName:'',
+			poster:'',
+			telephone:''
+			
+		},
 		hotelId:''
 	},
 
@@ -98,7 +111,6 @@ Page({
 			pageSize:999,
 			eventId: that.data.eventId
 		};
-		
 		request({
 	      url: APIS.GET_EVENT_BASE,
 		  data: getEventBaseParams,
@@ -108,7 +120,6 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
-	      		console.log("base",datas.modules[0].moduleId);
 				  console.log("base",datas.modules);
 				// var en = parseInt(datas.startTime.substring(5, 7));
 
@@ -116,7 +127,7 @@ Page({
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
 				that.setData({
-						modules: datas.modules,
+						"modules": datas.modules,
 						"eventName": datas.name,
 						"address": datas.address,
 						"poster": datas.poster,
@@ -143,6 +154,7 @@ Page({
 				});
 				that.getEnrollModuleData();
 				that.getCommentData();
+				that.getHotelRoom();
 	        	wx.hideLoading();
 	      },
 	      realFail: function(msg) {
@@ -411,45 +423,42 @@ Page({
 	},
 	// 提交酒店入住模块的数据
 	toDAte:function(e){
+		var that = this;
 		this.setData({
-			toDAte:e.detail.value
+		'date.toDAte':e.detail.value
 		})
 	},
 	goDate:function(e){
 		this.setData({
-			goDate:e.detail.value
+			'date.goDate':e.detail.value
 		})
 	},
 	roomNum:function(e){
 		this.setData({
-			roomNum:e.detail.value
+			'date.roomNum':e.detail.value
 		})
 	},
 	formSubmit: function(e) {
 		var that =this;
 		var hotel = that.data.modules;
-		for(var i in hotel){
-			if(hotel.moduleType='HOTELSTAY'){
-				that.setData({
-					hotelId:hotel[i].moduleId+''
-				})
+			for(var i =0;i < that.data.modules.length;i++){
+				if(that.data.modules[i].moduleType=='HOTELSTAY'){
+					const parmar = {
+						 'moduleId': that.data.modules[i].moduleId,
+						"hotelCheckInDate": that.data.date.toDAte,
+						"hotelCheckOutDate": that.data.date.goDate,
+						"hotelRoomNo":that.data.date.roomNum,
+					};
+					
 				
-			}
-		}
-		console.log(that.data.hotelId)
-		if(that.data.toDAte&&that.data.goDate&&that.data.roomNum){
+			
+		if(that.data.date.toDAte&&that.data.date.goDate&&that.data.date.roomNum){
 			request({
 				url: APIS.ADD_HOTELROOM,
 				header: {
 				  auth: wx.getStorageSync('token')
 				},
-				data: {
-				 
-					"hotelCheckInDate": that.data.toDAte,
-					"hotelCheckOutDate": that.data.goDate,
-					"hotelRoomNo":that.data.roomNum,
-					"moduleId": that.data.hotelId				
-				},
+				data: parmar,
 				method: 'POST',
 				realSuccess:function(res){
 					
@@ -479,7 +488,53 @@ Page({
 				duration: 2000
 			  })
 		
-	}},
+	}
+}
+}
+},
+//获取酒店入住信息
+getHotelRoom:function(){
+	var that =this;
+	var hotel = that.data.modules;
+		for(var i =0;i < that.data.modules.length;i++){
+			if(that.data.modules[i].moduleType=='HOTELSTAY'){
+				const parmars = {
+					 'moduleId': that.data.modules[i].moduleId,
+				};
+				
+	request({
+		url: APIS.GET_HOTELROOM,
+		header: {
+		  auth: wx.getStorageSync('token')
+		},
+		data: parmars,
+		method: 'get',
+		realSuccess:function(res){
+			
+		  console.log(res.data);
+		  that.setData({
+			eventInfo:{
+				hotelCheckInDate:res.data.hotelCheckInDate,
+				hotelCheckOutDate:res.data.hotelCheckOutDate,
+				hotelRoomNo:res.data.hotelRoomNo,
+				address:res.data.eventInfo.address,
+				placeName:res.data.eventInfo.placeName,
+				poster:res.data.eventInfo.poster,
+				telephone:res.data.eventInfo.telephone
+			}
+		  })
+		  console.log(res.data.hotelCheckInDate)
+		},
+		realFail: function(msg) {
+			console.log(msg)
+		  wx.showToast({
+			title: msg.message
+		  });
+		}
+	  }, true, this);
+	}
+}
+},
 	//点击分享
 	clickShareBtn:function(e){
 		console.log("分享",e);
