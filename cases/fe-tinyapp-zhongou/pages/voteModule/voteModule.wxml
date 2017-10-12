@@ -2,7 +2,7 @@
     <!-- <view class="panel-back"></view> -->
     <view class="panel">
         <!-- <view class="panel-title">{{title}}</view> -->
-        <scroll-view scroll-y="false" class="panel-main">
+        <view class="panel-main">
                 <view>
                         <image src='../../images/questionnaire.png'  class="image"/>
                 </view>
@@ -26,7 +26,7 @@
                                 <view wx:elif="{{hasVoted}}" class="panel-disabled">您已经投过票</view>
                             </view>
 
-        </scroll-view>
+        </view>
       
     </view>
 </view>
