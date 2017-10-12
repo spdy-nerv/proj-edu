@@ -1,0 +1,47 @@
+<view class="wrapper">
+	<view class="header">
+	       <view class='Wrapper-img'>
+              <image style="width:100%;height:100%" src="../../images/personCenter.jpg"/>
+          </view>
+	</view>
+	<view class='tx-img'>
+         <image style="width:100%;height:100%;border-radius: 100%;" wx:if="{{headerImg}}" src="{{headerImg}}"/>
+
+    </view>
+   <!-- 姓名 -->
+	<view class = "item first">
+		<text>姓名：</text>
+		<input name="realName" type="text" value="{{realName}}" bindchange="realNamechange"  focus="{{focus}}"/>
+	</view>
+	 <!-- 简介 -->
+	   <textarea name="declaration" style="padding-left:40rpx;height:200rpx;width:100%;border-top:2rpx solid #8A8A8A;" type="text" placeholder="{{declaration}}" bindinput="declarationchange"  focus="{{focus}}"/>
+	<!-- 位置 -->
+	<view class = "item">
+		<text>位置：</text>
+		<input name="location " type="text" value="{{location }}" bindchange="locationchange"  focus="{{focus}}"/>
+	</view>
+	<!-- 生日 -->
+	<view class = "item">
+		<picker style="width:100%;height:100%" mode="date" value="{{birthday}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+			生日: {{birthday}}
+		</picker>
+	</view>
+	<!-- 公司 -->
+	<view class = "item">
+	<text>公司：</text>
+	<input name="professional" type="text" value="{{professional}}" bindchange="professionalchange"  focus="{{focus}}"/>
+	</view>
+	<!-- 职务 -->
+	<view class = "item">
+	<text>职务：</text>
+	<input name="grade" type="text" value="{{grade}}" bindchange="gradechange"  focus="{{focus}}"/>
+	</view>
+	<!-- 手机 -->
+	<view class = "item last">
+	<text>手机：</text>
+	<input name="phone" type="text" value="{{phone}}" bindchange="phonechange"  focus="{{focus}}"/>
+	</view>
+	
+	<button style="font-size:30rpx;margin-top:5%; " class = "submit" bindtap="addmsg" >保存</button>
+	<button style="font-size:30rpx;margin-top:5%; " class = "cancel"  bindtap="cancel" >取消</button>
+</view>

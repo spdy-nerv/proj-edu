@@ -54,7 +54,6 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options);
     wx.showLoading({
       mask: true,
       title: '数据加载中'
@@ -361,6 +360,22 @@ Page({
       publisherTypeIndex: 0
     });
   },
+// 打开地图
+openLocation:function(){
+
+  var spot = this.data.spot;
+  /*
+  wx.openLocation({
+    longitude: spot.longitude,
+    latitude: spot.latitude,
+    name: spot.name,
+    address: spot.address
+  });
+  */
+  wx.navigateTo({
+    url: '../navigate/navigate'
+  })
+},
   onShareAppMessage: function() {
 		// 用户点击右上角分享
 		return {

@@ -37,9 +37,15 @@ var APIS = {
   ADD_IPAD:                 baseUrl+'/task/confirmSubmitIPAD',//确认提交ipad
   ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
+  GET_TASK:                 baseUrl+'/task',//获取任务数据 
+  GET_IDENTITY:             baseUrl+'/task/bindingIdentity',//身份认证 
+  ADD_DRAFT:                baseUrl+'/task/draft',//暂存数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
   ADD_HOTELROOM:            baseUrl+'/task/confirmHotelRoom',//提交酒店入住数据
-  GET_HOTELROOM:            baseUrl+'/task/getConfirmHotelRoom',//获取提交的酒店信息
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口
@@ -104,7 +110,6 @@ var APIS = {
 };
 
 var QQ_MAP_KEY = 'PLWBZ-AGPWS-LWBOA-6BJYO-ZUYYZ-O7FKK';
-
 var config = {
   mapkey: '52d76099cd5124c5e891ec8df55cc2d3'
 };
@@ -113,6 +118,5 @@ module.exports = {
     monthFormatList: monthFormatList,
     dayFormatList: dayFormatList,
     APIS: APIS,
-    QQ_MAP_KEY: QQ_MAP_KEY,
-    config:config
+    QQ_MAP_KEY: QQ_MAP_KEY
 };

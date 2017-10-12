@@ -42,7 +42,7 @@
   right: 30rpx;
   padding: 0 10rpx;
   color: #fff;
-  background: #B29754;
+  background: #00561f;
   width:100rpx;
   text-align:center;
   border-radius:20rpx;

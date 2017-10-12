@@ -1,7 +1,7 @@
 
 <view class="con">
 <view style="margin-top:{{marginTop}}">
-  <view class="img"><image src="../../images/ipad.jpg" mode="aspectFill"></image></view>
+  <view class="img"><image src="https://microcloudtech.com/images/campus_zhongou/ipad.jpg" mode="aspectFill"></image></view>
   <view class="content">
     <rich-text nodes=" 请将准备好的IPAD交到吕志和演讲厅门口IT服务处，根据IT老师提示操作，提交完成请点击确定完成键。"/>
   </view>

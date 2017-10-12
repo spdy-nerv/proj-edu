@@ -14,8 +14,8 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	loadText:'点击加载更多...',
   	list:[],
+  	moduleId:'',
   	 selectPerson:true,
     firstPerson:'M',
   	
@@ -40,57 +40,36 @@ Page({
      selectPerson:true,
    })
   },
-  onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
+  onLoad: function (options) {
+  	this.setData({
+      moduleId: options.moduleId
+   });
 	    user.login(this.onLoadData(false), this, false);
   },
-  
-  onLoadData: function(load){
+ onLoadData: function(load){
   	var that = this;
-  	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
+  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
 		    disabled:!that.data.disabled,
 		  	loadText:'加载中...',
   		})
-  	}
+  	}	
   	 request({
-      url: APIS.MY_FOLLOWS,
-      data: params,
-      method: 'POST',
+      url: APIS.GET_TASK,
+       data:{
+		  		moduleId: that.data.moduleId,
+		  	},
+	      header: {
+            auth: wx.getStorageSync('token')
+         },
+      method: 'GET',
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
-      	var resList=data.list;
-      	that.setData({
-      		list:that.data.list.concat(resList),
-      		hasMore:data.hasMore
-      	});
-      	if(load){
-      		that.setData({
-      			loading:!that.data.loading,
-				    disabled:!that.data.disabled,
-				  	loadText:'点击加载更多...'
-      		})
-      	}
-      	if(!that.data.hasMore){
-      		that.setData({
-				  	loadText:'没有更多数据了'
-      		})
-      	}
-      	if(data.list.length==0){
-      		that.setData({
-	      		isNoData:"暂时没有关注任何事件！"
-	      	});
-      	}
-        wx.hideLoading();
+     		that.setData({
+		      firstPerson:data.data.uniformSize,
+		    })
       },
       realFail: function(msg) {
         wx.hideLoading();
@@ -100,7 +79,45 @@ Page({
       }
     }, false);
   },
-  
+  cancel:function(e){
+  	var that=this;
+  	console.log(that.data.moduleId)
+  	var uniformSize=that.data.firstPerson;
+  	console.log(wx.getStorageSync('token'))
+  	if(uniformSize){
+  		wx.request({
+	      url: APIS.ADD_UNIFORM,
+	      data: {
+	      	moduleId: that.data.moduleId,
+  				uniformSize: uniformSize  
+	      },
+	     header: { auth: wx.getStorageSync('token')},  
+	      method: "POST", 
+	      success: function(res) {  
+	        console.log(res)
+	        if(res.data.success==true){
+	        	 wx.showToast({
+		          title: '提交成功'
+		        });
+		         setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },2000);    
+	        }else{
+	        	wx.showToast({
+		          title: '您已提交过校服编号'
+		        });
+	        }      
+	      }  
+	   })  
+  	}else{
+  		 wx.showToast({
+		          title: '请选择校服编号'
+		        });
+  	}
+  	
+  },  
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){

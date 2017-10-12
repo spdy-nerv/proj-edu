@@ -6,18 +6,6 @@ page {
 swiper {
   height: 390rpx;
 }
-.picker{
-  color: #999;
-}
-.section{
-  border: 1rpx solid #e0e0e0;
-  background-color: #fff;
-  margin: 20rpx 0;
-  height: 60rpx;
-  padding-left: 20rpx;
-  line-height: 60rpx;
-
-}
 .banner-container{
   width: 100%;
   height: 390rpx;
@@ -46,16 +34,12 @@ swiper {
   border-top: 1rpx solid #ccc;
   box-sizing: border-box;
   font-weight: 100;
-  align-content: center;
 }
-.activity-item .ipad{
-  font-weight: bold;
-}
+
 .activity-item .number{
-  font-size: 50rpx;
+  font-size: 36rpx;
   margin-right:30rpx; 
-  color: #999;
-  font-family: Century Gothic;
+  color: #5A5657;
 }
 .last-item{
   border-bottom: 1rpx solid #ccc;
@@ -63,9 +47,6 @@ swiper {
 .activity-item image{
   width: 42rpx;
   height: 42rpx;
-  position: relative;
-  top:7rpx;
-
 }
 .activity-title{
   padding-left: 25rpx;
@@ -388,6 +369,9 @@ top:10rpx;
 .hotelItem .adress{
   margin: 10rpx 0;
 }
+.hotelItem .tel,.adress{
+
+}
 .input{
   display: flex;
   flex-direction: column;
@@ -402,12 +386,11 @@ top:10rpx;
   height: 60rpx;
   padding-left: 20rpx;
 }
-.input input::-webkit-input-placeholder{
-  color:#999;
-}
 .button{
  padding:0 50rpx;
- margin-top: -20rpx;
+ margin-top: 50rpx;
+
+
 }
 .button button{
   background-color: #B29754;

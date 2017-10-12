@@ -1,5 +1,5 @@
 <!--detail.wxml-->
-<scroll-view class="content-wrap" scroll-y="{{modules.length>1?true:false}}" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+<scroll-view class="content-wrap" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
     <view class="banner-container"> 
         <swiper indicator-dots="{{indicatorDots}}"  
                 autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
@@ -15,7 +15,7 @@
 <!-- 活动开始 -->
 
 <view class='activity'>
-    <navigator url='../Reported/Reported'>
+    <navigator url='../Reported/Reported?moduleId={{moduleId}}'>
   <view class="activity-item">
       <view>
         <text class="number">1</text>
@@ -25,7 +25,7 @@
       <image src="../../images/gou.png" class='right-img'></image>
   </view>
     </navigator>
-    <navigator url='../myUniform/myUniform'>
+    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}'>
         <view class="activity-item">
             <view>
                 <text class="number">2</text>
@@ -35,7 +35,7 @@
             <image src="../../images/gou.png" class='right-img' ></image>
         </view>
       </navigator>
-      <navigator url='../myPhoto/myPhoto'>
+      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">3</text>
@@ -45,17 +45,17 @@
               <image src="../../images/gou.png" class='right-img'></image>
           </view>
       </navigator>
-      <navigator  url='../ipad/ipad'>
+      <navigator  url='../ipad/ipad?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">4</text>
                   <image src="../../images/detail04.jpg" mode='aspectFit'></image>
-                  <text class='activity-title'>提交<text>ipad</text> </text>
+                  <text class='activity-title'>提交ipad</text>
                 </view>
               <image src="../../images/gou.png" class='right-img'></image>
           </view>
       </navigator>
-  <navigator  url='../Baggage/Baggage'>
+  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}'>
       <view class="activity-item">
           <view>
               <text class="number">5</text>
@@ -65,7 +65,7 @@
           <image src="../../images/gou.png" class='right-img'></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo'>
+  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>
@@ -86,7 +86,7 @@
 </template>
 <!-- 循环modules -->
 <block  wx:for="{{modules}}" wx:key="unique">
-<template is="{{item.moduleType}}" data="{{...des,...item,...date,...eventInfo}}"/>
+<template is="{{item.moduleType}}" data="{{...des,...item}}"/>
 </block >
 </scroll-view>
 
@@ -113,7 +113,7 @@
 <navigator url="../testModule/testModule?moduleId={{moduleId}}">
 <view class="model">
   <view class="model-left">
-     <image src="../../images/d-icon4.png" class="model-img"></image>
+     <image src="../../images/d-icon3.png" class="model-img"></image>
   </view>
   <view class="model-right">
     <view class="right1">事件问卷调查</view>
@@ -230,52 +230,26 @@
       </view> -->
       <view class='hotelItem'>
           <view class="itemLeft">
-              <image src='{{poster}}' class="img" wx:if='{{poster}}'/>
+              <image src='../../images/list-left.png' class="img"/>
           </view>
           <view class="itemRight">
-              <view class="title">{{placeName}}</view>
+              <view class="title">北京龙城丽宫温德姆酒店</view>
               <view class="adress">
-                  地址：{{address}}
+                  地址：北京市昌平区昌平路315号
               </view>
               <view class="tel">
-                  电话:{{telephone}}
+                  电话：010-899999999
               </view>
           </view>
       </view>
       <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="input">
-          <view class="section" style="background:#fff;">
-              <picker mode="date" value="{{hotelCheckInDate}}" start="2017-01-01" end="2020-09-01" bindchange="toDAte">
-                <view class="picker">
-                  <view wx:if='{{!hotelCheckInDate}}'>
-                      <text wx:if='{{!toDAte}}'>入住日期</text>
-                      <text style="color:black"> {{toDAte}}</text>
-                  </view>
-                  <text style="color:black" wx:if='{{hotelCheckInDate}}'>{{hotelCheckInDate}}</text>
-                </view>
-              </picker>
-            </view>
-        
-            <view class="section" style="background:#fff;">
-                <picker mode="date" value="{{hotelCheckOutDate}}" start="2017-01-01" end="2020-09-01" bindchange="goDate">
-                  <view class="picker">
-                    <view wx:if='{{!hotelCheckInDate}}'>
-                        <text wx:if='{{!goDate}}'>退房日期</text>
-                        <text style="color:black"> {{goDate}}</text>
-                    </view>
-                      <text style="color:black" wx:if='{{hotelCheckInDate}}'>{{hotelCheckInDate}}</text>
-                  </view>
-                </picker>
-              </view>
-          <input type='text' placeholder='房间号码'value='{{hotelRoomNo}}' name='roomNum' bindchange='roomNum' />
+          <input type='text' placeholder='入住日期,例如2017-10-01' name='toDate' bindchange='toDAte' />
+          <input type='text' placeholder='退房日期,例如2017-10-01' name='goDate' bindchange='goDate'  />
+          <input type='text' placeholder='房间号码' name='roomNum' bindchange='roomNum' />
       </view>
       <view class='button'>
-          <button from-type='submit' class="button" bindtap='formSubmit'  wx:if='{{!hotelRoomNo}}'>
-            提交
-          </button>
-            <button from-type='submit' class="button" bindtap='formSubmit' wx:if='{{hotelRoomNo}}' disabled>
-              已提交数据
-            </button>
+          <button from-type='submit' class="button" bindtap='formSubmit'>提交</button>
       </view>
      </form>
   </view>
