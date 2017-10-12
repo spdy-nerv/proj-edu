@@ -48,10 +48,20 @@ Page({
          },
 	      method: "POST", 
 	      success: function(res) {  
-	        console.log(res)
-	         wx.showToast({
+	       if(res.data.success==true){
+	      		 wx.showToast({
 		          title: '提交成功'
 		        });
+		        setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },2000);         
+	      	}else{
+	      		 wx.showToast({
+		          title: '您已提交过IPAD'
+		        })
+	      	}
 	      }  
 	   })  
   },   

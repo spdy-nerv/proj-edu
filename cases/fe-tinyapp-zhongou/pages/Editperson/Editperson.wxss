@@ -1,6 +1,5 @@
 
 .wrapper {
-  display: flex;
   position:relative;
   flex-direction: column;/*column;/*row*/
   height: 100%;
@@ -54,18 +53,24 @@ position:relative;
 	border-bottom:2rpx solid #8A8A8A;
 }
 .submit{
-	background-color:#c82626;
+	float:left;
+	background-color:#B39652;
 	color:#fff;
 	bottom: 0;
-	width:90%;
+	width:40%;
 	margin-top:70rpx;
 	margin-left:5%;
+	height:56rpx;
+    line-height:56rpx;
 }
 .cancel{
-	background-color:#fff;
-	color:#000;
+    float:left;
+	background-color:#B39652;
+	color:#fff;
 	bottom: 0;
-	width:90%;
+	width:40%;
+	height:56rpx;
+    line-height:56rpx;
 	margin-top:35rpx;
 	margin-left:5%;
 }

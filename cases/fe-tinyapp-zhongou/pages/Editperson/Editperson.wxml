@@ -5,7 +5,8 @@
           </view>
 	</view>
 	<view class='tx-img'>
-         <image style="width:100%;height:100%" src="../../images/Editperson.jpg"/>
+         <image style="width:100%;height:100%;border-radius: 100%;" wx:if="{{headerImg}}" src="{{headerImg}}"/>
+
     </view>
    <!-- 姓名 -->
 	<view class = "item first">
@@ -41,6 +42,6 @@
 	<input name="phone" type="text" value="{{phone}}" bindchange="phonechange"  focus="{{focus}}"/>
 	</view>
 	
-	<button class = "submit" bindtap="addmsg" >保存</button>
-	<button class = "cancel"  bindtap="cancel" >取消</button>
+	<button style="font-size:30rpx;margin-top:5%; " class = "submit" bindtap="addmsg" >保存</button>
+	<button style="font-size:30rpx;margin-top:5%; " class = "cancel"  bindtap="cancel" >取消</button>
 </view>

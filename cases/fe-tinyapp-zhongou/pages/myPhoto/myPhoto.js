@@ -14,7 +14,8 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	photoNo:'请输入您的照片号码',
+  	photoNo:'',
+  	photo:'请输入照片号码',
   	moduleId:'',
   	
   },
@@ -26,7 +27,9 @@ Page({
 	    user.login(this.onLoadData(false), this, false);
   },
   
-  onLoadData: function(load){
+ onLoadData: function(load){
+  	var that = this;
+  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -34,6 +37,29 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
+  	
+  	 request({
+      url: APIS.GET_TASK,
+       data:{
+		  		moduleId: that.data.moduleId,
+		  	},
+	      header: {
+            auth: wx.getStorageSync('token')
+         },
+      method: 'GET',
+      realSuccess: function(data){
+      	console.log("我的关注asdf",data);
+     		that.setData({
+		      photoNo:data.data.photoNo,
+		    })
+      },
+      realFail: function(msg) {
+        wx.hideLoading();
+        wx.showToast({
+          title: msg
+        });
+      }
+    }, false);
   },
   contentchange:function(e){
     this.setData({
@@ -43,7 +69,8 @@ Page({
   sendphotoNo:function(e){
   	var that=this;
   	var photoNo=that.data.photoNo;
-  	wx.request({
+  	if(photoNo){
+  		wx.request({
 	      url: APIS.ADD_COMPLETE,
 	      data: {
 	      	moduleId: that.data.moduleId,
@@ -53,13 +80,31 @@ Page({
             auth: wx.getStorageSync('token')
          },
 	      method: "POST", 
-	      success: function(res) {  
-	        console.log(res)
-	         wx.showToast({
+	      success: function(res) { 
+	      	console.log(res)
+	      	if(res.data.success==true){
+	      		 wx.showToast({
 		          title: '提交成功'
 		        });
+		         setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },2000);    
+	      	}else{
+	      		 wx.showToast({
+		          title: '您已提交过照片号码'
+		        });
+	      	}
+	        
 	      }  
 	   })  
+  	}else{
+  		wx.showToast({
+		          title: '请输入您的照片号码'
+		        });
+  	}
+  	
   }, 
   showMore:function(e){
 		var that=this;

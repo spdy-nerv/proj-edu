@@ -17,9 +17,10 @@ Page({
   	list:[],
   	moduleId:'',
   	pictureUrls: [
-			'https://microcloudtech.com/images/zhongou/reported.jpg'
+			'https://microcloudtech.com/images/campus_zhongou/reported.jpg'
+
 		],  //事情图片
-  	
+  	helloUrls:['https://microcloudtech.com/images/campus_zhongou/banzhuren.jpg'],
   },
   onLoad: function (options) {
   	this.setData({
@@ -46,7 +47,7 @@ Page({
  onPreviewSlider: function(e) {
 		wx.previewImage({
 		  current: e.target.dataset.url, // 当前显示图片的链接，不填则默认为 urls 的第一张
-		  urls: this.data.pictureUrls
+		  urls: this.data.helloUrls
 		});
 	},
  cancel:function(e){

@@ -1,7 +1,8 @@
+ <view class="wrap">
  <view class="title"><em>|</em>基本信息 </view>
  <view class="content">
  	<view class = "item-l">
-		<input type="text" class="{{disabled==true?'disable':''}}" name = "realName" placeholder="{{realName}}" disabled="{{disabled}}" bindchange="realNamechange"/>
+		<input type="text" class="{{disabled==true?'disable':''}}" name = "realName" value="{{realName}}" placeholder="{{realNam}}" disabled="{{disabled}}" bindchange="realNamechange"/>
     </view>
     <view class = "item-r"  bindtap="clickclass">
         <input class="input-b {{disabled==true?'disable':''}}" type="text" name = "class" placeholder="{{class}}" value="{{classes}}" disabled="{{disabled}}" />
@@ -18,7 +19,7 @@
     </view>
     
     <view class = "item-l">
-		<input type="text" class="{{disabled==true?'disable':''}}" name = "phone" placeholder="{{phone}}" disabled="{{disabled}}" bindchange="phonechange"/>
+		<input type="text" class="{{disabled==true?'disable':''}}" name = "phone" value="{{phone}}" placeholder="{{phon}}" disabled="{{disabled}}" bindchange="phonechange"/>
     </view>
     <view class = "item-r">
         <button class="sendcode"  bindtap="bindingIdentity">匹配个人信息</button>
@@ -27,7 +28,7 @@
  <view class="title"><em>|</em>车辆信息 </view>
   <view class="content">
      <view class = "item-l">
-		<input type="text" name = "plateNumber" placeholder="{{plateNumber}}" focus="{{focus}}" bindchange="plateNumberchange"/>
+		<input type="text" name = "plateNumber" placeholder="{{plateNumbe}}" value="{{plateNumber}}" focus="{{focus}}" bindchange="plateNumberchange"/>
     </view>
     <view class = "item-r" >
         <input class="input-r disable" type="text" disabled="true" name = "photograph" value="{{photograph}}" focus="{{focus}}" bindchange="photograph"/>
@@ -38,27 +39,26 @@
      <view class = "item-l">
 		是否换开收据
     </view>
-    <view class = "item-a" >
-    	<checkbox-group bindchange="checkChange">
-        	 <checkbox class="receipt" style="transform:scale(.4)" value="{{isInvoice}}" checked="{{isInvoice}}" />换开收据
+    <view class = "item-a" bindchange="checkChange" >
+    	<checkbox-group >
+        	 <checkbox class="receipt" style="transform:scale(.5)" value="{{isInvoice}}" checked="{{isInvoice}}" />换开收据
          </checkbox-group>
      </view>
-     <textarea name="content " style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{company }} "bindinput="companychange"  focus="{{focus}}"/>
-     <textarea name="money " style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{money }} "bindinput="moneychange"  focus="{{focus}}"/>
+     <textarea name="content " style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{compan}}" value="{{company}}" bindinput="companychange"  focus="{{focus}}"/>
+     <textarea name="money " style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{mone}}" value="{{money}}"bindinput="moneychange"  focus="{{focus}}"/>
  </view>
  <view class="title"><em>|</em>其他资料</view>
   <view class="content">
     <view class = "item-l">
-		<input type="text" name = "uniformSize" placeholder="{{uniformSize}}" focus="{{focus}}" bindchange="uniformSizechange"/>
+		<input type="text" name = "uniformSize" placeholder="{{uniformSiz}}" value="{{uniformSize}}" focus="{{focus}}" bindchange="uniformSizechange"/>
     </view>
     <view class = "item-r">
-        <input class="input-r" type="text" name = "photoNo" placeholder="{{photoNo}}" focus="{{focus}}" bindchange="photoNochange"/>
-    </view>
+        <input class="input-r" type="text" name = "photoNo" placeholder="{{photoN}}" value="{{photoNo}}" focus="{{focus}}" bindchange="photoNochange"/>    </view>
      <view class = "item-l">
-		<input type="text" name = "hotelRoomNo" placeholder="{{hotelRoomNo}}" focus="{{focus}}" bindchange="hotelchange"/>
+		<input type="text" name = "hotelRoomNo" placeholder="{{hotelRoomN}}" value="{{hotelRoomNo}}" focus="{{focus}}" bindchange="hotelchange"/>
     </view>
     <view class = "item-r" >
-        <input class="input-r" type="text" name = "baggageNo" placeholder="{{baggageNo}}" focus="{{focus}}" bindchange="Baggagechange"/>
+        <input class="input-r" type="text" name = "baggageNo" placeholder="{{baggageN}}" value="{{baggageNo}}" focus="{{focus}}" bindchange="Baggagechange"/>
     </view>
  </view>
   <view class="title"><em>|</em>交通安排</view>
@@ -82,3 +82,4 @@
  </view>
  <button class="button-l" style="font-size:30rpx;margin-top:5%; " bindtap="addmsg" >保存</button>
  <button class="button-r" style="font-size:30rpx;margin-top:5%; " bindtap="sendmsg" >确认提交</button>
+  </view>

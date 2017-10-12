@@ -46,27 +46,46 @@ Page({
    });
 	    user.login(this.onLoadData(false), this, false);
   },
-  
-  onLoadData: function(load){
+ onLoadData: function(load){
   	var that = this;
-  	var params = {
-  		sid: wx.getStorageSync('sid'),
-  		size: 10,   
-	    offset: that.data.offset,
-  	};
+  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
 		    disabled:!that.data.disabled,
 		  	loadText:'加载中...',
   		})
-  	}
+  	}	
+  	 request({
+      url: APIS.GET_TASK,
+       data:{
+		  		moduleId: that.data.moduleId,
+		  	},
+	      header: {
+            auth: wx.getStorageSync('token')
+         },
+      method: 'GET',
+      realSuccess: function(data){
+      	console.log("我的关注asdf",data);
+     		that.setData({
+		      firstPerson:data.data.uniformSize,
+		    })
+      },
+      realFail: function(msg) {
+        wx.hideLoading();
+        wx.showToast({
+          title: msg
+        });
+      }
+    }, false);
   },
   cancel:function(e){
   	var that=this;
+  	console.log(that.data.moduleId)
   	var uniformSize=that.data.firstPerson;
   	console.log(wx.getStorageSync('token'))
-  	wx.request({
+  	if(uniformSize){
+  		wx.request({
 	      url: APIS.ADD_UNIFORM,
 	      data: {
 	      	moduleId: that.data.moduleId,
@@ -76,12 +95,28 @@ Page({
 	      method: "POST", 
 	      success: function(res) {  
 	        console.log(res)
-	         wx.showToast({
+	        if(res.data.success==true){
+	        	 wx.showToast({
 		          title: '提交成功'
 		        });
-		      
+		         setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },2000);    
+	        }else{
+	        	wx.showToast({
+		          title: '您已提交过校服编号'
+		        });
+	        }      
 	      }  
 	   })  
+  	}else{
+  		 wx.showToast({
+		          title: '请选择校服编号'
+		        });
+  	}
+  	
   },  
   showMore:function(e){
 		var that=this;

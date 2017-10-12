@@ -108,11 +108,8 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
-<<<<<<< HEAD
-				  console.log("base",datas.modules);
-=======
 	      		console.log("base",datas.modules[0].moduleId);
->>>>>>> 61e1c2f15875a7303b03bcd02ec133524701ea09
+				  console.log("base",datas.modules);
 				// var en = parseInt(datas.startTime.substring(5, 7));
 
 				// edit by 梁冬

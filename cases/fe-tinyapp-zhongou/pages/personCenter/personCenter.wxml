@@ -5,7 +5,7 @@
           </view>
 	</view>
 	<view class='tx-img'>
-         <image style="width:100%;height:100%" src="../../images/tx.jpg"/>
+         <image style="width:100%;height:100%;border-radius: 100%;" wx:if="{{headerImg}}" src="{{headerImg}}"/>
     </view>
     
 	<button bindtap="toEditperson" class='edit-button' style="padding-left:10rpx;padding-right:10rpx;width:200rpx;height:40rpx;font-size:26rpx;line-height:40rpx;color:#8A8A8A">

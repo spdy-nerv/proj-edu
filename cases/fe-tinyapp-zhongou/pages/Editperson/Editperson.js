@@ -11,6 +11,7 @@ Page({
   	professional:'',
   	grade:'',
   	phone:'',
+  	headerImg:'',
   },
    //我的关注
   toEditperson: function(e){
@@ -80,7 +81,8 @@ Page({
         	phone 	  :data.data.phone ,
         	professional :data.data.professional  ,
         	declaration 		:data.data.declaration ,
-        	location :	data.data.location 
+        	location :	data.data.location ,
+        	headerImg: data.data.wxHeadImg,
         });
         wx.hideLoading();
         

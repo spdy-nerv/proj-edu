@@ -15,7 +15,8 @@ Page({
     hasMore:'',
   	isNoData:"",
   	moduleId:'',
-  	baggageNo:'请输入您的行李号码',
+  	baggageN:'请输入您的行李号码',
+  	baggageNo:'',
   	list:[]
   	
   },
@@ -26,8 +27,9 @@ Page({
 	    user.login(this.onLoadData(false), this, false);
   },
   
-  onLoadData: function(load){
+ onLoadData: function(load){
   	var that = this;
+  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -35,6 +37,29 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
+  	
+  	 request({
+      url: APIS.GET_TASK,
+       data:{
+		  		moduleId: that.data.moduleId,
+		  	},
+	      header: {
+            auth: wx.getStorageSync('token')
+         },
+      method: 'GET',
+      realSuccess: function(data){
+      	console.log("我的关注asdf",data);
+     		that.setData({
+     			baggageNo:data.data.baggageNo,
+		    })
+      },
+      realFail: function(msg) {
+        wx.hideLoading();
+        wx.showToast({
+          title: msg
+        });
+      }
+    }, false);
   },
   contentchange:function(e){
     this.setData({
@@ -44,6 +69,7 @@ Page({
   cancel:function(e){
   	var that=this;
   	var baggageNo=that.data.baggageNo;
+  	if(baggageNo){
   	wx.request({
 	      url: APIS.ADD_BAGGAGE,
 	      data: {
@@ -54,12 +80,30 @@ Page({
             auth: wx.getStorageSync('token')
          },
 	      method: "POST", 
-	      success: function(res) {  
-	         wx.showToast({
+	      success: function(res) {
+	      	if(res.data.success==true){
+	      		 wx.showToast({
 		          title: '提交成功'
 		        });
+		        setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },2000);
+		         
+	      	}else{
+	      		 wx.showToast({
+		          title: '您已提交过行李号码'
+		        })
+	      	}
+	        
 	      }  
 	   })  
+  	}else{
+  		 wx.showToast({
+		          title: '请输入您的行李号码'
+		        });
+  	}
   },  
   showMore:function(e){
 		var that=this;

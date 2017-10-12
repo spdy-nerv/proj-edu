@@ -44,13 +44,13 @@ img {
 .phone_one{
 	 text-align: center;
     width:90%; 
-    height:38rpx;
-    line-height:38rpx;
+    height:56rpx;
+    line-height:56rpx;
     margin-left:6%;
     background-color:#fff;
 }
 .phone_one .imgages{
-height:38rpx;
+height:56rpx;
 width:20%;
 	float:left;
 }
