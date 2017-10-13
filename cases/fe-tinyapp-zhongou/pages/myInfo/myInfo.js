@@ -203,7 +203,7 @@ bindingIdentity:function(){
   },
   photoNochange:function(e){
     this.setData({
-      photo:e.detail.value
+      photoNo:e.detail.value
     })
   },
     verifyCodechange:function(e){
@@ -253,7 +253,7 @@ bindingIdentity:function(){
   },
   Baggagechange:function(e){
     this.setData({
-      Baggage:e.detail.value
+      baggageNo:e.detail.value
     })
   },
   onLoad: function (options) {

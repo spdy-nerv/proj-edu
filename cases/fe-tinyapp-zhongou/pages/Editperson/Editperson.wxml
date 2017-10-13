@@ -22,8 +22,7 @@
 	</view>
 	<!-- 生日 -->
 	<view class = "item">
-		<picker style="width:100%;height:100%" mode="date" value="{{birthday}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
-			生日： {{birthday}}
+		<picker style="width:100%;height:100%" mode="date" value="{{birthday}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">生日： {{birthday}}
 		</picker>
 	</view>
 	<!-- 公司 -->

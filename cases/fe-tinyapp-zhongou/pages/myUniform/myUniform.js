@@ -71,9 +71,12 @@ Page({
       method: 'GET',
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
-     		that.setData({
+      	if(uniformSize){
+      		that.setData({
 		      firstPerson:data.data.uniformSize,
 		    })
+      	}
+     		
       },
       realFail: function(msg) {
         wx.hideLoading();
