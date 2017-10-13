@@ -17,12 +17,14 @@ Page({
   	photoNo:'',
   	photo:'请输入照片号码',
   	moduleId:'',
+  	eventId:'',
   	
   },
   onLoad: function (options) {
   	console.log(options)
   	this.setData({
-      moduleId: options.moduleId
+      moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -87,10 +89,8 @@ Page({
 		          title: '提交成功'
 		        });
 		         setTimeout(function(){
-				     wx.navigateBack({
-							  delta: 1
-							})
-				    },2000);    
+				      wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&photoNo='+photoNo}) 
+				    },500);    
 	      	}else{
 	      		 wx.showToast({
 		          title: '您已提交过照片号码'

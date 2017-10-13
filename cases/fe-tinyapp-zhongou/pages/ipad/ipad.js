@@ -15,13 +15,15 @@ Page({
     hasMore:'',
   	isNoData:"",
   	moduleId:'',
+  	eventId:'',
   	list:[]
   	
   },
   onLoad: function (options) {
   	console.log(options)
   	this.setData({
-      moduleId: options.moduleId
+       moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -53,9 +55,7 @@ Page({
 		          title: '提交成功'
 		        });
 		        setTimeout(function(){
-				     wx.navigateBack({
-							  delta: 1
-							})
+				     wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&isSubmitIpad =true'}) 
 				    },500);         
 	      	}else{
 	      		 wx.showToast({

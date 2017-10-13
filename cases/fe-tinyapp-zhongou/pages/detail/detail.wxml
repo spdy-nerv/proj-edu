@@ -15,7 +15,7 @@
 <!-- 活动开始 -->
 
 <view class='activity'>
-    <navigator url='../Reported/Reported?moduleId={{moduleId}}'>
+    <navigator url='../Reported/Reported?moduleId={{moduleId}}&&eventId={{eventId}}'>
   <view class="activity-item">
       <view>
         <text class="number">1</text>
@@ -25,7 +25,7 @@
       <image src="../../images/{{!isReported?'gou.png':'report.png'}}" class='right-img'></image>
   </view>
     </navigator>
-    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}'>
+    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}&&eventId={{eventId}}'>
         <view class="activity-item">
             <view>
                 <text class="number">2</text>
@@ -35,7 +35,7 @@
             <image src="../../images/{{!uniformSize?'gou.png':'report.png'}}" class='right-img' ></image>
         </view>
       </navigator>
-      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}'>
+      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}&&eventId={{eventId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">3</text>
@@ -45,7 +45,7 @@
               <image src="../../images/{{!photoNo?'gou.png':'report.png'}}" class='right-img'></image>
           </view>
       </navigator>
-      <navigator  url='../ipad/ipad?moduleId={{moduleId}}'>
+      <navigator  url='../ipad/ipad?moduleId={{moduleId}}&&eventId={{eventId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">4</text>
@@ -55,7 +55,7 @@
               <image src="../../images/{{isSubmitIpad=='false'?'gou.png':'report.png'}}" class='right-img'></image>
           </view>
       </navigator>
-  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}'>
+  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}&&eventId={{eventId}}'>
       <view class="activity-item">
           <view>
               <text class="number">5</text>
@@ -65,7 +65,7 @@
           <image src="../../images/{{!baggageNo?'gou.png':'report.png'}}" class='right-img'></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
+  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}&&eventId={{eventId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>

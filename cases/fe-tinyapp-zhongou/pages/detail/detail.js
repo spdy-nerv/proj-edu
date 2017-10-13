@@ -109,7 +109,7 @@ Page({
 	},
 
 	onLoad: function(options){
-		console.log(options.eventId)
+		console.log(options)
 		this.setData({
 			eventId:options.eventId,
 			fromShare: options.fromShare || 0

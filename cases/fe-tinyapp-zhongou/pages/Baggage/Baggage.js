@@ -17,12 +17,14 @@ Page({
   	moduleId:'',
   	baggageN:'请输入您的行李号码',
   	baggageNo:'',
+  	eventId:'',
   	list:[]
   	
   },
   onLoad: function (options) {
   	this.setData({
-      moduleId: options.moduleId
+      moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -86,9 +88,7 @@ Page({
 		          title: '提交成功'
 		        });
 		        setTimeout(function(){
-				     wx.navigateBack({
-							  delta: 1
-							})
+				     wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&baggageNo='+baggageNo}) 
 				    },500);
 		         
 	      	}else{

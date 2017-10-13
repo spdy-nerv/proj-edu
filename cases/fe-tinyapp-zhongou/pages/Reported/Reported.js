@@ -16,6 +16,7 @@ Page({
   	isNoData:"",
   	list:[],
   	moduleId:'',
+  	eventId:'',
   	pictureUrls: [
 			'https://microcloudtech.com/images/campus_zhongou/reported.jpg'
 
@@ -25,7 +26,8 @@ Page({
   onLoad: function (options) {
   	console.log(options)
   	this.setData({
-      moduleId: options.moduleId
+      moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -67,7 +69,7 @@ Page({
 	      success: function(res) {  
 	        console.log(res)
 		         wx.redirectTo({
-						  url: '../myUniform/myUniform?moduleId='+moduleId,
+						  url: '../myUniform/myUniform?moduleId='+moduleId+'&&isReported =true',
 						});
 	      }  
 	   })  

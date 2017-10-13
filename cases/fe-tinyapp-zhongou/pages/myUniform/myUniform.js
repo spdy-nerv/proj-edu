@@ -15,6 +15,7 @@ Page({
     hasMore:'',
   	isNoData:"",
   	list:[],
+  	eventId:'',
   	moduleId:'',
   	 selectPerson:true,
     firstPerson:'M',
@@ -43,7 +44,8 @@ Page({
   onLoad: function (options) {
   	console.log(options)
   	this.setData({
-      moduleId: options.moduleId
+       moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -110,9 +112,7 @@ Page({
 		          title: '您已提交过校服编号'
 		        });
 		        setTimeout(function(){
-				     wx.navigateBack({
-							  delta: 1
-							})
+				    wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&uniformSize='+uniformSize}) 
 				    },500);   
 	        }      
 	      }  

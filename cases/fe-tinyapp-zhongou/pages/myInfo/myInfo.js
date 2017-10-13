@@ -21,6 +21,7 @@ Page({
   	phone:'',
     class :'请选择班级',
     classes :'',
+    eventId:'',
     firstclass:'',
     selectclass:false,
     plateNumbe:'请输入车牌号码',
@@ -255,7 +256,8 @@ bindingIdentity:function(){
   },
   onLoad: function (options) {
   	this.setData({
-      moduleId: options.moduleId
+       moduleId: options.moduleId,
+      eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
@@ -451,6 +453,9 @@ bindingIdentity:function(){
 					     disable:true,
 					     verify:'已提交'
 					  })
+		        setTimeout(function(){
+				      wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&dataStatus =SUBMIT'}) 
+				    },500);    
 	      	}else{
 	      		 wx.showToast({
 							 title: '数据已提交',
