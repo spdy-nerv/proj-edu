@@ -1,16 +1,21 @@
 
-page{
-width:100%;
-height:100%;
-background:#F0F0F0;
+page {
+    height: 100%;
+    background:#F0F0F0;
+    width:100%;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
 }
 .title{
 height:50rpx;
 border-bottom:2rpx solid #7b7b7b;
 margin-top:20rpx;
-margin-left:50rpx;
+margin-left:6%;
 float:left;
-width:100%;
+width:90%;
 
 }
 
@@ -47,7 +52,25 @@ float:left;
 	
 }
 .input-r{
-	text-aline:center;	
+	text-aline:center;
+}
+.input-b{
+magin-left:20%;
+	text-aline:center;
+	width:80%;
+	float:left;
+}
+.imgages{
+    width:20%;
+	height:1.4rem;
+}
+.sendcode{
+  text-aline:center;
+  background:#B39652;
+  font-size:30rpx;
+  color:#fff;
+  height:54rpx;
+   line-height:54rpx;
 }
 textarea{ float:left;background:#fff;}
 input{
@@ -60,13 +83,10 @@ background:#fff;
 }
 .phone_select{
  width:100%; 
- padding-top:50rpx;
     z-index: 100;
     position: absolute;
-     width:42%; 
-     
-      margin-left:52%;
-      magin-top:50rpx;
+     top:-5rpx;
+    padding-top:10rpx;
     border:2rpx solid #eee;
 }
 .select_one{
@@ -75,6 +95,17 @@ background:#fff;
     line-height:38rpx;
     background-color:#fff;
     
+}
+.bus_box{
+    position: relative;  
+    width:100%; 
+}
+.bus_select{
+ width:100%; 
+    z-index: 100;
+    position: absolute;
+    top:-5rpx;
+    border:2rpx solid #eee;
 }
 .button-l{
     float:left;
@@ -96,4 +127,13 @@ background:#fff;
 	height:56rpx;
     line-height:56rpx;
     font-size:30rpx
+}
+.disable{
+	background-color:#ccc;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
 }

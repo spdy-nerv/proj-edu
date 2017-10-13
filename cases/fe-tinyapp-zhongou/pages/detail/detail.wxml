@@ -15,81 +15,104 @@
 <!-- 活动开始 -->
 
 <view class='activity'>
-    <navigator url='../Reported/Reported'>
+    <navigator url='../Reported/Reported?moduleId={{moduleId}}'>
   <view class="activity-item">
       <view>
         <text class="number">1</text>
       <image src="../../images/detail01.jpg"></image>
       <text class='activity-title'>入学报到</text>
     </view>
-      <image src="../../images/gou.png" class='right-img'></image>
+      <image src="../../images/{{!isReported?'gou.png':'report.png'}}" class='right-img'></image>
   </view>
     </navigator>
-    <navigator url='../myUniform/myUniform'>
+    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}'>
         <view class="activity-item">
             <view>
                 <text class="number">2</text>
                 <image src="../../images/detail02.jpg" mode='aspectFit'style='width:45rpx;height:39rpx'></image>
                 <text class='activity-title'>领取校服</text>
               </view>
-            <image src="../../images/gou.png" class='right-img' ></image>
+            <image src="../../images/{{!uniformSize?'gou.png':'report.png'}}" class='right-img' ></image>
         </view>
       </navigator>
-      <navigator url='../myPhoto/myPhoto'>
+      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">3</text>
                   <image src="../../images/detail03.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>拍摄证件照</text>
                 </view>
-              <image src="../../images/gou.png" class='right-img'></image>
+              <image src="../../images/{{!photoNo?'gou.png':'report.png'}}" class='right-img'></image>
           </view>
       </navigator>
-      <navigator  url='../ipad/ipad'>
+      <navigator  url='../ipad/ipad?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">4</text>
                   <image src="../../images/detail04.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>提交<text>ipad</text> </text>
                 </view>
-              <image src="../../images/gou.png" class='right-img'></image>
+              <image src="../../images/{{isSubmitIpad=='false'?'gou.png':'report.png'}}" class='right-img'></image>
           </view>
       </navigator>
-  <navigator  url='../Baggage/Baggage'>
+  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}'>
       <view class="activity-item">
           <view>
               <text class="number">5</text>
               <image src="../../images/detail05.jpg" mode='aspectFit'></image>
               <text class='activity-title'>寄存行李</text>
             </view>
-          <image src="../../images/gou.png" class='right-img'></image>
+          <image src="../../images/{{!baggageNo?'gou.png':'report.png'}}" class='right-img'></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo'>
+  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>
               <image src="../../images/detail06.jpg" mode='aspectFit'></image>
               <text class='activity-title'>信息检查和提交</text>
             </view>
-          <image src="../../images/gou.png" class='right-img'></image>
+          <image src="../../images/{{dataStatus=='SUBMIT'?'report.png':'gou.png'}}" class='right-img'></image>
       </view>
   </navigator>
 </view>
-<!-- 图文详情下拉开始 -->
-<view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
-  <view class="classname">
-    <text class="enterText">活动详情</text>
-  <image src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
-</view>
-</view>
 </template>
 <!-- 循环modules -->
-<block  wx:for="{{modules}}" wx:key="unique">
-<template is="{{item.moduleType}}" data="{{...des,...item,...date,...eventInfo}}"/>
-</block >
-</scroll-view>
+<!-- <block  wx:for="{{modules}}" wx:key="unique">
+<template is="{{item.moduleType}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report}}"/>
+</block > -->
+<!-- 根据后台数据渲染 -->
+<template is="{{moduelObject['TASK']?'TASK':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['TASK']}}"/>
+<template is="{{moduelObject['HOTELSTAY']?'HOTELSTAY':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['HOTESTAY']}}"/>
+<!-- 图文详情条件渲染 -->
+<!-- 上拉查看图文详情 -->
+<view wx:if='{{details}}'>
+<view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
+    <view class="classname">
+      <text class="enterText">活动详情</text>
+    <image src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
+  </view>
+  </view>
+  <!-- 底部导航区域 -->
+  <!--此处为自定义图文详情内容区-->
+  <view class="detail_box" hidden="{{hidden}}">
+    <rich-text nodes='{{detailInfo}}'></rich-text>
+       <block  wx:for="{{description.data.paragraphs}}" wx:key="unique">
+        <view wx:if="{{true}}" class="detail_box_p"><text></text></view>
+        <view wx:if="{{item.type==2}}" class="detail_box_p">
+           <image src="{{item.value}}" mode="aspectFill"/> 
+        </view>
+      </block> 
+      </view>
+       
+</view>
 
+<template is="{{moduelObject['VOTE']?'VOTE':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['VOTE']}}"/>
+<template is="{{moduelObject['QUESTIONNAIRE']?'QUESTIONNAIRE':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['QUESTIONNAIRE']}}"/>
+<template is="{{moduelObject['COMMENT']?'COMMENT':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report}}"/>
+<import src="../footer/footer.wxml"/>
+<template is="footer" data="{{...footerConfig}}" wx:if='{{!moduelObject["HOTELSTAY"]}}'/>
+</scroll-view>
 <!--事件投票模块 moduleType :4-->
 <template name="VOTE">
 <navigator url="../voteModule/voteModule?moduleId={{moduleId}}">
@@ -99,7 +122,6 @@
   </view>
   <view class="model-right">
     <view class="right1">事件投票模块</view>
-   
    </view>
    <!-- <view class="arr">
    <text class="wb_arrow_right"></text>
@@ -123,8 +145,6 @@
    </view> -->
 </view>
 </navigator>
-<import src="../footer/footer.wxml" />
-<template is="footer" data="{{...footerConfig}}"/>
 </template>
 
 <!--事件评价模块 moduleType:6-->
@@ -135,7 +155,6 @@
   </view>
   <view class="model-right">
     <view class="right1">事件评价模块</view>
-   
    </view>
    <!-- <view class="arr">
    <text class="wb_arrow_right"></text>
@@ -152,16 +171,16 @@
 </view>
 </view>
 <!-- 底部导航区域 -->
-
+<!-- 
 <!--此处为自定义图文详情内容区-->
-<!-- <view class="detail_box" hidden="{{isShowBottom}}">
+<view class="detail_box" hidden="{{isShowBottom}}">
 <block  wx:for="{{description.paragraphs}}">
 	<view wx:if="{{item.type==1}}" class="detail_box_p"><text>{{item.value}}</text></view>
   <view wx:if="{{item.type==2}}" class="detail_box_p">
     <image src="{{item.value}}" mode="widthFix" bindtap="onPreviewDetail" data-url="{{item.value}}" data-index="{{index}}"/> 
   </view>
 </block>
-</view> -->
+</view> 
 </template>
 <!--评论模块 ：moduleType:2-->
 <template name="COMMENT">
@@ -201,9 +220,7 @@
   </view>
   </view>
 </block>
- 
 </view>
-
 <!-- 查看更多评论 -->
 <view class="pull-up-show-detail">
   <block wx:if="{{hasMore}}">
@@ -217,7 +234,6 @@
 	  </view>
   </block>
 </view>
-
 <!--底部浮动评论输入框-->
 <view class="footer_container mg20" hidden="{{isAllowComment}}">
 </view>
@@ -235,7 +251,7 @@
           <view class="itemRight">
               <view class="title">{{placeName}}</view>
               <view class="adress">
-                  地址：{{address}}
+                  地址:{{address}}
               </view>
               <view class="tel">
                   电话:{{telephone}}
@@ -270,8 +286,9 @@
           <input type='text' placeholder='房间号码'value='{{hotelRoomNo}}' name='roomNum' bindchange='roomNum' />
       </view>
       <view class='button'>
-          <button from-type='submit' class="button" bindtap='formSubmit'  wx:if='{{!hotelRoomNo}}'>
-            提交
+          <button from-type='submit' class="button" bindtap='formSubmit'  wx:if='{{!hotelRoomNo}}' disabled='{{disabled}}'>
+            <text wx:if='{{!disabled}}'>提交</text>
+            <text wx:if='{{disabled}}'>已提交数据</text>
           </button>
             <button from-type='submit' class="button" bindtap='formSubmit' wx:if='{{hotelRoomNo}}' disabled>
               已提交数据
@@ -281,7 +298,6 @@
   </view>
 </template>
 <!-- 通用foot -->
-
 
 <!--分享-->
 <view class="modal-window" hidden="{{isShowShare}}" bindtap="hiddenShare">

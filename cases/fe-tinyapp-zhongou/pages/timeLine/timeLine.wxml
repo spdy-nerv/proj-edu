@@ -3,27 +3,35 @@
     <image src="{{img}}" class='homePage'/>
 <view id="listWrapper">
   <view class='active'>
+    <view >
     <block wx:for='{{events}}'>
-  
-      <view class='list-item'>
+       
+      <view style='position:relative'>
+          <navigator url='../detail/detail?eventId={{item.eventId}}'>
+            <view class="list-item">
           <view class='list-left'>
               <image src="{{item.poster}}"  class="listWrapper-img"/>
           </view>
           <view class='list-right'>
             <view class='register'>
               <text>{{item.eventName}}</text>
-              <navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&name={{item.placeName}}"> 
-                  <image src='../../images/ui_07.jpg' class='ui_07'/>
-             </navigator>
+              
             </view>
-            <navigator url='../detail/detail?eventId={{item.eventId}}'>
             <view class="name">{{item.placeName}}</view>
             <view class="adress">地址：{{item.address}}</view>
             <view class="tel">电话：{{item.telephone}}</view>
-          </navigator>
           </view>
         </view>
+        </navigator>
+        <view class="location">
+            <navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&name={{item.placeName}}"> 
+                 <image src='../../images/ui_07.jpg' class='ui_07'/>
+            </navigator>
+        </view>
+        
+        </view>
    </block>
+  </view>
    <view> 
      </view>
   </view>

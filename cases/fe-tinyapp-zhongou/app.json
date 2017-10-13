@@ -22,6 +22,7 @@
     "pages/verify/verify",
     "pages/detail/detail",
     "pages/logs/logs",
+    "pages/Editperson/Editperson",
     "pages/commentSubmit/commentSubmit",
     "pages/voteModule/voteModule",
     "pages/testModule/testModule",

@@ -31,21 +31,34 @@ var APIS = {
   LOGIN: 										reqHost + '/login',
   CHECK_SESSION: 						reqHost + '/checkSession',
   GET_EVENTS_LIST:          reqHost + '/getEventList',
-  ADD_BAGGAGE:              baseUrl+'/task/confirmCheckedBaggage',//确认寄存行李
+
+  ADD_HOTELROOM:            baseUrl+'/task/confirmHotelRoom',//提交酒店入住数据
+	
+  GET_HOTELROOM:            baseUrl+'/task/getConfirmHotelRoom',//获取提交的酒店信息
+
+ ADD_BAGGAGE:              baseUrl+'/task/confirmCheckedBaggage',//确认寄存行李
   ADD_COMPLETE:             baseUrl+'/task/confirmPhotoComplete',//确认拍摄证件照完成
   ADD_TEACH:                baseUrl+'/task/confirmRegisterToTeacher',//确认向班主任报到
   ADD_IPAD:                 baseUrl+'/task/confirmSubmitIPAD',//确认提交ipad
   ADD_UNIFORM:              baseUrl+'/task/receiveUniform',//确认领取校服
   GET_VERIFYCODE:           baseUrl+'/task/getVerifyCode',//获取手机验证码 
+  GET_TASK:                 baseUrl+'/task',//获取任务数据 
+  GET_IDENTITY:             baseUrl+'/task/bindingIdentity',//身份认证 
+  ADD_DRAFT:                baseUrl+'/task/draft',//暂存数据
   ADD_SUBMIT:		            baseUrl+'/task/submit',//提交任务数据
   ADD_HOTELROOM:            baseUrl+'/task/confirmHotelRoom',//提交酒店入住数据
-  GET_HOTELROOM:            baseUrl+'/task/getConfirmHotelRoom',//获取提交的酒店信息
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
+  GET_PERSONALBASEINFO:      baseUrl+'/task/getPersonalBaseInfo',//获取个人资料
+  ADD_PERSONALBASEINFO:      baseUrl+'/task/updatePersonalBaseInfo',//修改个人资料
 	GET_EVENT_BASE: 					reqHost + '/getEventBase', //事件详情页
 	GET_COMMENT_MODULE: 			reqHost + '/getCommentList',//获取评论模块
 	ADD_STAR:									reqHost + '/addStar',//点赞接口
 	FOLLOW_EVENT: 						reqHost + '/followEvent',//关注事件
 	UN_FOLLOW_EVENT:					reqHost + '/unfollowEvent',//取消关注
-	GET_DESCRIPTION_MODULE:		reqHost + '/getDescriptionModule', //获取事件详情模块
+	GET_DESCRIPTION_MODULE:		reqHost + '/getEventDetail', //获取事件详情模块
 	GET_ENROLL_MODULE: 				reqHost +'/getEnrollModule',//获取报名模块
 	ADD_ENROLL: 							reqHost +'/addEnroll', //报名
 	

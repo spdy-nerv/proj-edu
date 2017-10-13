@@ -42,7 +42,7 @@ page{
   margin-left: 33rpx;
   display: flex;
   flex-direction: column;
-  width: 600rpx;
+  width: 500rpx;
 }
 .list-right .register{
   font-size: 35rpx;
@@ -83,7 +83,11 @@ page{
   flex-direction: row;/*column;/*row*/
   width: 100%;
 }
-
+.location{
+  position: absolute;
+  top:7rpx;
+  right:50rpx;
+}
 .time-container {
 }
 

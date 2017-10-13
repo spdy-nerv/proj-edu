@@ -83,10 +83,29 @@ Page({
 			address:'',
 			placeName:'',
 			poster:'',
-			telephone:''
+			telephone:'',
 			
 		},
-		hotelId:''
+		disabled:{
+			disabled:''
+		},
+		report:{
+			dataStatus:'',
+			isInvoice:'',
+			isPhoneVarified:'',
+			isReported:'',
+			isSubmitIpad:'',
+			isTakeBus:'',
+			uniformSize:'',
+			photoNo:'',
+			baggageNo:''
+		},
+		hotelId:'hotelId',
+		moduelObject:{
+		},
+		details:'',
+		detailInfo:'',
+		hidden:true
 	},
 
 	onLoad: function(options){
@@ -120,13 +139,20 @@ Page({
 	      method: 'POST',
 	      realSuccess: function(data){
 			    var datas=data.data;
+	      		console.log("base",datas.modules[0].moduleId);
 				  console.log("base",datas.modules);
 				// var en = parseInt(datas.startTime.substring(5, 7));
-
 				// edit by 梁冬
 				// 依照ui图重新排列模块的渲染顺序
 				var modules = that.sortModulesByPriority(data.modules);
+				var moduelObject = {};
+				for(var m of datas.modules){
+					console.log(m)
+					moduelObject[m.moduleType] = m;
+				}
+				console.log(111)
 				that.setData({
+					    'moduelObject':moduelObject,
 						"modules": datas.modules,
 						"eventName": datas.name,
 						"address": datas.address,
@@ -155,6 +181,8 @@ Page({
 				that.getEnrollModuleData();
 				that.getCommentData();
 				that.getHotelRoom();
+				that.reportResult();
+				that.showInfo();
 	        	wx.hideLoading();
 	      },
 	      realFail: function(msg) {
@@ -392,18 +420,39 @@ Page({
 			that.getCommentData();
 		}
 	},
+	showInfo:function(){
+		var that = this;
+		wx.request({
+			url: APIS.GET_DESCRIPTION_MODULE,
+			data: {eventId:that.data.eventId,
+				pageNo:1,
+				pageSize:99},
+			method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+			// header: {}, // 设置请求的 header
+				success: function(res){
+				console.log(res.data)
+				if(res.data.code=='success'){
+					that.setData({
+						details:true
+					})
+				}
+			},
+			
+		})
+	},
 	clickShowInfo: function() {
 		let that = this;
 		let mL = that.data.modules.length;
 		that.setData({
 			"des.isShowBottom":!that.data.des.isShowBottom,
-			scrollToId: !that.data.des.isShowBottom ? '' : 'J_detail'
+			scrollToId: !that.data.des.isShowBottom ? '' : 'J_detail',
+			hidden:!that.data.hidden
 		});
-		for(let i=0;i<mL;i++){
-			if(that.data.modules[i].moduleType=="1"){
+	
 				const getDescriptionModuleParams = {
-					sid: wx.getStorageSync('sid') || '',
-					moduleId: that.data.modules[i].moduleId
+					eventId:that.data.eventId,
+					pageNo:1,
+					pageSize:99
 				};
 				wx.request({
 					url: APIS.GET_DESCRIPTION_MODULE,
@@ -412,14 +461,12 @@ Page({
 					success: function(res) {
 						console.log("详情！",res);
 						that.setData({
-							"des.description":res.data.resultData.data
+							"des.description":res.data,
+							detailInfo:res.data.data.details
+						
 						});
 					}
 				})
-				break;
-			}
-		}
-		
 	},
 	// 提交酒店入住模块的数据
 	toDAte:function(e){
@@ -468,6 +515,15 @@ Page({
 						title: '提交成功',
 						duration: 2000
 					  })
+					  that.setData({
+						  disabled:{
+							  disabled:true
+						  }
+					  })
+					  setTimeout(function() {
+						wx.navigateBack();  
+					  }, 500);
+					 
 				  }else if(res.code=='UNKNOWN'){
 					wx.showToast({
 						title: '输入信息有误！',
@@ -574,7 +630,6 @@ getHotelRoom:function(){
 		  name: this.data.address
 		})
 	},
-
 	//重新排序modules
 	sortModulesByPriority: function(modules) {
 		// 详情1，投票4，问卷5，评价6，评论2
@@ -648,5 +703,50 @@ getHotelRoom:function(){
 		  current: e.target.dataset.url, // 当前显示图片的链接，不填则默认为 urls 的第一张
 		  urls: rtPics
 		});		
+	},
+	// 请求报到结果数据
+	reportResult:function(){
+		let that = this;
+		let mL = that.data.modules.length;
+		for(let i=0;i<mL;i++){
+			if(that.data.modules[i].moduleType=="TASK"){
+				console.log(that.data.modules[i].moduleId);
+				const getReportResult = {
+				
+					moduleId: that.data.modules[i].moduleId
+				};
+				request({
+					url: APIS.GET_TASK,
+					header: {
+					  auth: wx.getStorageSync('token')
+					},
+					data: getReportResult,
+					method: 'get',
+					realSuccess:function(res){
+					  console.log(res.data);
+					  that.setData({
+						'report.dataStatus':res.data.dataStatus,
+						'report.isInvoice':res.data.isInvoice,
+						'report.isPhoneVarified':res.data.isPhoneVarified,
+						'report.isReported':res.data.isReported,
+						'report.isSubmitIpad':res.data.isSubmitIpad,
+						'report.isTakeBus':res.data.isTakeBus,
+						'report.uniformSize':res.data.uniformSize,
+						'report.photoNo':res.data.photoNo,
+						'report.baggageNo':res.data.baggageNo
+					  })
+					},
+					realFail: function(msg) {
+						console.log(msg)
+					  wx.showToast({
+						title: msg.message
+					  });
+					}
+				},true,this)
+
+
+
 	}
+  }
+ }
 })

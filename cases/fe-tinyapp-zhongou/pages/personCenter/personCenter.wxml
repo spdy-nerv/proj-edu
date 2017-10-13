@@ -1,43 +1,75 @@
-<!--personCenter.wxml-->
-<view class="center_top">
-	<view class="center_info">
-		<image src="{{headerImg}}" class="icon"></image>
-		<view>{{nick}}</view>
-		<block wx:if="{{!isCertification}}">
-			<view class="verify"> 
-				<image src="../../images/no-verify.png" />
-			</view>
-		</block>
-		<block wx:else>
-			<view class="verified"> 
-				<image src="../../images/verified.png" />
-				<text>{{roleName}}</text>
-			</view>
-			<view class="verified"> 
-				<text class="unBind" bindtap="unBind">解除绑定</text>
-			</view>
-		</block>
-		
+<view class="wrapper">
+	<view class="header">
+	       <view class='Wrapper-img'>
+              <image style="width:100%;height:100%" src="../../images/personCenter.jpg"/>
+          </view>
 	</view>
-	<view class="center_bg">
-		<image src="../../images/center_bg.png" />
-	</view>
-</view>
-<view class="personCenter_list mg_top30" bindtap="toMyCard">
-	<image src="../../images/center-icon1.png"/>
-	<text>我的名片</text>
-	<text class="wb_arrow_right fr"></text>
-</view>
-<view class="personCenter_list mg_top30 border_bottom" bindtap="toMyPublic">
-	<image src="../../images/center-icon2.png"/>
-	<text>我的发布</text>
-	<text class="wb_arrow_right fr"></text>
-</view>
-<view class="personCenter_list " bindtap="toMyFollows">
-	<image src="../../images/center-icon3.png"/>
-	<text>我的关注</text>
-	<text class="wb_arrow_right fr"></text>
-</view>
-<!--底部导航-->
+	<view class='tx-img'>
+         <image style="width:100%;height:100%;border-radius: 100%;" wx:if="{{headerImg}}" src="{{headerImg}}"/>
+    </view>
+    
+	<button bindtap="toEditperson" class='edit-button' style="padding-left:10rpx;padding-right:10rpx;width:200rpx;height:40rpx;font-size:26rpx;line-height:40rpx;color:#8A8A8A">
+         	编辑个人资料
+    </button>
+     <view class='zhongou'>
+         	 中欧
+     </view>
+      <view class='ceibs'>
+         	 @CEIBS
+     </view>
+       <view class='list'>
+         	<view class='list-button select' style="padding-left:10rpx;float:left;padding-right:10rpx;width:30%;height:40rpx;font-size:26rpx;line-height:40rpx;">
+         		发表
+    		</view> 
+    		<view class='list-button' style="padding-left:10rpx;float:left;padding-right:10rpx;width:30%;height:40rpx;font-size:26rpx;line-height:40rpx;">
+         		媒体
+    		</view>
+    		<view class='list-button' style="padding-left:10rpx;float:left;padding-right:10rpx;width:30%;height:40rpx;font-size:26rpx;line-height:40rpx;">
+         		喜欢
+    		</view>
+       </view>
+       <view class='list-wrapper'>
+            <view class='list-item'>
+              	<view class='list-box'>
+        		</view>
+			    <view class='comment-img'>
+			         <image style="width:100%;height:100%" src="../../images/comment.jpg"/>
+			    </view>
+			    <view class='transmit-img'>
+			         <image style="width:100%;height:100%" src="../../images/transmit.jpg"/>
+			    </view>
+			    <view class='like-img'>
+			         <image style="width:100%;height:100%" src="../../images/like.jpg"/>
+			    </view>
+        	</view>
+        	 <view class='list-item'>
+              	<view class='list-box'>
+        		</view>
+			    <view class='comment-img'>
+			         <image style="width:100%;height:100%" src="../../images/comment.jpg"/>
+			    </view>
+			    <view class='transmit-img'>
+			         <image style="width:100%;height:100%" src="../../images/transmit.jpg"/>
+			    </view>
+			    <view class='like-img'>
+			         <image style="width:100%;height:100%" src="../../images/like.jpg"/>
+			    </view>
+        	</view>
+        	 <view class='list-item'>
+              	<view class='list-box'>
+        		</view>
+			    <view class='comment-img'>
+			         <image style="width:100%;height:100%" src="../../images/comment.jpg"/>
+			    </view>
+			    <view class='transmit-img'>
+			         <image style="width:100%;height:100%" src="../../images/transmit.jpg"/>
+			    </view>
+			    <view class='like-img'>
+			         <image style="width:100%;height:100%" src="../../images/like.jpg"/>
+			    </view>
+        	</view>
+        </view>
+   		<!--底部导航-->
 <import src="../footer/footer.wxml" />
 <template is="footer" data="{{...footerConfig}}"/>
+</view>
