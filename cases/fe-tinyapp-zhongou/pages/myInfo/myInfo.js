@@ -1,4 +1,6 @@
 //myFollows .js
+//引入通知
+var WxNotificationCenter = require('../../vendors/WxNotificationCenter.js')
 var { APIS } = require('../../const');
 var user = require('../../libs/user');
 var { request } = require('../../libs/request');
@@ -452,9 +454,12 @@ bindingIdentity:function(){
 		        that.setData({
 					     disable:true,
 					     verify:'已提交'
-					  })
+						})
+						WxNotificationCenter.postNotificationName('NotificationName', {dataStatus:'SUBMIT'})
 		        setTimeout(function(){
-				      wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&dataStatus =SUBMIT'}) 
+							wx.navigateBack({
+								delta: 1
+								})
 				    },500);    
 	      	}else{
 	      		 wx.showToast({

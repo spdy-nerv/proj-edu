@@ -3,7 +3,8 @@ var { APIS } = require('../../const');
 var user = require('../../libs/user');
 var { request } = require('../../libs/request');
 var { validate } = require('../../libs/validate');
-
+//引入通知
+var WxNotificationCenter = require('../../vendors/WxNotificationCenter.js')
 Page({
   data: {
 		footerConfig: { 
@@ -86,9 +87,12 @@ Page({
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 		          title: '提交成功'
-		        });
+						});
+						WxNotificationCenter.postNotificationName('NotificationName', {baggageNo:baggageNo})
 		        setTimeout(function(){
-				     wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&baggageNo='+baggageNo}) 
+							wx.navigateBack({
+								delta: 1
+								})
 				    },500);
 		         
 	      	}else{

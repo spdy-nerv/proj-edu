@@ -15,64 +15,70 @@
 <!-- 活动开始 -->
 
 <view class='activity'>
-    <navigator url='../Reported/Reported?moduleId={{moduleId}}&&eventId={{eventId}}'>
+    <navigator url='../Reported/Reported?moduleId={{moduleId}}'>
   <view class="activity-item">
       <view>
         <text class="number">1</text>
       <image src="../../images/detail01.jpg"></image>
       <text class='activity-title'>入学报到</text>
     </view>
-      <image src="../../images/{{!isReported?'gou.png':'report.png'}}" class='right-img'></image>
+      <image src="../../images/{{!isReported?'gou.png':'report.png'}}" class='right-img'wx:if='{{!uniformSize}}'></image>
+      <image src="../../images/report.png" class='right-img'wx:else ></image>
   </view>
     </navigator>
-    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}&&eventId={{eventId}}'>
+    <navigator url='../myUniform/myUniform?moduleId={{moduleId}}'>
         <view class="activity-item">
             <view>
                 <text class="number">2</text>
                 <image src="../../images/detail02.jpg" mode='aspectFit'style='width:45rpx;height:39rpx'></image>
                 <text class='activity-title'>领取校服</text>
               </view>
-            <image src="../../images/{{!uniformSize?'gou.png':'report.png'}}" class='right-img' ></image>
+            <image src="../../images/{{!uniformSize?'gou.png':'report.png'}}" class='right-img' wx:if='{{!uniformSize}}' ></image>
+            <image src="../../images/report.png" class='right-img'wx:else ></image>
         </view>
       </navigator>
-      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}&&eventId={{eventId}}'>
+      <navigator url='../myPhoto/myPhoto?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">3</text>
                   <image src="../../images/detail03.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>拍摄证件照</text>
                 </view>
-              <image src="../../images/{{!photoNo?'gou.png':'report.png'}}" class='right-img'></image>
+              <image src="../../images/{{!photoNo?'gou.png':'report.png'}}" class='right-img' wx:if='{{!photoNo}}'></image>
+              <image src="../../images/report.png" class='right-img'wx:else ></image>
           </view>
       </navigator>
-      <navigator  url='../ipad/ipad?moduleId={{moduleId}}&&eventId={{eventId}}'>
+      <navigator  url='../ipad/ipad?moduleId={{moduleId}}'>
           <view class="activity-item">
               <view>
                   <text class="number">4</text>
                   <image src="../../images/detail04.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>提交<text>ipad</text> </text>
                 </view>
-              <image src="../../images/{{isSubmitIpad!=='false'?'gou.png':'report.png'}}" class='right-img'></image>
+              <image src="../../images/{{isSubmitIpad!=='false'?'gou.png':'report.png'}}" class='right-img' wx:if='{{!isSubmitIpad}}'></image>
+              <image src="../../images/report.png" class='right-img'wx:else ></image>
           </view>
       </navigator>
-  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}&&eventId={{eventId}}'>
+  <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}'>
       <view class="activity-item">
           <view>
               <text class="number">5</text>
               <image src="../../images/detail05.jpg" mode='aspectFit'></image>
               <text class='activity-title'>寄存行李</text>
             </view>
-          <image src="../../images/{{!baggageNo?'gou.png':'report.png'}}" class='right-img'></image>
+          <image src="../../images/{{!baggageNo?'gou.png':'report.png'}}" class='right-img' wx:if='{{!baggageNo}}'></image>
+          <image src="../../images/report.png" class='right-img'wx:else ></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}&&eventId={{eventId}}'>
+  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>
               <image src="../../images/detail06.jpg" mode='aspectFit'></image>
               <text class='activity-title'>信息检查和提交</text>
             </view>
-          <image src="../../images/{{dataStatus=='SUBMIT'?'report.png':'gou.png'}}" class='right-img'></image>
+          <image src="../../images/{{dataStatus=='SUBMIT'?'report.png':'gou.png'}}" class='right-img' wx:if='{{dataStatus!=="SUBMIT"}}'></image>
+          <image src="../../images/report.png" class='right-img'wx:else ></image>
       </view>
   </navigator>
 </view>
@@ -82,7 +88,7 @@
 <template is="{{item.moduleType}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report}}"/>
 </block > -->
 <!-- 根据后台数据渲染 -->
-<template is="{{moduelObject['TASK']?'TASK':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['TASK']}}"/>
+<template is="{{moduelObject['TASK']?'TASK':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['TASK'],...reportInfo}}"/>
 <template is="{{moduelObject['HOTELSTAY']?'HOTELSTAY':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['HOTESTAY']}}"/>
 <!-- 图文详情条件渲染 -->
 <!-- 上拉查看图文详情 -->

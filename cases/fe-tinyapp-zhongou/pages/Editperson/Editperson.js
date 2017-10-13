@@ -120,7 +120,11 @@ Page({
 	         wx.showToast({
 		          title: '保存成功'
 		        });
-		        
+		        setTimeout(function(){
+							wx.navigateBack({
+								delta: 1
+								})
+				    },500);  
 	      },
 	       fail: function(res){  
         console.log(res)

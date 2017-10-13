@@ -3,6 +3,7 @@ var { APIS } = require('../../const');
 var user = require('../../libs/user');
 var { request } = require('../../libs/request');
 var { validate } = require('../../libs/validate');
+var WxNotificationCenter = require('../../vendors/WxNotificationCenter.js')
 
 Page({
   data: {
@@ -96,25 +97,24 @@ Page({
 	      },
 	     header: { auth: wx.getStorageSync('token')},  
 	      method: "POST", 
-	      success: function(res) {  
-	        console.log(res)
-	        if(res.data.success==true){
-	        	 wx.showToast({
+				success: function(res) { 
+	      	console.log(res)
+	      	if(res.data.success==true){
+	      		 wx.showToast({
 		          title: '提交成功'
-		        });
+						});
+						WxNotificationCenter.postNotificationName('NotificationName',{uniformSize: uniformSize })
 		         setTimeout(function(){
-				     wx.navigateBack({
-							  delta: 1
-							})
+							wx.navigateBack({
+								delta: 1
+								})
 				    },500);    
-	        }else{
-	        	wx.showToast({
-		          title: '您已提交过校服编号'
+	      	}else{
+	      		 wx.showToast({
+		          title: '您已提交过校服'
 		        });
-		        setTimeout(function(){
-				    wx.navigateTo({url:'/pages/detail/detail?eventId='+that.data.eventId+'&&uniformSize='+uniformSize}) 
-				    },500);   
-	        }      
+	      	}
+	        
 	      }  
 	   })  
   	}else{

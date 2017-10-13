@@ -8,6 +8,9 @@ var util = require('../../utils/util');
 var user = require('../../libs/user');
 var { request } = require('../../libs/request');
 
+//引入通知
+var WxNotificationCenter = require('../../vendors/WxNotificationCenter.js')
+
 Page({
 	data: {
 		pictureUrls: [
@@ -105,10 +108,14 @@ Page({
 		},
 		details:'',
 		detailInfo:'',
-		hidden:true
+		hidden:true,
+		reportInfo:{
+
+		}
 	},
 
 	onLoad: function(options){
+		var that = this;
 		console.log(options)
 		this.setData({
 			eventId:options.eventId,
@@ -119,12 +126,35 @@ Page({
 	      mask: true,
 	      title: '数据加载中'
 	    });
-	    user.login(this.onLoadData, this, true);
+		user.login(this.onLoadData, this, true);
+		//注册通知
+		WxNotificationCenter.addNotification('NotificationName', that.didNotification, that)
 	    
 	},
+	onUnload: function () {
+		//移除通知
+		var that = this
+		WxNotificationCenter.removeNotification('NotificationName', that)
+	  },
+	
+	  //通知处理
+	  didNotification: function (info) {
+		//更新数据
+		console.log(info.uniformSize);
+		console.log(info.photoNo);
+		console.log(info)
+		this.setData({
+			'reportInfo.uniformSize':info.uniformSize,
+			'reportInfo.photoNo':info.photoNo,
+			'reportInfo.isSubmitIpad':info.isSubmitIpad,
+			'reportInfo.baggageNo':info.baggageNo,
+			'reportInfo.dataStatus':info.dataStatus
+		})
+	  },
 	//页面加载的函数
 	onLoadData: function() {
 		const that = this;
+	
 		const getEventBaseParams = {
 			pageNo:1,
 			pageSize:999,
@@ -194,7 +224,6 @@ Page({
 	    }, true);
     
 	},
-
 	//获取报名模块数据
 	getEnrollModuleData:function(){
 		let that = this;
