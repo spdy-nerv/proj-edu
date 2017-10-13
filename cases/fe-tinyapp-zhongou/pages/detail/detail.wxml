@@ -52,7 +52,7 @@
                   <image src="../../images/detail04.jpg" mode='aspectFit'></image>
                   <text class='activity-title'>提交<text>ipad</text> </text>
                 </view>
-              <image src="../../images/{{isSubmitIpad=='false'?'gou.png':'report.png'}}" class='right-img'></image>
+              <image src="../../images/{{isSubmitIpad!=='false'?'gou.png':'report.png'}}" class='right-img'></image>
           </view>
       </navigator>
   <navigator  url='../Baggage/Baggage?moduleId={{moduleId}}&&eventId={{eventId}}'>
@@ -261,7 +261,7 @@
       <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="input">
           <view class="section" style="background:#fff;">
-              <picker mode="date" value="{{hotelCheckInDate}}" start="2017-01-01" end="2020-09-01" bindchange="toDAte">
+              <picker mode="date" value="{{hotelCheckInDate}}" start="2017-01-01" end="2020-09-01" bindchange="toDAte" disabled='{{hotelCheckInDate}}'>
                 <view class="picker">
                   <view wx:if='{{!hotelCheckInDate}}'>
                       <text wx:if='{{!toDAte}}'>入住日期</text>
@@ -273,7 +273,7 @@
             </view>
         
             <view class="section" style="background:#fff;">
-                <picker mode="date" value="{{hotelCheckOutDate}}" start="2017-01-01" end="2020-09-01" bindchange="goDate">
+                <picker mode="date" value="{{hotelCheckOutDate}}" start="2017-01-01" end="2020-09-01" bindchange="goDate" disabled="{{hotelCheckInDate}}">
                   <view class="picker">
                     <view wx:if='{{!hotelCheckInDate}}'>
                         <text wx:if='{{!goDate}}'>退房日期</text>
@@ -283,7 +283,7 @@
                   </view>
                 </picker>
               </view>
-          <input type='text' placeholder='房间号码'value='{{hotelRoomNo}}' name='roomNum' bindchange='roomNum' />
+          <input type='text' placeholder='房间号码'value='{{hotelRoomNo}}' name='roomNum' bindchange='roomNum' disabled='{{hotelRoomNo}}' />
       </view>
       <view class='button'>
           <button from-type='submit' class="button" bindtap='formSubmit'  wx:if='{{!hotelRoomNo}}' disabled='{{disabled}}'>
