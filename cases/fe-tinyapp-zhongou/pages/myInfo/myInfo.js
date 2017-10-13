@@ -39,6 +39,8 @@ Page({
     hotelRoomNo:'',
     baggageN:'请输入您的行李编号',
     baggageNo:'',
+    marry:'匹配个人信息',
+    verify:'确认提交',
     isInvoice:false,
     isTakeBus:false,
     isSubmitIpad:false,
@@ -47,6 +49,7 @@ Page({
     selectbus:false,
     isPhoneVarified:false,
     disabled:false,
+    disable:false,
     code:'',
     buses: [
       {name: '不需要', value: '不需要'},
@@ -66,7 +69,7 @@ bindingIdentity:function(){
     var classes=that.data.classes;
     var moduleId=that.data.moduleId;
     console.log(realName,phone,classes,moduleId)
-     if (phone==undefined) {
+     if (phone==undefined||phone=='') {
        wx.showToast({
      title: '请输入手机号！',
      icon: 'success',
@@ -76,7 +79,7 @@ bindingIdentity:function(){
 		 }
 		 if (phone.length != 11) {
 		       wx.showToast({
-		     title: '手机号长度有误！',
+		     title: '号码不合法！',
 		     icon: 'success',
 		     duration: 1500
 		    })
@@ -90,11 +93,11 @@ bindingIdentity:function(){
 		     duration: 1500
 		    })
 		  return false;
-		 }else if(realName==undefined){
+		 }else if(realName==undefined||realName==''){
     	wx.showToast({
 					 title: '请填写姓名',
 					})
-    }else if(classes==undefined){
+    }else if(classes==undefined||classes==''){
     	wx.showToast({
 					 title: '请填写班级',
 					})
@@ -118,7 +121,8 @@ bindingIdentity:function(){
 							})
 		        that.setData({
 					     isPhoneVarified:true,
-					     disabled:true
+					     disabled:true,
+					     marry:'匹配成功'
 					  })
 	      	}else{
 	      		 wx.showToast({
@@ -305,6 +309,13 @@ bindingIdentity:function(){
       	if(data.data.isPhoneVarified&&data.data.isPhoneVarified==true){
       		that.setData({
 			      disabled:true,
+			      marry:'匹配成功'
+			    })
+      	}
+      	if(data.data.dataStatus=='SUBMIT'){
+      		that.setData({
+			      disable:true,
+			      verify:'已提交'
 			    })
       	}
      		that.setData({
@@ -336,6 +347,7 @@ bindingIdentity:function(){
   },
   addmsg:function(){
   	var that=this;
+  	console.log(that.data.isInvoice)
   	wx.request({
 	      url: APIS.ADD_DRAFT,
 	      data: {
@@ -436,12 +448,12 @@ bindingIdentity:function(){
 							 title: '提交成功',
 							})
 		        that.setData({
-					     isPhoneVarified:true,
-					     disabled:true
+					     disable:true,
+					     verify:'已提交'
 					  })
 	      	}else{
 	      		 wx.showToast({
-							 title: '任务数据已经提交了，不能修改',
+							 title: '数据已提交',
 							})
 	      	}	       
 	      },

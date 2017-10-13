@@ -56,7 +56,7 @@ Page({
 				     wx.navigateBack({
 							  delta: 1
 							})
-				    },2000);         
+				    },500);         
 	      	}else{
 	      		 wx.showToast({
 		          title: '您已提交过IPAD'

@@ -23,7 +23,7 @@ Page({
   	helloUrls:['https://microcloudtech.com/images/campus_zhongou/banzhuren.jpg'],
   },
   onLoad: function (options) {
-	  console.log(options)
+  	console.log(options)
   	this.setData({
       moduleId: options.moduleId
    });
@@ -52,12 +52,13 @@ Page({
 		});
 	},
  cancel:function(e){
-	 console.log(this.data.moduleId)
   	var that=this;
+  	var moduleId=that.data.moduleId;
+  	console.log(moduleId)
   	wx.request({
 	      url: APIS.ADD_TEACH,
 	      data: {
-	      	moduleId: that.data.moduleId,
+	      	moduleId: moduleId,
 	      },
 	     header: {
             auth: wx.getStorageSync('token')
@@ -66,7 +67,7 @@ Page({
 	      success: function(res) {  
 	        console.log(res)
 		         wx.redirectTo({
-						  url:'../myUniform/myUniform?moduleId='+that.data.moduleId,
+						  url: '../myUniform/myUniform?moduleId='+moduleId,
 						});
 	      }  
 	   })  

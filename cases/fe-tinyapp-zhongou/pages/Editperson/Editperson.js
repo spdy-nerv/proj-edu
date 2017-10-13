@@ -97,8 +97,10 @@ Page({
   },
   //保存
    addmsg:function(){
-   	console.log(wx.getStorageSync('token'))
+// 	
+// 	console.log(that.data.location)
   	var that=this;
+  	console.log(that)
   	wx.request({
 	      url: APIS.ADD_PERSONALBASEINFO,
 	      data: {
@@ -125,6 +127,10 @@ Page({
       }  
 	   })  
   },
+  onShareAppMessage: function() {
+		// 用户点击右上角分享
+		
+	},
    //取消
   cancel: function(){
   		wx.navigateTo({

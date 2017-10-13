@@ -41,6 +41,7 @@ Page({
    })
   },
   onLoad: function (options) {
+  	console.log(options)
   	this.setData({
       moduleId: options.moduleId
    });
@@ -48,7 +49,7 @@ Page({
   },
  onLoadData: function(load){
   	var that = this;
-  	console.log(wx.getStorageSync('token'))
+  	console.log(that.data.moduleId)
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -103,11 +104,16 @@ Page({
 				     wx.navigateBack({
 							  delta: 1
 							})
-				    },2000);    
+				    },500);    
 	        }else{
 	        	wx.showToast({
 		          title: '您已提交过校服编号'
 		        });
+		        setTimeout(function(){
+				     wx.navigateBack({
+							  delta: 1
+							})
+				    },500);   
 	        }      
 	      }  
 	   })  

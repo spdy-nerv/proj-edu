@@ -89,7 +89,7 @@ Page({
 				     wx.navigateBack({
 							  delta: 1
 							})
-				    },2000);
+				    },500);
 		         
 	      	}else{
 	      		 wx.showToast({
