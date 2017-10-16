@@ -10,8 +10,14 @@
                           <view class="panel-description">{{description}}</view>
                             <view wx:for="{{options}}" wx:key="unique" class="panel-option-wrap">
                                 <view class="panel-option">
-                                    <view class="panel-option-checkbox {{ item.isChecked||item.count>0 ? 'option-checked' : '' }}" bindtap="{{checkFnName}}" data-optionid="{{item.id}}"></view>
-                                    <view class="panel-option-text">{{item.content}}</view>
+                                    <view class="panel-option-checkbox {{ item.isChecked||item.count>0&&hasVoted ? 'option-checked' : '' }}" bindtap="{{!hasVoted ? checkFnName:''}}" data-optionid="{{item.id}}"></view>
+                                    <view class="panel-option-text">
+                                        <view  bindtap="{{checkFnName}}" data-optionid="{{item.id}}">
+                                        {{item.content}}
+                                        </view>
+                                        
+
+                                    </view>
                                 </view>
                                 <view wx:if="{{hasVoted}}" class="panel-data"><text class="panel-data-count">{{item.count}}人</text>{{item.percent}}%</view>
                                 <view wx:if="{{hasVoted}}" class="panel-progress">

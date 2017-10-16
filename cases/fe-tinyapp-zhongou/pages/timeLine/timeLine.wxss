@@ -88,6 +88,10 @@ page{
   top:7rpx;
   right:50rpx;
 }
+.location .locationIcon{
+width: 55rpx;
+height: 55rpx;
+}
 .time-container {
 }
 

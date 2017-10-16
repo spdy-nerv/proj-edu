@@ -31,7 +31,8 @@ Page({
         ],
         */
     checkFnName: 'onCheck',
-    d:''
+    d:'',
+    isTest:false
   },
   onLoad:function(options){
     // 生命周期函数--监听页面加载
@@ -66,7 +67,7 @@ Page({
         },
         method: 'POST',
         realSuccess: function(data) {
-          console.log(data);
+          console.log(data.data.isTest);
           // if(data.code=='success'){
           //   that.setData({
           //     hasVoted:true
@@ -90,7 +91,8 @@ Page({
               title: data.title,
               description: q.questionCotent,
               checkFnName: !data.isTest ? 'onCheck' : '',
-              d:d
+              d:d,
+              isTest:data.data.isTest
             });
             console.log(that.data.options);
             that.renderVote(q.options);
