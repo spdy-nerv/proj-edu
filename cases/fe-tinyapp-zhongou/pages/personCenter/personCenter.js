@@ -5,6 +5,7 @@ var { request } = require('../../libs/request');
 Page({
   data: {
   	headerImg:'',
+  	 nickName:"",  //昵称
   },
    //我的关注
   toEditperson: function(e){
@@ -16,6 +17,12 @@ Page({
   	wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
+	    });
+	    var u = wx.getStorageSync('userInfo');
+	    console.log(u)
+	    this.setData({
+	      nickName: u.nickName,
+	      headerImg: u.avatarUrl
 	    });
 	    user.login(this.onLoadData, this, true);
   },
@@ -45,6 +52,21 @@ Page({
         });
       }
     }, true);
+  },
+   getUserInfo: function(cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.getUserInfo({
+        withCredentials: false,
+        success: function(res) {
+          that.globalData.userInfo = res.userInfo
+          typeof cb == "function" && cb(that.globalData.userInfo)
+        }
+      })
+    }
   },
   onShareAppMessage: function() {
 		// 用户点击右上角分享

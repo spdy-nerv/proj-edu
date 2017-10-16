@@ -12,7 +12,7 @@
          	编辑个人资料
     </button>
      <view class='zhongou'>
-         	 昵称
+         	 {{nickName}}
      </view>
       <view class='ceibs'>
          	 @CEIBS
