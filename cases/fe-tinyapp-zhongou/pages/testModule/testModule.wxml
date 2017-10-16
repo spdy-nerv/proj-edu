@@ -14,16 +14,20 @@
                 <view class='checkboxRow'>
                 <view wx:for="{{q.options}}" wx:for-item="o" class="panel-option-wrap">
                     <view class="panel-option">
-                        <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked ? 'option-radio-checked' : '' }}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}" checked='{{q.selectValue==o.id?true:false}}'></view>
-                        <view wx:elif="{{q.type == 2}}" class="panel-option-checkbox {{ o.isChecked ? 'option-checked' : '' }}" bindtap="{{tapCheckboxFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}"></view>
-                        <view class="panel-option-text">{{o.content}}</view>
+                        <view wx:if="{{q.type == 1}}" class="panel-option-radio {{ o.isChecked||moduelObject['1']==o.id ? 'option-radio-checked' : ''}}" bindtap="{{tapRadioFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}" ></view>
+                        <view wx:elif="{{q.type == 2}}" class="panel-option-checkbox {{ o.isChecked||arry[0]==o.id||arry[1]==o.id||arry[2]==o.id||arry[3]==o.id ? 'option-checked' : ''}}" bindtap="{{tapCheckboxFnName}}" data-optionid="{{o.id}}" data-questionindex="{{qi}}"></view>
+                        <view class="panel-option-text">
+                            <text wx:if="{{q.type == 1}}" bindtap="{{tapRadioFnName}}"data-optionid="{{o.id}}"  data-questionindex="{{qi}}">{{o.content}}</text>
+                            <text wx:if="{{q.type == 2}}" bindtap="{{tapCheckboxFnName}}"data-optionid="{{o.id}}"  data-questionindex="{{qi}}">{{o.content}}</text>
+                           
+                        </view>
                        
                     </view>                 
                 </view>
            
         </view>
                 <view wx:if="{{q.type == 0}}" class="panel-textarea-wrap">
-                    <textarea placeholder="评论" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}"value='{{q.selectValue}}'/>
+                    <textarea placeholder="评论" maxlength="100" bindinput="{{onInputFnName}}" disabled="{{isInputDisabled}}" class="panel-textarea" data-questionindex="{{qi}}" value='{{moduelObject["0"]}}'/>
                 </view>
             </view>
         </view>

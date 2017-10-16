@@ -384,7 +384,7 @@ top:10rpx;
 }
 .hotelItem .title{
   font-size: 30rpx;
-  padding-left: 3rpx;
+  padding-left: 4rpx;
 }
 .hotelItem .adress{
   margin: 10rpx 0;

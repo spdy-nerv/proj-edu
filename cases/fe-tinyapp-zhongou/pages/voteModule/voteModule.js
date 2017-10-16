@@ -30,7 +30,8 @@ Page({
           },
         ],
         */
-    checkFnName: 'onCheck'
+    checkFnName: 'onCheck',
+    d:''
   },
   onLoad:function(options){
     // 生命周期函数--监听页面加载
@@ -44,6 +45,7 @@ Page({
     });
     */
     user.login(this.renderUI, this, true);
+    this.checkVote();
   },
 
   renderUI: function() {
@@ -65,11 +67,19 @@ Page({
         method: 'POST',
         realSuccess: function(data) {
           console.log(data);
+          // if(data.code=='success'){
+          //   that.setData({
+          //     hasVoted:true
+          //   })
+          // }
             var cfg = data.data.config;
             var d = data.data.data;
+            console.log(d)
+            var moduelObject = {};
             console.log(d);
             var q = d[0];
-            console.log(q);
+            console.log(moduelObject)
+           
             that.setData({
               //isActive: cfg.active,
               isAllowVote: cfg.isAllow,
@@ -79,8 +89,10 @@ Page({
               votedId: data.isTest ? q.selectValue : '',
               title: data.title,
               description: q.questionCotent,
-              checkFnName: !data.isTest ? 'onCheck' : ''
+              checkFnName: !data.isTest ? 'onCheck' : '',
+              d:d
             });
+            console.log(that.data.options);
             that.renderVote(q.options);
             wx.hideLoading();
         },
@@ -179,6 +191,7 @@ Page({
       },
       method: 'POST',
       realSuccess: function(data) {
+        console.log(data);
         that.setData({
           hasVoted: true,
           checkFnName: ''
@@ -207,5 +220,32 @@ Page({
         });
       }
     }, true, this);
+  },
+  checkVote:function(){
+    var that = this;
+    request({
+      url: APIS.ADD_VOTE,
+      header: {
+        auth: wx.getStorageSync('token')
+      },
+      data: {
+        moduleId: this.data.moduleId
+      },
+      method: 'POST',
+      realSuccess:function(data){
+        console.log(data);
+        if(data.code=='UNKNOWN'){
+          that.setData({
+            hasVoted:false
+          })
+        }else if(data.code=="SERVICE_"){
+          that.setData({
+            hasVoted:true
+          })
+        }
+       
+      }
+
+    },true,this)
   }
 })

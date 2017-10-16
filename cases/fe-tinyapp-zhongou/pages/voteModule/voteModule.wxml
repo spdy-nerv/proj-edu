@@ -6,17 +6,19 @@
                 <view>
                         <image src='../../images/questionnaire.png'  class="image"/>
                 </view>
+                
                           <view class="panel-description">{{description}}</view>
                             <view wx:for="{{options}}" wx:key="unique" class="panel-option-wrap">
                                 <view class="panel-option">
-                                    <view class="panel-option-checkbox {{ item.isChecked ? 'option-checked' : '' }}" bindtap="{{checkFnName}}" data-optionid="{{item.id}}"></view>
+                                    <view class="panel-option-checkbox {{ item.isChecked||item.count>0 ? 'option-checked' : '' }}" bindtap="{{checkFnName}}" data-optionid="{{item.id}}"></view>
                                     <view class="panel-option-text">{{item.content}}</view>
                                 </view>
                                 <view wx:if="{{hasVoted}}" class="panel-data"><text class="panel-data-count">{{item.count}}人</text>{{item.percent}}%</view>
                                 <view wx:if="{{hasVoted}}" class="panel-progress">
-                                    <view class="panel-progress-inner" style="background-color:{{item.progressColor}};width:{{item.percent}}%;"></view>
+                                    <view class="panel-progress-inner"style="background-color:{{item.progressColor}};width:{{item.percent}}%;"></view>
                                 </view>
                             </view>
+        
                             <view class="panel-btn-area">
                                 <button wx:if="{{isActive  && !hasVoted}}" class="panel-btn" bindtap="onSubmitVote">提交</button>
                                 <view wx:elif="{{!isActive}}" class="panel-disabled">当前不可投票</view>

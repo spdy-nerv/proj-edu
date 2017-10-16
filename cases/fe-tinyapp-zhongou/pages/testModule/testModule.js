@@ -63,7 +63,9 @@ Page({
     tapRadioFnName: 'onRadioCheck',
     tapCheckboxFnName: 'onCheckboxCheck',
     onInputFnName: 'onInput',
-    isInputDisabled: false
+    isInputDisabled: false,
+    moduelObject:{},
+    arry:[]
   },
   onLoad:function(options){
     // 生命周期函数--监听页面加载
@@ -101,7 +103,15 @@ Page({
             var cfg = data.data.config;
             var d = data.data.data;
             var data = data.data;
+            var moduelObject = {};
             //console.log(data.isTest)
+            for(var m of d){
+                moduelObject[m.type] = m.selectValue;
+            };
+            if(moduelObject['2']){
+                var arry = moduelObject['2'].split(',');
+            }
+              
             that.setData({
               //isActive: cfg.active,
               isAllowTest: cfg.isAllow,
@@ -111,8 +121,13 @@ Page({
               tapRadioFnName: !data.isTest ? 'onRadioCheck' : '',
               tapCheckboxFnName: !data.isTest ? 'onCheckboxCheck' : '',
               onInputFnName: !data.isTest ? 'onInput' : '',
-              isInputDisabled: !data.isTest ? false : true
+              isInputDisabled: !data.isTest ? false : true,
+              moduelObject:moduelObject,
+              arry:arry
             });
+            
+            
+            console.log(that.data.moduelObject)
             console.log(d);
             that.renderTest(d);
             wx.hideLoading();
@@ -135,8 +150,10 @@ Page({
 
   onRadioCheck: function(e) {
       console.log('我是单选框');
+      console.log(e)
     var qi = e.target.dataset.questionindex;
     var optionId = e.target.dataset.optionid;
+    console.log(optionId)
     var question = this.data.questions[qi];
     var options = question.options;
     options = options.map(function(o) {
