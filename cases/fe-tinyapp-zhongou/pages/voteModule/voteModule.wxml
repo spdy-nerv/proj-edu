@@ -10,9 +10,9 @@
                           <view class="panel-description">{{description}}</view>
                             <view wx:for="{{options}}" wx:key="unique" class="panel-option-wrap">
                                 <view class="panel-option">
-                                    <view class="panel-option-checkbox {{ item.isChecked||selectValue==item.id ? 'option-checked' : '' }}" bindtap="{{!hasVoted ? checkFnName:''}}" data-optionid="{{item.id}}"></view>
+                                    <view class="panel-option-checkbox {{ item.isChecked||selectValue==item.id ? 'option-checked' : '' }}" bindtap="{{!selectValue ? checkFnName:''}}" data-optionid="{{item.id}}"></view>
                                     <view class="panel-option-text">
-                                        <view  bindtap="{{checkFnName}}" data-optionid="{{item.id}}">
+                                        <view  bindtap="{{!selectValue ? checkFnName:''}}" data-optionid="{{item.id}}">
                                         {{item.content}}
                                         </view>
                                         
