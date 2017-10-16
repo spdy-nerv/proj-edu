@@ -1,5 +1,5 @@
 <!--detail.wxml-->
-<scroll-view class="content-wrap" scroll-y="{{modules.length>1?true:false}}" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+<scroll-view class="content-wrap" scroll-y="{{true}}" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
     <view class="banner-container"> 
         <swiper indicator-dots="{{indicatorDots}}"  
                 autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
@@ -117,7 +117,7 @@
 <template is="{{moduelObject['QUESTIONNAIRE']?'QUESTIONNAIRE':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['QUESTIONNAIRE']}}"/>
 <template is="{{moduelObject['COMMENT']?'COMMENT':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report}}"/>
 <import src="../footer/footer.wxml"/>
-<template is="footer" data="{{...footerConfig}}" wx:if='{{!moduelObject["HOTELSTAY"]}}'/>
+<template is="footer" data="{{...footerConfig}}"/>
 </scroll-view>
 <!--事件投票模块 moduleType :4-->
 <template name="VOTE">

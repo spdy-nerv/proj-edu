@@ -5,7 +5,8 @@ var { request } = require('../../libs/request');
 Page({
   data: {
   	realName:'',
-  	declaration:'在你的个人资料中添加简介',
+  	declaratio:'在你的个人资料中添加简介',
+  	declaration:'',
   	location:'',
   	birthday:'',
   	professional:'',

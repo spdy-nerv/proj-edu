@@ -266,7 +266,7 @@ bindingIdentity:function(){
 	    user.login(this.onLoadData(false), this, false);
   },
   checkChange:function(e) {
-  	console.log(e.detail.value,this.data.company)
+  	console.log(e,this.data.company)
   	var isInvoice=this.data.isInvoice
     if(isInvoice==true){ 	
 	    this.setData({
@@ -387,16 +387,16 @@ bindingIdentity:function(){
   	var that=this;
   	console.log(that.data.company,that.data.hotelRoomNo,that.data.plateNumber)
   	if(that.data.isInvoice==true){
-  		if(that.data.company ==undefined||that.data.company ==''){
-  			wx.showToast({
+  		if(that.data.company){
+  			  that.setData({
+			      issure:true
+			    })
+  		}else{
+  			 wx.showToast({
 					 title: '请填写公司抬头',
 					})
   			 that.setData({
 			      issure:false
-			    })
-  		}else{
-  			 that.setData({
-			      issure:true
 			    })
   		}
   	}else{
@@ -405,7 +405,7 @@ bindingIdentity:function(){
 			    })
   	}
   	if(that.data.classes=='北京三班'||that.data.classes=='北京四班'){
-  		if(that.data.plateNumber ==undefined){
+  		if(that.data.plateNumber ==undefined||that.data.plateNumber ==''){
   			wx.showToast({
 					 title: '请输入车牌号码',
 					})
@@ -418,7 +418,7 @@ bindingIdentity:function(){
 			    })
   		}
   	}else{
-  		if(that.data.hotelRoomNo ==undefined){
+  		if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
   			wx.showToast({
 					 title: '请填写酒店房间号码',
 					})
