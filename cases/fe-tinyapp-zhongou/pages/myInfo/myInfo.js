@@ -416,10 +416,6 @@ bindingIdentity:function(){
     	wx.showToast({
 					 title: '请填写照片编号',
 					})
-    }else if(that.data.plateNumber  ==undefined){
-    	wx.showToast({
-					 title: '请填写车牌号',
-					})
     }else if(that.data.uniformSize   ==undefined){
     	wx.showToast({
 					 title: '请选择校服尺寸',
