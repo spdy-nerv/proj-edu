@@ -206,7 +206,7 @@ Page({
     var myAmapFun = new amapFile.AMapWX({ key: key });
     if (that.data.distance.length > 5) {
       wx.showToast({
-        title: '距离太远，无法规划线路！',
+        title: '距离太远！',
         icon: 'success',
         duration: 2000
       })
@@ -265,7 +265,7 @@ Page({
     var myAmapFun = new amapFile.AMapWX({ key: key });
     if (that.data.distance.length > 5) {
       wx.showToast({
-        title: '距离太远，无法规划线路！',
+        title: '距离太远!',
         icon: 'success',
         duration: 2000
       })
@@ -315,7 +315,7 @@ Page({
     var myAmapFun = new amapFile.AMapWX({ key: key });
     if (that.data.distance.length>5) {
       wx.showToast({
-        title: '距离太远，无法规划线路！',
+        title: '距离太远！',
         icon: 'success',
         duration: 2000
       })

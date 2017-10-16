@@ -67,7 +67,7 @@
 		是否搭乘中欧大巴
     </view>
     <view class = "item-r"  bindtap="clickbus">
-        <input class="input-b" type="text" name = "class" placeholder="{{busLine}}" value="{{busLine}}" />
+        <input class="input-b" type="text" disabled="true" name = "class" placeholder="{{busLine}}" value="{{busLine}}" />
         <image class="imgages" src="../../images/down2.jpg" mode="aspectFill" bindchange="buschange"></image>
         <view class="bus_box">
 	   <view class="bus_select hide{{selectbus?'show':''}}" >
