@@ -131,14 +131,14 @@ bindingIdentity:function(){
 					  })
 	      	}else{
 	      		 wx.showToast({
-							 title: 'res.data.message',
+							 title: res.data.message,
 							})
 	      	}
 	       
 	      },
 	      fail: function(){  
           wx.showToast({
-					 title: '认证失败',
+					 title: res.data.message,
 					})
         }  
 	    }) 
