@@ -5,7 +5,7 @@
         <!-- <view class="panel-title">{{title}}</view> -->
         <view scroll-y="true" class="panel-main">
                 <view>
-                        <image src='../../images/questionnaire.png'  class="image"/>
+                        <image src='https://microcloudtech.com/images/campus_zhongou/question.jpg'  class="image"/>
                 </view>
                 <view class="reportTitle"><text>{{title}}</text></view>
                 <view class="question">

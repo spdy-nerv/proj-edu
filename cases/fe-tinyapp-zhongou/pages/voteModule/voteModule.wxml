@@ -4,13 +4,13 @@
         <!-- <view class="panel-title">{{title}}</view> -->
         <view class="panel-main">
                 <view>
-                        <image src='../../images/questionnaire.png'  class="image"/>
+                        <image src='https://microcloudtech.com/images/campus_zhongou/question.jpg'  class="image"/>
                 </view>
                 
                           <view class="panel-description">{{description}}</view>
                             <view wx:for="{{options}}" wx:key="unique" class="panel-option-wrap">
                                 <view class="panel-option">
-                                    <view class="panel-option-checkbox {{ item.isChecked||item.count>0&&hasVoted ? 'option-checked' : '' }}" bindtap="{{!hasVoted ? checkFnName:''}}" data-optionid="{{item.id}}"></view>
+                                    <view class="panel-option-checkbox {{ item.isChecked||selectValue==item.id ? 'option-checked' : '' }}" bindtap="{{!hasVoted ? checkFnName:''}}" data-optionid="{{item.id}}"></view>
                                     <view class="panel-option-text">
                                         <view  bindtap="{{checkFnName}}" data-optionid="{{item.id}}">
                                         {{item.content}}
