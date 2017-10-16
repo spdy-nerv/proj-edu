@@ -119,6 +119,7 @@ bindingIdentity:function(){
          }, 
 	      method: "POST", 
 	      success: function(res) { 
+	      	console.log(res)
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 							 title: '认证成功',
@@ -130,7 +131,7 @@ bindingIdentity:function(){
 					  })
 	      	}else{
 	      		 wx.showToast({
-							 title: '匹配',
+							 title: '匹配不成功',
 							})
 	      	}
 	       
