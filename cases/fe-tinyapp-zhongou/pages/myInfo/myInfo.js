@@ -131,7 +131,7 @@ bindingIdentity:function(){
 					  })
 	      	}else{
 	      		 wx.showToast({
-							 title: '匹配不成功',
+							 title: 'res.data.message',
 							})
 	      	}
 	       
@@ -266,7 +266,7 @@ bindingIdentity:function(){
 	    user.login(this.onLoadData(false), this, false);
   },
   checkChange:function(e) {
-  	console.log(e.detail.value)
+  	console.log(e.detail.value,this.data.company)
   	var isInvoice=this.data.isInvoice
     if(isInvoice==true){ 	
 	    this.setData({
@@ -387,7 +387,7 @@ bindingIdentity:function(){
   	var that=this;
   	console.log(that.data.company,that.data.hotelRoomNo,that.data.plateNumber)
   	if(that.data.isInvoice==true){
-  		if(that.data.company ==undefined){
+  		if(that.data.company ==undefined||that.data.company ==''){
   			wx.showToast({
 					 title: '请填写公司抬头',
 					})
