@@ -45,7 +45,7 @@
          </checkbox-group>
      </view>
      <textarea name="content " disabled="{{disable}}" style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{compan}}" value="{{company}}" bindinput="companychange"  focus="{{focus}}"/>
-     <textarea name="money " disabled="{{disable}}" style="height:40rpx;width:84%;margin:0 7%;" type="text" placeholder="{{mone}}" value="{{money}}"bindinput="moneychange"  focus="{{focus}}"/>
+     <textarea name="money " disabled="{{disable}}" style="height:60rpx;width:84%;margin:0 7%;margin-top:20rpx;" type="text" placeholder="{{mone}}" value="{{money}}"bindinput="moneychange"  focus="{{focus}}"/>
  </view>
  <view class="title"><em>|</em>其他资料</view>
   <view class="content">

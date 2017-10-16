@@ -37,10 +37,10 @@ position:relative;
 }
 .zhongou{
 	padding-top:120rpx;
-	padding-left:50rpx;
+	padding-left:75rpx;
 }
 .ceibs{
-	padding-left:50rpx;
+	padding-left:75rpx;
 	color:#8A8A8A;
 }
 .list{
