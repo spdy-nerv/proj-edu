@@ -52,7 +52,7 @@ img {
 .phone_one .imgages{
 height:56rpx;
 width:20%;
-	float:left;
+	float:right;
 }
 .phone_personal{
 	float:left;
@@ -104,3 +104,4 @@ line-height:1.5555555600000004;
 .rotateRight{
     transform: rotate(180deg); 
 }
+.radio-group{height:100rpx;margin-left:6%;}

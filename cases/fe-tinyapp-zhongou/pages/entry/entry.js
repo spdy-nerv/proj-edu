@@ -1,4 +1,7 @@
 // pages/entry/entry.js
+var { APIS } = require('../../const.js');
+var { request } = require('../../libs/request');
+var user = require('../../libs/user');
 Page({
 
   /**
@@ -13,9 +16,34 @@ Page({
    */
   onLoad: function (options) {
     setTimeout(function() {
-      wx.redirectTo({
-        url:'../login/login'
-      })
+    	user.login();
+		    wx.request({
+		      url:  APIS.GET_PERSONALBASEINFO,
+		      data: {
+		      },
+		      header: {
+		            auth: wx.getStorageSync('token')
+		         },
+		      success: function(res){
+		        console.log(res.data)
+		        if(res.data.data.isPhoneVarified==true){
+		          wx.redirectTo({
+		            url: "../timeLine/timeLine"
+		          })
+		        }else{
+		        	wx.redirectTo({
+			        url:'../login/login'
+			      })
+		        }
+		        // success
+		      },
+		       fail: function(){  
+	           wx.redirectTo({
+			        url:'../login/login'
+			      })
+	        }  
+		    })   
+     
     }, 3000);
   
   },

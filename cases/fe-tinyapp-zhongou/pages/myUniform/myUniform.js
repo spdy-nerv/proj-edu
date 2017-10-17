@@ -15,11 +15,15 @@ Page({
     disabled:false,
     hasMore:'',
   	isNoData:"",
-  	list:[],
+				 items: [
+				 {name: '1', value: '男'},
+				 {name: '0', value: '女', checked: 'true'},
+				 ],
   	eventId:'',
+  	gender:'',
   	moduleId:'',
   	 selectPerson:true,
-    firstPerson:'M',
+    firstPerson:'',
   	
   },
   //点击选择类型
@@ -44,12 +48,28 @@ Page({
   },
   onLoad: function (options) {
   	console.log(options)
-  	this.setData({
+  	  var that=this;
+  	that.setData({
        moduleId: options.moduleId,
       eventId:options.eventId
    });
-	    user.login(this.onLoadData(false), this, false);
+   wx.request({
+      url:  APIS.GET_PERSONALBASEINFO,
+      data: {
+      },
+      header: {
+            auth: wx.getStorageSync('token')
+         },
+      success: function(res){
+        console.log(res.data)
+        that.setData({
+			      gender: res.data.data.gender,
+			  });
+      }
+    });
+	  user.login(this.onLoadData(false), this, false);
   },
+ 
  onLoadData: function(load){
   	var that = this;
   	console.log(that.data.moduleId)

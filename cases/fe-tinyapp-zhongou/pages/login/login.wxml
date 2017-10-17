@@ -1,0 +1,50 @@
+<!--pages/login/login.wxml-->
+<view class="page">
+    <view class="page__bd">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+      <view class="weui-cells__title">登录</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="text" class="weui-input" name = "realName" value="{{realName}}" placeholder="{{realNam}}" bindinput="realNamechange"/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">班级</view>
+          </view>
+          <view class="weui-cell__bd" bindtap="clickclass">
+             <input class="weui-input" style="width:80%;float: left;" type="text" name = "class" placeholder="{{class}}" value="{{classes}}" />
+		        <image class="imgages" src="../../images/down2.jpg" mode="aspectFill" bindchange="classchange"></image>
+		        <view class="person_box hide{{selectclass?'show':''}}" >
+				   <view class="phone_select" >
+				     <view class="select_one" bindtap="mySelect" data-me="北京三班">北京三班</view>
+				     <view class="select_one" bindtap="mySelect" data-me="北京四班">北京四班</view>
+				     <view class="select_one" bindtap="mySelect" data-me="上海三班">上海三班</view>
+				     <view class="select_one" bindtap="mySelect" data-me="上海五班">上海五班</view>
+				     <view class="select_one" bindtap="mySelect" data-me="深圳二班">深圳二班</view>
+			       </view>
+			    </view>
+          </view>
+        </view>
+         <view class="weui-cell weui-cell_input">
+	          <view class="weui-cell__hd">
+	            <view class="weui-label">电话</view>
+	          </view>
+	          <view class="weui-cell__bd">
+	             <input type="text" class="weui-input" name = "phone" value="{{phone}}" placeholder="{{phon}}" bindinput="phonechange"/>
+	          </view>
+          </view>
+      </view>
+     
+      <view class="weui-btn-area" bindtap="bindingIdentity">
+        <button class="weui-btn" type="warn">确定</button>
+      </view>
+    </view>
+  </view>
+ 
+ 
+ 
