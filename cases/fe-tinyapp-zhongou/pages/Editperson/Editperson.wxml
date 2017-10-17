@@ -1,3 +1,4 @@
+<scroll-view scroll-x="{{false}}" scroll-y="{{false}}">
 <view class="wrapper">
 	<view class="header">
 	       <view class='Wrapper-img'>
@@ -44,3 +45,4 @@
 	<button style="font-size:30rpx;margin-top:5%; " class = "submit" bindtap="addmsg" >保存</button>
 	<button style="font-size:30rpx;margin-top:5%; " class = "cancel"  bindtap="cancel" >取消</button>
 </view>
+ </scroll-view>

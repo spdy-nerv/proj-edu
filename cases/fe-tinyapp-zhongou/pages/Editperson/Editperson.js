@@ -101,7 +101,7 @@ Page({
 // 	
 // 	console.log(that.data.location)
   	var that=this;
-  	console.log(that)
+  	console.log(that.data.professional,that.data.grade)
   	wx.request({
 	      url: APIS.ADD_PERSONALBASEINFO,
 	      data: {

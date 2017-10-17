@@ -1,8 +1,7 @@
-//获取应用实例
+// pages/entry/entry.js
 var { APIS } = require('../../const.js');
 var { request } = require('../../libs/request');
 var user = require('../../libs/user');
-
 var app = getApp()
 var { APIS } = require('../../const');
 Page({
@@ -76,6 +75,7 @@ bindingIdentity:function(){
     var that=this;
     var realName=that.data.realName;
     var phone=that.data.phone;
+    var classes=that.data.classes;
     console.log(realName,phone,classes)
      if (phone==undefined||phone=='') {
        wx.showToast({
