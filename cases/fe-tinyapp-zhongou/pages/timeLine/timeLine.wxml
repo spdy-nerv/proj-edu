@@ -26,7 +26,7 @@
         <view class="location">
             <navigator url="../navigate/navigate?lati={{item.latitude}}&long={{item.longitude}}&name={{item.placeName}}"> 
                 <view class="locationIcon">
-					<image src='../../images/ui_07.jpg' class='ui_07'/>
+					<image src='../../images/ui_07.png' class='ui_07'/>
 				</view>
             </navigator>
         </view>

@@ -1,5 +1,5 @@
 <!--detail.wxml-->
-<scroll-view class="content-wrap" scroll-y="{{true}}" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+<scroll-view class="content-wrap" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
     <view class="banner-container"> 
         <swiper indicator-dots="{{indicatorDots}}"  
                 autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">  
@@ -96,7 +96,8 @@
 <view class="pull-up-show-detail" bindtap="clickShowInfo" id="J_detail">
     <view class="classname">
       <text class="enterText">活动详情</text>
-    <image src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
+    <image wx:if='{{!iconUp}}' src='../../images/jiantou.jpg' class="enterDetail" mode='aspectFit'/>
+    <image wx:else src='../../images/jiantou_up.jpg' class="enterDetail" mode='aspectFit'/>
   </view>
   </view>
   <!-- 底部导航区域 -->
@@ -264,31 +265,11 @@
               </view>
           </view>
       </view>
+      <view class="hotelText">
+         <text space='emsp' class="text">  请同学们在中午13:00前在酒店大堂中欧接待处办理入住，着正装，携带录取通知书及身份证件，在酒店门口乘坐酒店校区之间免费通勤巴士前往校区报道、参加下午课程。</text>
+      </view>
       <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="input">
-          <view class="section" style="background:#fff;">
-              <picker mode="date" value="{{hotelCheckInDate}}" start="2017-01-01" end="2020-09-01" bindchange="toDAte" disabled='{{hotelCheckInDate}}'>
-                <view class="picker">
-                  <view wx:if='{{!hotelCheckInDate}}'>
-                      <text wx:if='{{!toDAte}}'>入住日期</text>
-                      <text style="color:black"> {{toDAte}}</text>
-                  </view>
-                  <text style="color:black" wx:if='{{hotelCheckInDate}}'>{{hotelCheckInDate}}</text>
-                </view>
-              </picker>
-            </view>
-        
-            <view class="section" style="background:#fff;">
-                <picker mode="date" value="{{hotelCheckOutDate}}" start="2017-01-01" end="2020-09-01" bindchange="goDate" disabled="{{hotelCheckInDate}}">
-                  <view class="picker">
-                    <view wx:if='{{!hotelCheckInDate}}'>
-                        <text wx:if='{{!goDate}}'>退房日期</text>
-                        <text style="color:black"> {{goDate}}</text>
-                    </view>
-                      <text style="color:black" wx:if='{{hotelCheckInDate}}'>{{hotelCheckInDate}}</text>
-                  </view>
-                </picker>
-              </view>
           <input type='text' placeholder='房间号码'value='{{hotelRoomNo}}' name='roomNum' bindchange='roomNum' disabled='{{hotelRoomNo}}' />
       </view>
       <view class='button'>

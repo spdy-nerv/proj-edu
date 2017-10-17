@@ -111,7 +111,8 @@ Page({
 		hidden:true,
 		reportInfo:{
 
-		}
+		},
+		iconUp:false
 	},
 
 	onLoad: function(options){
@@ -127,6 +128,7 @@ Page({
 	      title: '数据加载中'
 	    });
 		user.login(this.onLoadData, this, true);
+		this.prestrain();
 		//注册通知
 		WxNotificationCenter.addNotification('NotificationName', that.didNotification, that)
 	    
@@ -473,9 +475,11 @@ Page({
 		let that = this;
 		let mL = that.data.modules.length;
 		that.setData({
-			"des.isShowBottom":!that.data.des.isShowBottom,
+			
 			scrollToId: !that.data.des.isShowBottom ? '' : 'J_detail',
-			hidden:!that.data.hidden
+			"des.isShowBottom":!that.data.des.isShowBottom,
+			hidden:!that.data.hidden,
+			iconUp:!that.data.iconUp
 		});
 	
 				const getDescriptionModuleParams = {
@@ -497,18 +501,28 @@ Page({
 					}
 				})
 	},
+	prestrain:function(){
+		const that = this;
+		const getDescription = {
+			eventId:that.data.eventId,
+			pageNo:1,
+			pageSize:99
+		};
+		wx.request({
+			url: APIS.GET_DESCRIPTION_MODULE,
+			data: getDescription,
+			method: 'POST',
+			success: function(res) {
+				console.log("详情！",res);
+				that.setData({
+					"des.description":res.data,
+					detailInfo:res.data.data.details
+				
+				});
+			}
+		})
+},
 	// 提交酒店入住模块的数据
-	toDAte:function(e){
-		var that = this;
-		this.setData({
-		'date.toDAte':e.detail.value
-		})
-	},
-	goDate:function(e){
-		this.setData({
-			'date.goDate':e.detail.value
-		})
-	},
 	roomNum:function(e){
 		this.setData({
 			'date.roomNum':e.detail.value
@@ -521,14 +535,12 @@ Page({
 				if(that.data.modules[i].moduleType=='HOTELSTAY'){
 					const parmar = {
 						 'moduleId': that.data.modules[i].moduleId,
-						"hotelCheckInDate": that.data.date.toDAte,
-						"hotelCheckOutDate": that.data.date.goDate,
 						"hotelRoomNo":that.data.date.roomNum,
 					};
 					
 				
 			
-		if(that.data.date.toDAte&&that.data.date.goDate&&that.data.date.roomNum){
+		if(that.data.date.roomNum){
 			request({
 				url: APIS.ADD_HOTELROOM,
 				header: {
@@ -741,7 +753,6 @@ getHotelRoom:function(){
 			if(that.data.modules[i].moduleType=="TASK"){
 				console.log(that.data.modules[i].moduleId);
 				const getReportResult = {
-				
 					moduleId: that.data.modules[i].moduleId
 				};
 				request({

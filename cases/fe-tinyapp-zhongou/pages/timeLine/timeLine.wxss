@@ -53,8 +53,8 @@ page{
   justify-content: space-between;
 }
 .ui_07{
-  width: 35rpx;
-  height: 34rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 .list-right .name{
   font-size: 28rpx;

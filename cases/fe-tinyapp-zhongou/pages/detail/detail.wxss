@@ -389,6 +389,14 @@ top:10rpx;
 .hotelItem .adress{
   margin: 10rpx 0;
 }
+.hotelText{
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  padding: 20rpx;
+  text-indent: 2rpx;
+  color: #999;
+  text-align:justify;
+}
 .input{
   display: flex;
   flex-direction: column;
