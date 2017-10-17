@@ -261,6 +261,10 @@ Page({
           isInputDisabled: true
         });
         wx.hideLoading();
+        setTimeout(function() {
+            wx.navigateBack();  
+          }, 500);
+         
       },
       loginCallback: this.onSubmitTest,
       realFail: function(msg) {

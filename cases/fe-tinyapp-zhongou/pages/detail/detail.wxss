@@ -45,8 +45,8 @@ swiper {
   font-size: 36rpx;
   border-top: 1rpx solid #ccc;
   box-sizing: border-box;
-  font-weight: 100;
   align-content: center;
+  font-weight: 400;
 }
 .activity-item .ipad{
   font-weight: bold;
