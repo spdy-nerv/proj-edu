@@ -12,7 +12,7 @@ page {
 .title{
 height:50rpx;
 border-bottom:2rpx solid #7b7b7b;
-margin-top:20rpx;
+margin-top:30rpx;
 margin-left:6%;
 float:left;
 width:90%;
@@ -26,16 +26,23 @@ margin-left:50rpx;
 .item-l{
 float:left;
 	width:42%;
-	padding-left:7%;
-	padding-top:20rpx;
+	margin-left:7%;
+	margin-top:30rpx;
+	background:#fff;
 		
+}
+text{
+float:left;
+	height:100%;
+	margin-top:5rpx;
 }
 .item-r{
     float:left;
 	width:42%;
-	padding-left:3%;
-	padding-top:20rpx;
+	margin-left:3%;
+	margin-top:30rpx;
 	text-align:center;
+	background:#fff;
 		
 }
 .item-a{
@@ -140,4 +147,11 @@ background:#fff;
 .success{
 	background-color:#B39652;
 	color:black;
+}
+input{
+ float:right;
+ width:59%;
+}
+wx-input{
+ text-align:center
 }

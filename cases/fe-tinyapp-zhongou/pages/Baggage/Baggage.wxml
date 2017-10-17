@@ -8,7 +8,7 @@
 </view>
 <view class = "item">
 
-<input placeholder="{{baggageN}}" value="{{baggageNo}}"bindchange="contentchange"/>
+<input placeholder="{{baggageN}}" style="text-align:center;" value="{{baggageNo}}"bindchange="contentchange"/>
 </view>
 <button bindtap="cancel" >确认</button>
 </view>

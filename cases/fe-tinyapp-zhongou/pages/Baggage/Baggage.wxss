@@ -30,7 +30,7 @@ image{
 }
 .content{
    padding:40rpx 37rpx;
-   font-size: 20rpx;
+   font-size: 28rpx;
    color: #333;
    line-height: 1.8;
    width: 100%;

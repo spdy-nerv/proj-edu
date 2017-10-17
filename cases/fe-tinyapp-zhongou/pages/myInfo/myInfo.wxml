@@ -1,42 +1,18 @@
  <view class="wrap">
- <view class="title"><em>|</em>基本信息 </view>
- <view class="content">
- 	<view class = "item-l">
-		<input type="text" class="{{disabled==true?'disable':''}}" name = "realName" value="{{realName}}" placeholder="{{realNam}}" disabled="{{disabled}}" bindinput="realNamechange"/>
-    </view>
-    <view class = "item-r"  bindtap="clickclass">
-        <input class="input-b {{disabled==true?'disable':''}}" type="text" name = "class" placeholder="{{class}}" value="{{classes}}" disabled="{{disabled}}" />
-        <image class="imgages" src="../../images/down2.jpg" mode="aspectFill" bindchange="classchange"></image>
-        <view class="person_box hide{{selectclass?'show':''}}" >
-		   <view class="phone_select" >
-		     <view class="select_one" bindtap="mySelect" data-me="北京三班">北京三班</view>
-		     <view class="select_one" bindtap="mySelect" data-me="北京四班">北京四班</view>
-		     <view class="select_one" bindtap="mySelect" data-me="上海三班">上海三班</view>
-		     <view class="select_one" bindtap="mySelect" data-me="上海五班">上海五班</view>
-		     <view class="select_one" bindtap="mySelect" data-me="深圳二班">深圳二班</view>
-	       </view>
-	    </view>
-    </view>
-    
-    <view class = "item-l">
-		<input type="text" class="{{disabled==true?'disable':''}}" name = "phone" value="{{phone}}" placeholder="{{phon}}" disabled="{{disabled}}" bindinput="phonechange"/>
-    </view>
-    <view class = "item-r">
-        <button class="sendcode {{disabled==true?'success':''}}" disabled="{{disabled}}" bindtap="bindingIdentity">{{marry}}</button>
-    </view>
- </view>
  <view class="title"><em>|</em>车辆信息 </view>
   <view class="content">
      <view class = "item-l">
-		<input type="text" name = "plateNumber" placeholder="{{plateNumbe}}" value="{{plateNumber}}" focus="{{focus}}" disabled="{{disable}}" bindchange="plateNumberchange"/>
+     <label><text>车牌号码:</text>
+		<input type="text" name = "plateNumber" value="{{plateNumber}}" focus="{{focus}}" disabled="{{disable}}" bindchange="plateNumberchange"/>
+		</label>
     </view>
     <view class = "item-r" >
-        <input class="input-r disable" type="text" disabled="true" name = "photograph" value="{{photograph}}" focus="{{focus}}" bindchange="photograph"/>
+        <input style="width:100%"  class="input-r disable" type="text" disabled="true" name = "photograph" value="{{photograph}}" focus="{{focus}}" bindchange="photograph"/>
     </view>
  </view>
  <view class="title"><em>|</em>收据开票</view>
   <view class="content">
-     <view class = "item-l">
+     <view class = "item-l" style="background:#F0F0F0">
 		是否换开收据
     </view>
     <view class = "item-a" bindtap="checkChange" >
@@ -49,20 +25,29 @@
  <view class="title"><em>|</em>其他资料</view>
   <view class="content">
     <view class = "item-l">
-		<input type="text" disabled="{{disable}}" name = "uniformSize" placeholder="{{uniformSiz}}" value="{{uniformSize}}" focus="{{focus}}" bindchange="uniformSizechange"/>
+    	<label><text>校服尺寸:</text>
+			<input type="text" disabled="{{disable}}" name = "uniformSize"  value="{{uniformSize}}" focus="{{focus}}" bindchange="uniformSizechange"/>
+		</label>
     </view>
     <view class = "item-r">
-        <input class="input-r" disabled="{{disable}}" type="text" name = "photoNo" placeholder="{{photoN}}" value="{{photoNo}}" focus="{{focus}}" bindchange="photoNochange"/>    </view>
+    	<label><text>照片编号:</text>
+        	<input class="input-r" disabled="{{disable}}" type="text" name = "photoNo" value="{{photoNo}}" focus="{{focus}}" bindchange="photoNochange"/> 
+        </label>
+    </view>
      <view class = "item-l">
-		<input type="text" disabled="{{disable}}" name = "hotelRoomNo" placeholder="{{hotelRoomN}}" value="{{hotelRoomNo}}" focus="{{focus}}" bindchange="hotelchange"/>
+     	<label><text>酒店房号:</text>
+			<input type="text" disabled="{{disable}}" name = "hotelRoomNo"  value="{{hotelRoomNo}}" focus="{{focus}}" bindchange="hotelchange"/>
+		</label>
     </view>
     <view class = "item-r" >
-        <input class="input-r" disabled="{{disable}}" type="text" name = "baggageNo" placeholder="{{baggageN}}" value="{{baggageNo}}" focus="{{focus}}" bindchange="Baggagechange"/>
+	    <label><text>行李号码:</text>
+	        <input class="input-r" disabled="{{disable}}" type="text" name = "baggageNo" value="{{baggageNo}}" focus="{{focus}}" bindchange="Baggagechange"/>
+	    </label>
     </view>
  </view>
   <view class="title"><em>|</em>交通安排</view>
    <view class="content">
-     <view class = "item-l">
+     <view class = "item-l" style="background:#F0F0F0">
 		是否搭乘中欧大巴
     </view>
     <view class = "item-r"  bindtap="clickbus">

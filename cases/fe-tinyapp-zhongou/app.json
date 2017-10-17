@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/entry/entry",
+    "pages/login/login",
     "pages/timeLine/timeLine",
     "pages/eventPoster/eventPoster",
     "pages/eventPublish/eventPublish",

@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     setTimeout(function() {
       wx.redirectTo({
-        url:'../timeLine/timeLine'
+        url:'../login/login'
       })
     }, 3000);
   

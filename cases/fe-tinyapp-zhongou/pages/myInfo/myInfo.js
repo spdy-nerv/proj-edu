@@ -65,105 +65,6 @@ Page({
   	list:[]
   	
   },
-    //匹配个人信息
-bindingIdentity:function(){
-    var that=this;
-    var realName=that.data.realName;
-    var phone=that.data.phone;
-    var classes=that.data.classes;
-    var moduleId=that.data.moduleId;
-    console.log(realName,phone,classes,moduleId)
-     if (phone==undefined||phone=='') {
-       wx.showToast({
-     title: '请输入手机号！',
-     icon: 'success',
-     duration: 1500
-    })
-		  return false;
-		 }
-		 if (phone.length != 11) {
-		       wx.showToast({
-		     title: '号码不合法！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }
-		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-		 if (!myreg.test(phone)) {
-		       wx.showToast({
-		     title: '手机号不合法！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }else if(realName==undefined||realName==''){
-    	wx.showToast({
-					 title: '请填写姓名',
-					})
-    }else if(classes==undefined||classes==''){
-    	wx.showToast({
-					 title: '请填写班级',
-					})
-    }else{
-    	wx.request({
-	      url: APIS.GET_IDENTITY,
-	       data: {
-	        realName:realName,
-	        classes:classes,
-	        phone:phone,
-	        moduleId:moduleId
-	      },
-	     header: {
-            auth: wx.getStorageSync('token')
-         }, 
-	      method: "POST", 
-	      success: function(res) { 
-	      	console.log(res)
-	      	if(res.data.success==true){
-	      		 wx.showToast({
-							 title: '认证成功',
-							})
-		        that.setData({
-					     isPhoneVarified:true,
-					     disabled:true,
-					     marry:'匹配成功'
-					  })
-	      	}else{
-	      		 wx.showToast({
-							 title: res.data.message,
-							})
-	      	}
-	       
-	      },
-	      fail: function(){  
-          wx.showToast({
-					 title: res.data.message,
-					})
-        }  
-	    }) 
-    }
-} ,
- //点击选择班级类型
-  clickclass:function(){
-    var selectclass = this.data.selectclass;
-    if(selectclass == true){
-     this.setData({
-     selectclass:false,
-  })
-    }else{
-     this.setData({
-		     selectclass:true,
-		  })
-    }
-  } ,
-   //点击切换
-  mySelect:function(e){
-   this.setData({
-     classes:e.target.dataset.me,
-     selectclass:true,
-   })
-  },
  //点击选择公交类型
   clickbus:function(){
     var selectbus = this.data.selectbus;
@@ -192,16 +93,6 @@ bindingIdentity:function(){
      busLine:e.target.dataset.me,
      selectbus:true,
    })
-  },
-  realNamechange:function(e){
-    this.setData({
-      realName:e.detail.value
-    })
-  },
-  phonechange:function(e){
-    this.setData({
-      phone:e.detail.value
-    })
   },
   photoNochange:function(e){
     this.setData({
@@ -259,10 +150,25 @@ bindingIdentity:function(){
     })
   },
   onLoad: function (options) {
-  	this.setData({
+  	var that=this;
+  	that.setData({
        moduleId: options.moduleId,
       eventId:options.eventId
    });
+   wx.request({
+      url:  APIS.GET_PERSONALBASEINFO,
+      data: {
+      },
+      header: {
+            auth: wx.getStorageSync('token')
+         },
+      success: function(res){
+        console.log(res.data)
+        that.setData({
+			      classes: res.data.data.classes,
+			  });
+      }
+    });
 	    user.login(this.onLoadData(false), this, false);
   },
   checkChange:function(e) {
@@ -312,12 +218,6 @@ bindingIdentity:function(){
       method: 'GET',
       realSuccess: function(data){
       	console.log("我的关注asdf",data);
-      	if(data.data.isPhoneVarified&&data.data.isPhoneVarified==true){
-      		that.setData({
-			      disabled:true,
-			      marry:'匹配成功'
-			    })
-      	}
       	if(data.data.dataStatus=='SUBMIT'){
       		that.setData({
 			      disable:true,
@@ -326,7 +226,6 @@ bindingIdentity:function(){
       	}
      		that.setData({
      			baggageNo:data.data.baggageNo,
-     			classes:data.data.classes,
      			company:data.data.company,
      			dataStatus:data.data.dataStatus,
      			hotelRoomNo:data.data.hotelRoomNo,
@@ -335,10 +234,8 @@ bindingIdentity:function(){
 		      isReported:data.data.isReported,
 		      isSubmitIpad:data.data.isSubmitIpad,
 		      isTakeBus:data.data.isTakeBus,
-		      phone:data.data.phone,
 		      photoNo:data.data.photoNo,
 		      plateNumber:data.data.plateNumber,
-		      realName:data.data.realName,
 		      uniformSize:data.data.uniformSize,
 		      busLine: data.data.busLine,
 		    })
@@ -386,57 +283,66 @@ bindingIdentity:function(){
   sendmsg:function(){
   	var that=this;
   	console.log(that.data.company,that.data.hotelRoomNo,that.data.plateNumber)
-  	if(that.data.isInvoice==true){
-  		if(that.data.company){
-  			  that.setData({
-			      issure:true
-			    })
-  		}else{
-  			 wx.showToast({
-					 title: '请填写公司抬头',
-					})
-  			 that.setData({
-			      issure:false
-			    })
-  		}
-  	}else{
-  		that.setData({
-			      issure:true
-			    })
-  	}
-  	if(that.data.classes=='北京三班'||that.data.classes=='北京四班'){
-  		if(that.data.plateNumber ==undefined||that.data.plateNumber ==''){
-  			wx.showToast({
+  	
+	if(that.data.classes=='北京三班'||that.data.classes=='北京四班'){
+		if(that.data.plateNumber ==undefined||that.data.plateNumber ==''){
+			wx.showToast({
 					 title: '请输入车牌号码',
 					})
-  			that.setData({
+			that.setData({
 			      issure:false
 			    })
-  		}else{
-  			that.setData({
-			      issure:true
-			    })
-  		}
-  	}else{
-  		if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
-  			wx.showToast({
+		}else{
+			if(that.data.isInvoice==true){
+	  		if(that.data.company==''||that.data.company==undefined){
+	  			   wx.showToast({
+						 title: '请填写公司抬头',
+						})
+	  			 that.setData({
+				      issure:false
+				    })
+	  		}else{
+	  			 that.setData({
+				      issure:true
+				    })
+	  		}
+	  	}else{
+	  		that.setData({
+				      issure:true
+				    })
+	  	}
+		}
+	}else{
+		if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
+			wx.showToast({
 					 title: '请填写酒店房间号码',
 					})
-  			that.setData({
+			that.setData({
 			      issure:false
 			    })
-  		}else{
-  			that.setData({
-			      issure:true
-			    })
-  		}
-  	}
-  	if(that.data.issure==true){
-  			 if(that.data.isPhoneVarified==false){
-    	 wx.showToast({
-					 title: '请匹配个人信息',
-					})
-    }else if(that.data.baggageNo ==undefined){
+		}else{
+			if(that.data.isInvoice==true){
+	  		if(that.data.company==''||that.data.company==undefined){
+	  			   wx.showToast({
+						 title: '请填写公司抬头',
+						})
+	  			 that.setData({
+				      issure:false
+				    })
+	  		}else{
+	  			 that.setData({
+				      issure:true
+				    })
+	  		}
+	  	}else{
+	  		that.setData({
+				      issure:true
+				    })
+	  	}
+		}
+	}
+	if(that.data.issure==true){
+   if(that.data.baggageNo ==undefined){
     	wx.showToast({
 					 title: '请填写行李号码',
 					})
@@ -509,9 +415,8 @@ bindingIdentity:function(){
 					})
         }  
 	   })  
-    }	
-  	}
-  
+    }
+   }
   },
   showMore:function(e){
 		var that=this;
