@@ -481,27 +481,8 @@ Page({
 			hidden:!that.data.hidden,
 			iconUp:!that.data.iconUp
 		});
-	
-				const getDescriptionModuleParams = {
-					eventId:that.data.eventId,
-					pageNo:1,
-					pageSize:99
-				};
-				wx.request({
-					url: APIS.GET_DESCRIPTION_MODULE,
-					data: getDescriptionModuleParams,
-					method: 'POST',
-					success: function(res) {
-						console.log("详情！",res);
-						that.setData({
-							"des.description":res.data,
-							detailInfo:res.data.data.details
-						
-						});
-					}
-				})
 	},
-	prestrain:function(){
+	prestrain:function(){ //预加载图文详情图片
 		const that = this;
 		const getDescription = {
 			eventId:that.data.eventId,
@@ -620,7 +601,6 @@ getHotelRoom:function(){
 				telephone:res.data.eventInfo.telephone
 			}
 		  })
-		  console.log(res.data.hotelCheckInDate)
 		},
 		realFail: function(msg) {
 			console.log(msg)

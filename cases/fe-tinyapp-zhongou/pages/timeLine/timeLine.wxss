@@ -89,12 +89,9 @@ page{
   right:50rpx;
 }
 .location .locationIcon{
-width: 55rpx;
-height: 55rpx;
+width: 75rpx;
+height: 75rpx;
 }
-.time-container {
-}
-
 .time-line-container{
   box-sizing: border-box;
   overflow-y: hidden;
