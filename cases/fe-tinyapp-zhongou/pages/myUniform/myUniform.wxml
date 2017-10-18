@@ -6,11 +6,17 @@
     <rich-text nodes="请在前台VIP室试穿并领取校服，并在下方选择最终领取校服的尺码信息（校服包括一件短袖T恤及一件长袖外套，须在开学模块拓展环节时统一穿着），选择完成请点击确定完成键"/>
   </view>
 </view>
+<radio-group class="radio-group" bindchange="radioChange">
+<text>性别：</text>
+ <label class="radio" wx:for-items="{{items}}">
+ <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+ </label>
+</radio-group>
+<text>校服尺寸：</text>
   <view class="phone_one" >
       <view class="phone_personal">{{firstPerson}}</view>
       <image class="imgages" src="https://microcloudtech.com/images/campus_zhongou/down1.jpg" mode="aspectFill" bindtap="clickPerson"></image>
   </view>
-
 <view class="person_box">
    <view wx:if="{{gender==1}}" class="phone_select" hidden="{{selectPerson}}">
     <view class="select_one" bindtap="mySelect" data-me="M">M</view>

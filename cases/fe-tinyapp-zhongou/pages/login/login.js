@@ -13,9 +13,14 @@ Page({
 	  	phone:'',
 	    class :'请选择班级',
 	    classes :'',
+	    moduleId:'',
 	    firstclass:'',
       selectclass:false,
   }, onLoad: function (options) {
+  	console.log(options)
+  	this.setData({
+  		moduleId:options.moduleId
+  	})
   	user.login();
     wx.request({
       url:  APIS.GET_PERSONALBASEINFO,
@@ -28,7 +33,7 @@ Page({
         console.log(res.data)
         if(res.data.data.isPhoneVarified==true){
           wx.redirectTo({
-            url: "../timeLine/timeLine"
+            url: "../myInfo/myInfo?moduleId="+options.moduleId
           })
         }
         // success
@@ -130,7 +135,7 @@ bindingIdentity:function(){
 								})
 				    },500);
 				     wx.redirectTo({
-		            url: "../timeLine/timeLine"
+		            url:  "../myInfo/myInfo?moduleId="+that.data.moduleId
 		          })
 	      	}else{
 	      		 wx.showToast({

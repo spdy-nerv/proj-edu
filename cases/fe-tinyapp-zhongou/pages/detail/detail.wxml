@@ -70,7 +70,7 @@
           <image src="../../images/report.png" class='right-img'wx:else ></image>
       </view>
   </navigator>
-  <navigator  url='../myInfo/myInfo?moduleId={{moduleId}}'>
+  <navigator  url='../login/login?moduleId={{moduleId}}'>
       <view class="activity-item last-item">
           <view>
               <text class="number">6</text>

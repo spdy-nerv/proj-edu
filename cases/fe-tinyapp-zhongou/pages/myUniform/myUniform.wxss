@@ -43,10 +43,10 @@ img {
 }
 .phone_one{
 	 text-align: center;
-    width:90%; 
+	 float:right;
+    width:80%; 
     height:56rpx;
     line-height:56rpx;
-    margin-left:6%;
     background-color:#fff;
 }
 .phone_one .imgages{
@@ -73,15 +73,14 @@ line-height:1.5555555600000004;
 .person_box{
     position: relative;
     
-    width:100%; 
+    width:65%; 
 }
 .phone_select{
- width:100%; 
-    margin-top:0;
     z-index: 100;
     position: absolute;
-     width:72%; 
-      margin-left:6%;
+    top:20rpx;
+     width:100%; 
+      margin-left:31%;
     border:2rpx solid #ccc;
 }
 .select_one{
@@ -104,4 +103,4 @@ line-height:1.5555555600000004;
 .rotateRight{
     transform: rotate(180deg); 
 }
-.radio-group{height:100rpx;margin-left:6%;}
+.radio-group{height:100rpx;margin-left:8%;}

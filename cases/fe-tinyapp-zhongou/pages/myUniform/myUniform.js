@@ -46,27 +46,18 @@ Page({
      selectPerson:true,
    })
   },
+   radioChange: function(e) {
+		 console.log('radio发生change事件，携带value值为：', e.detail.value)
+		  this.setData({
+		     gender:e.detail.value,
+		   })
+		 },
   onLoad: function (options) {
   	console.log(options)
-  	  var that=this;
-  	that.setData({
+  	this.setData({
        moduleId: options.moduleId,
       eventId:options.eventId
    });
-   wx.request({
-      url:  APIS.GET_PERSONALBASEINFO,
-      data: {
-      },
-      header: {
-            auth: wx.getStorageSync('token')
-         },
-      success: function(res){
-        console.log(res.data)
-        that.setData({
-			      gender: res.data.data.gender,
-			  });
-      }
-    });
 	  user.login(this.onLoadData(false), this, false);
   },
  
@@ -94,6 +85,7 @@ Page({
       	if(data.data.uniformSize){
       		that.setData({
 		      firstPerson:data.data.uniformSize,
+		      gender:data.data.uniformSize,
 		    })
       	}
      		
@@ -110,13 +102,15 @@ Page({
   	var that=this;
   	console.log(that.data.moduleId)
   	var uniformSize=that.data.firstPerson;
+  	var gender=that.data.gender;
   	console.log(wx.getStorageSync('token'))
   	if(uniformSize){
   		wx.request({
 	      url: APIS.ADD_UNIFORM,
 	      data: {
 	      	moduleId: that.data.moduleId,
-  				uniformSize: uniformSize  
+  				uniformSize: uniformSize, 
+  				gender: gender, 
 	      },
 	     header: { auth: wx.getStorageSync('token')},  
 	      method: "POST", 

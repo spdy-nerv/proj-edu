@@ -17,33 +17,9 @@ Page({
   onLoad: function (options) {
     setTimeout(function() {
     	user.login();
-		    wx.request({
-		      url:  APIS.GET_PERSONALBASEINFO,
-		      data: {
-		      },
-		      header: {
-		            auth: wx.getStorageSync('token')
-		         },
-		      success: function(res){
-		        console.log(res.data)
-		        if(res.data.data.isPhoneVarified==true){
-		          wx.redirectTo({
-		            url: "../timeLine/timeLine"
-		          })
-		        }else{
-		        	wx.redirectTo({
-			        url:'../login/login'
+		   wx.redirectTo({
+			        url:'../timeLine/timeLine'
 			      })
-		        }
-		        // success
-		      },
-		       fail: function(){  
-	           wx.redirectTo({
-			        url:'../login/login'
-			      })
-	        }  
-		    })   
-     
     }, 3000);
   
   },
