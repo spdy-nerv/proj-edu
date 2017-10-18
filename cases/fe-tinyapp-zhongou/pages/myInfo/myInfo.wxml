@@ -1,5 +1,5 @@
  <view class="wrap">
- <view class="title"><em>|</em>车辆信息 </view>
+ <view class="title"><em>|</em>车辆信息<text>(北京地区的学生车牌号必须填写)</text></view>
   <view class="content">
      <view class = "item-l">
      <label><text>车牌号码:</text>

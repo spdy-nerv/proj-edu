@@ -1132,9 +1132,8 @@
  width:100%; 
     z-index: 100;
     position: absolute;
-     top:2.58823529em;
+     top:83rpx;
      left:-120rpx;
-    padding-top:10rpx;
     border:2rpx solid #eee;
 }
 .select_one{
@@ -1149,4 +1148,7 @@
 }
 .show{ 
  display: block;
+}
+.weui-btn{
+	background:#B39652;
 }

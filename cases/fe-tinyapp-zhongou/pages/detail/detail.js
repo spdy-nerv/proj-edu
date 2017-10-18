@@ -67,7 +67,7 @@ Page({
 		latitude:'',
 		longitude:'',
 		isShowShare:true,
-		
+		isPhoneVarifie:false,//是否认证身份
 
 		//模块Id, moduleType 1:详情事件，2:评论，3：报名，4：投票，5:问卷，6：评价
 		modules: [],
@@ -96,6 +96,7 @@ Page({
 			dataStatus:'',
 			isInvoice:'',
 			isPhoneVarified:'',
+			isPhoneVarifie:false,//是否认证身份
 			isReported:'',
 			isSubmitIpad:'',
 			isTakeBus:'',
@@ -122,7 +123,21 @@ Page({
 			eventId:options.eventId,
 			fromShare: options.fromShare || 0
 		});
-		
+		user.login();
+	    wx.request({
+	      url:  APIS.GET_PERSONALBASEINFO,
+	      data: {
+	      },
+	      header: {
+	            auth: wx.getStorageSync('token')
+	         },
+	      success: function(res){
+	        console.log(res.data.data.isPhoneVarified)
+	       that.setData({
+	       	   isPhoneVarifie:res.data.data.isPhoneVarified
+	       })
+	      }
+	    })   
 		wx.showLoading({
 	      mask: true,
 	      title: '数据加载中'
@@ -137,8 +152,7 @@ Page({
 		//移除通知
 		var that = this
 		WxNotificationCenter.removeNotification('NotificationName', that)
-	  },
-	
+	 },
 	  //通知处理
 	  didNotification: function (info) {
 		//更新数据

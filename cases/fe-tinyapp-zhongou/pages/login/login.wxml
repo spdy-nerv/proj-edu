@@ -30,18 +30,11 @@
 			    </view>
           </view>
         </view>
-         <view class="weui-cell weui-cell_input">
-	          <view class="weui-cell__hd">
-	            <view class="weui-label">电话</view>
-	          </view>
-	          <view class="weui-cell__bd">
-	             <input type="text" class="weui-input" name = "phone" value="{{phone}}" placeholder="{{phon}}" bindinput="phonechange"/>
-	          </view>
-          </view>
+        
       </view>
      
       <view class="weui-btn-area" bindtap="bindingIdentity">
-        <button class="weui-btn" type="warn">确定</button>
+        <button class="weui-btn" style="background-color:#B39652" type="warn">确定</button>
       </view>
     </view>
   </view>

@@ -70,11 +70,11 @@ Page({
       realName:e.detail.value
     })
   },
-  phonechange:function(e){
-    this.setData({
-      phone:e.detail.value
-    })
-  },
+//phonechange:function(e){
+//  this.setData({
+//    phone:e.detail.value
+//  })
+//},
     //匹配个人信息
 bindingIdentity:function(){
     var that=this;
@@ -90,26 +90,26 @@ bindingIdentity:function(){
 //  })
 //		  return false;
 //		 }
-		if(phone){
-			if (phone.length != 11) {
-		       wx.showToast({
-		     title: '号码不合法！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }
-		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-		 if (!myreg.test(phone)) {
-		       wx.showToast({
-		     title: '手机号不合法！',
-		     icon: 'success',
-		     duration: 1500
-		    })
-		  return false;
-		 }
-		}
-		 
+//		if(phone){
+//			if (phone.length != 11) {
+//		       wx.showToast({
+//		     title: '号码不合法！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+//		 if (!myreg.test(phone)) {
+//		       wx.showToast({
+//		     title: '手机号不合法！',
+//		     icon: 'success',
+//		     duration: 1500
+//		    })
+//		  return false;
+//		 }
+//		}
+//		 
 		if(realName==undefined||realName==''){
     	wx.showToast({
 					 title: '请填写姓名',
