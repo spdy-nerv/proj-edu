@@ -83,6 +83,7 @@ page {
     background-color: #fff;
     margin:30rpx;
     box-sizing: border-box;
+    border-radius: 10rpx;
 }
 
 .question-content {
@@ -92,7 +93,7 @@ page {
 }
 
 .panel-textarea-wrap {
-    padding-top: 20rpx;
+    padding: 20rpx;
 }
 
 .panel-textarea {
