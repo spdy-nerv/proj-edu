@@ -1,5 +1,7 @@
  <view class="wrap">
- <view class="title"><em>|</em>车辆信息<text>(北京地区的学生车牌号必须填写)</text></view>
+ <view class="title_one"><em>|</em>车辆信息
+ 	<text class="remark">注：为了方便同学们今后进出学校车库，请将您的车牌号码录入以下文本框中。</text>
+ </view>
   <view class="content">
      <view class = "item-l">
      <label><text>车牌号码:</text>
@@ -9,18 +11,6 @@
     <view class = "item-r" >
         <input style="width:100%"  class="input-r disable" type="text" disabled="true" name = "photograph" value="{{photograph}}" focus="{{focus}}" bindchange="photograph"/>
     </view>
- </view>
- <view class="title"><em>|</em>收据开票</view>
-  <view class="content">
-     <view class = "item-l" style="background:#F0F0F0">
-		是否换开收据
-    </view>
-    <view class = "item-a" bindtap="checkChange" >
-    	<checkbox-group >
-        	 <checkbox class="receipt" style="transform:scale(.5)" value="{{isInvoice}}" checked="{{isInvoice}}" />换开收据
-         </checkbox-group>
-     </view>
-     <textarea name="content " disabled="{{disable}}" style="height:200rpx;width:84%;margin:2rpx 7%;" type="text" placeholder="{{compan}}" value="{{company}}" bindinput="companychange"  focus="{{focus}}"/>
  </view>
  <view class="title"><em>|</em>其他资料</view>
   <view class="content">
@@ -45,7 +35,9 @@
 	    </label>
     </view>
  </view>
-  <view class="title"><em>|</em>交通安排</view>
+  <view class="title_two"><em>|</em>交通安排
+  		<text class="remark">注：入学住读模块结束后，学校为同学们准备了送机场/高铁站大巴，请您选择是否需要乘坐及前往地点。</text>
+  </view>
    <view class="content">
      <view class = "item-l" style="background:#F0F0F0">
 		是否搭乘中欧大巴
@@ -64,6 +56,6 @@
     </view>
     
  </view>
- <button class="button-l {{disable==true?'success':''}}" disabled="{{disable}}" style="font-size:30rpx;margin-top:5%; " bindtap="addmsg" >保存</button>
- <button class="button-r {{disable==true?'success':''}}" disabled="{{disable}}" style="font-size:30rpx;margin-top:5%; " bindtap="sendmsg" >{{verify}}</button>
+ <button class="button-l {{disable==true?'success':''}}" disabled="{{disable}}" style="font-size:30rpx;" bindtap="addmsg" >保存</button>
+ <button class="button-r {{disable==true?'success':''}}" disabled="{{disable}}" style="font-size:30rpx;" bindtap="sendmsg" >{{verify}}</button>
   </view>

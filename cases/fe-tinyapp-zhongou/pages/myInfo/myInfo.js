@@ -283,37 +283,47 @@ Page({
   sendmsg:function(){
   	var that=this;
   	console.log(that.data.company,that.data.hotelRoomNo,that.data.plateNumber)
-  	
-	if(that.data.classes=='北京三班'||that.data.classes=='北京四班'){
-		if(that.data.plateNumber ==undefined||that.data.plateNumber ==''){
-			wx.showToast({
-					 title: '请输入车牌号码',
-					})
-			that.setData({
+  	if(that.data.plateNumber){
+  		if(that.data.plateNumber.length!== 7) {
+			console.log(1)
+		         wx.showToast({
+						 title: '车牌号不合法',
+						})
+		 			that.setData({
 			      issure:false
 			    })
-		}else{
-			if(that.data.isInvoice==true){
-	  		if(that.data.company==''||that.data.company==undefined){
-	  			   wx.showToast({
-						 title: '请填写公司抬头',
-						})
-	  			 that.setData({
-				      issure:false
-				    })
-	  		}else{
-	  			 that.setData({
-				      issure:true
-				    })
-	  		}
-	  	}else{
-	  		that.setData({
-				      issure:true
-				    })
+		 }
+			if(that.data.plateNumber.length==7){
+			 	console.log(that.data.plateNumber)
+			       var myreg = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+					 if (!myreg.test(that.data.plateNumber)){
+					 	console.log(2)
+					       wx.showToast({
+					     title: '车牌号不合法！',
+					    })
+					        that.setData({
+							      issure:false
+							    })
+					     }
+	  			console.log(2)
+		 				if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
+					wx.showToast({
+							 title: '请填写酒店房间号码',
+							})
+					that.setData({
+					      issure:false
+					    })
+				}else{
+			  		that.setData({
+						      issure:true
+						    })
+		
+				}
 	  	}
-		}
-	}else{
-		if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
+			 
+		 }else{
+		 	console.log(2)
+		 				if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
 			wx.showToast({
 					 title: '请填写酒店房间号码',
 					})
@@ -321,27 +331,17 @@ Page({
 			      issure:false
 			    })
 		}else{
-			if(that.data.isInvoice==true){
-	  		if(that.data.company==''||that.data.company==undefined){
-	  			   wx.showToast({
-						 title: '请填写公司抬头',
-						})
-	  			 that.setData({
-				      issure:false
-				    })
-	  		}else{
-	  			 that.setData({
-				      issure:true
-				    })
-	  		}
-	  	}else{
 	  		that.setData({
 				      issure:true
 				    })
-	  	}
+
 		}
-	}
+		 }
+		 	console.log(that.data.issure)
+
+
 	if(that.data.issure==true){
+		console.log(that.data.issure)
    if(that.data.baggageNo ==undefined){
     	wx.showToast({
 					 title: '请填写行李号码',
@@ -367,6 +367,7 @@ Page({
 					 title: '请选择校服尺寸',
 					})
     }else{
+    	console.log(666)
     	wx.request({
 	      url: APIS.ADD_SUBMIT,
 	      data: {
