@@ -8,8 +8,8 @@
 </view>
 <radio-group class="radio-group" bindchange="radioChange">
 <text>性别：</text>
- <label class="radio" wx:for-items="{{items}}">
- <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+ <label class="radio" style="padding-left:10rpx;" wx:for-items="{{items}}">
+ <radio value="{{item.name}}" style="padding-left:10rpx;" checked="{{item.checked}}"/>{{item.value}}
  </label>
 </radio-group>
 <text>校服尺寸：</text>

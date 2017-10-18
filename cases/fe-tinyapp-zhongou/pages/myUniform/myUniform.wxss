@@ -44,25 +44,26 @@ img {
 .phone_one{
 	 text-align: center;
 	 float:right;
-    width:80%; 
+	 margin-right:20%;
+    width:60%; 
     height:56rpx;
     line-height:56rpx;
     background-color:#fff;
 }
 .phone_one .imgages{
-height:56rpx;
-width:20%;
+    height:56rpx;
+    width:24%;
 	float:right;
 }
 .phone_personal{
 	float:left;
-	width:80%;
+	width:76%;
 	font-family: "微软雅黑";
 }
 button{
 position:absolute;
   left:5%;
-  top:1000rpx;
+  bottom:-3%;
 	background-color:#B39652;
 	color:#fff;
 	width:90%;
@@ -73,14 +74,14 @@ line-height:1.5555555600000004;
 .person_box{
     position: relative;
     
-    width:65%; 
+    width:46%; 
 }
 .phone_select{
     z-index: 100;
     position: absolute;
     top:20rpx;
      width:100%; 
-      margin-left:31%;
+      margin-left:43%;
     border:2rpx solid #ccc;
 }
 .select_one{
