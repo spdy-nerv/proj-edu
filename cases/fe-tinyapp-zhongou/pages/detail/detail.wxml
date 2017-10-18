@@ -73,7 +73,7 @@
   <view  wx:if="{{isPhoneVarifie}}">
   	<navigator url='../myInfo/myInfo?moduleId={{moduleId}}'>
 	      <view class="activity-item last-item">
-	          <view>{{isPhoneVarifie}}
+	          <view>
 	              <text class="number">6</text>
 	              <image src="../../images/detail06.jpg" mode='aspectFit'></image>
 	              <text class='activity-title'>信息检查和提交</text>
@@ -89,7 +89,7 @@
 	          <view>
 	              <text class="number">6</text>
 	              <image src="../../images/detail06.jpg" mode='aspectFit'></image>
-	              <text class='activity-title'>信息检查和提交{{isPhoneVarifie}}</text>
+	              <text class='activity-title'>信息检查和提交</text>
 	            </view>
 	          <image src="../../images/{{dataStatus=='SUBMIT'?'report.png':'gou.png'}}" class='right-img' wx:if='{{dataStatus!=="SUBMIT"}}'></image>
 	          <image src="../../images/report.png" class='right-img'wx:else ></image>

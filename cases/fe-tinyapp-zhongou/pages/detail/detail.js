@@ -134,7 +134,7 @@ Page({
 	      success: function(res){
 	        console.log(res.data.data.isPhoneVarified)
 	       that.setData({
-	       	   isPhoneVarifie:res.data.data.isPhoneVarified
+	       	   'reportInfo.isPhoneVarifie':res.data.data.isPhoneVarified
 	       })
 	      }
 	    })   
