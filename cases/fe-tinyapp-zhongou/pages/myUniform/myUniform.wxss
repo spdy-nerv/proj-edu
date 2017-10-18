@@ -44,7 +44,7 @@ img {
 .phone_one{
 	 text-align: center;
 	 float:right;
-	 margin-right:20%;
+	 margin-right:10%;
     width:60%; 
     height:56rpx;
     line-height:56rpx;
@@ -81,7 +81,7 @@ line-height:1.5555555600000004;
     position: absolute;
     top:20rpx;
      width:100%; 
-      margin-left:43%;
+      margin-left:65%;
     border:2rpx solid #ccc;
 }
 .select_one{

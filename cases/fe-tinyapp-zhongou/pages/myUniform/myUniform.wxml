@@ -7,12 +7,12 @@
   </view>
 </view>
 <radio-group class="radio-group" bindchange="radioChange">
-<text>性别：</text>
- <label class="radio" style="padding-left:10rpx;" wx:for-items="{{items}}">
- <radio value="{{item.name}}" style="padding-left:10rpx;" checked="{{item.checked}}"/>{{item.value}}
+<text style="margin-left:10%">性别：</text>
+ <label class="radio" style="padding-left:25rpx;" wx:for-items="{{items}}">
+ <radio value="{{item.name}}"  checked="{{item.checked}}"/>{{item.value}}
  </label>
 </radio-group>
-<text>校服尺寸：</text>
+<text style="margin-left:10%">校服尺寸：</text>
   <view class="phone_one" >
       <view class="phone_personal">{{firstPerson}}</view>
       <image class="imgages" src="https://microcloudtech.com/images/campus_zhongou/down1.jpg" mode="aspectFill" bindtap="clickPerson"></image>

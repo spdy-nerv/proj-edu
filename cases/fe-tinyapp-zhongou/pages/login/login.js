@@ -82,15 +82,16 @@ bindingIdentity:function(){
     var phone=that.data.phone;
     var classes=that.data.classes;
     console.log(realName,phone,classes)
-     if (phone==undefined||phone=='') {
-       wx.showToast({
-     title: '请输入手机号！',
-     icon: 'success',
-     duration: 1500
-    })
-		  return false;
-		 }
-		 if (phone.length != 11) {
+//   if (phone==undefined||phone=='') {
+//     wx.showToast({
+//   title: '请输入手机号！',
+//   icon: 'success',
+//   duration: 1500
+//  })
+//		  return false;
+//		 }
+		if(phone){
+			if (phone.length != 11) {
 		       wx.showToast({
 		     title: '号码不合法！',
 		     icon: 'success',
@@ -106,7 +107,10 @@ bindingIdentity:function(){
 		     duration: 1500
 		    })
 		  return false;
-		 }else if(realName==undefined||realName==''){
+		 }
+		}
+		 
+		if(realName==undefined||realName==''){
     	wx.showToast({
 					 title: '请填写姓名',
 					})
