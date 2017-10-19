@@ -3,7 +3,7 @@
 <view style="margin-top:{{marginTop}}">
   <view class="img"><image src="{{pictureUrls}}" mode="aspectFill" ></image></view>
   <view class="content">
-    <rich-text nodes="您将在报道过程中从班主任处领取如下物品:"/>
+    <rich-text nodes="您将在报到过程中从班主任处领取如下物品:"/>
     <view class="list">1、胸牌</view>
     <view class="list">2、书包</view>
     <view class="list">3、课程材料</view>
