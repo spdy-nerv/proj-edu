@@ -3,16 +3,10 @@
 <view style="margin-top:{{marginTop}}">
   <view class="img"><image src="https://microcloudtech.com/images/campus_zhongou/ipad.jpg" mode="aspectFill"></image></view>
   <view class="content">
-    <rich-text nodes=" 请将准备好的IPAD交到吕志和演讲厅门口IT服务处，根据IT老师提示操作，提交完成请点击确定完成键。"/>
-  </view>
-   <view class="content">
-    <rich-text nodes=" 另："/>
-  </view>
-  <view class="content">
-    <rich-text nodes="1、请在下午课后、班会之前返回IT服务处领取装好使用软件之后的IPAD；"/>
-  </view>
-  <view class="content">
-    <rich-text nodes="2、使用过程中有任何问题可在午餐及晚餐时段前往IT服务处咨询。"/>
+    <rich-text nodes="请前往共享街IT服务处，提交IPAD，并根据老师提示进行相关操作，完成请点击确认。"/>
+    <view class="list_first">备注：</view>
+    <view class="list">1、请于课后晚餐时段前往IT服务处领回IPAD。</view>
+    <view class="list">2、使用过程中有任何问题，可于用餐时段前往IT服务处咨询。</view>
   </view>
 </view>
 

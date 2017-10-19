@@ -3,7 +3,8 @@
 <view style="margin-top:{{marginTop}}">
   <view class="img"><image src="https://microcloudtech.com/images/campus_zhongou/baggage.jpg" mode="aspectFill"></image></view>
   <view class="content">
-    <rich-text nodes="如需寄存行李请将行李送至一层大咖啡厅内班级指定区域交给工作人员。并在下方填写工作人员提供的行李编号，填写完成请点击确认键"/>
+    <view class="list">如需寄存行李，请前往一层咖啡厅，按班级指定区域存放，请于下方填写行李编号，完成请点击确认。</view>
+    <view class="list">如不需要，请直接点击确认。</view>
   </view>
 </view>
 <view class = "item">

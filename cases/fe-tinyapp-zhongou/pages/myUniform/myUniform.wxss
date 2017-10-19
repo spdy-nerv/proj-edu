@@ -105,3 +105,8 @@ line-height:1.5555555600000004;
     transform: rotate(180deg); 
 }
 .radio-group{height:100rpx;margin-left:8%;}
+.list{
+	 text-indent: 44rpx;
+
+  text-align: left;
+}

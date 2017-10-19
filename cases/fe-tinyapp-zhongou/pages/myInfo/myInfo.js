@@ -342,11 +342,7 @@ Page({
 
 	if(that.data.issure==true){
 		console.log(that.data.issure)
-   if(that.data.baggageNo ==undefined){
-    	wx.showToast({
-					 title: '请填写行李号码',
-					})
-    }else if(that.data.busLine==undefined){
+    if(that.data.busLine==undefined){
     	wx.showToast({
 					 title: '请选择大巴路线',
 					})
@@ -399,11 +395,25 @@ Page({
 					     verify:'已提交'
 						})
 						WxNotificationCenter.postNotificationName('NotificationName', {dataStatus:'SUBMIT'})
-		        setTimeout(function(){
-							wx.navigateBack({
-								delta: 1
-								})
-				    },500);    
+						 wx.showModal({  
+			            title: '提示',  
+			            content: '祝贺您已完成入学注册流程，祝您中欧学习之旅愉快顺利！',  
+			            success: function(res) {  
+			                if (res.confirm) {  
+				                setTimeout(function(){
+													wx.navigateBack({
+														delta: 1
+														})
+										    },500);      
+			                } else if (res.cancel) {  
+				                setTimeout(function(){
+													wx.navigateBack({
+														delta: 1
+														})
+										    },500);    
+			                }  
+			            }  
+			        })  
 	      	}else{
 	      		 wx.showToast({
 							 title: '数据已提交',

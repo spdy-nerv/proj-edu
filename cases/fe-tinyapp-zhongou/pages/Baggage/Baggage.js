@@ -65,14 +65,28 @@ Page({
     }, false);
   },
   contentchange:function(e){
-    this.setData({
-      baggageNo:e.detail.value
-    })
+  	console.log(e.detail.value)
+  	if(e.detail.value==undefined){
+  		 this.setData({
+		      baggageNo:''
+		    })
+  	}else{
+  		this.setData({
+	      baggageNo:e.detail.value
+	    })
+  	}
+    
   }, 
   cancel:function(e){
+  	console.log(this.data.baggageNo)
   	var that=this;
   	var baggageNo=that.data.baggageNo;
-  	if(baggageNo){
+ 		if(baggageNo==undefined){
+ 			console.log
+ 			var baggageNo='';
+ 			console.log(baggageNo)
+ 		}
+ 		console.log(baggageNo)
   	wx.request({
 	      url: APIS.ADD_BAGGAGE,
 	      data: {
@@ -88,7 +102,7 @@ Page({
 	      		 wx.showToast({
 		          title: '提交成功'
 						});
-						WxNotificationCenter.postNotificationName('NotificationName', {baggageNo:baggageNo})
+						WxNotificationCenter.postNotificationName('NotificationName', {baggageNo:true})
 		        setTimeout(function(){
 							wx.navigateBack({
 								delta: 1
@@ -103,11 +117,6 @@ Page({
 	        
 	      }  
 	   })  
-  	}else{
-  		 wx.showToast({
-		          title: '请输入您的行李号码'
-		        });
-  	}
   },  
   showMore:function(e){
 		var that=this;
