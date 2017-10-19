@@ -23,7 +23,7 @@
 				   <view class="phone_select" >
 				     <view class="select_one" bindtap="mySelect" data-me="北京三班">北京三班</view>
 				     <view class="select_one" bindtap="mySelect" data-me="北京四班">北京四班</view>
-				     <view class="select_one" bindtap="mySelect" data-me="上海三班">上海三班</view>
+				     <view class="select_one" bindtap="mySelect" data-me="上海四班">上海四班</view>
 				     <view class="select_one" bindtap="mySelect" data-me="上海五班">上海五班</view>
 				     <view class="select_one" bindtap="mySelect" data-me="深圳二班">深圳二班</view>
 			       </view>
