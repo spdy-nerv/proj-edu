@@ -285,7 +285,13 @@ Page({
 					   }
 	  	}
 			 
+		 }else{
+	  		that.setData({
+				      issure:true
+				   })
 		 }
+
+
 	if(that.data.issure==true){
     if(that.data.busLine==undefined){
     	wx.showToast({

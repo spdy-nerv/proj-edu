@@ -3,7 +3,7 @@
 <view style="margin-top:{{marginTop}}">
   <view class="img"><image src="https://microcloudtech.com/images/campus_zhongou/myphoto.jpg" mode="aspectFill"></image></view>
   <view class="content">
-    <view class="list">请于VIP室拍摄学生证件照，请着正装并佩戴校徽（校徽可在拍照处领取，男生正装为西服领带）</view>
+    <view class="list">请前往VIP室拍摄学生证件照，请着正装并佩戴校徽（校徽可在拍照处领取，男生正装为西服领带）</view>
     <view class="list">请于下方输入摄影师提供的照片编号，完成请点击确认。</view>
   </view>
 </view>
