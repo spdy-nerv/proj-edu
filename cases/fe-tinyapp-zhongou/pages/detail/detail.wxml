@@ -132,8 +132,6 @@
 <template is="{{moduelObject['VOTE']?'VOTE':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['VOTE']}}"/>
 <template is="{{moduelObject['QUESTIONNAIRE']?'QUESTIONNAIRE':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report,...moduelObject['QUESTIONNAIRE']}}"/>
 <template is="{{moduelObject['COMMENT']?'COMMENT':''}}" data="{{...des,...item,...date,...eventInfo,...disabled,...report}}"/>
-<import src="../footer/footer.wxml"/>
-<template is="footer" data="{{...footerConfig}}"/>
 </scroll-view>
 <!--事件投票模块 moduleType :4-->
 <template name="VOTE">
@@ -300,7 +298,8 @@
   </view>
 </template>
 <!-- 通用foot -->
-
+<import src="../footer/footer.wxml" />
+<template is="footer" data="{{...footerConfig}}"/>
 <!--分享-->
 <view class="modal-window" hidden="{{isShowShare}}" bindtap="hiddenShare">
 		<image src="../../images/share.png" />
