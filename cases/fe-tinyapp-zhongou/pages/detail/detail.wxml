@@ -279,7 +279,11 @@
           </view>
       </view>
       <view class="hotelText">
-         <text space='emsp' class="text">  请同学们在中午13:00前在酒店大堂中欧接待处办理入住，着正装，携带录取通知书及身份证件，在酒店门口乘坐酒店校区之间免费通勤巴士前往校区报道、参加下午课程。</text>
+         <text space='emsp' class="text"> 请您在酒店大堂中欧签到处办理入住手续。</text>
+        <view style="margin-top:30rpx">
+          <text space='emsp' class="text" > 请着正装，携带录取通知书及身份证件，乘坐酒店巴士前往校区报到（12:00,12:30,13:00发车）</text>
+        </view>
+        
       </view>
       <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="input">
