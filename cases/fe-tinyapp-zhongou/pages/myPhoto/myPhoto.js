@@ -22,7 +22,6 @@ Page({
   	
   },
   onLoad: function (options) {
-  	console.log(options)
   	this.setData({
       moduleId: options.moduleId,
       eventId:options.eventId
@@ -32,7 +31,6 @@ Page({
   
  onLoadData: function(load){
   	var that = this;
-  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -51,7 +49,6 @@ Page({
          },
       method: 'GET',
       realSuccess: function(data){
-      	console.log("我的关注asdf",data);
      		that.setData({
 		      photoNo:data.data.photoNo,
 		    })
@@ -84,7 +81,6 @@ Page({
          },
 	      method: "POST", 
 	      success: function(res) { 
-	      	console.log(res)
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 		          title: '提交成功'

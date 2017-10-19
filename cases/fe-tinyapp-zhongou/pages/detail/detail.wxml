@@ -66,7 +66,7 @@
               <image src="../../images/detail05.jpg" mode='aspectFit'></image>
               <text class='activity-title'>寄存行李</text>
             </view>
-          <image src="../../images/{{!baggageNo?'gou.png':'report.png'}}" class='right-img' wx:if='{{!baggageNo}}'></image>
+          <image src="../../images/{{!isBaggageConfirm?'gou.png':'report.png'}}" class='right-img' wx:if='{{!isBaggageConfirm}}'></image>
           <image src="../../images/report.png" class='right-img'wx:else ></image>
       </view>
   </navigator>

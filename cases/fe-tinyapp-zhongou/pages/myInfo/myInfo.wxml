@@ -29,11 +29,6 @@
 			<input type="text" disabled="{{disable}}" name = "hotelRoomNo"  value="{{hotelRoomNo}}" focus="{{focus}}" bindchange="hotelchange"/>
 		</label>
     </view>
-    <view class = "item-r" >
-	    <label><text>行李号码:</text>
-	        <input class="input-r" disabled="{{disable}}" type="text" name = "baggageNo" value="{{baggageNo}}" focus="{{focus}}" bindchange="Baggagechange"/>
-	    </label>
-    </view>
  </view>
   <view class="title_two"><em>|</em>交通安排
   		<text class="remark">注：入学住读模块结束后，学校为同学们准备了送机场/高铁站大巴，请您选择是否需要乘坐及前往地点。</text>

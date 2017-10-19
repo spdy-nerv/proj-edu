@@ -17,7 +17,6 @@ Page({
 	    firstclass:'',
       selectclass:false,
   }, onLoad: function (options) {
-  	console.log(options)
   	this.setData({
   		moduleId:options.moduleId
   	})
@@ -30,7 +29,6 @@ Page({
             auth: wx.getStorageSync('token')
          },
       success: function(res){
-        console.log(res.data)
         if(res.data.data.isPhoneVarified==true){
           wx.redirectTo({
             url: "../myInfo/myInfo?moduleId="+options.moduleId
@@ -44,7 +42,6 @@ Page({
   //点击选择班级类型
   clickclass:function(){
     var selectclass = this.data.selectclass;
-    console.log(selectclass)
     if(selectclass == true){
      this.setData({
      selectclass:false,
@@ -58,7 +55,6 @@ Page({
    //点击切换
   mySelect:function(e){
   	  var selectclass = this.data.selectclass;
-  	console.log(selectclass)
   	
    this.setData({
      classes:e.target.dataset.me,
@@ -81,7 +77,6 @@ bindingIdentity:function(){
     var realName=that.data.realName;
     var phone=that.data.phone;
     var classes=that.data.classes;
-    console.log(realName,phone,classes)
 //   if (phone==undefined||phone=='') {
 //     wx.showToast({
 //   title: '请输入手机号！',
@@ -131,7 +126,6 @@ bindingIdentity:function(){
          }, 
 	      method: "POST", 
 	      success: function(res) { 
-	      	console.log(res)
 	      	if(res.data.success==true){
 	      		 setTimeout(function(){
 							 wx.showToast({

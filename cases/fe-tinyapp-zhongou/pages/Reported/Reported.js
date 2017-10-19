@@ -24,7 +24,6 @@ Page({
   	helloUrls:['https://microcloudtech.com/images/campus_zhongou/banzhuren.jpg'],
   },
   onLoad: function (options) {
-  	console.log(options)
   	this.setData({
       moduleId: options.moduleId,
       eventId:options.eventId
@@ -56,7 +55,6 @@ Page({
  cancel:function(e){
   	var that=this;
   	var moduleId=that.data.moduleId;
-  	console.log(moduleId)
   	wx.request({
 	      url: APIS.ADD_TEACH,
 	      data: {
@@ -67,7 +65,6 @@ Page({
          }, 
 	      method: "POST", 
 	      success: function(res) {  
-	        console.log(res)
 		         wx.redirectTo({
 						  url: '../myUniform/myUniform?moduleId='+moduleId+'&&isReported =true',
 						});

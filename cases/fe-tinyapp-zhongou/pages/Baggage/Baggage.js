@@ -1,4 +1,4 @@
-//myFollows .js
+
 var { APIS } = require('../../const');
 var user = require('../../libs/user');
 var { request } = require('../../libs/request');
@@ -16,23 +16,20 @@ Page({
     hasMore:'',
   	isNoData:"",
   	moduleId:'',
-  	baggageN:'请输入您的行李号码',
-  	baggageNo:'',
   	eventId:'',
   	list:[]
   	
   },
   onLoad: function (options) {
   	this.setData({
-      moduleId: options.moduleId,
+       moduleId: options.moduleId,
       eventId:options.eventId
    });
 	    user.login(this.onLoadData(false), this, false);
   },
   
- onLoadData: function(load){
+  onLoadData: function(load){
   	var that = this;
-  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -40,84 +37,37 @@ Page({
 		  	loadText:'加载中...',
   		})
   	}
-  	
-  	 request({
-      url: APIS.GET_TASK,
-       data:{
-		  		moduleId: that.data.moduleId,
-		  	},
-	      header: {
-            auth: wx.getStorageSync('token')
-         },
-      method: 'GET',
-      realSuccess: function(data){
-      	console.log("我的关注asdf",data);
-     		that.setData({
-     			baggageNo:data.data.baggageNo,
-		    })
-      },
-      realFail: function(msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, false);
   },
-  contentchange:function(e){
-  	console.log(e.detail.value)
-  	if(e.detail.value==undefined){
-  		 this.setData({
-		      baggageNo:''
-		    })
-  	}else{
-  		this.setData({
-	      baggageNo:e.detail.value
-	    })
-  	}
-    
-  }, 
   cancel:function(e){
-  	console.log(this.data.baggageNo)
   	var that=this;
-  	var baggageNo=that.data.baggageNo;
- 		if(baggageNo==undefined){
- 			console.log
- 			var baggageNo='';
- 			console.log(baggageNo)
- 		}
- 		console.log(baggageNo)
   	wx.request({
 	      url: APIS.ADD_BAGGAGE,
 	      data: {
-	      	moduleId: that.data.moduleId,
-  				baggageNo: baggageNo  
+	      	moduleId: that.data.moduleId
 	      },
 	     header: {
             auth: wx.getStorageSync('token')
          },
 	      method: "POST", 
-	      success: function(res) {
-	      	if(res.data.success==true){
+	      success: function(res) {  
+	       if(res.data.success==true){
 	      		 wx.showToast({
 		          title: '提交成功'
-						});
-						WxNotificationCenter.postNotificationName('NotificationName', {baggageNo:true})
+				});
+				WxNotificationCenter.postNotificationName('NotificationName', {isBaggageConfirm:true})
 		        setTimeout(function(){
-							wx.navigateBack({
-								delta: 1
-								})
-				    },500);
-		         
+					wx.navigateBack({
+						delta: 1
+					  })
+				    },500);         
 	      	}else{
 	      		 wx.showToast({
-		          title: '您已提交过行李号码'
+		          title: '您已确认过'
 		        })
 	      	}
-	        
 	      }  
 	   })  
-  },  
+  },   
   showMore:function(e){
 		var that=this;
 		if(that.data.hasMore){

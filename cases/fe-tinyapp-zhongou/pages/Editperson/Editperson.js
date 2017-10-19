@@ -74,7 +74,6 @@ Page({
          },
       method: 'GET',
       realSuccess: function(data){
-      	console.log(data);
         that.setData({
         	realName	:data.data.realName,
         	birthday  :data.data.birthday ,
@@ -99,9 +98,7 @@ Page({
   //保存
    addmsg:function(){
 // 	
-// 	console.log(that.data.location)
   	var that=this;
-  	console.log(that.data.professional,that.data.grade)
   	wx.request({
 	      url: APIS.ADD_PERSONALBASEINFO,
 	      data: {
@@ -128,7 +125,6 @@ Page({
 				    },500);  
 	      },
 	       fail: function(res){  
-        console.log(res)
       }  
 	   })  
   },

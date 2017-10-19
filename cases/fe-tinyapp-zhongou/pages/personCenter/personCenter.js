@@ -19,7 +19,6 @@ Page({
 	      title: '数据加载中'
 	    });
 	    var u = wx.getStorageSync('userInfo');
-	    console.log(u)
 	    this.setData({
 	      nickName: u.nickName,
 	      headerImg: u.avatarUrl
@@ -38,7 +37,6 @@ Page({
          },
       method: 'GET',
       realSuccess: function(data){
-      	console.log(data);
         that.setData({
         	headerImg: data.data.wxHeadImg,
         });

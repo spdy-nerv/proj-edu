@@ -102,7 +102,7 @@ Page({
 			isTakeBus:'',
 			uniformSize:'',
 			photoNo:'',
-			baggageNo:''
+			isBaggageConfirm:''
 		},
 		hotelId:'hotelId',
 		moduelObject:{
@@ -163,7 +163,7 @@ Page({
 			'reportInfo.uniformSize':info.uniformSize,
 			'reportInfo.photoNo':info.photoNo,
 			'reportInfo.isSubmitIpad':info.isSubmitIpad,
-			'reportInfo.baggageNo':info.baggageNo,
+			'reportInfo.isBaggageConfirm':info.isBaggageConfirm,
 			'reportInfo.dataStatus':info.dataStatus
 		})
 	  },
@@ -767,7 +767,7 @@ getHotelRoom:function(){
 						'report.isTakeBus':res.data.isTakeBus,
 						'report.uniformSize':res.data.uniformSize,
 						'report.photoNo':res.data.photoNo,
-						'report.baggageNo':res.data.baggageNo
+						'report.isBaggageConfirm':res.data.isBaggageConfirm
 					  })
 					},
 					realFail: function(msg) {

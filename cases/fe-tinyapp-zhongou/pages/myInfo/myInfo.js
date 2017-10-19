@@ -40,13 +40,12 @@ Page({
     photoNo:'',
     hotelRoomN:'请输入您的酒店房号',
     hotelRoomNo:'',
-    baggageN:'请输入您的行李编号',
-    baggageNo:'',
     marry:'匹配个人信息',
     verify:'确认提交',
     isInvoice:false,
     isTakeBus:false,
     isSubmitIpad:false,
+    isBaggageConfirm:false,
     isReported:false,
     busLine:'',
     selectbus:false,
@@ -119,11 +118,6 @@ Page({
       photograph:e.detail.value
     })
   },
-  companychange:function(e){
-    this.setData({
-      company:e.detail.value
-    })
-  },
   moneychange:function(e){
     this.setData({
       money:e.detail.value
@@ -144,11 +138,6 @@ Page({
       hotelRoomNo:e.detail.value
     })
   },
-  Baggagechange:function(e){
-    this.setData({
-      baggageNo:e.detail.value
-    })
-  },
   onLoad: function (options) {
   	var that=this;
   	that.setData({
@@ -163,7 +152,6 @@ Page({
             auth: wx.getStorageSync('token')
          },
       success: function(res){
-        console.log(res.data)
         that.setData({
 			      classes: res.data.data.classes,
 			  });
@@ -172,7 +160,6 @@ Page({
 	    user.login(this.onLoadData(false), this, false);
   },
   checkChange:function(e) {
-  	console.log(e,this.data.company)
   	var isInvoice=this.data.isInvoice
     if(isInvoice==true){ 	
 	    this.setData({
@@ -185,7 +172,6 @@ Page({
     }
   },
   checkboxChange: function(e) {
-    console.log('checkbox发生change事件，携带value值为：', e)
     if(e.detail.value=='不需要'){ 	
 	    this.setData({
 	      isTakeBus:false
@@ -198,7 +184,6 @@ Page({
   },
   onLoadData: function(load){
   	var that = this;
-  	console.log(wx.getStorageSync('token'))
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -217,7 +202,6 @@ Page({
          },
       method: 'GET',
       realSuccess: function(data){
-      	console.log("我的关注asdf",data);
       	if(data.data.dataStatus=='SUBMIT'){
       		that.setData({
 			      disable:true,
@@ -225,7 +209,7 @@ Page({
 			    })
       	}
      		that.setData({
-     			baggageNo:data.data.baggageNo,
+     			isBaggageConfirm:data.data.isBaggageConfirm,
      			company:data.data.company,
      			dataStatus:data.data.dataStatus,
      			hotelRoomNo:data.data.hotelRoomNo,
@@ -250,11 +234,10 @@ Page({
   },
   addmsg:function(){
   	var that=this;
-  	console.log(that.data.isInvoice)
   	wx.request({
 	      url: APIS.ADD_DRAFT,
 	      data: {
-  					baggageNo: that.data.baggageNo,
+  					isBaggageConfirm: that.data.isBaggageConfirm,
   				company: that.data.company,
   				hotelRoomNo: that.data.hotelRoomNo,
   				isInvoice: that.data.isInvoice,
@@ -272,7 +255,6 @@ Page({
          }, 
 	      method: "POST", 
 	      success: function(res) {
-	      	console.log(res)
 	         wx.showToast({
 		          title: '保存成功'
 		        });
@@ -282,10 +264,8 @@ Page({
   },
   sendmsg:function(){
   	var that=this;
-  	console.log(that.data.company,that.data.hotelRoomNo,that.data.plateNumber)
   	if(that.data.plateNumber){
   		if(that.data.plateNumber.length!== 7) {
-			console.log(1)
 		         wx.showToast({
 						 title: '车牌号不合法',
 						})
@@ -294,54 +274,19 @@ Page({
 			    })
 		 }
 			if(that.data.plateNumber.length==7){
-			 	console.log(that.data.plateNumber)
 			       var myreg = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
 					 if (!myreg.test(that.data.plateNumber)){
-					 	console.log(2)
 					       wx.showToast({
 					     title: '车牌号不合法！',
 					    })
 					        that.setData({
 							      issure:false
 							    })
-					     }
-	  			console.log(2)
-		 				if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
-					wx.showToast({
-							 title: '请填写酒店房间号码',
-							})
-					that.setData({
-					      issure:false
-					    })
-				}else{
-			  		that.setData({
-						      issure:true
-						    })
-		
-				}
+					   }
 	  	}
 			 
-		 }else{
-		 	console.log(2)
-		 				if(that.data.hotelRoomNo ==undefined||that.data.hotelRoomNo ==''){
-			wx.showToast({
-					 title: '请填写酒店房间号码',
-					})
-			that.setData({
-			      issure:false
-			    })
-		}else{
-	  		that.setData({
-				      issure:true
-				    })
-
-		}
 		 }
-		 	console.log(that.data.issure)
-
-
 	if(that.data.issure==true){
-		console.log(that.data.issure)
     if(that.data.busLine==undefined){
     	wx.showToast({
 					 title: '请选择大巴路线',
@@ -354,6 +299,10 @@ Page({
     	wx.showToast({
 					 title: '请先提交ipad',
 					})
+    }else if(that.data.isBaggageConfirm ==undefined){
+    	wx.showToast({
+					 title: '请确认行李寄存',
+					})
     }else if(that.data.photoNo  ==undefined){
     	wx.showToast({
 					 title: '请填写照片编号',
@@ -363,11 +312,10 @@ Page({
 					 title: '请选择校服尺寸',
 					})
     }else{
-    	console.log(666)
     	wx.request({
 	      url: APIS.ADD_SUBMIT,
 	      data: {
-  				baggageNo: that.data.baggageNo,
+  				isBaggageConfirm: that.data.isBaggageConfirm,
   				company: that.data.company,
   				hotelRoomNo: that.data.hotelRoomNo,
   				isInvoice: that.data.isInvoice,
@@ -385,7 +333,6 @@ Page({
          }, 
 	      method: "POST", 
 	      success: function(res) { 
-	      	console.log(res)
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 							 title: '提交成功',

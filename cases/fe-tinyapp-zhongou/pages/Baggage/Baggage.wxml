@@ -3,14 +3,11 @@
 <view style="margin-top:{{marginTop}}">
   <view class="img"><image src="https://microcloudtech.com/images/campus_zhongou/baggage.jpg" mode="aspectFill"></image></view>
   <view class="content">
-    <view class="list">如需寄存行李，请前往一层咖啡厅，按班级指定区域存放，请于下方填写行李编号，完成请点击确认。</view>
-    <view class="list">如不需要，请直接点击确认。</view>
+    <view class="list">如需寄存行李，请前往一层咖啡厅，按班级指定区域存放，领取行李牌。</view>
+    <view class="list" style="padding-top:50rpx">今晚班会结束后请凭行李牌领取行李。</view>
   </view>
 </view>
-<view class = "item">
 
-<input placeholder="{{baggageN}}" style="text-align:center;" value="{{baggageNo}}"bindchange="contentchange"/>
-</view>
 <button bindtap="cancel" >确认</button>
 </view>
 

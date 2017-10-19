@@ -21,7 +21,6 @@ Page({
   	
   },
   onLoad: function (options) {
-  	console.log(options)
   	this.setData({
        moduleId: options.moduleId,
       eventId:options.eventId

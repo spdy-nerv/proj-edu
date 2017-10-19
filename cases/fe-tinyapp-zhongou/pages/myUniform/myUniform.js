@@ -47,13 +47,11 @@ Page({
    })
   },
    radioChange: function(e) {
-		 console.log('radio发生change事件，携带value值为：', e.detail.value)
 		  this.setData({
 		     gender:e.detail.value,
 		   })
 		 },
   onLoad: function (options) {
-  	console.log(options)
   	this.setData({
        moduleId: options.moduleId,
       eventId:options.eventId
@@ -63,7 +61,6 @@ Page({
  
  onLoadData: function(load){
   	var that = this;
-  	console.log(that.data.moduleId)
   	if(load){
   		that.setData({
   			loading:!that.data.loading,
@@ -81,7 +78,6 @@ Page({
          },
       method: 'GET',
       realSuccess: function(data){
-      	console.log("我的关注asdf",data);
       	if(data.data.uniformSize){
       		that.setData({
 		      firstPerson:data.data.uniformSize,
@@ -100,10 +96,8 @@ Page({
   },
   cancel:function(e){
   	var that=this;
-  	console.log(that.data.moduleId)
   	var uniformSize=that.data.firstPerson;
   	var gender=that.data.gender;
-  	console.log(wx.getStorageSync('token'))
   	if(uniformSize){
   		wx.request({
 	      url: APIS.ADD_UNIFORM,
@@ -115,7 +109,6 @@ Page({
 	     header: { auth: wx.getStorageSync('token')},  
 	      method: "POST", 
 				success: function(res) { 
-	      	console.log(res)
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 		          title: '提交成功'
