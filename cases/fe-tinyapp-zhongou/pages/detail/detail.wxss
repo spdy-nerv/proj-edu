@@ -34,14 +34,13 @@ swiper {
 .activity{
   display: flex;
   flex-direction: column;
-  padding-top:40rpx; 
 }
 .activity-item{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 40rpx;
+  padding: 16rpx 40rpx;
   font-size: 36rpx;
   border-top: 1rpx solid #ccc;
   box-sizing: border-box;
@@ -75,7 +74,7 @@ swiper {
 }
 /**上拉查看详情**/
 .pull-up-show-detail{
-  padding: 40rpx 0 0 0;
+  padding: 7rpx 0 0 0;
   text-align: center;
   color: #878a99;
   font-size: 36rpx;
@@ -137,6 +136,7 @@ swiper {
   color: #B29553;
 }
 .enterDetail{
+  margin-top: -7rpx;
   width: 35rpx;
   height: 42rpx;
 }

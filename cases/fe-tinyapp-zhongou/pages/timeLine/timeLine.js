@@ -44,7 +44,8 @@ Page({
     img:'https://microcloudtech.com/images/campus_zhongou/activity/image/2017-10-09/entry.jpg',
     latitude:'',
     longitude:'',
-    name:''
+    name:'',
+    scroll:true
   },
   //事件处理函数
   bindViewTap: function() {

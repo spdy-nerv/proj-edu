@@ -1,11 +1,11 @@
 <!--index.wxml-->
-<view class="wrapper">
+<view class="wrapper" style="width:100%;flex:1 1 auto;height:100%;overflow-y:auto">
     <image src="{{img}}" class='homePage'/>
-<view id="listWrapper">
+<view id="listWrapper" style="width:100%;flex:1 1 auto;height:100%;overflow-y:auto">
+   
   <view class='active'>
-    <view >
+      <scroll-view scroll-y='{{scroll}}' class='content-wrap'>
     <block wx:for='{{events}}'>
-       
       <view style='position:relative'>
           <navigator url='../detail/detail?eventId={{item.eventId}}'>
             <view class="list-item">
@@ -30,13 +30,12 @@
 				</view>
             </navigator>
         </view>
-        
         </view>
    </block>
+  </scroll-view>
   </view>
-   <view> 
-     </view>
-  </view>
+  
+
   <!-- item -->
   <!-- <navigator url='../hotelStay/hotelStay'>
   <view class='list-item list-item2'>
@@ -109,4 +108,5 @@
     <view class="btn-submit" bindtap="onSubmitFilterMore"></view>
     <view class="btn-reset" bindtap="onResetFilterMore"></view>
   </view>
+
 </view>
