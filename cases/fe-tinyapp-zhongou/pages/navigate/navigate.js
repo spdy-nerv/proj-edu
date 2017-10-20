@@ -62,6 +62,7 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
+        console.log(res);
         that.setData({
           centerLongitude: res.longitude,
           centerLatitude: res.latitude,
