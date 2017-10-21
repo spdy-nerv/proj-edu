@@ -1,6 +1,6 @@
  <view class="wrap">
  <view class="title_one"><em>|</em>车辆信息
- 	<text class="remark">注：为了方便同学们今后进出学校车库，请将您的车牌号码录入以下文本框中。</text>
+ 	<text class="remark">注：为了方便同学们进出北京校区停车场，请北京班同学将您的车牌号码录入以下文本框中。</text>
  </view>
   <view class="content">
      <view class = "item-l">

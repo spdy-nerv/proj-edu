@@ -109,6 +109,7 @@ Page({
 	     header: { auth: wx.getStorageSync('token')},  
 	      method: "POST", 
 				success: function(res) { 
+					console.log(res)
 	      	if(res.data.success==true){
 	      		 wx.showToast({
 		          title: '提交成功'

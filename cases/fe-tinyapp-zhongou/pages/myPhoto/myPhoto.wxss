@@ -68,7 +68,7 @@ line-height:1.5555555600000004;
 	margin-buttom:5%;
 }
 .list{
-	 text-indent: 44rpx;
+	 text-indent: 46rpx;
 
   text-align: left;
 }
