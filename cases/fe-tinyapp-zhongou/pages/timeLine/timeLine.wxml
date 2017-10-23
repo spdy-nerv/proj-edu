@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="wrapper">
-  <view style='width:100%;height:399rpx;margin-bottom:0rpx'><image src="{{img}}" class='homePage'mode='aspectFit'/></view>
+  <view class='viewImg'><image src="{{img}}" class='homePage'mode='aspectFit'/></view>
    
 <view id="listWrapper">
   <view class='active'>
