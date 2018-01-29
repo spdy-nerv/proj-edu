@@ -89,7 +89,6 @@ Page({
  changeDate.call(this);
     this.setData({
        fromShare: options.fromShare || 0,
-      
     });
     // 处理兼容性
     var sysInfo = wx.getSystemInfoSync();
@@ -205,6 +204,7 @@ Page({
       },
       header: {'content-type': 'application/x-www-form-urlencoded'},  
       success: function (res) {
+        wx.hideLoading();
         console.log(res);
            that.changeL();
         var list = res.data.data.results;
@@ -558,11 +558,11 @@ Page({
    this.setData({
      section: newSelects,
     });
-   if (this.data.events.length == 0){
-     wx.showToast({
-       title: '当前月份没有活动事件！'
-     });
-   }
+  //  if (this.data.events.length == 0){
+  //    wx.showToast({
+  //      title: '当前月份没有活动事件！'
+  //    });
+  //  }
  
   },
   onShareAppMessage: function () {

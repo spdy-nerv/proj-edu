@@ -19,8 +19,8 @@
     "pages/detail/detail",
     "pages/mydetail/mydetail",
     "pages/mySchedule/mySchedule",
-     "pages/myCalend/myCalend",
-     "pages/myEdit/myEdit",
+    "pages/myCalend/myCalend",
+    "pages/myEdit/myEdit",
     "pages/logs/logs",
     "pages/commentSubmit/commentSubmit",
     "pages/voteModule/voteModule",
@@ -30,7 +30,9 @@
     "pages/unitDetail/unitDetail",
     "pages/publicDetail/publicDetail",
     "pages/companyList/companyList",
-    "pages/companyDetail/companyDetail"
+    "pages/companyDetail/companyDetail",
+    "pages/myJoin/myJoin",
+    "pages/jobsDetail/jobsDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

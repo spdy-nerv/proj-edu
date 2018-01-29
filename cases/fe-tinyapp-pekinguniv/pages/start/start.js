@@ -18,7 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    user.login(this.login,this,true);
+    user.login();
+    //user.login(this.login,this,true);
+    this.login();
   }
   ,
   login:function(){

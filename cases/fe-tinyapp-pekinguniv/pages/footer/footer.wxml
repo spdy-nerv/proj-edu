@@ -10,13 +10,13 @@
         </navigator>
         </view>
         
-        <view class="foot-item foot2">
+        <!-- <view class="foot-item foot2">
         <navigator url="../eventPublish/eventPublish" hover-class="none">
          <image src="../../images/foot-event-icon2.png" />
          <view class="font-gradient" style="margin-top:-5rpx;">发布</view>
         </navigator>
         </view>
-        
+         -->
         <view class="foot-item foot3">
         <navigator url="{{pagePersonal ? '' : '../personCenter/personCenter'}}" hover-class="none" open-type="redirect">
         	<image src="../../images/foot-event-icon3{{pagePersonal ? '-red' : ''}}.png" />

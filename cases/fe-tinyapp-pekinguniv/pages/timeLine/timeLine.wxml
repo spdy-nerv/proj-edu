@@ -14,9 +14,12 @@
   </view>
   <view class="btns">
     <view class="lin"><text id="public" data-id="0" class="{{section[0]?'active':''}}" bindtap="changeL">公告列表</text></view>
-    <view><text id="activity" data-id="1" class="{{section[1]?'active':''}}" bindtap="changeL">活动列表</text></view>
+    <view><text id="activity" data-id="1" class="{{section[1]?'active':''}}" bindtap="changeL">宣讲会列表</text></view>
+    <view><text id="activity" data-id="2" class="{{section[2]?'active':''}}" bindtap="changeL">招聘会列表</text></view>
+    <view><text id="activity" data-id="3" class="{{section[3]?'active':''}}" bindtap="changeL">实习信息</text></view>
+    
   </view>
-
+<!--公告列表  -->
   <view class="contain1" wx:if="{{section[0]}}">
     <scroll-view scroll-y="true" class="list-wrapper-1" id="listWrapper1" style="padding-bottom:{{listPaddingBottom}}rpx">
       <block wx:for="{{events1}}" wx:key="unique">
@@ -34,9 +37,44 @@
 
     </scroll-view>
   </view>
+  <!-- 招聘 -->
+  <view class="contain1" wx:if="{{section[2]}}">
+    <scroll-view scroll-y="true" class="list-wrapper-1" bindscrolltolower="landMore" id="listWrapper1" style="padding-bottom:{{listPaddingBottom}}rpx">
+      <block wx:for="{{jobsList}}" wx:key="unique">
+        <navigator url="../jobsDetail/jobsDetail?eventId={{item.id}}&category={{item.category}}">
+          <view class="events-list-container events-list-container1">
+            <view class="events-tit fontNor">{{item.title}}</view>
+            <view class="events-add timer">
+              <text wx:if="{{item.isTop==1}}" class="decorate">置顶</text>
+              <text wx:if="{{item.eventType=='招聘'}}" class="decorate blue">招聘</text>
+              <text wx:if="{{item.eventType=='实习'}}" class="decorate green">实习</text> 时间：{{item.createTime}}
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </scroll-view>
+  </view>
+  <!--实习  -->
+    <view class="contain1" wx:if="{{section[3]}}">
+    <scroll-view scroll-y="true" class="list-wrapper-1"  bindscrolltolower="practiceLandMore" id="listWrapper1" style="padding-bottom:{{listPaddingBottom}}rpx">
+      <block wx:for="{{practiceList}}" wx:key="unique">
+        <navigator url="../jobsDetail/jobsDetail?eventId={{item.id}}&category={{item.category}}">
+          <view class="events-list-container events-list-container1">
+            <view class="events-tit fontNor">{{item.title}}</view>
+            <view class="events-add timer">
+              <text wx:if="{{item.isTop==1}}" class="decorate">置顶</text>
+              <text wx:if="{{item.eventType=='招聘'}}" class="decorate blue">招聘</text>
+              <text wx:if="{{item.eventType=='实习'}}" class="decorate green">实习</text> 时间：{{item.createTime}}
+            </view>
+          </view>
+        </navigator>
+      </block>
+
+    </scroll-view>
+  </view>
 
   <view wx:if="{{section[1]}}" class="contain">
-    <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="width: 100%" class="horizontal-cal clearfix" style="display:{{isShowSimpleCal}}">
+    <!-- <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="width: 100%" class="horizontal-cal clearfix" style="display:{{isShowSimpleCal}}">
       <view wx:for="{{calendar}}" wx:key="unique" class="item" data-offset-left="{{item.offsetLeft}}">
         <view class="item-title">{{item.daySimpleName}}</view>
         <view class="item-value">
@@ -46,11 +84,11 @@
           <view wx:if="{{item.hasEvents}}" class="has-events"></view>
         </view>
       </view>
-    </scroll-view>
+    </scroll-view> -->
 
     <scroll-view class="time-line-container" scroll-y="true" scroll-into-view="{{scrollIntoViewId}}" scroll-with-animation="{{verticalScrollAnim}}" bindscroll="{{onBindScroll}}" bindscrolltoupper="onHitTop" bindscrolltolower="onHitDown" style="padding-bottom:{{listPaddingBottom}}rpx">
 
-      <view class="time-container">
+      <!-- <view class="time-container">
         <view class="item"><text>日</text></view>
         <view class="item"><text>一</text></view>
         <view class="item"><text>二</text></view>
@@ -58,9 +96,9 @@
         <view class="item"><text>四</text></view>
         <view class="item"><text>五</text></view>
         <view class="item"><text>六</text></view>
-      </view>
+      </view> -->
 
-      <view class="time-container time-number clearfix">
+      <!-- <view class="time-container time-number clearfix">
         <block wx:for="{{calendar}}" wx:key="unique">
           <view class="item" id="{{item.initPos}}">
             <text wx:if="{{item.mode == 'last' || item.mode == 'next'}}" class="item-other-month">{{item.date}}</text>
@@ -69,16 +107,16 @@
             <view wx:if="{{item.hasEvents}}" class="has-events"></view>
           </view>
         </block>
-      </view>
+      </view> -->
 
       <view id="listWrapper">
-
-        <block wx:for="{{events}}" wx:key="unique">
+        <view class="err" wx:if='{{events.length==0}}'>暂无活动事件</view>
+        <block wx:for="{{events}}" wx:key="unique" wx:if='{{events.length!==0}}'>
           <view wx:if="{{true}}" class="events-title-container">
             <view class="events-list-title">{{item.year}}</view>
             <view class="anchor" id="anchor{{item.date}}"></view>
           </view>
-          <navigator url="../detail/detail?eventId={{item.id}}&fromShare={{fromShare}}&hour={{item.time}}&isJoin={{item.isJoin}}">
+          <navigator url="../detail/detail?eventId={{item.id}}&fromShare={{fromShare}}&hour={{item.startTime}}&isJoin={{item.isJoin}}">
             <view class="events-list-container">
               <text wx:if="{{item.day == todayDate}}" class="tody">今天</text>
               <view class="events-list-left">

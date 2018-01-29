@@ -15,51 +15,54 @@ Page({
     openId:null
   },
   onLoad: function () {
-  	wx.showLoading({
-	      mask: true,
-	      title: '数据加载中'
-	    });
-	    user.login(this.onLoadData, this, true);
+  	// wx.showLoading({
+	  //     mask: true,
+	  //     title: '数据加载中'
+	  //   });
+	    //user.login(this.onLoadData, this, true);
   },
   onLoadData: function(){
   	var that = this;
-  	var params = {
-  		sid: wx.getStorageSync('sid')
-  	};
-  	 request({
-      url: APIS.MY_CENTER,
-      data: params,
-      method: 'POST',
-      realSuccess: function(data){
-      	console.log(data);
-        that.setData({
-        	nick:							data.nick,
-        	headerImg:				data.headerImg,
-        	isCertification:	data.isCertification,
-        	roleName:					data.roleName
-        });
-        wx.hideLoading();
-        if(!that.data.isCertification){
-        	 wx.showToast({
-                title: '您尚未身份认证！2秒后跳转认证界面！',
-                duration: 2000,
-                mask: true
-            });
-            setTimeout(function() {
-                wx.navigateTo({
-                url: '../verify/verify'
-                });
-            }, 2000);
-        }
+    var u = wx.getStorageSync('userInfo');
+    this.setData({
+      nick: u.nickName,
+      headerImg: u.avatarUrl
+    });
+    
+  	//  request({
+    //   url: APIS.MY_CENTER,
+    //   data: params,
+    //   method: 'POST',
+    //   realSuccess: function(data){
+    //   	console.log(data);
+    //     that.setData({
+    //     	nick:							data.nick,
+    //     	headerImg:				data.headerImg,
+    //     	isCertification:	data.isCertification,
+    //     	roleName:					data.roleName
+    //     });
+    //     wx.hideLoading();
+    //     if(!that.data.isCertification){
+    //     	 wx.showToast({
+    //             title: '您尚未身份认证！2秒后跳转认证界面！',
+    //             duration: 2000,
+    //             mask: true
+    //         });
+    //         setTimeout(function() {
+    //             wx.navigateTo({
+    //             url: '../verify/verify'
+    //             });
+    //         }, 2000);
+    //     }
         
-      },
-      realFail: function(msg) {
-        wx.hideLoading();
-        wx.showToast({
-          title: msg
-        });
-      }
-    }, true);
+    //   },
+    //   realFail: function(msg) {
+    //     wx.hideLoading();
+    //     wx.showToast({
+    //       title: msg
+    //     });
+    //   }
+    // }, true);
   },
   
   unBind: function(){
@@ -110,7 +113,7 @@ Page({
   //我的发布
   toMyPublic: function(e){
   		wx.navigateTo({
-			  url: '../myPublished/myPublished'
+			  url: '../myJoin/myJoin'
 			});
   },
     //我的日程

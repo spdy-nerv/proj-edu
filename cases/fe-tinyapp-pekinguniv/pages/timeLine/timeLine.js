@@ -15,8 +15,8 @@ Page({
     },
     year: 0,
     month: 0,
-    start:0,
-    limit:30,
+    start: 0,
+    limit: 30,
     formatedMonth: '',
     fromShare: 0,
     date: 0,
@@ -25,19 +25,19 @@ Page({
     events1: [],
     eventDays: [],
     isShowSimpleCal: 'none',
-    time:'',
-    section:[true,false],
+    time: '',
+    section: [true, false, false, false],
     onBindScroll: '',
     toggleCalBundary: 0,
     calendar: [],
     scrollIntoViewId: '',
     screenWidth: 0,
     scrollLeft: 0,
-    currentPage:0,
-    currentPageLength:0,
-    totalPages:0,
-    totalResults:0,
-    pageSize:0,
+    currentPage: 0,
+    currentPageLength: 0,
+    totalPages: 0,
+    totalResults: 0,
+    pageSize: 0,
     verticalScrollAnim: false,
     filterMaskAnim: {},
     filterPanelAnim: {},
@@ -50,8 +50,16 @@ Page({
       { roleId: '', roleName: '全部' }
     ],
     publisherTypeIndex: 0,
-    listPaddingBottom: 100,
-    startTime:0
+    listPaddingBottom: 10,
+    startTime: 0,
+    hasMoreData: true,
+    jobsList: [],
+    practiceStart: 0,
+    practiceLimit: 30,
+    practiceHasMore: true,
+    practiceList: [],
+    seminarStart: 0,
+    seminarLimit: 99
   },
   //事件处理函数
   bindViewTap: function () {
@@ -61,19 +69,20 @@ Page({
   },
 
   onLoad: function (options) {
+    //user.login();
     wx.showLoading({
       mask: true,
       title: '数据加载中'
     });
     this.setData({
-       fromShare: options.fromShare || 0,
-      
+      fromShare: options.fromShare || 0,
+
     });
     // 处理兼容性
     var sysInfo = wx.getSystemInfoSync();
     if (sysInfo.system.toUpperCase().indexOf('IOS') != -1) {
       this.setData({
-        listPaddingBottom: 250
+        listPaddingBottom: 110
       });
     }
   },
@@ -89,41 +98,39 @@ Page({
     this.getCurrentDate();
     this.getEventList1();
     this.getEventList();
-    this.getFilterTypes();
-    this.createAnim();
+    this.getJobsList();
+    this.getPracticeList();
+    //this.getFilterTypes();
+    //this.createAnim();
   },
+  //公告列表
   getEventList1: function () {
     var that = this;
     var et = this.data.eventTypeList;
     var ei = this.data.eventTypeIndex;
     var pt = this.data.publisherTypeList;
     var pi = this.data.publisherTypeIndex;
-     wx.request({
-       url: APIS.GET_NEW_GONGGAOLIST,
+    wx.request({
+      url: APIS.GET_NEW_GONGGAOLIST,
       data: {
-        category:13,
+        category: 13,
       },
       success: function (data) {
+        wx.hideLoading();
         console.log(data);
         console.log(data.data.results);
-        var list1= data.data.results;
-        
-        // list1 = list1.map(function (e, i) {
-        //   e.createTime = e.createTime.split(' ')[0];
-        //   return e;
-        // });
-
-         that.setData({
+        var list1 = data.data.results
+        that.setData({
           events1: list1,
-         });
-       
+        });
+
         wx.hideLoading();
         if (list1.length == 0) {
           wx.showToast({
             title: '当前月份没有公告！'
           });
         }
-        
+
       },
       loginCallback: this.getEventList1,
       realFail: function (msg) {
@@ -133,8 +140,9 @@ Page({
         });
       }
     });
-   
+
   },
+  //宣讲会
   getEventList: function () {
     var that = this;
     var et = this.data.eventTypeList;
@@ -144,69 +152,42 @@ Page({
     wx.request({
       url: APIS.GET_NEW_EVENTLIST,
       data: {
-        start:that.data.start,
-        limit:that.data.limit,
+        start: that.data.seminarStart,
+        limit: that.data.seminarLimit,
         wechatOpenId: wx.getStorageSync('openId'),
       },
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
       },
       success: function (res) {
+        wx.hideLoading()
+        console.log(res)
         var eventsItem = that.data.events;
         console.log(res.data);
         var list = res.data.results;
         var events = list;
         console.log(list);
         that.setData({
-          events:list,
-          time:time,
-          currentPage:res.data.currentPage, //当前页码
-          currentPageLength:res.data.currentPageLength, //当前多少个
-          totalPages:res.data.totalPages, //总共几页
-          totalResults:res.data.totalResults,//总共多少条
-          pageSize:res.data.pageSize
+          events: list,
         });
-        
+
         console.log(eventsItem)
-        // if(list.length<that.data.limit){
-        //   that.setData({
-        //     events:eventsItem.concat(events),
-        //     hasMore:false
-        //   })
-        //   return;
-        // }else{
-        //   that.setData({
-        //     hasMore:true,
-        //     start:that.data.start+that.data.limit+1,
-        //     events:eventsItem.concat(events),
-        //     //limit:that.data.limit+15,
-            
-        //   })
-        // }
-        var time =null;
-          list = list.map(function(e,i){
-          e.time=e.startTime.substring(11);
-          e.year = e.startTime.substring(0,10);
-          e.day = e.startTime.substring(8,10)
+        var time = null;
+        list = list.map(function (e, i) {
+          e.time = e.startTime.substring(11);
+          e.year = e.startTime.substring(0, 10);
+          e.day = e.startTime.substring(8, 10)
           return e
         });
         console.log(list)
-       
-        // console.log(res.data.currentPageLength)
-        // console.log(res.data.currentPage);
-        // console.log(res.data.totalPages);
-        // console.log(res.data.totalResults)
+
+
         wx.hideLoading();
-        if (list.length == 0) {
-          wx.showToast({
-            title: '当前月份没有活动事件！'
-          });
-        }
-         that.renderCalendar();
+        that.renderCalendar();
 
       }
     })
-  
+
     /*
         var events = require('../../mocks/getEventList');
         var list = events.list;
@@ -326,7 +307,7 @@ Page({
   },
 
   onBindScroll: function (e) {
-  	console.log("滚动了",this.data.isShowSimpleCal,e);
+    console.log("滚动了", this.data.isShowSimpleCal, e);
     if (e.detail.scrollTop < this.data.toggleCalBundary) {
       this.setData({
         isShowSimpleCal: 'none'
@@ -336,23 +317,23 @@ Page({
         isShowSimpleCal: 'block'
       });
     }
-    
+
   },
 
-  onHitTop: function () {
-    this.setData({
-      isShowSimpleCal: 'none'
-    });
-  },
-  onHitDown:function(){
-    var that =this;
+  // onHitTop: function () {
+  //   this.setData({
+  //     isShowSimpleCal: 'none'
+  //   });
+  // },
+  onHitDown: function () {
+    var that = this;
     console.log('已经到底了，没有数据了');
-      // if(that.data.hasMore){
-      //   wx.showLoading({title:'数据加载中'});
-      //   that.getEventList();
-      // }else{
-      //   wx.showToast({title:'没有更多数据了'})
-      // }
+    // if(that.data.hasMore){
+    //   wx.showLoading({title:'数据加载中'});
+    //   that.getEventList();
+    // }else{
+    //   wx.showToast({title:'没有更多数据了'})
+    // }
     //this.setData({start:16,limit:15})
   },
 
@@ -366,14 +347,14 @@ Page({
       formatedMonth: monthFormatList[+dateArr[1] - 1].arabic + '月'
     });
 
-    this.getEventList(); 
+    this.getEventList();
     this.getEventList1();
     //this.renderCalendar();
   },
 
   // 点击日历修改日期
   onSelectDate: function (e) {
-  	console.log('执行了点击事件',e);
+    console.log('执行了点击事件', e);
     var date = e.target.dataset.date;
     if (!util.inArray(date, this.data.eventDays)) {
       wx.showToast({
@@ -466,27 +447,29 @@ Page({
       publisherTypeIndex: 0
     });
   },
-  changeL:function(e){
-    var index=e.currentTarget.dataset.id;
-   let newSelects = [];
-   for (let i = 0, j = this.data.section.length; i < j; i++) {
-     let flag = false;
-     if (i == index) flag = true;
-     newSelects.push(flag);
-   }
-   this.setData({
-     section: newSelects,
+  changeL: function (e) {
+    var index = e.currentTarget.dataset.id;
+    console.log(index);
+    //console.log(this.data.section)
+    let newSelects = [];
+    for (let i = 0, j = this.data.section.length; i < j; i++) {
+      let flag = false;
+      if (i == index) flag = true;
+      newSelects.push(flag);
+    }
+    this.setData({
+      section: newSelects,
     });
-   if (index == 0 && this.data.events1.length==0){
-     wx.showToast({
-       title: '当前月份没有公告！'
-     });
-   } else if (index == 1 && this.data.events.length == 0){
-     wx.showToast({
-       title: '当前月份没有活动事件！'
-     });
-   }
- 
+    if (index == 0 && this.data.events1.length == 0) {
+      wx.showToast({
+        title: '当前没有公告！'
+      });
+    } else if (index == 1 && this.data.events.length == 0) {
+      wx.showToast({
+        title: '当前没有事件！'
+      });
+    }
+
   },
   onShareAppMessage: function () {
     // 用户点击右上角分享
@@ -495,4 +478,97 @@ Page({
       path: '/pages/timeLine/timeLine'
     }
   },
+  //招聘
+  getJobsList() {
+    wx.showLoading({
+      title: '数据加载中',
+    })
+    wx.request({
+      url: APIS.GET_JOBS_LIST,
+      method: 'GET',
+      data: {
+        start: this.data.start,
+        limit: this.data.limit,
+        wechatOpenId: wx.getStorageSync('openId'),
+        category: 1
+      },
+      success: (res) => {
+        console.log(res);
+        var jobList = this.data.jobsList;
+        if (res.data.results.length < this.data.limit) {
+          this.setData({
+            jobsList: jobList.concat(res.data.results),
+            hasMore: false
+          })
+        } else {
+          this.setData({
+            jobsList: jobList.concat(res.data.results),
+            hasMore: true,
+            start: this.data.start + 30
+          })
+        }
+
+        wx.hideLoading();
+      }, fail: (res) => {
+        console.log('失败' + res);
+      }
+    })
+  }
+  //实习
+  , getPracticeList() {
+    wx.showLoading({
+      title: '数据加载中',
+    })
+    wx.request({
+      url: APIS.GET_JOBS_LIST,
+      method: 'GET',
+      data: {
+        start: this.data.practiceStart,
+        limit: this.data.practiceLimit,
+        wechatOpenId: wx.getStorageSync('openId'),
+        category: 2
+      },
+      success: (res) => {
+        console.log(res);
+        var practiceList = this.data.practiceList;
+        if (res.data.results.length < this.data.practiceLimit) {
+          this.setData({
+            practiceList: practiceList.concat(res.data.results),
+            practiceHasMore: false
+          })
+        } else {
+          this.setData({
+            practiceList: practiceList.concat(res.data.results),
+            practiceHasMore: true,
+            practiceStart: this.data.practiceStart + 30
+          })
+        }
+        wx.hideLoading();
+      }, fail: (res) => {
+        console.log('失败' + res);
+      }
+    })
+  },
+  //招聘
+  landMore() {
+    console.log('加载更多')
+    if (this.data.hasMoreData) {
+      this.getJobsList()
+    } else {
+      wx.showToast({
+        title: '没有更多数据',
+      })
+    }
+  },
+  //实习
+  practiceLandMore() {
+    console.log('加载更多')
+    if (this.data.practiceHasMore) {
+      this.getPracticeList()
+    } else {
+      wx.showToast({
+        title: '没有更多数据',
+      })
+    }
+  }
 })

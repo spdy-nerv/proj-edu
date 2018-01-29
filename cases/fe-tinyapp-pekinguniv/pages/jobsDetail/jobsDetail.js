@@ -97,7 +97,8 @@ Page({
       title: '数据加载中',
     })
 		this.setData({
-			eventId:options.eventId
+			eventId:options.eventId,
+      category:options.category
 		})
 		console.log(options.isJoin)
 		if(options.isJoin==true){
@@ -109,22 +110,8 @@ Page({
 				isJoin:false
 			})
 		}
-		this.setData({
-			isFollow:options.isJoin,
-			isJoin:options.isJoin,
-			hasEnrolled:options.isJoin,
-			eventId:options.eventId,
-			'des.eventId':options.eventId,
-			fromShare: options.fromShare || 0,
-			hr:options.hour.substring(11,16),
-			endHr:parseInt(options.hour.substring(11,16))+2+':'+options.hour.substring(14,16),
-			startTime:{hours:options.hour}
-		});
-		// wx.showLoading({
-	  //     mask: true,
-	  //     title: '数据加载中'
-	  //   });
-		this.onLoadData();
+    this.onLoadData();
+	
 		if( wx.getStorageSync('checked')==true){
 			//this.setData({hasEnrolled:true})
 			
@@ -141,10 +128,10 @@ Page({
 			category:3
 		};
 		wx.request({
-			url: APIS.GET_NEW_EVENTLISTDETAIL,
+      url: APIS.GET_JOBS_DETAIL,
 			data: {
 			  id: that.data.eventId,
-			  category: 3,
+        category: 0,
 			  wechatOpenId: wx.getStorageSync('openId'),
 			},
 			header: {
@@ -154,15 +141,17 @@ Page({
 			  console.log(res);
 			  console.log(res.data);
 			  var data = res.data;
-			  console.log(data.startTime)
-			  var time = data.startTime;
-			  that.data.year = data.startTime.substring(0, 4);
+        console.log(data.lastUpdate)
+        var time = data.lastUpdate;
+        that.data.year = data.lastUpdate.substring(0, 4);
 			  console.log(that.data.year);
 			  //console.log(data.startTime.substring(8,10));
 			  that.setData({
+        managerName: data.managerName,
+        managerPhone: data.managerPhone,
 				attend: data.attend,
-				formatedMonth: data.startTime.substring(6, 7),
-				startTimeDay: data.startTime.substring(8, 10),
+        formatedMonth: data.lastUpdate.substring(6, 7),
+        startTimeDay: data.lastUpdate.substring(8, 10),
 				eventName: data.title,
 				address: data.locationName,
 				viewCount: data.viewCount,

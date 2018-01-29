@@ -1,5 +1,5 @@
 var { APIS } = require('../const');
-
+wx.setStorageSync('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyIqIl0sInRlbmVtZW50X2lkIjoiMTAwMiIsImV4cCI6MTY3NDM3NDQ1OCwianRpIjoiNjBhYWUyYjUtOTlkYy00Njk0LWE5NjUtNTUzMTMyZmY2MGE3IiwiY2xpZW50X2lkIjoicGVraW5nam9iIn0.dRXqKS2aaa5PXWaHO62xkIf82MV1GSL5XuO4UnTLu58');
 function login(cb, ctx, needCheckSession) {
     if (needCheckSession) {
         var sid = wx.getStorageSync('sid');
@@ -77,15 +77,16 @@ function doAppLogin(data, cb, ctx) {
     wx.request({
       url: APIS.LOGIN,
       data: data,
+      header: { Authorization: wx.getStorageSync('Authorization') },
       method: 'POST',
       success: function(res){
+        console.log(res);
         var d = res.data;
         console.log(d);
-        if (d.errCode == '0000' && d.resultData) {
-            var sid = d.resultData.sid;
-            var openId = d.resultData.openId;
-            wx.setStorageSync('sid', sid);
-            wx.setStorageSync('openId', openId);
+        if (d.code == 'SUCCESS') {
+           var token = d.data.token
+           wx.setStorageSync('token', token);
+           getOpenId();
             typeof cb == "function" && cb.call(ctx);
         } else {
             wx.showToast({
@@ -100,6 +101,25 @@ function doAppLogin(data, cb, ctx) {
         });
       }
     })
+}
+//获取openId
+function getOpenId(){
+  wx.request({
+    url: APIS.CHECK_TOKEN,
+    header: {
+      auth: wx.getStorageSync('token'),
+      Authorization: wx.getStorageSync('Authorization')
+    },
+    method:'GET',
+    success:(res)=>{
+    console.log(res);
+    var openId = res.data.data.openid;
+    console.log(openId)
+    wx.setStorageSync('openId', openId);
+    },fail:(res)=>{
+
+    }
+  })
 }
 
 module.exports = {

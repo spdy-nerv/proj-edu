@@ -1,0 +1,34 @@
+<view id="listWrapper"  wx:if='{{events.length>0}}'>
+    <block wx:for="{{events}}" wx:key="unique">
+        <view wx:if="{{true}}" class="events-title-container">
+            <view class="events-list-title">{{item.year}}</view>
+            <view class="anchor" id="anchor{{item.date}}"></view>
+        </view>
+        <navigator url="../detail/detail?eventId={{item.id}}&fromShare={{fromShare}}&hour={{item.startTime}}&isJoin={{item.isJoin}}">
+            <view class="events-list-container">
+                <text wx:if="{{item.day == todayDate}}" class="tody">今天</text>
+                <view class="events-list-left">
+                    <text>{{item.time}}</text>
+                    <text class='xuan'>宣</text>
+                </view>
+                <view class="events-list-right">
+                    <view class="events-tit">{{item.title}}</view>
+                    <view class="events-addt">举办时间：{{item.startTime}}</view>
+                    <view class="events-add">举办地点：{{item.location}}</view>
+                    <view class="events-member">
+
+                        <block wx:if="{{item.followInfo.total>0}}">
+                            <view class="img-box">
+                                <view wx:for="{{item.followInfo.avatars}}" wx:key="unique" wx:for-item="a" class="img" style="z-index:99;">
+                                    <image src="{{a}}"></image>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </block>
+
+</view>
+<view class="err" wx:if='{{events.length==0}}'>暂无参加的活动</view>

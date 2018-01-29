@@ -24,7 +24,7 @@
     <view class="right1">{{eventName}}</view>
     <view class="right2" bindtap="openLocation">
     <!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}" redirect>-->
-    	<text>{{address}}</text><image src="../../images/location1.png" />
+    	<!-- <text>{{address}}</text><image src="../../images/location1.png" /> -->
      <!--</navigator>-->
       <text class='viewCount'>浏览人数：{{viewCount}}</text>
     </view>
@@ -74,7 +74,7 @@
    </view>
 </view> -->
 <!--投票、地址等模块-->
-<view class="model mg20">
+<!-- <view class="model mg20">
   <view class="model-left ">
      <image src="../../images/d-icon1.png"></image>
   </view>
@@ -83,24 +83,24 @@
     <view class="right1">结束时间：{{endTime.year}}年{{endTime.month}}月{{endTime.day}}日  {{endTime.endHours}}
     </view>
    </view>
-</view>
+</view> -->
 
 
 <!--<navigator url="../map/map?latitude={{latitude}}&longitude={{longitude}}">-->
- <view class=" model" bindtap="openLocation">
+ <!-- <view class=" model" bindtap="openLocation">
   <view class="model-left ">
      <image src="../../images/d-icon2.png" class="m-img2"></image>
   </view>
   <view class="model-right">
     <view class="right1">{{address}}</view>
    </view>
-</view>
-<view class=" model" wx:if="{{contactTelephone}}">
+</view> -->
+<view class=" model" wx:if="{{managerName}}">
     <view class="model-left ">
        <image src="../../images/foot-event-icon3.png" class="m-img2"></image>
     </view>
     <view class="model-right">
-      <view class="right1">联系人：{{contactPerson}}          <text style="padding-left:30rpx">电话：{{contactTelephone}}</text></view>
+      <view class="right1">联系人：{{managerName}}          <text style="padding-left:30rpx">电话：{{managerPhone}}</text></view>
      </view>
   </view>
 
@@ -251,40 +251,6 @@
   </block>
 </view>
 </template>
-
-<!--底部浮动评论输入框-->
-
-
-
-<view class="footer_container mg20">
-    <!-- <view class="foot-item comment1"> -->
-        <!-- <view class="input_box" bindtap="onToComment">
-        <navigator url="../commentSubmit/commentSubmit?moduleId={{moduleId}}">
-         <image src="../../images/c_icon2.png"></image>
-           <view class="input">我要参加</view>
-        
-         </navigator>
-          </view> -->
-      <!-- </view> -->
-
-      <view class="foot-item comment2 comment3" bindtap="clickEnrollBtn"> 
-        <block wx:if="{{attend}}">
-        <image  src="../../images/icon6.png"></image>
-      </block>
-      <block wx:else>
-        <!-- 选中状态 -->
-         <image src="../../images/icon6_before.png"></image>   
-      </block>
-       </view>
-       
-      <view class="foot-item comment2" bindtap="clickEnrollBtn" style="margin-right:30rpx">
-        <!-- <text class="comment_num">{{des.commentData.data.totalCount}}</text> -->
-        <!-- <image src="../../images/c_icon1.png"></image> -->
-        <block wx:if='{{!attend}}'> <view class='join'>参加</view></block>
-        <block wx:else> <view class='join'>已参加</view></block>
-      </view>
-        
-</view>
 <!--双选单位详情 moduleType:5-->
 <template name="7">
 <navigator url="../companyList/companyList?eventId={{eventId}}">

@@ -76,7 +76,9 @@
 	              	
 	              </view>
 	              <view class="events-bd">
-	               <navigator url="../mydetail/mydetail?eventId={{item.id}}&fromShare={{fromShare}}">
+                 <navigator url="../mydetail/mydetail?eventId={{item.id}}&fromShare={{fromShare}}">
+                  <!-- <navigator  url="../detail/detail?eventId={{item.id}}&fromShare={{fromShare}}&hour={{item.startTime}}&isJoin={{item.isJoin}}"> -->
+                 
 	              	<view class="content-block">
 	              		<view class="info">
 	              			<text class="content-Category">企业：</text><text class="content-item">{{item.enterpriseName}}</text>

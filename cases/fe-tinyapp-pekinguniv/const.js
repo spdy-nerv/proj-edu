@@ -1,4 +1,4 @@
-﻿var monthFormatList = [
+var monthFormatList = [
   { arabic: 1, eng: 'January', simpleEng: 'Jan' },
   { arabic: 2, eng: 'February', simpleEng: 'Feb' },
   { arabic: 3, eng: 'March', simpleEng: 'Mar' },
@@ -25,8 +25,13 @@ var dayFormatList = [
 
 var reqHost = 'https://www.leiy.club/peking';
 var baseUrl = 'https://scc.pku.edu.cn';
+//var baseUrl = 'http://ai-ni.vip';
+
+var cqUrl = 'https://www.cqyunruan1.cn/gateway/neo/'
 
 var APIS = {
+  LOGIN:                      cqUrl + 'uaa/api/login',
+  CHECK_TOKEN:                cqUrl + '/uaa/api/user/checkToken',//获取openId
   GET_XCX_LOGIN:              baseUrl+'/ssologin/xcxLogin',//模拟登陆
   GET_IS_BLINDING:            baseUrl+'/wechat!isBinding',
   GET_TAKE_PART_IN:           baseUrl+'/wechat-student-jobs!cancelInterest',
@@ -35,10 +40,14 @@ var APIS = {
   GET_NEW_GONGGAOLIST:        baseUrl +'/wechat-home!loadStudentNews',
   GET_NEW_EVENTLIST:          baseUrl +'/wechat-student-jobs!fairs',//宣讲会列表
   GET_NEW_EVENTLISTDETAIL:    baseUrl +'/wechat-student-jobs!bigFairDetail', //宣讲会详情列表
+  GET_MY_JOIN:                baseUrl+'/wechat-student-jobs!pageMyfairs',//我的宣讲会
+  GET_JOBS_LIST:              baseUrl+'/wechat-student-jobs!jobs',//招聘信息列表
+  GET_JOBS_DETAIL:            baseUrl+'/wechat-student-jobs!bigFairDetail',//招聘会详情
+
+
   GET_EVENT_NOU:						 reqHost +'/getAnnouncementList',//公告数据
   GET_ROLE_LIST: 						reqHost + '/getRoleList',
   GET_EVENT_TYPE_LIST: 			reqHost + '/getEventTypeList',
-  LOGIN: 										reqHost + '/wx/login',
   CHECK_SESSION: 						reqHost + '/wx/checkSession',
   GET_EVENTS_LIST_BY_MONTH: reqHost + '/getEventsListByMonth',
   

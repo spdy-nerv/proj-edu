@@ -141,6 +141,7 @@ Page({
 					contactPerson:data.contactPerson,
 					contactTelephone:data.contactTelephone,
 					email:data.email,
+					viewCount: data.viewCount,
 					startTime:{
 						'year': data.startTime.substring(0, 4), //年份
 						'month': data.startTime.substring(5, 7),

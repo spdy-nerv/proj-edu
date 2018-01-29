@@ -20,6 +20,7 @@ Page({
     //获取认证的学生信息
     wx.request({
       url: 'https://scc.pku.edu.cn/wechat-student!myInfo',
+      method:'GET',
       data: {
 
         wechatOpenId:wx.getStorageSync('openId')
@@ -65,6 +66,7 @@ Page({
         success: function(res){
           console.log('请求执行了')
           wx.hideLoading();
+          console.log('登陆返回的：'+res)
           console.log(res.data)
           if(res.data.success==true){
             wx.redirectTo({
@@ -75,13 +77,18 @@ Page({
               title:res.data.msg,
               duration: 2000
             })
+          }else{
+            wx.showToast({
+              title:'认证失败',
+              duration: 2000
+            })
           }
           // success
         },
         fail: function(res) {
           console.log(res);
           wx.showToast({
-            title: '输入的用户名或密码不正确',
+            title:'认证失败',
             duration: 2000
           })
         }

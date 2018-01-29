@@ -227,6 +227,8 @@ page{
   border-left:solid 2px #365593;
   padding-left: 20rpx;
     font-size: 30rpx;
+    padding-right: 10rpx;
+    box-sizing: border-box;
 }
 .events-title-container{
 
@@ -235,7 +237,7 @@ page{
 }
 .events-list-title{
   display: block;
-  height: 68rpx;
+  height: 0rpx;
   line-height: 65rpx;
   color: #5d5f6a;
   font-size: 30rpx;
@@ -398,7 +400,7 @@ page{
 
 .btns view{flex: 1;
 text-align: center;position: relative}
-.btns view text{border-bottom: 4rpx solid #fff;line-height:84rpx;font-size: 36rpx;display: inline-block;height: 84rpx}
+.btns view text{border-bottom: 4rpx solid #fff;line-height:84rpx;font-size: 34rpx;display: inline-block;height: 84rpx}
 .btns view .active{border-bottom: 4rpx solid #cc2829;color:#cc2829}
 .btns .lin::after{content: "";height: 30rpx;width: 3rpx;background:#dbdbdb;position: absolute;top: 28rpx;right: 0;display: block }
 .contain{
@@ -427,4 +429,10 @@ color: #f85959;border-radius: 6rpx;font-size: 22rpx;}
   height: 100%;
   overflow-y: hidden;
   box-sizing: border-box;
+}
+.err{
+  color: #333;
+  font-size: 38rpx;
+  text-align: center;
+  margin-top:88rpx;
 }
